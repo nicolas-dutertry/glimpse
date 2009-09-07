@@ -1,6 +1,5 @@
 package org.glimpse.client;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.glimpse.client.layout.ColumnDescription;
@@ -9,6 +8,7 @@ import org.glimpse.client.layout.PageDescription;
 import org.glimpse.client.layout.TabDescription;
 import org.glimpse.client.layout.ComponentDescription.Type;
 import org.glimpse.client.news.NewsReader;
+import org.glimpse.client.widgets.VerticalPanelExt;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -19,13 +19,19 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class Aggregator implements EntryPoint {
+	public enum Direction {
+		LEFT,
+		RIGHT,
+		UP,
+		DOWN
+	}
+	
 	/**
 	 * The message displayed to the user when the server cannot be reached or
 	 * returns an error.
@@ -42,8 +48,7 @@ public class Aggregator implements EntryPoint {
 	private PageDescriptionServiceAsync pageDescriptionService = GWT
 		.create(PageDescriptionService.class);
 	
-	private TabPanel tabPanel;
-	private List<TabTitle> tabTitles;
+	private AggregatorTabPanel tabPanel;
 
 
 	/**
@@ -75,19 +80,14 @@ public class Aggregator implements EntryPoint {
 		addButton.addClickHandler(new ClickHandler() {			
 			@Override
 			public void onClick(ClickEvent event) {
-				int i = tabPanel.getTabBar().getSelectedTab();
-				HorizontalPanel tab = (HorizontalPanel)tabPanel.getWidget(i);
-				VerticalPanelExt column = (VerticalPanelExt)tab.getWidget(0);
-				NewsReader rssReader = new NewsReader(); 
-				column.add(rssReader);
-				column.setCellClass(rssReader, "component");
+				NewsReader rssReader = new NewsReader();
+				addComponent(rssReader);
 			}
 		});
 		mainPanel.add(addButton);
 		
-		tabPanel = new TabPanel();
-		tabPanel.setWidth("100%");
-		tabTitles = new LinkedList<TabTitle>();
+		tabPanel = new AggregatorTabPanel();
+		tabPanel.setWidth("100%");		
 		
 		List<TabDescription> tabDescriptions =
 			pageDescription.getTabDescriptions();
@@ -114,9 +114,7 @@ public class Aggregator implements EntryPoint {
 				panel.add(column);
 				panel.setCellWidth(column, (100 / columnDescriptions.size()) + "%");
 			}
-			TabTitle title = new TabTitle(tabDescription.getTitle());
-			tabPanel.add(panel, title);
-			tabTitles.add(title);
+			tabPanel.add(panel, tabDescription.getTitle());
 		}
 		tabPanel.selectTab(0);
 		
@@ -142,10 +140,9 @@ public class Aggregator implements EntryPoint {
 		PageDescription pageDescription = new PageDescription();
 		
 		for(int i = 0; i < tabPanel.getWidgetCount(); i++) {
-			TabTitle tabTitle = tabTitles.get(i);
 			HorizontalPanel panel = (HorizontalPanel)tabPanel.getWidget(i);
 			TabDescription tabDescription = new TabDescription();
-			tabDescription.setTitle(tabTitle.getText());
+			tabDescription.setTitle(tabPanel.getTitle(i));
 			
 			for(int j = 0; j < panel.getWidgetCount(); j++) {
 				VerticalPanel column = (VerticalPanel)panel.getWidget(j);
@@ -168,5 +165,65 @@ public class Aggregator implements EntryPoint {
 	
 	public static Aggregator getInstance() {
 		return instance;
+	}
+	
+	public void addComponent(Component component) {
+		HorizontalPanel tab = (HorizontalPanel)tabPanel.getWidget(
+				tabPanel.getVisibleWidget());
+		VerticalPanelExt column = (VerticalPanelExt)tab.getWidget(0);
+		column.add(component);
+		column.setCellClass(component, "component");
+	}
+	
+	public void moveComponent(Component component, Direction direction) {
+		HorizontalPanel tab = (HorizontalPanel)tabPanel.getWidget(
+				tabPanel.getVisibleWidget());
+		VerticalPanelExt column = getColumn(tab, component);
+		int col = tab.getWidgetIndex(column);
+		int row = column.getWidgetIndex(component);
+		boolean moved = false;
+		if(direction == Direction.RIGHT) {
+			if(col+1 < tab.getWidgetCount()) {
+				column.remove(component);
+				VerticalPanelExt rightColumn = (VerticalPanelExt)tab.getWidget(col+1);
+				rightColumn.add(component);
+				moved = true;
+			}
+		} else if(direction == Direction.LEFT) {
+			if(col-1 >= 0) {
+				column.remove(component);
+				VerticalPanelExt leftColumn = (VerticalPanelExt)tab.getWidget(col-1);
+				leftColumn.add(component);
+				moved = true;
+			}
+		} else if(direction == Direction.UP) {
+			if(row-1 >= 0) {
+				column.remove(component);
+				column.insert(component, row-1);
+				moved = true;
+			}
+		}  else if(direction == Direction.DOWN) {
+			if(row+1 < column.getWidgetCount()) {
+				column.remove(component);
+				column.insert(component, row+1);
+				moved = true;
+			}
+		}
+		if(moved) {
+			column = getColumn(tab, component);
+			column.setCellClass(component, "component");
+			update();
+		}
+	}
+	
+	public VerticalPanelExt getColumn(HorizontalPanel tab,
+			Component component) {
+		for(int i = 0; i < tab.getWidgetCount(); i++) {
+			VerticalPanelExt col = (VerticalPanelExt)tab.getWidget(i);
+			if(col.getWidgetIndex(component) != -1) {
+				return col;
+			}
+		}
+		return null;
 	}
 }

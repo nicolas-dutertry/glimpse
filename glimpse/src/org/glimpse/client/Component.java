@@ -3,9 +3,14 @@ package org.glimpse.client;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.glimpse.client.Aggregator.Direction;
+import org.glimpse.client.widgets.HorizontalPanelExt;
+import org.glimpse.client.widgets.VerticalPanelExt;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -77,9 +82,47 @@ public class Component extends Composite {
 		bottom.add(bottomLeft);
 		bottom.setCellClass(bottomLeft, "component-bottom-left");
 		
-		Label bottomCenter = new Label(" ");
-		bottom.add(bottomCenter);
-		bottom.setCellClass(bottomCenter, "component-bottom-center");
+		
+		HorizontalPanel movePanel = new HorizontalPanel();
+		Image moveLeft = new Image("images/left.png");
+		moveLeft.addClickHandler(new ClickHandler() {			
+			@Override
+			public void onClick(ClickEvent event) {
+				Aggregator.getInstance().moveComponent(Component.this,
+						Direction.LEFT);				
+			}
+		});
+		movePanel.add(moveLeft);
+		Image moveRight = new Image("images/right.png");
+		moveRight.addClickHandler(new ClickHandler() {			
+			@Override
+			public void onClick(ClickEvent event) {
+				Aggregator.getInstance().moveComponent(Component.this,
+						Direction.RIGHT);				
+			}
+		});
+		movePanel.add(moveRight);
+		Image moveUp = new Image("images/up.png");
+		moveUp.addClickHandler(new ClickHandler() {			
+			@Override
+			public void onClick(ClickEvent event) {
+				Aggregator.getInstance().moveComponent(Component.this,
+						Direction.UP);				
+			}
+		});
+		movePanel.add(moveUp);
+		Image moveDown = new Image("images/down.png");
+		moveDown.addClickHandler(new ClickHandler() {			
+			@Override
+			public void onClick(ClickEvent event) {
+				Aggregator.getInstance().moveComponent(Component.this,
+						Direction.DOWN);				
+			}
+		});
+		movePanel.add(moveDown);
+		
+		bottom.add(movePanel);
+		bottom.setCellClass(movePanel, "component-bottom-center");
 		
 		Label bottomRight = new Label(" ");
 		bottom.add(bottomRight);

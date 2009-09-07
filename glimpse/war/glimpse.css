@@ -136,3 +136,28 @@ h1 {
 	padding-bottom: 5px;
 	text-decoration: none;
 }
+
+.news-next, .news-next:visited {
+	text-decoration: none;
+	color: #333333;
+	background-image: url(images/next.png);
+	background-repeat: no-repeat;
+	background-position: right 2px;
+	padding-right: 15px;
+	font-size: 9px;
+}
+
+.news-previous, .news-previous:visited {
+	text-decoration: none;
+	color: #333333;
+	background-image: url(images/prev.png);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+	padding-left: 15px;
+	font-size: 9px;
+}
+
+.news-next:hover, .news-previous:hover {
+	text-decoration: none;
+	color: #FF6600;
+}
