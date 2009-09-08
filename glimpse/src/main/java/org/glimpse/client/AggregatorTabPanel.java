@@ -22,8 +22,7 @@ public class AggregatorTabPanel extends Composite implements IndexedPanel {
 		VerticalPanelExt panel = new VerticalPanelExt();
 		tabTitles = new HorizontalPanelExt();
 		Anchor add = new Anchor("add new tab", "javascript:void(0)");
-		add.addClickHandler(new ClickHandler() {			
-			@Override
+		add.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				HorizontalPanel panel = new HorizontalPanel();
 				panel.setWidth("100%");
@@ -76,22 +75,18 @@ public class AggregatorTabPanel extends Composite implements IndexedPanel {
 		return deck.getVisibleWidget();
 	}
 	
-	@Override
 	public int getWidgetCount() {
 		return deck.getWidgetCount();
 	}
 
-	@Override
 	public Widget getWidget(int index) {
 		return deck.getWidget(index);
 	}
 
-	@Override
 	public int getWidgetIndex(Widget child) {
 		return deck.getWidgetIndex(child);
 	}
 
-	@Override
 	public boolean remove(int index) {
 		if(index >= getWidgetCount()) {
 			return false;

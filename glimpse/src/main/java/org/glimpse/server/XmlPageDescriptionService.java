@@ -37,7 +37,6 @@ public class XmlPageDescriptionService extends RemoteServiceServlet implements
 	private static final Log logger = LogFactory.getLog(XmlPageDescriptionService.class);
 	private static final String XML_PAGE = "/WEB-INF/page.xml";
 
-	@Override
 	public PageDescription getPageDescription() {
 		try {
 			DocumentBuilder builder =
@@ -109,7 +108,6 @@ public class XmlPageDescriptionService extends RemoteServiceServlet implements
 		return component;
 	}
 
-	@Override
 	public void setPageDescription(PageDescription pageDescription) {
 		try {
 			DocumentBuilder builder =

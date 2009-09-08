@@ -33,7 +33,6 @@ public class TabTitle extends Composite implements ClickHandler {
 		initWidget(panel);
 	}
 	
-	@Override
 	public void onClick(ClickEvent event) {
 		int i = ((HorizontalPanel)getParent()).getWidgetIndex(TabTitle.this);
 		tabPanel.selectTab(i);

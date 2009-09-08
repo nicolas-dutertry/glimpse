@@ -59,12 +59,10 @@ public class Aggregator implements EntryPoint {
 		
 		pageDescriptionService.getPageDescription(
 				new AsyncCallback<PageDescription>() {
-					@Override
 					public void onFailure(Throwable caught) {
 						Window.alert(SERVER_ERROR);
 					}
 
-					@Override
 					public void onSuccess(PageDescription pageDescription) {
 						load(pageDescription);
 					}					
@@ -78,7 +76,6 @@ public class Aggregator implements EntryPoint {
 		mainPanel.setWidth("100%");
 		Button addButton = new Button("Add");
 		addButton.addClickHandler(new ClickHandler() {			
-			@Override
 			public void onClick(ClickEvent event) {
 				NewsReader rssReader = new NewsReader();
 				addComponent(rssReader);
@@ -125,12 +122,10 @@ public class Aggregator implements EntryPoint {
 	public void update() {
 		PageDescription pageDescription = generatePageDescription();
 		pageDescriptionService.setPageDescription(pageDescription, new AsyncCallback<Void>() {
-			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert(SERVER_ERROR);
 			}
 
-			@Override
 			public void onSuccess(Void result) {
 			}			
 		});

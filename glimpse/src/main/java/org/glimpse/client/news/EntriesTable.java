@@ -33,7 +33,6 @@ public class EntriesTable extends FlexTable {
 				setHref("javascript:void(0)");
 				
 				addClickHandler(new ClickHandler() {
-					@Override
 					public void onClick(ClickEvent event) {
 						setStylePrimaryName("entry-title");
 						Entry entry = entries.get(EntryTitle.this.entryIndex);

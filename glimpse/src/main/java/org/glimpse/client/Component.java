@@ -43,7 +43,6 @@ public class Component extends Composite {
 		Image closeButton = new Image();
 		closeButton.setUrl("images/close.png");
 		closeButton.addClickHandler(new ClickHandler() {			
-			@Override
 			public void onClick(ClickEvent event) {
 				removeFromParent();
 				Aggregator.getInstance().update();
@@ -86,7 +85,6 @@ public class Component extends Composite {
 		HorizontalPanel movePanel = new HorizontalPanel();
 		Image moveLeft = new Image("images/left.png");
 		moveLeft.addClickHandler(new ClickHandler() {			
-			@Override
 			public void onClick(ClickEvent event) {
 				Aggregator.getInstance().moveComponent(Component.this,
 						Direction.LEFT);				
@@ -95,7 +93,6 @@ public class Component extends Composite {
 		movePanel.add(moveLeft);
 		Image moveRight = new Image("images/right.png");
 		moveRight.addClickHandler(new ClickHandler() {			
-			@Override
 			public void onClick(ClickEvent event) {
 				Aggregator.getInstance().moveComponent(Component.this,
 						Direction.RIGHT);				
@@ -104,7 +101,6 @@ public class Component extends Composite {
 		movePanel.add(moveRight);
 		Image moveUp = new Image("images/up.png");
 		moveUp.addClickHandler(new ClickHandler() {			
-			@Override
 			public void onClick(ClickEvent event) {
 				Aggregator.getInstance().moveComponent(Component.this,
 						Direction.UP);				
@@ -113,7 +109,6 @@ public class Component extends Composite {
 		movePanel.add(moveUp);
 		Image moveDown = new Image("images/down.png");
 		moveDown.addClickHandler(new ClickHandler() {			
-			@Override
 			public void onClick(ClickEvent event) {
 				Aggregator.getInstance().moveComponent(Component.this,
 						Direction.DOWN);				

@@ -47,12 +47,10 @@ public class EntryContentDialog extends DialogBox {
 		
 		NewsReader.newsRetrieverService.getEntryContent(url, entry.getId(),
 				new AsyncCallback<String>() {
-					@Override
 					public void onSuccess(String result) {
 						content.setWidget(new HTML(result));
 					}
 					
-					@Override
 					public void onFailure(Throwable caught) {
 						content.setWidget(new Label("Error"));
 					}

@@ -108,7 +108,6 @@ public class NewsReader extends Component {
 		optionPanel.add(urlField);
 		Button button = new Button("OK");
 		button.addClickHandler(new ClickHandler() {			
-			@Override
 			public void onClick(ClickEvent event) {
 				setUrl(urlField.getValue());
 			}
