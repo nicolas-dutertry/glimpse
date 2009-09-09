@@ -1,5 +1,6 @@
 package org.glimpse.client;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.glimpse.client.layout.ColumnDescription;
@@ -17,7 +18,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -72,16 +73,22 @@ public class Aggregator implements EntryPoint {
 	private void load(PageDescription pageDescription) {
 		RootPanel.get("main").clear();
 		
-		VerticalPanel mainPanel = new VerticalPanel();
+		VerticalPanelExt mainPanel = new VerticalPanelExt();
 		mainPanel.setWidth("100%");
-		Button addButton = new Button("Add");
+		Button addButton = new Button("Add content");
 		addButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				NewsReader rssReader = new NewsReader();
 				addComponent(rssReader);
+				update();
 			}
 		});
 		mainPanel.add(addButton);
+		mainPanel.setCellClass(addButton, "topbar");
+		
+		Image header = new Image("images/p.png");
+		mainPanel.add(header);
+		mainPanel.setCellClass(header, "header");
 		
 		tabPanel = new AggregatorTabPanel();
 		tabPanel.setWidth("100%");		
@@ -89,14 +96,13 @@ public class Aggregator implements EntryPoint {
 		List<TabDescription> tabDescriptions =
 			pageDescription.getTabDescriptions();
 		for (TabDescription tabDescription : tabDescriptions) {
-			HorizontalPanel panel = new HorizontalPanel();
-			panel.setWidth("100%");
+			AggregatorTab tab = new AggregatorTab();
 			
 			List<ColumnDescription> columnDescriptions =
 				tabDescription.getColumnDescriptions();
+			List<AggregatorColumn> columns = new LinkedList<AggregatorColumn>();
 			for (ColumnDescription columnDescription : columnDescriptions) {
-				VerticalPanelExt column = new VerticalPanelExt();
-				column.setWidth("100%");
+				AggregatorColumn column = new AggregatorColumn();
 				
 				List<ComponentDescription> componentDescriptions =
 					columnDescription.getComponentDescriptions();
@@ -104,14 +110,12 @@ public class Aggregator implements EntryPoint {
 					if(componentDescription.getType().equals(Type.NEWS)) {
 						NewsReader rssReader = new NewsReader(componentDescription.getProperties()); 
 						column.add(rssReader);
-						column.setCellClass(rssReader, "component");
 					}
 				}
-				
-				panel.add(column);
-				panel.setCellWidth(column, (100 / columnDescriptions.size()) + "%");
+				columns.add(column);
 			}
-			tabPanel.add(panel, tabDescription.getTitle());
+			tab.setColumns(columns);
+			tabPanel.add(tab, tabDescription.getTitle());
 		}
 		tabPanel.selectTab(0);
 		
@@ -134,17 +138,16 @@ public class Aggregator implements EntryPoint {
 	private PageDescription generatePageDescription() {
 		PageDescription pageDescription = new PageDescription();
 		
-		for(int i = 0; i < tabPanel.getWidgetCount(); i++) {
-			HorizontalPanel panel = (HorizontalPanel)tabPanel.getWidget(i);
+		for(int i = 0; i < tabPanel.getTabCount(); i++) {
+			AggregatorTab tab = tabPanel.getTab(i);
 			TabDescription tabDescription = new TabDescription();
 			tabDescription.setTitle(tabPanel.getTitle(i));
 			
-			for(int j = 0; j < panel.getWidgetCount(); j++) {
-				VerticalPanel column = (VerticalPanel)panel.getWidget(j);
+			List<AggregatorColumn> columns = tab.getColumns();
+			for (AggregatorColumn column : columns) {
 				ColumnDescription columnDescription = new ColumnDescription();
-				
-				for(int k = 0; k < column.getWidgetCount(); k++) {
-					Component component = (Component)column.getWidget(k);
+				List<Component> components = column.getComponents();
+				for (Component component : components) {
 					ComponentDescription componentDescription = new ComponentDescription();
 					// TODO component type
 					componentDescription.setProperties(component.getProperties());
@@ -163,31 +166,29 @@ public class Aggregator implements EntryPoint {
 	}
 	
 	public void addComponent(Component component) {
-		HorizontalPanel tab = (HorizontalPanel)tabPanel.getWidget(
-				tabPanel.getVisibleWidget());
-		VerticalPanelExt column = (VerticalPanelExt)tab.getWidget(0);
+		AggregatorTab tab = tabPanel.getTab(tabPanel.getVisibleTab());
+		AggregatorColumn column = tab.getColumns().get(0);
 		column.add(component);
-		column.setCellClass(component, "component");
 	}
 	
 	public void moveComponent(Component component, Direction direction) {
-		HorizontalPanel tab = (HorizontalPanel)tabPanel.getWidget(
-				tabPanel.getVisibleWidget());
-		VerticalPanelExt column = getColumn(tab, component);
-		int col = tab.getWidgetIndex(column);
-		int row = column.getWidgetIndex(component);
+		AggregatorTab tab = tabPanel.getTab(
+				tabPanel.getVisibleTab());
+		AggregatorColumn column = getColumn(tab, component);
+		int col = tab.getColumnIndex(column);
+		int row = column.getComponentIndex(component);
 		boolean moved = false;
 		if(direction == Direction.RIGHT) {
-			if(col+1 < tab.getWidgetCount()) {
+			if(col+1 < tab.getColumnCount()) {
 				column.remove(component);
-				VerticalPanelExt rightColumn = (VerticalPanelExt)tab.getWidget(col+1);
+				AggregatorColumn rightColumn = tab.getColumn(col+1);
 				rightColumn.add(component);
 				moved = true;
 			}
 		} else if(direction == Direction.LEFT) {
 			if(col-1 >= 0) {
 				column.remove(component);
-				VerticalPanelExt leftColumn = (VerticalPanelExt)tab.getWidget(col-1);
+				AggregatorColumn leftColumn = tab.getColumn(col-1);
 				leftColumn.add(component);
 				moved = true;
 			}
@@ -198,25 +199,22 @@ public class Aggregator implements EntryPoint {
 				moved = true;
 			}
 		}  else if(direction == Direction.DOWN) {
-			if(row+1 < column.getWidgetCount()) {
+			if(row+1 < column.getComponentCount()) {
 				column.remove(component);
 				column.insert(component, row+1);
 				moved = true;
 			}
 		}
 		if(moved) {
-			column = getColumn(tab, component);
-			column.setCellClass(component, "component");
 			update();
 		}
 	}
 	
-	public VerticalPanelExt getColumn(HorizontalPanel tab,
-			Component component) {
-		for(int i = 0; i < tab.getWidgetCount(); i++) {
-			VerticalPanelExt col = (VerticalPanelExt)tab.getWidget(i);
-			if(col.getWidgetIndex(component) != -1) {
-				return col;
+	public AggregatorColumn getColumn(AggregatorTab tab, Component component) {
+		List<AggregatorColumn> columns = tab.getColumns();
+		for (AggregatorColumn column : columns) {
+			if(column.getComponentIndex(component) != -1) {
+				return column;
 			}
 		}
 		return null;

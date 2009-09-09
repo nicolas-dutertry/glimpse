@@ -77,9 +77,9 @@ public class NewsReader extends Component {
 		
 		title.setHref("javascript:void(0)");
 		title.setTarget("_blank");
-		title.setStylePrimaryName("component-title-text");
 		topBar.add(title);
 		topBar.setCellWidth(title, "100%");
+		topBar.setCellClass(title, "component-title-text");
 		
 		Image refreshButton = new Image("images/refresh.png");
 		refreshButton.addClickHandler(new RefreshHandler());
@@ -120,11 +120,11 @@ public class NewsReader extends Component {
 		panel.add(entriesTable);
 		
 		// image de chargement
-		Image image = new Image("wait.gif");
-		Label label = new Label("loading...");
-		loadingPanel.add(image);
-		loadingPanel.add(label);
+		Image wait = new Image("wait.gif");
+		loadingPanel.add(wait);
+		loadingPanel.setWidth("100%");
 		loadingPanel.setVisible(false);
+		loadingPanel.setCellHorizontalAlignment(wait, HorizontalPanel.ALIGN_CENTER);
 		panel.add(loadingPanel);
 		
 		// Les boutons de commande du bas

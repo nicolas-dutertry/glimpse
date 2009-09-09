@@ -9,6 +9,7 @@ import org.glimpse.client.widgets.VerticalPanelExt;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
@@ -30,7 +31,7 @@ public class Component extends Composite {
 		HorizontalPanelExt top = new HorizontalPanelExt();
 		top.setWidth("100%");
 		
-		Label titleLeft = new Label(" ");
+		Image titleLeft = new Image("images/p.png");
 		top.add(titleLeft);
 		top.setCellClass(titleLeft, "component-title-left");
 		
@@ -44,8 +45,10 @@ public class Component extends Composite {
 		closeButton.setUrl("images/close.png");
 		closeButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				removeFromParent();
-				Aggregator.getInstance().update();
+				if(Window.confirm("Are you sure you want to remove this component ?")) {
+					removeFromParent();
+					Aggregator.getInstance().update();
+				}
 			}
 		});
 		actionsPanel.add(closeButton);
@@ -54,14 +57,14 @@ public class Component extends Composite {
 		top.add(actionsPanel);
 		top.setCellClass(actionsPanel, "component-title-actions");
 		
-		Label titleRight = new Label(" ");
+		Image titleRight = new Image("images/p.png");
 		top.add(titleRight);
 		top.setCellClass(titleRight, "component-title-right");
 		
 		HorizontalPanelExt center = new HorizontalPanelExt();
 		center.setWidth("100%");
 		
-		Label left = new Label(" ");
+		Image left = new Image("images/p.png");
 		center.add(left);
 		center.setCellClass(left, "component-left");
 		
@@ -70,14 +73,14 @@ public class Component extends Composite {
 		center.add(contentPanel);
 		center.setCellClass(contentPanel, "component-content");
 		
-		Label right = new Label(" ");
+		Image right = new Image("images/p.png");
 		center.add(right);
 		center.setCellClass(right, "component-right");
 		
 		HorizontalPanelExt bottom = new HorizontalPanelExt();
 		bottom.setWidth("100%");
 		
-		Label bottomLeft = new Label(" ");
+		Image bottomLeft = new Image("images/p.png");
 		bottom.add(bottomLeft);
 		bottom.setCellClass(bottomLeft, "component-bottom-left");
 		
@@ -119,7 +122,7 @@ public class Component extends Composite {
 		bottom.add(movePanel);
 		bottom.setCellClass(movePanel, "component-bottom-center");
 		
-		Label bottomRight = new Label(" ");
+		Image bottomRight = new Image("images/p.png");
 		bottom.add(bottomRight);
 		bottom.setCellClass(bottomRight, "component-bottom-right");
 		

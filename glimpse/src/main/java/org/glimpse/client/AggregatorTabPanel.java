@@ -8,95 +8,107 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckPanel;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.IndexedPanel;
-import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.Widget;
 
-public class AggregatorTabPanel extends Composite implements IndexedPanel {
+public class AggregatorTabPanel extends Composite {
+	private VerticalPanelExt panel;
 	private HorizontalPanelExt tabTitles;
-	private TabTitle currentTabTitle;
+	private AggregatorTabTitle currentTabTitle;
 	private DeckPanel optionsPanel;
 	private DeckPanel deck;
 	public AggregatorTabPanel() {
-		VerticalPanelExt panel = new VerticalPanelExt();
+		panel = new VerticalPanelExt();
 		tabTitles = new HorizontalPanelExt();
-		Anchor add = new Anchor("add new tab", "javascript:void(0)");
+		Anchor add = new Anchor("New tab", "javascript:void(0)");
 		add.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				HorizontalPanel panel = new HorizontalPanel();
-				panel.setWidth("100%");
-				
-				for (int i = 0; i < 3; i++) {
-					VerticalPanelExt column = new VerticalPanelExt();
-					column.setWidth("100%");
-					
-					panel.add(column);
-					panel.setCellWidth(column, (100 / 3) + "%");
-				}
-				add(panel, "new tab");
+				AggregatorTab tab = new AggregatorTab(3);
+				add(tab, "new tab");
 				Aggregator.getInstance().update();
+				selectTab(getTabCount()-1);
 			}
 		});
 		tabTitles.add(add);
+		tabTitles.setCellClass(add, "tabtitles-add");
 		
 		optionsPanel = new DeckPanel();
-		optionsPanel.setVisible(false);
 		deck = new DeckPanel();
 		
 		panel.add(tabTitles);
-		panel.add(optionsPanel);
+		panel.setCellClass(tabTitles, "tabtitles");
 		panel.add(deck);
+		panel.setCellClass(deck, "tabcontent");
 		
 		initWidget(panel);
 	}
 	
-	public void add(Widget w, String title) {
-		TabTitle tabTitle = new TabTitle(this, title);
+	public void add(AggregatorTab tab, String title) {
+		AggregatorTabTitle tabTitle = new AggregatorTabTitle(this, title);
 		tabTitles.insert(tabTitle, tabTitles.getWidgetCount()-1);
-		optionsPanel.add(new SimplePanel());
-		deck.add(w);
+		optionsPanel.add(new AggregatorTabOptions(this));
+		deck.add(tab);
 	}
 	
 	public void selectTab(int index) {
-		TabTitle newCurrent = (TabTitle)tabTitles.getWidget(index);
+		AggregatorTabTitle newCurrent = (AggregatorTabTitle)tabTitles.getWidget(index);
 		if(newCurrent != currentTabTitle) {
 			if(currentTabTitle != null) {
 				currentTabTitle.setSelected(false);
 			}
-			optionsPanel.setVisible(false);
+			panel.remove(optionsPanel);
 			newCurrent.setSelected(true);
 			optionsPanel.showWidget(index);
 			deck.showWidget(index);
+			currentTabTitle = newCurrent;
 		}
 	}
 	
-	public int getVisibleWidget() {
+	public int getVisibleTab() {
 		return deck.getVisibleWidget();
 	}
 	
-	public int getWidgetCount() {
+	public int getTabCount() {
 		return deck.getWidgetCount();
 	}
 
-	public Widget getWidget(int index) {
-		return deck.getWidget(index);
+	public AggregatorTab getTab(int index) {
+		return (AggregatorTab)deck.getWidget(index);
 	}
 
-	public int getWidgetIndex(Widget child) {
-		return deck.getWidgetIndex(child);
+	public int getTabIndex(AggregatorTab tab) {
+		return deck.getWidgetIndex(tab);
 	}
 
-	public boolean remove(int index) {
-		if(index >= getWidgetCount()) {
-			return false;
+	public void remove(int index) {
+		if(index >= getTabCount()) {
+			return;
 		}
+		panel.remove(optionsPanel);
 		tabTitles.remove(index);
 		optionsPanel.remove(index);
-		return deck.remove(index);
+		deck.remove(index);
+		
+		if(index - 1 > 0) {
+			selectTab(index-1);
+		} else if(getTabCount() > 0) {
+			selectTab(0);
+		}
 	}
 	
 	public String getTitle(int index) {
-		return ((TabTitle)tabTitles.getWidget(index)).getText();
+		return ((AggregatorTabTitle)tabTitles.getWidget(index)).getText();
+	}
+	
+	public void setTitle(int index, String title) {
+		((AggregatorTabTitle)tabTitles.getWidget(index)).setText(title);
+	}
+	
+	public void toogleOptions() {
+		if(!panel.remove(optionsPanel)) {
+			AggregatorTabOptions options =
+				(AggregatorTabOptions)optionsPanel.getWidget(optionsPanel.getVisibleWidget());
+			options.reinit();
+			panel.insert(optionsPanel, panel.getWidgetIndex(deck));
+			panel.setCellClass(optionsPanel, "taboptions");
+		}
 	}
 }
