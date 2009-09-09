@@ -13,24 +13,25 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckPanel;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class AggregatorTabOptions extends Composite {
-	private VerticalPanelExt panel;
 	private TextBox titleInput;
 	private ListBox columnList;
 	private AggregatorTabPanel tabPanel;
 	public AggregatorTabOptions(AggregatorTabPanel tabPanel) {
 		this.tabPanel = tabPanel;
 		
-		panel = new VerticalPanelExt();
+		HorizontalPanelExt panel = new HorizontalPanelExt();
 		
-		HorizontalPanelExt titlePanel = new HorizontalPanelExt();
-		titlePanel.add(new Label("Title"));
+		FlexTable titleTable = new FlexTable();
+		titleTable.setText(0, 0, "Title");
 		titleInput = new TextBox();
-		titlePanel.add(titleInput);
+		titleTable.setWidget(0, 1, titleInput);
 		Button titleButton = new Button("OK");
 		titleButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
@@ -39,11 +40,12 @@ public class AggregatorTabOptions extends Composite {
 				Aggregator.getInstance().update();
 			}
 		});
-		titlePanel.add(titleButton);
-		panel.add(titlePanel);
+		titleTable.setWidget(0, 2, titleButton);
+		panel.add(titleTable);
+		panel.setCellVerticalAlignment(titleTable, VerticalPanel.ALIGN_MIDDLE);
 		
-		HorizontalPanelExt columnPanel = new HorizontalPanelExt();
-		columnPanel.add(new Label("Columns' number"));
+		FlexTable columnTable = new FlexTable();
+		columnTable.setText(0, 0, "Columns' number");
 		columnList = new ListBox();
 		columnList.addItem("1");
 		columnList.addItem("2");
@@ -71,8 +73,9 @@ public class AggregatorTabOptions extends Composite {
 				Aggregator.getInstance().update();
 			}
 		});
-		columnPanel.add(columnList);
-		panel.add(columnPanel);
+		columnTable.setWidget(0, 1, columnList);
+		panel.add(columnTable);
+		panel.setCellVerticalAlignment(columnTable, VerticalPanel.ALIGN_MIDDLE);
 		
 		Button delButton = new Button("Delete this tab");
 		delButton.addClickHandler(new ClickHandler() {			
@@ -84,6 +87,7 @@ public class AggregatorTabOptions extends Composite {
 			}
 		});
 		panel.add(delButton);
+		panel.setCellVerticalAlignment(delButton, VerticalPanel.ALIGN_MIDDLE);
 		
 		initWidget(panel);
 	}

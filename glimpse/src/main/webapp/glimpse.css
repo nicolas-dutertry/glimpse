@@ -8,6 +8,7 @@ body {
 
 body, table td, select {
 	font-family: Tahoma,Verdana,Arial,Helvetica,"Bitstream Vera Sans",sans-serif;
+	font-size: 11px;
 }
 
 /** Example rules used by the template application (remove for your app) */
@@ -158,6 +159,12 @@ h1 {
 .taboptions {
 	background-color: #444444;
 	padding: 10px;
+	color: #FFFFFF;
+}
+
+.taboptions td {
+	color: #FFFFFF;
+	padding: 5px;
 }
 
 .tabcontent {
@@ -245,6 +252,16 @@ h1 {
 .component-bottom-center {
 	background-color: #FFFFFF;
 	border-bottom: 1px solid #000000;
+}
+
+.component-options {
+	background-color: #EFF5FF;
+	padding: 10px;
+}
+
+.component-options td {
+	padding: 5px;
+	color: #000000;
 }
 
 .entries-table {

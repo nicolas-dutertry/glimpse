@@ -14,9 +14,10 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -26,7 +27,7 @@ public class NewsReader extends Component {
 	
 	private Anchor title = new Anchor("RSS reader");
 	private HorizontalPanel loadingPanel = new HorizontalPanel();
-	private HorizontalPanel optionPanel;
+	private SimplePanel optionPanel;
 	private TextBox urlField;
 	// Le tableau des news
 	private EntriesTable entriesTable;
@@ -97,22 +98,28 @@ public class NewsReader extends Component {
 		VerticalPanel panel = new VerticalPanel();		
 		panel.setWidth("100%");
 		
-		optionPanel = new HorizontalPanel();
-		optionPanel.add(new Label("URL"));
+		optionPanel = new SimplePanel();
+		optionPanel.setStylePrimaryName("component-options");
+		VerticalPanel vp = new VerticalPanel();
+		FlexTable table = new FlexTable();		
+		table.setText(0, 0, "url");
 		urlField = new TextBox();
 		String url = getUrl();
 		if(url != null && !url.trim().equals("")) {
 			urlField.setValue(url);
 			optionPanel.setVisible(false);
 		}
-		optionPanel.add(urlField);
+		table.setWidget(0, 1, urlField);
+		vp.add(table);
+		
 		Button button = new Button("OK");
 		button.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				setUrl(urlField.getValue());
 			}
 		});
-		optionPanel.add(button);
+		vp.add(button);
+		optionPanel.add(vp);
 		panel.add(optionPanel);
 		
 		
@@ -167,6 +174,7 @@ public class NewsReader extends Component {
 		
 		if(url == null || url.trim().equals("")) {
 			optionPanel.setVisible(true);
+			checkPreviousNext();
 			return;
 		} else {
 			optionPanel.setVisible(false);
@@ -178,7 +186,7 @@ public class NewsReader extends Component {
 				url,
 				new AsyncCallback<NewsChannel>() {
 					public void onFailure(Throwable caught) {
-						Window.alert("Error");
+						//Window.alert("Error");
 					}
 
 					public void onSuccess(NewsChannel channel) {
