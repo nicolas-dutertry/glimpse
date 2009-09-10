@@ -9,9 +9,12 @@ import org.glimpse.client.layout.PageDescription;
 import org.glimpse.client.layout.TabDescription;
 import org.glimpse.client.layout.ComponentDescription.Type;
 import org.glimpse.client.news.NewsReader;
-import org.glimpse.client.widgets.VerticalPanelExt;
 
+import com.allen_sauer.gwt.dnd.client.DragEndEvent;
+import com.allen_sauer.gwt.dnd.client.DragHandler;
+import com.allen_sauer.gwt.dnd.client.DragStartEvent;
 import com.allen_sauer.gwt.dnd.client.PickupDragController;
+import com.allen_sauer.gwt.dnd.client.VetoDragException;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -19,20 +22,18 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class Aggregator implements EntryPoint {
+public class Aggregator implements EntryPoint, DragHandler {
 	public enum Direction {
 		LEFT,
 		RIGHT,
@@ -69,6 +70,7 @@ public class Aggregator implements EntryPoint {
 		
 		RootPanel.get("main").getElement().getStyle().setProperty("position" , "relative");
 		dragController = new PickupDragController(RootPanel.get("main"), false);
+		dragController.addDragHandler(this);
 		
 		loadPopup = new PopupPanel();
 		HorizontalPanel popupContent = new HorizontalPanel();
@@ -249,5 +251,19 @@ public class Aggregator implements EntryPoint {
 	
 	public PickupDragController getDragController() {
 		return dragController;
+	}
+
+	public void onDragEnd(DragEndEvent event) {
+		update();
+	}
+
+	public void onDragStart(DragStartEvent event) {
+	}
+
+	public void onPreviewDragEnd(DragEndEvent event) throws VetoDragException {
+	}
+
+	public void onPreviewDragStart(DragStartEvent event)
+			throws VetoDragException {
 	}
 }
