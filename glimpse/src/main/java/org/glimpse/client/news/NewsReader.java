@@ -190,11 +190,13 @@ public class NewsReader extends Component {
 					}
 
 					public void onSuccess(NewsChannel channel) {
-						loadingPanel.setVisible(false);
-						title.setText(channel.getTitle());
-						title.setHref(channel.getUrl());
-						entriesTable.setEntries(channel.getEntries(), url, directOpen);
-						checkPreviousNext();
+						if(channel != null) {
+							loadingPanel.setVisible(false);
+							title.setText(channel.getTitle());
+							title.setHref(channel.getUrl());
+							entriesTable.setEntries(channel.getEntries(), url, directOpen);
+							checkPreviousNext();
+						}
 					}
 		});
 	}

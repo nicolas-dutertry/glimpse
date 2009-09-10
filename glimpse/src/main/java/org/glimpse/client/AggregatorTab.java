@@ -4,13 +4,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.SimplePanel;
 
 public class AggregatorTab extends Composite {
-	private HorizontalPanel panel;
+	private FlowPanel panel;
 	
 	public AggregatorTab() {
-		panel = new HorizontalPanel();
+		panel = new FlowPanel();
 		panel.setWidth("100%");
 		
 		initWidget(panel);
@@ -31,8 +34,8 @@ public class AggregatorTab extends Composite {
 		panel.clear();
 		for (AggregatorColumn column : columns) {
 			panel.add(column);
-			panel.setCellWidth(column, (100 / columns.size()) + "%");
-		}
+			column.setWidth((100 / columns.size()) + "%");
+		}		
 	}
 	
 	public List<AggregatorColumn> getColumns() {

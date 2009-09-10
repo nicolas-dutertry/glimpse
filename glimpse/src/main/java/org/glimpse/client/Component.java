@@ -24,8 +24,16 @@ public class Component extends Composite {
 	public Component(Map<String, String> properties) {
 		this.properties = new HashMap<String, String>(properties);
 		
+		SimplePanel mainPanel = new SimplePanel();
+		mainPanel.setStylePrimaryName("component");
+		
+		SimplePanel frame = new SimplePanel();
+		frame.setWidth("100%");
+		mainPanel.add(frame);
+		
 		VerticalPanelExt panel = new VerticalPanelExt();
 		panel.setWidth("100%");
+		frame.add(panel);
 		
 		HorizontalPanelExt top = new HorizontalPanelExt();
 		top.setWidth("100%");
@@ -129,7 +137,7 @@ public class Component extends Composite {
 		panel.add(center);
 		panel.add(bottom);
 		
-		initWidget(panel);
+		initWidget(mainPanel);
 	}
 	
 	public void setTitle(Widget widget) {

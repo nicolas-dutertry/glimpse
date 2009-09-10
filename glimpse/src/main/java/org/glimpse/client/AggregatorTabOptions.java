@@ -3,7 +3,6 @@ package org.glimpse.client;
 import java.util.List;
 
 import org.glimpse.client.widgets.HorizontalPanelExt;
-import org.glimpse.client.widgets.VerticalPanelExt;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -14,7 +13,6 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckPanel;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -36,7 +34,8 @@ public class AggregatorTabOptions extends Composite {
 		titleButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				AggregatorTabOptions.this.tabPanel.setTitle(
-						getIndex(), titleInput.getValue());
+						AggregatorTabOptions.this.tabPanel.getVisibleTab(),
+						titleInput.getValue());
 				Aggregator.getInstance().update();
 			}
 		});
@@ -53,7 +52,8 @@ public class AggregatorTabOptions extends Composite {
 		columnList.addItem("4");
 		columnList.addChangeHandler(new ChangeHandler() {
 			public void onChange(ChangeEvent event) {
-				AggregatorTab tab = AggregatorTabOptions.this.tabPanel.getTab(getIndex());
+				AggregatorTab tab = AggregatorTabOptions.this.tabPanel.getTab(
+						AggregatorTabOptions.this.tabPanel.getVisibleTab());
 				int newNumber = Integer.valueOf(columnList.getValue(columnList.getSelectedIndex()));
 				List<AggregatorColumn> columns = tab.getColumns();
 				boolean confirm = false;
@@ -81,7 +81,8 @@ public class AggregatorTabOptions extends Composite {
 		delButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				if(Window.confirm("Are you sure you want to delete this tab ?")) {
-					AggregatorTabOptions.this.tabPanel.remove(getIndex());
+					AggregatorTabOptions.this.tabPanel.remove(
+							AggregatorTabOptions.this.tabPanel.getVisibleTab());
 					Aggregator.getInstance().update();
 				}
 			}
@@ -92,12 +93,8 @@ public class AggregatorTabOptions extends Composite {
 		initWidget(panel);
 	}
 	
-	public int getIndex() {
-		return ((DeckPanel)getParent()).getWidgetIndex(this);
-	}
-	
 	public void reinit() {
-		int index = getIndex();
+		int index = tabPanel.getVisibleTab();
 		
 		String title = tabPanel.getTitle(index);
 		titleInput.setValue(title);

@@ -17,8 +17,15 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
@@ -49,6 +56,8 @@ public class Aggregator implements EntryPoint {
 		.create(PageDescriptionService.class);
 	
 	private AggregatorTabPanel tabPanel;
+	private PopupPanel loadPopup;
+	private DialogBox addDialog;
 
 
 	/**
@@ -56,6 +65,15 @@ public class Aggregator implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		instance = this;
+		
+		loadPopup = new PopupPanel();
+		HorizontalPanel popupContent = new HorizontalPanel();
+		loadPopup.add(popupContent);		
+		popupContent.add(new Image("wait.gif"));
+		popupContent.add(new Label("Loading..."));		
+		loadPopup.center();
+		
+		addDialog = new AddContentDialog();
 		
 		pageDescriptionService.getPageDescription(
 				new AsyncCallback<PageDescription>() {
@@ -72,22 +90,26 @@ public class Aggregator implements EntryPoint {
 	private void load(PageDescription pageDescription) {
 		RootPanel.get("main").clear();
 		
-		VerticalPanelExt mainPanel = new VerticalPanelExt();
+		FlowPanel mainPanel = new FlowPanel();
 		mainPanel.setWidth("100%");
-		Button addButton = new Button("Add content");
+		
+		// Top bar
+		FlowPanel topBar = new FlowPanel();
+		topBar.setStylePrimaryName("topbar");
+		Anchor addButton = new Anchor("Add content", "javascript:void(0)");
+		addButton.setStylePrimaryName("add-content");
 		addButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				NewsReader rssReader = new NewsReader();
-				addComponent(rssReader);
-				update();
+				addDialog.center();
 			}
 		});
-		mainPanel.add(addButton);
-		mainPanel.setCellClass(addButton, "topbar");
+		topBar.add(addButton);
+		mainPanel.add(topBar);
 		
-		Image header = new Image("images/p.png");
+		// Header
+		FlowPanel header = new FlowPanel();
+		header.setStylePrimaryName("header");
 		mainPanel.add(header);
-		mainPanel.setCellClass(header, "header");
 		
 		tabPanel = new AggregatorTabPanel();
 		tabPanel.setWidth("100%");		
@@ -120,6 +142,8 @@ public class Aggregator implements EntryPoint {
 		
 		mainPanel.add(tabPanel);
 		RootPanel.get("main").add(mainPanel);
+		
+		loadPopup.hide();
 	}
 	
 	public void update() {

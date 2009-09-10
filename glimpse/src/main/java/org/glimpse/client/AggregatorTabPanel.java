@@ -1,23 +1,29 @@
 package org.glimpse.client;
 
 import org.glimpse.client.widgets.HorizontalPanelExt;
-import org.glimpse.client.widgets.VerticalPanelExt;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckPanel;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 
 public class AggregatorTabPanel extends Composite {
-	private VerticalPanelExt panel;
+	private FlowPanel panel;
 	private HorizontalPanelExt tabTitles;
 	private AggregatorTabTitle currentTabTitle;
-	private DeckPanel optionsPanel;
+	private SimplePanel optionsPanel;
 	private DeckPanel deck;
 	public AggregatorTabPanel() {
-		panel = new VerticalPanelExt();
-		tabTitles = new HorizontalPanelExt();
+		panel = new FlowPanel();
+		
+		// Tab titles
+		FlowPanel tabTitlesPanel = new FlowPanel();
+		tabTitlesPanel.setStylePrimaryName("tabtitles");
+		
+		tabTitles = new HorizontalPanelExt();		
 		Anchor add = new Anchor("New tab", "javascript:void(0)");
 		add.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
@@ -30,13 +36,18 @@ public class AggregatorTabPanel extends Composite {
 		tabTitles.add(add);
 		tabTitles.setCellClass(add, "tabtitles-add");
 		
-		optionsPanel = new DeckPanel();
-		deck = new DeckPanel();
+		tabTitlesPanel.add(tabTitles);
+		panel.add(tabTitlesPanel);
 		
-		panel.add(tabTitles);
-		panel.setCellClass(tabTitles, "tabtitles");
+		// Tab options (not added at startup)
+		optionsPanel = new SimplePanel();
+		optionsPanel.add(new AggregatorTabOptions(this));
+		optionsPanel.setStylePrimaryName("taboptions");
+		
+		// Tab content
+		deck = new DeckPanel();
+		deck.setStylePrimaryName("tabcontent");
 		panel.add(deck);
-		panel.setCellClass(deck, "tabcontent");
 		
 		initWidget(panel);
 	}
@@ -44,7 +55,6 @@ public class AggregatorTabPanel extends Composite {
 	public void add(AggregatorTab tab, String title) {
 		AggregatorTabTitle tabTitle = new AggregatorTabTitle(this, title);
 		tabTitles.insert(tabTitle, tabTitles.getWidgetCount()-1);
-		optionsPanel.add(new AggregatorTabOptions(this));
 		deck.add(tab);
 	}
 	
@@ -56,7 +66,6 @@ public class AggregatorTabPanel extends Composite {
 			}
 			panel.remove(optionsPanel);
 			newCurrent.setSelected(true);
-			optionsPanel.showWidget(index);
 			deck.showWidget(index);
 			currentTabTitle = newCurrent;
 		}
@@ -84,7 +93,6 @@ public class AggregatorTabPanel extends Composite {
 		}
 		panel.remove(optionsPanel);
 		tabTitles.remove(index);
-		optionsPanel.remove(index);
 		deck.remove(index);
 		
 		if(index - 1 > 0) {
@@ -105,10 +113,9 @@ public class AggregatorTabPanel extends Composite {
 	public void toogleOptions() {
 		if(!panel.remove(optionsPanel)) {
 			AggregatorTabOptions options =
-				(AggregatorTabOptions)optionsPanel.getWidget(optionsPanel.getVisibleWidget());
+				(AggregatorTabOptions)optionsPanel.getWidget();
 			options.reinit();
 			panel.insert(optionsPanel, panel.getWidgetIndex(deck));
-			panel.setCellClass(optionsPanel, "taboptions");
 		}
 	}
 }
