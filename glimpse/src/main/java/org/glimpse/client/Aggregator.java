@@ -11,6 +11,7 @@ import org.glimpse.client.layout.ComponentDescription.Type;
 import org.glimpse.client.news.NewsReader;
 import org.glimpse.client.widgets.VerticalPanelExt;
 
+import com.allen_sauer.gwt.dnd.client.PickupDragController;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -58,13 +59,16 @@ public class Aggregator implements EntryPoint {
 	private AggregatorTabPanel tabPanel;
 	private PopupPanel loadPopup;
 	private DialogBox addDialog;
-
+	private PickupDragController dragController;
 
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
 		instance = this;
+		
+		RootPanel.get("main").getElement().getStyle().setProperty("position" , "relative");
+		dragController = new PickupDragController(RootPanel.get("main"), false);
 		
 		loadPopup = new PopupPanel();
 		HorizontalPanel popupContent = new HorizontalPanel();
@@ -241,5 +245,9 @@ public class Aggregator implements EntryPoint {
 			}
 		}
 		return null;
+	}
+	
+	public PickupDragController getDragController() {
+		return dragController;
 	}
 }

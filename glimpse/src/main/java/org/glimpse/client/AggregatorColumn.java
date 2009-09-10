@@ -3,6 +3,8 @@ package org.glimpse.client;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.allen_sauer.gwt.dnd.client.drop.DropController;
+import com.allen_sauer.gwt.dnd.client.drop.FlowPanelDropController;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
@@ -13,11 +15,18 @@ public class AggregatorColumn extends Composite {
 		panel = new FlowPanel();
 		panel.setStylePrimaryName("column");
 		panel.add(new Image("images/p.png"));
+		
+		FlowPanelDropController dropController = new FlowPanelDropController(panel);
+		Aggregator.getInstance().getDragController().registerDropController(dropController);
+		
 		initWidget(panel);
+		
+		
 	}
 	
 	public void add(Component component) {
 		panel.add(component);
+		Aggregator.getInstance().getDragController().makeDraggable(component);
 	}
 	
 	public boolean remove(Component component) {
