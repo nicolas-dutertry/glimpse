@@ -1,6 +1,8 @@
 package org.glimpse.client.news;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.glimpse.client.Aggregator;
@@ -19,6 +21,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 public class NewsReader extends Component {
 	static NewsRetrieverServiceAsync newsRetrieverService =
@@ -72,26 +75,21 @@ public class NewsReader extends Component {
 		entriesTable = new EntriesTable();
 		
 		// Les boutons de commande du titre
-		HorizontalPanelExt topBar = new HorizontalPanelExt();
-		topBar.setWidth("100%");
 		
 		title.setHref("javascript:void(0)");
 		title.setTarget("_blank");
-		topBar.add(title);
-		topBar.setCellWidth(title, "100%");
-		topBar.setCellClass(title, "component-title-text");
+		setTitle(title);
 		
+		List<Widget> actions = new LinkedList<Widget>();
 		Image refreshButton = new Image("images/refresh.png");
 		refreshButton.addClickHandler(new RefreshHandler());
-		topBar.add(refreshButton);
-		topBar.setCellClass(refreshButton, "component-action");
+		actions.add(refreshButton);
 		
 		Image optionButton = new Image("images/options.png");
 		optionButton.addClickHandler(new OptionHandler());
-		topBar.add(optionButton);
-		topBar.setCellClass(optionButton, "component-action");
+		actions.add(optionButton);
 		
-		setTitle(topBar);
+		setActions(actions);
 		
 		// Contenu
 		VerticalPanel panel = new VerticalPanel();		

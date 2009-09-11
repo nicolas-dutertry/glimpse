@@ -1,28 +1,15 @@
 package org.glimpse.client;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import org.glimpse.client.Aggregator.Direction;
 import org.glimpse.client.widgets.HorizontalPanelExt;
 import org.glimpse.client.widgets.VerticalPanelExt;
 
+import com.allen_sauer.gwt.dnd.client.HasDragHandle;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.HasAllMouseHandlers;
-import com.google.gwt.event.dom.client.MouseDownEvent;
-import com.google.gwt.event.dom.client.MouseDownHandler;
-import com.google.gwt.event.dom.client.MouseMoveEvent;
-import com.google.gwt.event.dom.client.MouseMoveHandler;
-import com.google.gwt.event.dom.client.MouseOutEvent;
-import com.google.gwt.event.dom.client.MouseOutHandler;
-import com.google.gwt.event.dom.client.MouseOverEvent;
-import com.google.gwt.event.dom.client.MouseOverHandler;
-import com.google.gwt.event.dom.client.MouseUpEvent;
-import com.google.gwt.event.dom.client.MouseUpHandler;
-import com.google.gwt.event.dom.client.MouseWheelEvent;
-import com.google.gwt.event.dom.client.MouseWheelHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -30,8 +17,10 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class Component extends Composite implements HasAllMouseHandlers {
+public class Component extends Composite implements HasDragHandle {
 	private SimplePanel titlePanel;
+	private Widget dragHandle;
+	private HorizontalPanelExt actionsPanel;
 	private SimplePanel contentPanel;
 	private Map<String, String> properties;
 	
@@ -49,19 +38,22 @@ public class Component extends Composite implements HasAllMouseHandlers {
 		panel.setWidth("100%");
 		frame.add(panel);
 		
-		HorizontalPanelExt top = new HorizontalPanelExt();
-		top.setWidth("100%");
+		HorizontalPanelExt topPanel = new HorizontalPanelExt();
+		topPanel.setWidth("100%");
 		
 		Image titleLeft = new Image("images/p.png");
-		top.add(titleLeft);
-		top.setCellClass(titleLeft, "component-title-left");
+		topPanel.add(titleLeft);
+		topPanel.setCellClass(titleLeft, "component-title-left");
 		
 		titlePanel = new SimplePanel();
-		titlePanel.setWidth("100%");
-		top.add(titlePanel);
-		top.setCellClass(titlePanel, "component-title-content");
+		topPanel.add(titlePanel);
+		topPanel.setCellClass(titlePanel, "component-title-content");
+				
+		actionsPanel = new HorizontalPanelExt();
+		dragHandle = new Image("images/move.png");
+		actionsPanel.add(dragHandle);
+		actionsPanel.setCellClass(dragHandle, "component-action");
 		
-		HorizontalPanelExt actionsPanel = new HorizontalPanelExt();		
 		Image closeButton = new Image();
 		closeButton.setUrl("images/close.png");
 		closeButton.addClickHandler(new ClickHandler() {			
@@ -75,12 +67,13 @@ public class Component extends Composite implements HasAllMouseHandlers {
 		actionsPanel.add(closeButton);
 		actionsPanel.setCellClass(closeButton, "component-action");
 		
-		top.add(actionsPanel);
-		top.setCellClass(actionsPanel, "component-title-actions");
+		topPanel.add(actionsPanel);
+		topPanel.setCellHorizontalAlignment(actionsPanel, HorizontalPanel.ALIGN_RIGHT);
+		topPanel.setCellClass(actionsPanel, "component-title-actions");
 		
 		Image titleRight = new Image("images/p.png");
-		top.add(titleRight);
-		top.setCellClass(titleRight, "component-title-right");
+		topPanel.add(titleRight);
+		topPanel.setCellClass(titleRight, "component-title-right");
 		
 		HorizontalPanelExt center = new HorizontalPanelExt();
 		center.setWidth("100%");
@@ -106,56 +99,32 @@ public class Component extends Composite implements HasAllMouseHandlers {
 		bottom.setCellClass(bottomLeft, "component-bottom-left");
 		
 		
-		HorizontalPanel movePanel = new HorizontalPanel();
-		Image moveLeft = new Image("images/left.png");
-		moveLeft.addClickHandler(new ClickHandler() {			
-			public void onClick(ClickEvent event) {
-				Aggregator.getInstance().moveComponent(Component.this,
-						Direction.LEFT);				
-			}
-		});
-		movePanel.add(moveLeft);
-		Image moveRight = new Image("images/right.png");
-		moveRight.addClickHandler(new ClickHandler() {			
-			public void onClick(ClickEvent event) {
-				Aggregator.getInstance().moveComponent(Component.this,
-						Direction.RIGHT);				
-			}
-		});
-		movePanel.add(moveRight);
-		Image moveUp = new Image("images/up.png");
-		moveUp.addClickHandler(new ClickHandler() {			
-			public void onClick(ClickEvent event) {
-				Aggregator.getInstance().moveComponent(Component.this,
-						Direction.UP);				
-			}
-		});
-		movePanel.add(moveUp);
-		Image moveDown = new Image("images/down.png");
-		moveDown.addClickHandler(new ClickHandler() {			
-			public void onClick(ClickEvent event) {
-				Aggregator.getInstance().moveComponent(Component.this,
-						Direction.DOWN);				
-			}
-		});
-		movePanel.add(moveDown);
-		
-		bottom.add(movePanel);
-		bottom.setCellClass(movePanel, "component-bottom-center");
+		Image bottomCenter = new Image("images/p.png");		
+		bottom.add(bottomCenter);
+		bottom.setCellClass(bottomCenter, "component-bottom-center");
 		
 		Image bottomRight = new Image("images/p.png");
 		bottom.add(bottomRight);
 		bottom.setCellClass(bottomRight, "component-bottom-right");
 		
-		panel.add(top);
+		panel.add(topPanel);
 		panel.add(center);
 		panel.add(bottom);
 		
 		initWidget(mainPanel);
+
+		Aggregator.getInstance().getDragController().makeDraggable(this);
 	}
 	
 	public void setTitle(Widget widget) {
 		titlePanel.setWidget(widget);
+	}
+	
+	public void setActions(List<Widget> widgets) {
+		for (Widget widget : widgets) {
+			actionsPanel.insert(widget, actionsPanel.getWidgetCount()-1);
+			actionsPanel.setCellClass(widget, "component-action");
+		}
 	}
 	
 	public void setContent(Widget widget) {
@@ -172,29 +141,9 @@ public class Component extends Composite implements HasAllMouseHandlers {
 	
 	public void setProperty(String name, String value) {
 		properties.put(name, value);
+	}	
+
+	public Widget getDragHandle() {
+		return dragHandle;
 	}
-
-	public HandlerRegistration addMouseDownHandler(MouseDownHandler handler) {
-	    return addDomHandler(handler, MouseDownEvent.getType());
-	  }
-	
-	public HandlerRegistration addMouseMoveHandler(MouseMoveHandler handler) {
-    return addDomHandler(handler, MouseMoveEvent.getType());
-  }
-
-  public HandlerRegistration addMouseOutHandler(MouseOutHandler handler) {
-    return addDomHandler(handler, MouseOutEvent.getType());
-  }
-
-  public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {
-    return addDomHandler(handler, MouseOverEvent.getType());
-  }
-
-  public HandlerRegistration addMouseUpHandler(MouseUpHandler handler) {
-    return addDomHandler(handler, MouseUpEvent.getType());
-  }
-
-  public HandlerRegistration addMouseWheelHandler(MouseWheelHandler handler) {
-    return addDomHandler(handler, MouseWheelEvent.getType());
-  }
 }

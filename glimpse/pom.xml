@@ -9,6 +9,7 @@
 	<properties>
 		<svn.url>https://epsilon.dutertry.com/svn/nicolas/glimpse/trunk</svn.url>
 		<gwt.version>1.7.0</gwt.version>
+		<gwt-dnd.version>2.6.5</gwt-dnd.version>
 	</properties>
 	
 	<scm>
@@ -98,6 +99,11 @@
 			<classifier>${platform}</classifier>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.google.code.gwt-dnd</groupId>
+			<artifactId>gwt-dnd</artifactId>
+			<version>${gwt-dnd.version}</version>
+		</dependency> 
 		<!-- End GWT -->
 	</dependencies>
 	<build>
@@ -196,7 +202,7 @@
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<tasks unless="skip.gwt">
+							<tasks>
 								<path id="full.classpath">
 									<pathelement path="${maven.compile.classpath}"/>
 									<pathelement location="src/main/java"/>
@@ -204,6 +210,7 @@
 									<pathelement location="${settings.localRepository}/com/google/gwt/gwt-dev/${gwt.version}/gwt-dev-${gwt.version}-${platform}.jar"/>
 									<pathelement location="${settings.localRepository}/com/google/gwt/gwt-user/${gwt.version}/gwt-user-${gwt.version}.jar"/>
 									<pathelement location="${settings.localRepository}/com/google/gwt/gwt-servlet/${gwt.version}/gwt-servlet-${gwt.version}.jar"/>
+									<pathelement location="${settings.localRepository}/com/google/code/gwt-dnd/gwt-dnd/${gwt-dnd.version}/gwt-dnd-${gwt-dnd.version}.jar"/>
 								</path>
 								<java classpathref="full.classpath" classname="com.google.gwt.dev.Compiler" fork="true" maxmemory="512m" failonerror="true">
 									<arg value="-war"/>

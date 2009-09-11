@@ -28,10 +28,16 @@ public class AggregatorTab extends Composite {
 	}
 	
 	public void setColumns(List<AggregatorColumn> columns) {
+		List<AggregatorColumn> oldColumns = getColumns();
+		for (AggregatorColumn oldColumn : oldColumns) {
+			oldColumn.makeNotDroppable();
+		}
+		
 		panel.clear();
 		for (AggregatorColumn column : columns) {
 			panel.add(column);
 			column.setWidth((100 / columns.size()) + "%");
+			column.makeDroppable();
 		}		
 	}
 	

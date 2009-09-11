@@ -6,19 +6,61 @@ import java.util.List;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Widget;
 
 public class AggregatorColumn extends Composite {
-	private FlowPanel panel;
+	public class Panel extends FlowPanel {
+
+		@Override
+		public void add(Widget w) {
+			super.add(w);
+			checkHeight();
+		}
+
+		@Override
+		public void insert(Widget w, int beforeIndex) {
+			super.insert(w, beforeIndex);
+			checkHeight();
+		}
+
+		@Override
+		public boolean remove(Widget w) {
+			boolean b =  super.remove(w);
+			checkHeight();
+			return b;
+		}
+		
+		private void checkHeight() {
+			if(getWidgetCount() < 2) {
+				setHeight("200px");
+			} else {
+				setHeight("");
+			}
+		}
+		
+	}
+	
+	private Panel panel;
+	private AggregatorColumnDropController dropController;
+	
 	public AggregatorColumn() {
-		panel = new FlowPanel();
+		panel = new Panel();
+		panel.setHeight("200px");
 		panel.setStylePrimaryName("column");
 		panel.add(new Image("images/p.png"));
 		
-		AggregatorColumnDropController dropController = new AggregatorColumnDropController(panel);
-		Aggregator.getInstance().getDragController().registerDropController(dropController);
-		
+		dropController = new AggregatorColumnDropController(panel);
+
 		initWidget(panel);		
 		
+	}
+	
+	public void makeDroppable() {
+		Aggregator.getInstance().getDragController().registerDropController(dropController);
+	}
+	
+	public void makeNotDroppable() {
+		Aggregator.getInstance().getDragController().unregisterDropController(dropController);
 	}
 	
 	public void add(Component component) {
@@ -27,7 +69,15 @@ public class AggregatorColumn extends Composite {
 	}
 	
 	public boolean remove(Component component) {
-		return panel.remove(component);
+		boolean b = panel.remove(component);
+		if(b) {
+			Aggregator.getInstance().getDragController().makeNotDraggable(component);
+		}
+		return b;
+	}
+	
+	public void insert(Component component, int beforeIndex) {
+		panel.insert(component, beforeIndex+1);
 	}
 	
 	public List<Component> getComponents() {
@@ -53,9 +103,5 @@ public class AggregatorColumn extends Composite {
 		} else {
 			return i-1;
 		}
-	}
-	
-	public void insert(Component component, int beforeIndex) {
-		panel.insert(component, beforeIndex+1);
 	}
 }
