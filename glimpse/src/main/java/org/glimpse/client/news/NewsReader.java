@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.glimpse.client.Aggregator;
 import org.glimpse.client.Component;
+import org.glimpse.client.i18n.AggregatorConstants;
+import org.glimpse.client.layout.ComponentDescription.Type;
 import org.glimpse.client.widgets.HorizontalPanelExt;
 
 import com.google.gwt.core.client.GWT;
@@ -15,22 +17,32 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class NewsReader extends Component {
+	private static final String PROPERTY_URL = "url";
+	private static final String PROPERTY_DIRECT_OPEN = "directOpen";
+	private static final String PROPERTY_MAX_PER_PAGE = "maxPerPage";
+	
 	static NewsRetrieverServiceAsync newsRetrieverService =
 		GWT.create(NewsRetrieverService.class);
+	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
 	
-	private Anchor title = new Anchor("RSS reader");
+	private Anchor title = new Anchor(constants.newsReader());
 	private HorizontalPanel loadingPanel = new HorizontalPanel();
 	private SimplePanel optionPanel;
 	private TextBox urlField;
+	private CheckBox directOpenBox;
+	private ListBox maxBox;
+	
 	// Le tableau des news
 	private EntriesTable entriesTable;
 	Anchor previousButton = new Anchor();
@@ -47,6 +59,7 @@ public class NewsReader extends Component {
 			if(optionPanel.isVisible()) {
 				optionPanel.setVisible(false);
 			} else {
+				synchronizeOptions();
 				optionPanel.setVisible(true);
 			}
 		}
@@ -78,15 +91,17 @@ public class NewsReader extends Component {
 		
 		title.setHref("javascript:void(0)");
 		title.setTarget("_blank");
-		setTitle(title);
+		setTitleWidget(title);
 		
 		List<Widget> actions = new LinkedList<Widget>();
 		Image refreshButton = new Image("images/refresh.png");
+		refreshButton.setTitle(constants.refresh());
 		refreshButton.addClickHandler(new RefreshHandler());
 		actions.add(refreshButton);
 		
 		Image optionButton = new Image("images/options.png");
 		optionButton.addClickHandler(new OptionHandler());
+		optionButton.setTitle(constants.options());
 		actions.add(optionButton);
 		
 		setActions(actions);
@@ -99,20 +114,41 @@ public class NewsReader extends Component {
 		optionPanel.setStylePrimaryName("component-options");
 		VerticalPanel vp = new VerticalPanel();
 		FlexTable table = new FlexTable();		
-		table.setText(0, 0, "url");
+		
+		table.setText(0, 0, constants.url());
 		urlField = new TextBox();
-		String url = getUrl();
-		if(url != null && !url.trim().equals("")) {
-			urlField.setValue(url);
-			optionPanel.setVisible(false);
-		}
 		table.setWidget(0, 1, urlField);
+		
+		table.setText(1, 0, constants.directOpen());
+		directOpenBox = new CheckBox();
+		table.setWidget(1, 1, directOpenBox);
+		
+		table.setText(2, 0, constants.maxEntries());
+		maxBox = new ListBox();
+		for(int i = 1; i <= 20; i++) {
+			maxBox.addItem(String.valueOf(i));
+		}
+		table.setWidget(2, 1, maxBox);
+		
 		vp.add(table);
 		
-		Button button = new Button("OK");
+		synchronizeOptions();
+		
+		String url = getUrl();		
+		if(url != null && !url.trim().equals("")) {
+			optionPanel.setVisible(false);
+		}		
+		
+		Button button = new Button(constants.ok());
 		button.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				setUrl(urlField.getValue());
+				setProperty(PROPERTY_URL, urlField.getValue());
+				setProperty(PROPERTY_DIRECT_OPEN,
+						Boolean.toString(directOpenBox.getValue()));
+				setProperty(PROPERTY_MAX_PER_PAGE,
+						Integer.toString(maxBox.getSelectedIndex()+1));
+				Aggregator.getInstance().update();
+				refresh();
 			}
 		});
 		vp.add(button);
@@ -135,7 +171,7 @@ public class NewsReader extends Component {
 		HorizontalPanelExt bottomBar = new HorizontalPanelExt();
 		bottomBar.setWidth("100%");
 		
-		previousButton.setText("previous");
+		previousButton.setText(constants.previous());
 		previousButton.setHref("javascript:void(0)");
 		previousButton.setStylePrimaryName("news-previous");
 		previousButton.addClickHandler(new PreviousHandler());
@@ -143,7 +179,7 @@ public class NewsReader extends Component {
 		bottomBar.setCellHorizontalAlignment(previousButton,
 				HorizontalPanel.ALIGN_LEFT);
 		
-		nextButton.setText("next");
+		nextButton.setText(constants.next());
 		nextButton.setHref("javascript:void(0)");
 		nextButton.setStylePrimaryName("news-next");
 		nextButton.addClickHandler(new NextHandler());
@@ -158,16 +194,9 @@ public class NewsReader extends Component {
 		refresh();
 	}
 	
-	private void setUrl(String url) {
-		setProperty("url", url);
-		Aggregator.getInstance().update();
-		refresh();
-	}
-	
 	public void refresh() {
 		final String url = getUrl();
-		final boolean directOpen = isDirectOpen();
-		entriesTable.setEntries(null, url, directOpen);
+		entriesTable.clear();
 		
 		if(url == null || url.trim().equals("")) {
 			optionPanel.setVisible(true);
@@ -191,7 +220,10 @@ public class NewsReader extends Component {
 							loadingPanel.setVisible(false);
 							title.setText(channel.getTitle());
 							title.setHref(channel.getUrl());
-							entriesTable.setEntries(channel.getEntries(), url, directOpen);
+							entriesTable.setProperties(channel.getEntries(),
+									getUrl(),
+									getMaxPerPage(),
+									isDirectOpen());
 							checkPreviousNext();
 						}
 					}
@@ -213,10 +245,30 @@ public class NewsReader extends Component {
 	}
 	
 	public String getUrl() {
-		return getProperty("url");
+		return getProperty(PROPERTY_URL);
 	}
 	
 	public boolean isDirectOpen() {
-		return !"false".equals(getProperty("directOpen"));
+		return !"false".equals(getProperty(PROPERTY_DIRECT_OPEN));
+	}
+	
+	public int getMaxPerPage() {
+		String s = getProperty(PROPERTY_MAX_PER_PAGE);
+		if(s == null || s.equals("")) {
+			return 10;
+		} else {
+			return Integer.valueOf(s);
+		}
+	}
+	
+	private void synchronizeOptions() {
+		urlField.setValue(getUrl());
+		directOpenBox.setValue(isDirectOpen());
+		maxBox.setSelectedIndex(getMaxPerPage()-1);
+	}
+
+	@Override
+	public Type getType() {
+		return Type.NEWS;
 	}
 }

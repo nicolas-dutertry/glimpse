@@ -8,7 +8,8 @@ public class ComponentDescription implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public enum Type {
-		NEWS
+		NEWS,
+		HTML
 	}
 	
 	private Type type;

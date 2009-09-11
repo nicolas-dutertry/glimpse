@@ -1,5 +1,8 @@
 package org.glimpse.client.news;
 
+import org.glimpse.client.i18n.AggregatorConstants;
+
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -14,6 +17,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class EntryContentDialog extends DialogBox {
 	private ScrollPanel content = new ScrollPanel();
+	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
 	
 	public EntryContentDialog() {		
 		content.setWidth("600px");
@@ -22,7 +26,7 @@ public class EntryContentDialog extends DialogBox {
 		VerticalPanel panel = new VerticalPanel();
 		panel.add(content);
 		
-		Button button = new Button("Close");
+		Button button = new Button(constants.close());
 		button.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				EntryContentDialog.this.hide();
@@ -39,7 +43,7 @@ public class EntryContentDialog extends DialogBox {
 		
 		HorizontalPanel waitPanel = new HorizontalPanel();
 		Image image = new Image("wait.gif");
-		Label label = new Label("loading...");
+		Label label = new Label(constants.loading());
 		waitPanel.add(image);
 		waitPanel.add(label);
 		content.setWidget(waitPanel);
@@ -52,7 +56,7 @@ public class EntryContentDialog extends DialogBox {
 					}
 					
 					public void onFailure(Throwable caught) {
-						content.setWidget(new Label("Error"));
+						content.setWidget(new Label(constants.error()));
 					}
 				}
 		);

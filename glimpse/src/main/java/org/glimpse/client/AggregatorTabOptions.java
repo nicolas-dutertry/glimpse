@@ -2,8 +2,10 @@ package org.glimpse.client;
 
 import java.util.List;
 
+import org.glimpse.client.i18n.AggregatorConstants;
 import org.glimpse.client.widgets.HorizontalPanelExt;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -20,16 +22,18 @@ public class AggregatorTabOptions extends Composite {
 	private TextBox titleInput;
 	private ListBox columnList;
 	private AggregatorTabPanel tabPanel;
+	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
+	
 	public AggregatorTabOptions(AggregatorTabPanel tabPanel) {
 		this.tabPanel = tabPanel;
 		
 		HorizontalPanelExt panel = new HorizontalPanelExt();
 		
 		FlexTable titleTable = new FlexTable();
-		titleTable.setText(0, 0, "Title");
+		titleTable.setText(0, 0, constants.title());
 		titleInput = new TextBox();
 		titleTable.setWidget(0, 1, titleInput);
-		Button titleButton = new Button("OK");
+		Button titleButton = new Button(constants.ok());
 		titleButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				AggregatorTabOptions.this.tabPanel.setTitle(
@@ -43,7 +47,7 @@ public class AggregatorTabOptions extends Composite {
 		panel.setCellVerticalAlignment(titleTable, VerticalPanel.ALIGN_MIDDLE);
 		
 		FlexTable columnTable = new FlexTable();
-		columnTable.setText(0, 0, "Columns' number");
+		columnTable.setText(0, 0, constants.numberOfColumns());
 		columnList = new ListBox();
 		columnList.addItem("1");
 		columnList.addItem("2");
@@ -65,7 +69,7 @@ public class AggregatorTabOptions extends Composite {
 						confirm = true;
 					}
 				}
-				if(confirm && !Window.confirm("Some component will be lost. Do you want to proceed anyway ?")) {
+				if(confirm && !Window.confirm(constants.removeColumnWarning())) {
 					return;
 				}
 				tab.setColumns(columns);
@@ -76,10 +80,10 @@ public class AggregatorTabOptions extends Composite {
 		panel.add(columnTable);
 		panel.setCellVerticalAlignment(columnTable, VerticalPanel.ALIGN_MIDDLE);
 		
-		Button delButton = new Button("Delete this tab");
+		Button delButton = new Button(constants.deleteTab());
 		delButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				if(Window.confirm("Are you sure you want to delete this tab ?")) {
+				if(Window.confirm(constants.deleteTabConfirm())) {
 					AggregatorTabOptions.this.tabPanel.remove(
 							AggregatorTabOptions.this.tabPanel.getVisibleTab());
 					Aggregator.getInstance().update();

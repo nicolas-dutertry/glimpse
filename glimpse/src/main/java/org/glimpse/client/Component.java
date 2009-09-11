@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.glimpse.client.i18n.AggregatorConstants;
+import org.glimpse.client.layout.ComponentDescription.Type;
 import org.glimpse.client.widgets.HorizontalPanelExt;
 import org.glimpse.client.widgets.VerticalPanelExt;
 
 import com.allen_sauer.gwt.dnd.client.HasDragHandle;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
@@ -17,12 +20,13 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class Component extends Composite implements HasDragHandle {
+public abstract class Component extends Composite implements HasDragHandle {
 	private SimplePanel titlePanel;
 	private Widget dragHandle;
 	private HorizontalPanelExt actionsPanel;
 	private SimplePanel contentPanel;
 	private Map<String, String> properties;
+	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
 	
 	public Component(Map<String, String> properties) {
 		this.properties = new HashMap<String, String>(properties);
@@ -54,18 +58,19 @@ public class Component extends Composite implements HasDragHandle {
 		actionsPanel.add(dragHandle);
 		actionsPanel.setCellClass(dragHandle, "component-action");
 		
-		Image closeButton = new Image();
-		closeButton.setUrl("images/close.png");
-		closeButton.addClickHandler(new ClickHandler() {			
+		Image deleteButton = new Image();
+		deleteButton.setUrl("images/close.png");
+		deleteButton.setTitle(constants.delete());
+		deleteButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				if(Window.confirm("Are you sure you want to remove this component ?")) {
+				if(Window.confirm(constants.deleteComponentConfirm())) {
 					removeFromParent();
 					Aggregator.getInstance().update();
 				}
 			}
 		});
-		actionsPanel.add(closeButton);
-		actionsPanel.setCellClass(closeButton, "component-action");
+		actionsPanel.add(deleteButton);
+		actionsPanel.setCellClass(deleteButton, "component-action");
 		
 		topPanel.add(actionsPanel);
 		topPanel.setCellHorizontalAlignment(actionsPanel, HorizontalPanel.ALIGN_RIGHT);
@@ -116,7 +121,7 @@ public class Component extends Composite implements HasDragHandle {
 		Aggregator.getInstance().getDragController().makeDraggable(this);
 	}
 	
-	public void setTitle(Widget widget) {
+	public void setTitleWidget(Widget widget) {
 		titlePanel.setWidget(widget);
 	}
 	
@@ -146,4 +151,6 @@ public class Component extends Composite implements HasDragHandle {
 	public Widget getDragHandle() {
 		return dragHandle;
 	}
+	
+	public abstract Type getType();
 }

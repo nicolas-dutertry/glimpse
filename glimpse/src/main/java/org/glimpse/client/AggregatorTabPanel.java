@@ -1,5 +1,7 @@
 package org.glimpse.client;
 
+import java.util.LinkedList;
+
 import org.glimpse.client.widgets.HorizontalPanelExt;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -91,6 +93,10 @@ public class AggregatorTabPanel extends Composite {
 		if(index >= getTabCount()) {
 			return;
 		}
+		
+		AggregatorTab tab = getTab(index);
+		tab.setColumns(new LinkedList<AggregatorColumn>());
+		
 		panel.remove(optionsPanel);
 		tabTitles.remove(index);
 		deck.remove(index);

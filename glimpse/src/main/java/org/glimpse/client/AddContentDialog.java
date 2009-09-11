@@ -1,7 +1,9 @@
 package org.glimpse.client;
 
+import org.glimpse.client.i18n.AggregatorConstants;
 import org.glimpse.client.news.NewsReader;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -13,22 +15,26 @@ import com.google.gwt.user.client.ui.ListBox;
 
 public class AddContentDialog extends DialogBox {
 	private ListBox typeList;
+	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
+	
 	public AddContentDialog() {
+		setText(constants.addContent());
+		
 		FlowPanel dialogContent = new FlowPanel();
 		add(dialogContent);
 		
 		HorizontalPanel typePanel = new HorizontalPanel();
 		dialogContent.add(typePanel);
-		typePanel.add(new Label("Type"));
+		typePanel.add(new Label(constants.type()));
 		typeList = new ListBox();
 		typePanel.add(typeList);
-		typeList.addItem("News reader");
-		typeList.addItem("Link");
-		typeList.addItem("HTML");
+		typeList.addItem(constants.newsReader());
+		typeList.addItem(constants.link());
+		typeList.addItem(constants.html());
 		
 		HorizontalPanel buttonPanel = new HorizontalPanel();
 		dialogContent.add(buttonPanel);
-		Button ok = new Button("OK");
+		Button ok = new Button(constants.ok());
 		buttonPanel.add(ok);
 		ok.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
@@ -36,7 +42,7 @@ public class AddContentDialog extends DialogBox {
 				if(typeList.getSelectedIndex() == 1) {
 					// TODO
 				} else if(typeList.getSelectedIndex() == 2) {
-					// TODO
+					component = new HtmlComponent();
 				} else {
 					component = new NewsReader();
 				}
@@ -46,7 +52,7 @@ public class AddContentDialog extends DialogBox {
 			}
 		});
 		
-		Button cancel = new Button("Cancel");
+		Button cancel = new Button(constants.cancel());
 		buttonPanel.add(cancel);
 		cancel.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {

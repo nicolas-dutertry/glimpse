@@ -17,4 +17,6 @@
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='org.glimpse.client.Aggregator'/>
+  
+  <extend-property name="locale" values="fr"/>  
 </module>

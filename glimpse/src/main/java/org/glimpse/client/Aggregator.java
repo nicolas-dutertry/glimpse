@@ -3,11 +3,11 @@ package org.glimpse.client;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.glimpse.client.i18n.AggregatorConstants;
 import org.glimpse.client.layout.ColumnDescription;
 import org.glimpse.client.layout.ComponentDescription;
 import org.glimpse.client.layout.PageDescription;
 import org.glimpse.client.layout.TabDescription;
-import org.glimpse.client.layout.ComponentDescription.Type;
 import org.glimpse.client.news.NewsReader;
 
 import com.allen_sauer.gwt.dnd.client.DragEndEvent;
@@ -57,6 +57,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 	private PageDescriptionServiceAsync pageDescriptionService = GWT
 		.create(PageDescriptionService.class);
 	
+	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
+	
 	private AggregatorTabPanel tabPanel;
 	private PopupPanel loadPopup;
 	private DialogBox addDialog;
@@ -76,7 +78,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 		HorizontalPanel popupContent = new HorizontalPanel();
 		loadPopup.add(popupContent);		
 		popupContent.add(new Image("wait.gif"));
-		popupContent.add(new Label("Loading..."));		
+		popupContent.add(new Label(constants.loading()));		
 		loadPopup.center();
 		
 		addDialog = new AddContentDialog();
@@ -102,7 +104,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 		// Top bar
 		FlowPanel topBar = new FlowPanel();
 		topBar.setStylePrimaryName("topbar");
-		Anchor addButton = new Anchor("Add content", "javascript:void(0)");
+		Anchor addButton = new Anchor(constants.addContent(),
+				"javascript:void(0)");
 		addButton.setStylePrimaryName("add-content");
 		addButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
@@ -134,9 +137,17 @@ public class Aggregator implements EntryPoint, DragHandler {
 				List<ComponentDescription> componentDescriptions =
 					columnDescription.getComponentDescriptions();
 				for (ComponentDescription componentDescription : componentDescriptions) {
-					if(componentDescription.getType().equals(Type.NEWS)) {
-						NewsReader rssReader = new NewsReader(componentDescription.getProperties()); 
-						column.add(rssReader);
+					Component component = null;
+					switch(componentDescription.getType())  {
+						case NEWS :
+							component = new NewsReader(componentDescription.getProperties()); 
+							break;
+						case HTML :
+							component = new HtmlComponent(componentDescription.getProperties());
+							break;
+					}
+					if(component != null) {
+						column.add(component);
 					}
 				}
 				columns.add(column);
@@ -177,8 +188,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 				ColumnDescription columnDescription = new ColumnDescription();
 				List<Component> components = column.getComponents();
 				for (Component component : components) {
-					ComponentDescription componentDescription = new ComponentDescription();
-					// TODO component type
+					ComponentDescription componentDescription =
+						new ComponentDescription(component.getType());
 					componentDescription.setProperties(component.getProperties());
 					columnDescription.addComponentDescription(componentDescription);
 				}				

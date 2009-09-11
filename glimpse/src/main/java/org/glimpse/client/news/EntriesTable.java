@@ -48,12 +48,20 @@ public class EntriesTable extends FlexTable {
 		setStylePrimaryName("entries-table");
 	}
 	
-	public void setEntries(List<Entry> entries, String url, boolean directOpen) {
+	public void clear() {
+		setProperties(null, null, 10, true);
+	}
+	
+	public void setProperties(List<Entry> entries,
+			String url,
+			int maxPerPage,
+			boolean directOpen) {
 		if(entries == null) {
 			entries = new LinkedList<Entry>();
 		}
 		this.entries = entries;
 		this.url = url;
+		this.maxPerPage = maxPerPage;
 		this.directOpen = directOpen;
 		setPage(0);
 	}
