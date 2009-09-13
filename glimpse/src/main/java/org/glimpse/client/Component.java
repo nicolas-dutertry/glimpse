@@ -15,6 +15,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -44,6 +45,7 @@ public abstract class Component extends Composite implements HasDragHandle {
 		
 		HorizontalPanelExt topPanel = new HorizontalPanelExt();
 		topPanel.setWidth("100%");
+		topPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
 		Image titleLeft = new Image("images/p.png");
 		topPanel.add(titleLeft);
@@ -54,6 +56,7 @@ public abstract class Component extends Composite implements HasDragHandle {
 		topPanel.setCellClass(titlePanel, "component-title-content");
 				
 		actionsPanel = new HorizontalPanelExt();
+		actionsPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		dragHandle = new Image("images/move.png");
 		actionsPanel.add(dragHandle);
 		actionsPanel.setCellClass(dragHandle, "component-action");

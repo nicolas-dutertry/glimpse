@@ -1,8 +1,11 @@
 package org.glimpse.server.news;
 
 import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -88,7 +91,8 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 	private Proxy getProxy(String sUrl) throws MalformedURLException {
 		//URL url = new URL(sUrl);
 		//String host = url.getHost();
-		return new Proxy("http.proxy.uk.fid-intl.com", 8000);
+		//return new Proxy("http.proxy.uk.fid-intl.com", 8000);
+		return null;
 	}
 	
 	private List<Entry> getRSSEntries(Document doc) throws Exception {
@@ -103,9 +107,23 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 			String id = (String)xpath.evaluate("link", elmEntry, XPathConstants.STRING);
 			String title = (String)xpath.evaluate("title", elmEntry, XPathConstants.STRING);
 			String entryUrl = (String)xpath.evaluate("link", elmEntry, XPathConstants.STRING);
+			String pubDate = (String)xpath.evaluate("pubDate", elmEntry, XPathConstants.STRING);
+						
 			rssEntry.setId(id);
 			rssEntry.setTitle(title);
 			rssEntry.setUrl(entryUrl);
+			
+			if(StringUtils.isNotBlank(pubDate)) {
+				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss Z");
+				formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
+				try {
+					Date date = formatter.parse(pubDate);
+					rssEntry.setDate(date);
+				} catch(Exception e) {
+					// unparsable date
+					logger.error("Unable to parse date <" + pubDate + ">", e);
+				}
+			}
 			
 			rssEntries.add(rssEntry);
 		}
@@ -125,9 +143,36 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 			String id = (String)xpath.evaluate("id", elmEntry, XPathConstants.STRING);
 			String title = (String)xpath.evaluate("title", elmEntry, XPathConstants.STRING);
 			String entryUrl = (String)xpath.evaluate("link/@href", elmEntry, XPathConstants.STRING);
+			String updated = (String)xpath.evaluate("updated", elmEntry, XPathConstants.STRING);
+			
 			rssEntry.setId(id);
 			rssEntry.setTitle(title);
 			rssEntry.setUrl(entryUrl);
+			
+			if(StringUtils.length(updated) > 19) {
+				try {
+					Date date = null;
+					if(updated.endsWith("Z")) {
+						// No timezone
+						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+						formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
+						date = formatter.parse(updated.substring(0, 19));
+					} else {
+						String timezone = updated.substring(updated.length()-6);
+						timezone = timezone.substring(0, 3) + timezone.substring(4);
+						updated = updated.substring(0, 19) + timezone;
+						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+						formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
+						date = formatter.parse(updated);
+					}
+					if(date != null) {
+						rssEntry.setDate(date);
+					}
+				} catch(Exception e) {
+					// unparsable date
+					logger.error("Unable to parse date <" + updated + ">", e);
+				}
+			}
 			
 			rssEntries.add(rssEntry);
 		}

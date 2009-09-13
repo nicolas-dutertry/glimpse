@@ -8,7 +8,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.DeckPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 
@@ -17,7 +16,11 @@ public class AggregatorTabPanel extends Composite {
 	private HorizontalPanelExt tabTitles;
 	private AggregatorTabTitle currentTabTitle;
 	private SimplePanel optionsPanel;
-	private DeckPanel deck;
+	
+	private FlowPanel tabContentsPanel;
+	private AggregatorTab visibleTabContent;
+	
+	
 	public AggregatorTabPanel() {
 		panel = new FlowPanel();
 		
@@ -47,9 +50,9 @@ public class AggregatorTabPanel extends Composite {
 		optionsPanel.setStylePrimaryName("taboptions");
 		
 		// Tab content
-		deck = new DeckPanel();
-		deck.setStylePrimaryName("tabcontent");
-		panel.add(deck);
+		tabContentsPanel = new FlowPanel();
+		tabContentsPanel.setStylePrimaryName("tabcontent");
+		panel.add(tabContentsPanel);
 		
 		initWidget(panel);
 	}
@@ -57,7 +60,9 @@ public class AggregatorTabPanel extends Composite {
 	public void add(AggregatorTab tab, String title) {
 		AggregatorTabTitle tabTitle = new AggregatorTabTitle(this, title);
 		tabTitles.insert(tabTitle, tabTitles.getWidgetCount()-1);
-		deck.add(tab);
+		
+		tab.setVisible(false);
+		tabContentsPanel.add(tab);
 	}
 	
 	public void selectTab(int index) {
@@ -68,25 +73,34 @@ public class AggregatorTabPanel extends Composite {
 			}
 			panel.remove(optionsPanel);
 			newCurrent.setSelected(true);
-			deck.showWidget(index);
 			currentTabTitle = newCurrent;
+			
+			if(visibleTabContent != null) {
+				visibleTabContent.setVisible(false);
+			}
+			visibleTabContent = (AggregatorTab)tabContentsPanel.getWidget(index);
+			visibleTabContent.setVisible(true);
 		}
 	}
 	
 	public int getVisibleTab() {
-		return deck.getVisibleWidget();
+		if(visibleTabContent != null) {
+			return tabContentsPanel.getWidgetIndex(visibleTabContent);
+		} else {
+			return -1;
+		}
 	}
 	
 	public int getTabCount() {
-		return deck.getWidgetCount();
+		return tabContentsPanel.getWidgetCount();
 	}
 
 	public AggregatorTab getTab(int index) {
-		return (AggregatorTab)deck.getWidget(index);
+		return (AggregatorTab)tabContentsPanel.getWidget(index);
 	}
 
 	public int getTabIndex(AggregatorTab tab) {
-		return deck.getWidgetIndex(tab);
+		return tabContentsPanel.getWidgetIndex(tab);
 	}
 
 	public void remove(int index) {
@@ -99,7 +113,7 @@ public class AggregatorTabPanel extends Composite {
 		
 		panel.remove(optionsPanel);
 		tabTitles.remove(index);
-		deck.remove(index);
+		tabContentsPanel.remove(index);
 		
 		if(index - 1 > 0) {
 			selectTab(index-1);
@@ -121,7 +135,7 @@ public class AggregatorTabPanel extends Composite {
 			AggregatorTabOptions options =
 				(AggregatorTabOptions)optionsPanel.getWidget();
 			options.reinit();
-			panel.insert(optionsPanel, panel.getWidgetIndex(deck));
+			panel.insert(optionsPanel, panel.getWidgetIndex(tabContentsPanel));
 		}
 	}
 }

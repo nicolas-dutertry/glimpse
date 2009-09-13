@@ -12,6 +12,7 @@ public class AggregatorTab extends Composite {
 	public AggregatorTab() {
 		panel = new FlowPanel();
 		panel.setWidth("100%");
+		panel.setStylePrimaryName("autoclear");
 		
 		initWidget(panel);
 	}

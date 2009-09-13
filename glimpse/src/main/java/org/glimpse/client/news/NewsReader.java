@@ -14,11 +14,13 @@ import org.glimpse.client.widgets.HorizontalPanelExt;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ListBox;
@@ -37,6 +39,7 @@ public class NewsReader extends Component {
 	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
 	
 	private Anchor title = new Anchor(constants.newsReader());
+	private Image titleImage;
 	private HorizontalPanel loadingPanel = new HorizontalPanel();
 	private SimplePanel optionPanel;
 	private TextBox urlField;
@@ -89,9 +92,15 @@ public class NewsReader extends Component {
 		
 		// Les boutons de commande du titre
 		
+		HorizontalPanel titlePanel = new HorizontalPanel();
+		titlePanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		titleImage = new Image("images/feed.png");
+		titleImage.setStylePrimaryName("component-title-image");
+		titlePanel.add(titleImage);
 		title.setHref("javascript:void(0)");
 		title.setTarget("_blank");
-		setTitleWidget(title);
+		titlePanel.add(title);
+		setTitleWidget(titlePanel);
 		
 		List<Widget> actions = new LinkedList<Widget>();
 		Image refreshButton = new Image("images/refresh.png");
@@ -220,6 +229,8 @@ public class NewsReader extends Component {
 							loadingPanel.setVisible(false);
 							title.setText(channel.getTitle());
 							title.setHref(channel.getUrl());
+							String encodedUrl = URL.encodeComponent(channel.getUrl());
+							titleImage.setUrl("servlets/news-icon?url=" + encodedUrl);
 							entriesTable.setProperties(channel.getEntries(),
 									getUrl(),
 									getMaxPerPage(),

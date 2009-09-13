@@ -1,6 +1,7 @@
 package org.glimpse.client.news;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Entry implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -8,6 +9,7 @@ public class Entry implements Serializable {
 	private String id;
 	private String title;
 	private String url;
+	private Date date;
 	
 	public String getId() {
 		return id;
@@ -31,5 +33,13 @@ public class Entry implements Serializable {
 	
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }
