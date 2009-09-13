@@ -62,6 +62,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 	private AggregatorTabPanel tabPanel;
 	private PopupPanel loadPopup;
 	private DialogBox addDialog;
+	private DialogBox loginDialog;
 	private PickupDragController dragController;
 
 	/**
@@ -82,6 +83,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 		loadPopup.center();
 		
 		addDialog = new AddContentDialog();
+		loginDialog = new LoginDialog();
 		
 		pageDescriptionService.getPageDescription(
 				new AsyncCallback<PageDescription>() {
@@ -102,8 +104,9 @@ public class Aggregator implements EntryPoint, DragHandler {
 		mainPanel.setWidth("100%");
 		
 		// Top bar
-		FlowPanel topBar = new FlowPanel();
+		HorizontalPanel topBar = new HorizontalPanel();
 		topBar.setStylePrimaryName("topbar");
+		
 		Anchor addButton = new Anchor(constants.addContent(),
 				"javascript:void(0)");
 		addButton.setStylePrimaryName("add-content");
@@ -113,6 +116,17 @@ public class Aggregator implements EntryPoint, DragHandler {
 			}
 		});
 		topBar.add(addButton);
+		
+		Anchor loginButton = new Anchor("login",
+				"javascript:void(0)");
+		loginButton.setStylePrimaryName("add-content");
+		loginButton.addClickHandler(new ClickHandler() {			
+			public void onClick(ClickEvent event) {
+				loginDialog.center();
+			}
+		});
+		topBar.add(loginButton);
+		
 		mainPanel.add(topBar);
 		
 		// Header

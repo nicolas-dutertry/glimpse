@@ -4,41 +4,55 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-  
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>NewsRetrieverService</servlet-name>
-    <servlet-class>org.glimpse.server.news.NewsRetrieverServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet>
-    <servlet-name>NewsIconServlet</servlet-name>
-    <servlet-class>org.glimpse.server.news.NewsIconServlet</servlet-class>
-  </servlet>
-  
-  <servlet>
-    <servlet-name>PageDescriptionService</servlet-name>
-    <servlet-class>org.glimpse.server.XmlPageDescriptionService</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>NewsRetrieverService</servlet-name>
-    <url-pattern>/glimpse_gwt/news-retriever</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
-    <servlet-name>NewsIconServlet</servlet-name>
-    <url-pattern>/servlets/news-icon</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
-    <servlet-name>PageDescriptionService</servlet-name>
-    <url-pattern>/glimpse_gwt/page-description</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-  </welcome-file-list>
+
+	<listener>
+		<listener-class>org.glimpse.server.GlimpseManager</listener-class>
+	</listener>
+
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>ConnectionServlet</servlet-name>
+		<servlet-class>org.glimpse.server.ConnectionServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>NewsRetrieverService</servlet-name>
+		<servlet-class>org.glimpse.server.news.NewsRetrieverServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>NewsIconServlet</servlet-name>
+		<servlet-class>org.glimpse.server.news.NewsIconServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PageDescriptionService</servlet-name>
+		<servlet-class>org.glimpse.server.XmlPageDescriptionService</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ConnectionServlet</servlet-name>
+		<url-pattern>/servlets/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>NewsRetrieverService</servlet-name>
+		<url-pattern>/glimpse_gwt/news-retriever</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>NewsIconServlet</servlet-name>
+		<url-pattern>/servlets/news-icon</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>PageDescriptionService</servlet-name>
+		<url-pattern>/glimpse_gwt/page-description</url-pattern>
+	</servlet-mapping>
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
 
 </web-app>

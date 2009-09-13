@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import javax.servlet.ServletException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -17,6 +18,8 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.commons.configuration.Configuration;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.PageDescriptionService;
@@ -35,15 +38,30 @@ public class XmlPageDescriptionService extends RemoteServiceServlet implements
 		PageDescriptionService {
 	private static final long serialVersionUID = 1L;
 	private static final Log logger = LogFactory.getLog(XmlPageDescriptionService.class);
-	private static final String XML_PAGE = "/WEB-INF/page.xml";
+	private static final String DEFAULT_XML_PAGE = "/WEB-INF/page.xml";
+	
+	private File usersDirectory;
+
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		
+		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
+		Configuration configuration = glimpseManager.getConfiguration();
+		usersDirectory = new File(configuration.getString("users.directory",
+				getServletContext().getRealPath("/WEB-INF/users")));
+	}
 
 	public PageDescription getPageDescription() {
 		try {
 			DocumentBuilder builder =
 				DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			
-			Document doc = builder.parse(new File(
-					getServletContext().getRealPath(XML_PAGE)));
+			File userXMLPage = getUserXMLPage();
+			if(userXMLPage == null || !userXMLPage.exists()) {
+				userXMLPage = getDefaultXMLPage();
+			}
+			Document doc = builder.parse(userXMLPage);
 			
 			return buildPage(doc);
 			
@@ -51,6 +69,23 @@ public class XmlPageDescriptionService extends RemoteServiceServlet implements
 			logger.error("Error while reading page description xml", e);
 			return null;
 		}
+	}
+	
+	private File getUserXMLPage() {
+		String connectionId = GlimpseUtils.getConnectionId(getThreadLocalRequest());
+		if(StringUtils.isNotEmpty(connectionId)) {
+			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
+			ConnectionManager connectionManager = glimpseManager.getConnectionManager();
+			String userName = connectionManager.getUserName(connectionId);
+			if(userName != null) {
+				return new File(usersDirectory, userName + "/page.xml");
+			}
+		}
+		return null;
+	}
+	
+	private File getDefaultXMLPage() {
+		return new File(getServletContext().getRealPath(DEFAULT_XML_PAGE));
 	}
 	
 	private PageDescription buildPage(Document doc) throws Exception {
@@ -110,6 +145,11 @@ public class XmlPageDescriptionService extends RemoteServiceServlet implements
 
 	public void setPageDescription(PageDescription pageDescription) {
 		try {
+			File userXMLPage = getUserXMLPage();
+			if(userXMLPage == null) {
+				return;
+			}
+			
 			DocumentBuilder builder =
 				DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			Document doc = builder.newDocument();
@@ -147,10 +187,14 @@ public class XmlPageDescriptionService extends RemoteServiceServlet implements
 				pageElement.appendChild(tabElement);
 			}
 			
+			if(!userXMLPage.getParentFile().exists()) {
+				userXMLPage.getParentFile().mkdir();
+			}
+			
 			Transformer transformer =
 				TransformerFactory.newInstance().newTransformer();
 			transformer.transform(new DOMSource(doc),
-					new StreamResult(new File(getServletContext().getRealPath(XML_PAGE))));
+					new StreamResult(userXMLPage));
 			
 		} catch(Exception e) {
 			logger.error("Error while updating page description xml", e);
