@@ -77,4 +77,19 @@ public interface AggregatorConstants extends Constants {
 	
 	@DefaultStringValue("move")
 	String move();
+	
+	@DefaultStringValue("Login")
+	String login();
+	
+	@DefaultStringValue("Logout")
+	String logout();
+	
+	@DefaultStringValue("Login ID")
+	String loginId();
+	
+	@DefaultStringValue("Password")
+	String password();
+	
+	@DefaultStringValue("Remember me on this computer")
+	String rememberMe();
 }

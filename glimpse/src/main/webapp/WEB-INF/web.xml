@@ -11,8 +11,13 @@
 
 	<!-- Servlets -->
 	<servlet>
-		<servlet-name>ConnectionServlet</servlet-name>
-		<servlet-class>org.glimpse.server.ConnectionServlet</servlet-class>
+		<servlet-name>LoginService</servlet-name>
+		<servlet-class>org.glimpse.server.LoginServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PageDescriptionService</servlet-name>
+		<servlet-class>org.glimpse.server.XmlPageDescriptionService</servlet-class>
 	</servlet>
 	
 	<servlet>
@@ -24,15 +29,15 @@
 		<servlet-name>NewsIconServlet</servlet-name>
 		<servlet-class>org.glimpse.server.news.NewsIconServlet</servlet-class>
 	</servlet>
-
-	<servlet>
-		<servlet-name>PageDescriptionService</servlet-name>
-		<servlet-class>org.glimpse.server.XmlPageDescriptionService</servlet-class>
-	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>ConnectionServlet</servlet-name>
-		<url-pattern>/servlets/login</url-pattern>
+		<servlet-name>LoginService</servlet-name>
+		<url-pattern>/glimpse_gwt/login</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>PageDescriptionService</servlet-name>
+		<url-pattern>/glimpse_gwt/page-description</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
@@ -43,11 +48,6 @@
 	<servlet-mapping>
 		<servlet-name>NewsIconServlet</servlet-name>
 		<url-pattern>/servlets/news-icon</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>PageDescriptionService</servlet-name>
-		<url-pattern>/glimpse_gwt/page-description</url-pattern>
 	</servlet-mapping>
 
 	<!-- Default page to serve -->

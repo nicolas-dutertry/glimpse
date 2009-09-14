@@ -48,6 +48,15 @@ public class GlimpseManager implements ServletContextListener {
 		return connectionManager;
 	}
 	
+	public Proxy getProxy(String url) {
+		String host = configuration.getString("proxy.host");
+		int port = configuration.getInt("proxy.port", 8000);
+		if(StringUtils.isBlank(host)) {
+			return null;
+		}
+		return new Proxy(host, port);
+	}
+	
 	public void contextDestroyed(ServletContextEvent sce) {
 		// Nothing to do
 	}

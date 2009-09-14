@@ -20,9 +20,15 @@ public class GlimpseUtils {
 		return null;
 	}
 	
-	public static void setConnectionId(HttpServletResponse response, String connectionId) {
+	public static void setConnectionId(HttpServletResponse response,
+			String connectionId,
+			boolean persistent) {
 		Cookie cookie = new Cookie(COOKIE_CONNECTION, connectionId);
-		cookie.setMaxAge(-1);
+		if(!persistent) {
+			cookie.setMaxAge(-1);
+		} else {
+			cookie.setMaxAge(365*24*60*60);
+		}
 		response.addCookie(cookie);
 	}
 }

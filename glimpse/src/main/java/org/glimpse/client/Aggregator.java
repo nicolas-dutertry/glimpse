@@ -56,9 +56,11 @@ public class Aggregator implements EntryPoint, DragHandler {
 	 */	
 	private PageDescriptionServiceAsync pageDescriptionService = GWT
 		.create(PageDescriptionService.class);
+	private LoginServiceAsync loginService = GWT.create(LoginService.class);
 	
 	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
 	
+	private String userName;
 	private AggregatorTabPanel tabPanel;
 	private PopupPanel loadPopup;
 	private DialogBox addDialog;
@@ -82,9 +84,6 @@ public class Aggregator implements EntryPoint, DragHandler {
 		popupContent.add(new Label(constants.loading()));		
 		loadPopup.center();
 		
-		addDialog = new AddContentDialog();
-		loginDialog = new LoginDialog();
-		
 		pageDescriptionService.getPageDescription(
 				new AsyncCallback<PageDescription>() {
 					public void onFailure(Throwable caught) {
@@ -100,11 +99,17 @@ public class Aggregator implements EntryPoint, DragHandler {
 	private void load(PageDescription pageDescription) {
 		RootPanel.get("main").clear();
 		
+		userName = pageDescription.getUserName();
+		
+		addDialog = new AddContentDialog();
+		loginDialog = new LoginDialog();
+		
 		FlowPanel mainPanel = new FlowPanel();
 		mainPanel.setWidth("100%");
 		
 		// Top bar
 		HorizontalPanel topBar = new HorizontalPanel();
+		topBar.setWidth("100%");
 		topBar.setStylePrimaryName("topbar");
 		
 		Anchor addButton = new Anchor(constants.addContent(),
@@ -116,16 +121,35 @@ public class Aggregator implements EntryPoint, DragHandler {
 			}
 		});
 		topBar.add(addButton);
+		topBar.setCellHorizontalAlignment(addButton, HorizontalPanel.ALIGN_LEFT);		
 		
-		Anchor loginButton = new Anchor("login",
+		String loginButtonLabel = constants.login();
+		if(userName != null && !userName.equals("")) {
+			loginButtonLabel = constants.logout();
+		}
+		Anchor loginButton = new Anchor(loginButtonLabel,
 				"javascript:void(0)");
 		loginButton.setStylePrimaryName("add-content");
 		loginButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				loginDialog.center();
+				if(userName != null && !userName.equals("")) {
+					loadPopup.center();
+					loginService.disconnnect(new AsyncCallback<Void>() {
+						public void onFailure(Throwable caught) {
+							reloadPage();
+						}
+
+						public void onSuccess(Void result) {
+							reloadPage();
+						}
+					});
+				} else {
+					loginDialog.center();
+				}
 			}
 		});
 		topBar.add(loginButton);
+		topBar.setCellHorizontalAlignment(loginButton, HorizontalPanel.ALIGN_RIGHT);
 		
 		mainPanel.add(topBar);
 		
@@ -219,6 +243,10 @@ public class Aggregator implements EntryPoint, DragHandler {
 		return instance;
 	}
 	
+	public String getUserName() {
+		return userName;
+	}
+	
 	public void addComponent(Component component) {
 		AggregatorTab tab = tabPanel.getTab(tabPanel.getVisibleTab());
 		AggregatorColumn column = tab.getColumns().get(0);
@@ -291,4 +319,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 	public void onPreviewDragStart(DragStartEvent event)
 			throws VetoDragException {
 	}
+	
+	public native void reloadPage() /*-{
+    	$wnd.location.reload();
+	}-*/;
 }

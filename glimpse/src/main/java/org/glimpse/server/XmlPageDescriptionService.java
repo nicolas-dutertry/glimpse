@@ -90,6 +90,14 @@ public class XmlPageDescriptionService extends RemoteServiceServlet implements
 	
 	private PageDescription buildPage(Document doc) throws Exception {
 		PageDescription page = new PageDescription();
+		String connectionId = GlimpseUtils.getConnectionId(getThreadLocalRequest());
+		if(StringUtils.isNotEmpty(connectionId)) {
+			ConnectionManager connectionManager =
+				GlimpseManager.getInstance(getServletContext()).getConnectionManager();
+			String userName = connectionManager.getUserName(connectionId);
+			page.setUserName(userName);
+		}
+		
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		NodeList tabNodes = (NodeList)xpath.evaluate("/page/tab", doc, XPathConstants.NODESET);
 		for(int i = 0; i < tabNodes.getLength(); i++) {

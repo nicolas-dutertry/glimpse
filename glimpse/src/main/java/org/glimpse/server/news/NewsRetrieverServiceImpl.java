@@ -1,6 +1,5 @@
 package org.glimpse.server.news;
 
-import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -22,6 +21,8 @@ import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.news.Entry;
 import org.glimpse.client.news.NewsChannel;
 import org.glimpse.client.news.NewsRetrieverService;
+import org.glimpse.server.GlimpseManager;
+import org.glimpse.server.Proxy;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -32,24 +33,6 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 		NewsRetrieverService {
 	private static final long serialVersionUID = 1L;
 	private static Log logger = LogFactory.getLog(NewsRetrieverServiceImpl.class);
-	
-	private static class Proxy {
-		private String host;
-		private int port;
-		
-		public Proxy(String host, int port) {
-			this.host = host;
-			this.port = port;
-		}
-
-		public String getHost() {
-			return host;
-		}
-
-		public int getPort() {
-			return port;
-		}
-	}
 	
 	private enum Type {
 		RSS,
@@ -75,8 +58,10 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 	}
 	
 	private Document getDocument(String url) throws Exception {
-		HttpClient client = new HttpClient();
-		Proxy proxy = getProxy(url);
+		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
+		Proxy proxy = glimpseManager.getProxy(url);
+		
+		HttpClient client = new HttpClient();		
 		if(proxy != null) {
 			client.getHostConfiguration().setProxy(proxy.getHost(), proxy.getPort());
 		}
@@ -86,13 +71,6 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 		
 		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		return builder.parse(method.getResponseBodyAsStream());
-	}
-	
-	private Proxy getProxy(String sUrl) throws MalformedURLException {
-		//URL url = new URL(sUrl);
-		//String host = url.getHost();
-		//return new Proxy("http.proxy.uk.fid-intl.com", 8000);
-		return null;
 	}
 	
 	private List<Entry> getRSSEntries(Document doc) throws Exception {
