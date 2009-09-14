@@ -1,1 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?><page><tab title="Accueil"><column><component type="NEWS"><property name="url" value="http://feeds.feedburner.com/techtarget/tsscom/home"/></component></column><column><component type="NEWS"><property name="maxPerPage" value="10"/><property name="directOpen" value="false"/><property name="url" value="http://standblog.org/blog/feed/rss2"/></component></column><column><component type="NEWS"><property name="url" value="http://www.lequipe.fr/Xml/actu_rss.xml"/></component></column></tab><tab title="HR Design"><column><component type="NEWS"><property name="url" value="http://10.166.72.229:8080/roller/designclient/feed/entries/atom"/></component></column><column/></tab><tab title="Sport"><column><component type="NEWS"><property name="url" value="http://www.lequipe.fr/Xml/actu_rss.xml"/></component></column><column><component type="NEWS"><property name="url" value="http://www.eurosport.fr/rss.xml"/></component></column></tab><tab title="Logiciel libre"><column><component type="NEWS"><property name="url" value="http://nicolas.dutertry.com/ecran-noir/index.php?feed/atom"/></component></column><column><component type="NEWS"><property name="url" value="http://www.planet-libre.org/feed.php?type=atom"/></component></column></tab><tab title="new tab"><column/><column/><column/></tab></page>
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+	<tab title="Home">
+		<column>
+			<component type="NEWS">
+				<property name="maxPerPage" value="7" />
+				<property name="url"
+					value="http://feeds.feedburner.com/techtarget/tsscom/home" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="maxPerPage" value="7" />
+				<property name="directOpen" value="false" />
+				<property name="url" value="http://standblog.org/blog/feed/rss2" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="maxPerPage" value="7" />
+				<property name="url" value="http://www.lequipe.fr/Xml/actu_rss.xml" />
+			</component>
+		</column>
+	</tab>
+	<tab title="Sport">
+		<column>
+			<component type="NEWS">
+				<property name="url" value="http://www.lequipe.fr/Xml/actu_rss.xml" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="url" value="http://www.eurosport.fr/rss.xml" />
+			</component>
+		</column>
+	</tab>
+	<tab title="Free software">
+		<column>
+			<component type="NEWS">
+				<property name="url"
+					value="http://nicolas.dutertry.com/ecran-noir/index.php?feed/atom" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="url"
+					value="http://www.planet-libre.org/feed.php?type=atom" />
+			</component>
+		</column>
+	</tab>
+</page>

@@ -1,3 +1,5 @@
+<%@ page session="false"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- The HTML 4.01 Transitional DOCTYPE declaration-->
 <!-- above set at the top of the file will set     -->
@@ -9,6 +11,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="gwt:property" content="locale=<%=request.getLocale().toString()%>">
 
     <!--                                                               -->
     <!-- Consider inlining CSS to reduce the number of requested files -->

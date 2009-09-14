@@ -14,6 +14,9 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -28,6 +31,29 @@ public class AggregatorTabOptions extends Composite {
 		this.tabPanel = tabPanel;
 		
 		HorizontalPanelExt panel = new HorizontalPanelExt();
+		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		
+		HorizontalPanel movePanel = new HorizontalPanel();
+		movePanel.setSpacing(0);
+		panel.add(movePanel);
+		Image moveLeft = new Image("images/move-tab-left.png");
+		movePanel.add(moveLeft);
+		moveLeft.setStylePrimaryName("move-tab-left");
+		moveLeft.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				AggregatorTabOptions.this.tabPanel.moveVisibleLeft();
+				Aggregator.getInstance().update();
+			}
+		});
+		Image moveRight = new Image("images/move-tab-right.png");
+		movePanel.add(moveRight);
+		moveRight.setStylePrimaryName("move-tab-right");
+		moveRight.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				AggregatorTabOptions.this.tabPanel.moveVisibleRight();
+				Aggregator.getInstance().update();
+			}
+		});
 		
 		FlexTable titleTable = new FlexTable();
 		titleTable.setText(0, 0, constants.title());

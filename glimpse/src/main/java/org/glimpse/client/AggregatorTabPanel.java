@@ -36,6 +36,7 @@ public class AggregatorTabPanel extends Composite {
 				add(tab, "new tab");
 				Aggregator.getInstance().update();
 				selectTab(getTabCount()-1);
+				showOptions();
 			}
 		});
 		tabTitles.add(add);
@@ -122,6 +123,30 @@ public class AggregatorTabPanel extends Composite {
 		}
 	}
 	
+	public void moveVisibleLeft() {
+		int index = getVisibleTab();
+		if(index <= 0) {
+			return;
+		}		
+		
+		tabTitles.remove(index);
+		tabTitles.insert(currentTabTitle, index-1);
+		tabContentsPanel.remove(index);
+		tabContentsPanel.insert(visibleTabContent, index-1);
+	}
+	
+	public void moveVisibleRight() {
+		int index = getVisibleTab();
+		if(index >= getTabCount()-1) {
+			return;
+		}		
+		
+		tabTitles.remove(index);
+		tabTitles.insert(currentTabTitle, index+1);
+		tabContentsPanel.remove(index);
+		tabContentsPanel.insert(visibleTabContent, index+1);
+	}
+	
 	public String getTitle(int index) {
 		return ((AggregatorTabTitle)tabTitles.getWidget(index)).getText();
 	}
@@ -130,12 +155,28 @@ public class AggregatorTabPanel extends Composite {
 		((AggregatorTabTitle)tabTitles.getWidget(index)).setText(title);
 	}
 	
-	public void toogleOptions() {
-		if(!panel.remove(optionsPanel)) {
+	public void showOptions() {
+		if(!isOptionsVisible()) {
 			AggregatorTabOptions options =
 				(AggregatorTabOptions)optionsPanel.getWidget();
 			options.reinit();
 			panel.insert(optionsPanel, panel.getWidgetIndex(tabContentsPanel));
 		}
+	}
+	
+	public void hideOptions() {
+		panel.remove(optionsPanel);
+	}
+	
+	public void toogleOptions() {
+		if(isOptionsVisible()) {
+			hideOptions();
+		} else {
+			showOptions();
+		}
+	}
+	
+	public boolean isOptionsVisible() {
+		return panel.getWidgetIndex(optionsPanel) != -1;
 	}
 }

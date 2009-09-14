@@ -26,6 +26,8 @@ public class LoginDialog extends DialogBox {
 	private CheckBox rememberMe;
 	
 	public LoginDialog() {
+		setText(constants.login());
+		
 		FlowPanel panel = new FlowPanel();
 		
 		FlexTable table = new FlexTable();

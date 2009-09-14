@@ -50,10 +50,6 @@ public class AggregatorTabTitle extends Composite implements ClickHandler {
 		panel.add(right);
 		panel.setCellClass(right, "tabtitle-right");
 		
-		Image separator = new Image("images/p.png");
-		panel.add(separator);
-		panel.setCellClass(separator, "tabtitle-separator");
-		
 		initWidget(panel);
 	}
 	
