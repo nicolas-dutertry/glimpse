@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
@@ -50,6 +51,8 @@ public class NewsReader extends Component {
 	private EntriesTable entriesTable;
 	Anchor previousButton = new Anchor();
 	Anchor nextButton = new Anchor();
+	
+	private Label error;
 	
 	private class RefreshHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
@@ -176,6 +179,11 @@ public class NewsReader extends Component {
 		loadingPanel.setCellHorizontalAlignment(wait, HorizontalPanel.ALIGN_CENTER);
 		panel.add(loadingPanel);
 		
+		// En cas d'erreur
+		error = new Label(constants.error());
+		error.setVisible(false);
+		panel.add(error);
+		
 		// Les boutons de commande du bas
 		HorizontalPanelExt bottomBar = new HorizontalPanelExt();
 		bottomBar.setWidth("100%");
@@ -215,18 +223,20 @@ public class NewsReader extends Component {
 			optionPanel.setVisible(false);
 		}
 		
+		error.setVisible(false);
 		loadingPanel.setVisible(true);
 		checkPreviousNext();
 		newsRetrieverService.getNewsChannel(
 				url,
 				new AsyncCallback<NewsChannel>() {
 					public void onFailure(Throwable caught) {
-						//Window.alert("Error");
+						loadingPanel.setVisible(false);
+						error.setVisible(true);
 					}
 
 					public void onSuccess(NewsChannel channel) {
+						loadingPanel.setVisible(false);
 						if(channel != null) {
-							loadingPanel.setVisible(false);
 							title.setText(channel.getTitle());
 							title.setHref(channel.getUrl());
 							String encodedUrl = URL.encodeComponent(channel.getUrl());
@@ -236,6 +246,8 @@ public class NewsReader extends Component {
 									getMaxPerPage(),
 									isDirectOpen());
 							checkPreviousNext();
+						} else {
+							error.setVisible(true);
 						}
 					}
 		});

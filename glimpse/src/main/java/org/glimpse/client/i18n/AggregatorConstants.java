@@ -92,4 +92,19 @@ public interface AggregatorConstants extends Constants {
 	
 	@DefaultStringValue("Remember me on this computer")
 	String rememberMe();
+	
+	@DefaultStringValue("one minute ago")
+	String oneMinuteAgo();
+	
+	@DefaultStringValue("one hour ago")
+	String oneHourAgo();
+	
+	@DefaultStringValue("yesterday")
+	String yesterday();
+	
+	@DefaultStringValue("one month ago")
+	String oneMonthAgo();
+	
+	@DefaultStringValue("one year ago")
+	String oneYearAgo();
 }

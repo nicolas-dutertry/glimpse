@@ -479,6 +479,11 @@ h1 {
 	text-decoration: none;
 }
 
+.entry-pubtime {
+	color: #AAAAAA;
+	font-size: 10px;
+}
+
 .news-next, .news-next:visited {
 	text-decoration: none;
 	color: #333333;

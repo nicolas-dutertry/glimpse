@@ -3,12 +3,19 @@ package org.glimpse.client.news;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.glimpse.client.i18n.AggregatorConstants;
+import org.glimpse.client.i18n.AggregatorMessages;
+
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlexTable;
 
 public class EntriesTable extends FlexTable {
+	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
+	private AggregatorMessages messages = GWT.create(AggregatorMessages.class);
+	
 	private List<Entry> entries = new LinkedList<Entry>();
 	private int maxPerPage = 10;
 	private int currentPage = 0;
@@ -19,8 +26,8 @@ public class EntriesTable extends FlexTable {
 	private class EntryTitle extends Anchor {
 		private int entryIndex = 0;
 		
-		public EntryTitle(String label, int entryIndex) {
-			super(label);
+		public EntryTitle(String label, String pubTime, int entryIndex) {
+			super(label + "<span class=\"entry-pubtime\"> - " + pubTime + "<span>", true);
 			this.entryIndex = entryIndex;
 			setStylePrimaryName("entry-title");
 			setWidth("100%");
@@ -76,7 +83,36 @@ public class EntriesTable extends FlexTable {
 		}
 		for(int i = page*maxPerPage; i < (page+1)*maxPerPage && i < entries.size(); i++) {
 			Entry entry = entries.get(i);
-			setWidget(getRowCount(), 0, new EntryTitle(entry.getTitle(), i));
+			String pubTime = "";
+			long millis = System.currentTimeMillis() - entry.getDate().getTime();
+			long minutes = millis / (60*1000L);
+			long hours = minutes / 60L;
+			long days = hours / 24L;
+			long months = days / 30L;
+			long years = days / 365L;
+			if(minutes <= 1) {
+				pubTime = constants.oneMinuteAgo();
+			} else if(hours < 1) {
+				pubTime = messages.someMinutesAgo(minutes);
+			} else if(hours == 1) {
+				pubTime = constants.oneHourAgo();
+			} else if(days < 1) {
+				pubTime = messages.someHoursAgo(hours);
+			} else if(days == 1) {
+				pubTime = constants.yesterday();
+			}  else if(months < 1) {
+				pubTime = messages.someDaysAgo(days);
+			} else if(months == 1) {
+				pubTime = constants.oneMonthAgo();
+			} else if(years < 1) {
+				pubTime = messages.someMinutesAgo(months);
+			} else if(years == 1) {
+				pubTime = constants.oneYearAgo();
+			} else {
+				pubTime = messages.someYearsAgo(years);
+			}
+			
+			setWidget(getRowCount(), 0, new EntryTitle(entry.getTitle(), pubTime, i));
 		}
 	}
 	
