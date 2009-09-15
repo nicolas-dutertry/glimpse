@@ -1,7 +1,6 @@
 package org.glimpse.client.i18n;
 
 import com.google.gwt.i18n.client.Messages;
-import com.google.gwt.i18n.client.Constants.DefaultStringValue;
 
 public interface AggregatorMessages extends Messages {
 	@DefaultMessage("{0} minutes ago")
