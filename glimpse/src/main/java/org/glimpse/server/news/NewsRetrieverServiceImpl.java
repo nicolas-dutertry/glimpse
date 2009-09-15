@@ -1,9 +1,11 @@
 package org.glimpse.server.news;
 
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -94,6 +96,7 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 			if(StringUtils.isNotBlank(pubDate)) {
 				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss Z");
 				formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
+				formatter.setDateFormatSymbols(new DateFormatSymbols(Locale.ENGLISH));
 				try {
 					Date date = formatter.parse(pubDate);
 					rssEntry.setDate(date);

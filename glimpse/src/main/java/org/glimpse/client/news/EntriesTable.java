@@ -27,7 +27,7 @@ public class EntriesTable extends FlexTable {
 		private int entryIndex = 0;
 		
 		public EntryTitle(String label, String pubTime, int entryIndex) {
-			super(label + "<span class=\"entry-pubtime\"> - " + pubTime + "<span>", true);
+			super(createEntryTitleHtml(label, pubTime), true);
 			this.entryIndex = entryIndex;
 			setStylePrimaryName("entry-title");
 			setWidth("100%");
@@ -48,6 +48,16 @@ public class EntriesTable extends FlexTable {
 				});
 			}
 		}
+	}
+	
+	private static String createEntryTitleHtml(String label, String pubTime) {
+		StringBuilder html = new StringBuilder(label);
+		if(pubTime != null) {
+			html.append("<span class=\"entry-pubtime\"> - ");
+			html.append(pubTime);
+			html.append("<span>");
+		}
+		return html.toString();
 	}
 
 	public EntriesTable() {
@@ -83,33 +93,35 @@ public class EntriesTable extends FlexTable {
 		}
 		for(int i = page*maxPerPage; i < (page+1)*maxPerPage && i < entries.size(); i++) {
 			Entry entry = entries.get(i);
-			String pubTime = "";
-			long millis = System.currentTimeMillis() - entry.getDate().getTime();
-			long minutes = millis / (60*1000L);
-			long hours = minutes / 60L;
-			long days = hours / 24L;
-			long months = days / 30L;
-			long years = days / 365L;
-			if(minutes <= 1) {
-				pubTime = constants.oneMinuteAgo();
-			} else if(hours < 1) {
-				pubTime = messages.someMinutesAgo(minutes);
-			} else if(hours == 1) {
-				pubTime = constants.oneHourAgo();
-			} else if(days < 1) {
-				pubTime = messages.someHoursAgo(hours);
-			} else if(days == 1) {
-				pubTime = constants.yesterday();
-			}  else if(months < 1) {
-				pubTime = messages.someDaysAgo(days);
-			} else if(months == 1) {
-				pubTime = constants.oneMonthAgo();
-			} else if(years < 1) {
-				pubTime = messages.someMinutesAgo(months);
-			} else if(years == 1) {
-				pubTime = constants.oneYearAgo();
-			} else {
-				pubTime = messages.someYearsAgo(years);
+			String pubTime = null;
+			if(entry.getDate() != null) {
+				long millis = System.currentTimeMillis() - entry.getDate().getTime();
+				long minutes = millis / (60*1000L);
+				long hours = minutes / 60L;
+				long days = hours / 24L;
+				long months = days / 30L;
+				long years = days / 365L;
+				if(minutes <= 1) {
+					pubTime = constants.oneMinuteAgo();
+				} else if(hours < 1) {
+					pubTime = messages.someMinutesAgo(minutes);
+				} else if(hours == 1) {
+					pubTime = constants.oneHourAgo();
+				} else if(days < 1) {
+					pubTime = messages.someHoursAgo(hours);
+				} else if(days == 1) {
+					pubTime = constants.yesterday();
+				}  else if(months < 1) {
+					pubTime = messages.someDaysAgo(days);
+				} else if(months == 1) {
+					pubTime = constants.oneMonthAgo();
+				} else if(years < 1) {
+					pubTime = messages.someMinutesAgo(months);
+				} else if(years == 1) {
+					pubTime = constants.oneYearAgo();
+				} else {
+					pubTime = messages.someYearsAgo(years);
+				}
 			}
 			
 			setWidget(getRowCount(), 0, new EntryTitle(entry.getTitle(), pubTime, i));
