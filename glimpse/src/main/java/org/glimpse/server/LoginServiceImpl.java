@@ -17,7 +17,8 @@ public class LoginServiceImpl extends RemoteServiceServlet  implements LoginServ
 			GlimpseManager.getInstance(getServletContext()).getConnectionManager();
 		try {
 			String connectionId = connectionManager.connect(login, password);
-			GlimpseUtils.setConnectionId(getThreadLocalResponse(), connectionId, remember);
+			GlimpseUtils.setConnectionId(getThreadLocalRequest(),
+					getThreadLocalResponse(), connectionId, remember);
 			if(StringUtils.isNotEmpty(connectionId)) {
 				return true;
 			}
@@ -33,7 +34,8 @@ public class LoginServiceImpl extends RemoteServiceServlet  implements LoginServ
 			ConnectionManager connectionManager =
 				GlimpseManager.getInstance(getServletContext()).getConnectionManager();
 			connectionManager.disconnect(connectionId);
-			GlimpseUtils.setConnectionId(getThreadLocalResponse(), "", false);
+			GlimpseUtils.setConnectionId(getThreadLocalRequest(),
+					getThreadLocalResponse(), "", false);
 		}
 	}
 

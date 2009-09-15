@@ -20,10 +20,12 @@ public class GlimpseUtils {
 		return null;
 	}
 	
-	public static void setConnectionId(HttpServletResponse response,
+	public static void setConnectionId(HttpServletRequest request,
+			HttpServletResponse response,
 			String connectionId,
 			boolean persistent) {
 		Cookie cookie = new Cookie(COOKIE_CONNECTION, connectionId);
+		cookie.setPath(request.getContextPath());
 		if(!persistent) {
 			cookie.setMaxAge(-1);
 		} else {

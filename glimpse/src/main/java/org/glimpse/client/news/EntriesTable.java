@@ -116,7 +116,7 @@ public class EntriesTable extends FlexTable {
 				} else if(months == 1) {
 					pubTime = constants.oneMonthAgo();
 				} else if(years < 1) {
-					pubTime = messages.someMinutesAgo(months);
+					pubTime = messages.someMonthsAgo(months);
 				} else if(years == 1) {
 					pubTime = constants.oneYearAgo();
 				} else {
