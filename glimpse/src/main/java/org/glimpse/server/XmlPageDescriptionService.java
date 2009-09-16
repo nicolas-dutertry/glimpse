@@ -50,6 +50,8 @@ public class XmlPageDescriptionService extends RemoteServiceServlet implements
 		Configuration configuration = glimpseManager.getConfiguration();
 		usersDirectory = new File(configuration.getString("users.directory",
 				getServletContext().getRealPath("/WEB-INF/users")));
+		
+		logger.debug("user directory : " + usersDirectory.getAbsolutePath());
 	}
 
 	public PageDescription getPageDescription() {
