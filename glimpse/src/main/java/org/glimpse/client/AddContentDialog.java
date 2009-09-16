@@ -29,7 +29,6 @@ public class AddContentDialog extends DialogBox {
 		typeList = new ListBox();
 		typePanel.add(typeList);
 		typeList.addItem(constants.newsReader());
-		typeList.addItem(constants.link());
 		typeList.addItem(constants.html());
 		
 		HorizontalPanel buttonPanel = new HorizontalPanel();
@@ -40,8 +39,6 @@ public class AddContentDialog extends DialogBox {
 			public void onClick(ClickEvent event) {
 				Component component = null;
 				if(typeList.getSelectedIndex() == 1) {
-					// TODO
-				} else if(typeList.getSelectedIndex() == 2) {
 					component = new HtmlComponent();
 				} else {
 					component = new NewsReader();
