@@ -104,4 +104,11 @@ public class AggregatorColumn extends Composite {
 			return i-1;
 		}
 	}
+	
+	void onTabActivated() {
+		for(int i = 0; i < getComponentCount(); i++) {
+			Component component = getComponent(i);
+			component.onTabActivated();
+		}
+	}
 }

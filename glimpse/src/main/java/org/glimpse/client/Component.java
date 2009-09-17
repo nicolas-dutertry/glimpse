@@ -155,5 +155,9 @@ public abstract class Component extends Composite implements HasDragHandle {
 		return dragHandle;
 	}
 	
+	protected void onTabActivated() {
+		// Nothing by default
+	}
+	
 	public abstract Type getType();
 }

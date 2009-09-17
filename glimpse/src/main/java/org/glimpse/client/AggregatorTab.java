@@ -61,4 +61,25 @@ public class AggregatorTab extends Composite {
 	public AggregatorColumn getColumn(int index) {
 		return (AggregatorColumn)panel.getWidget(index);
 	}
+	
+	public int getColumnIndex(Component component) {
+		for(int i = 0; i < getColumnCount(); i++) {
+			AggregatorColumn column = getColumn(i);
+			if(column.getComponentIndex(component) != -1) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	public void setVisible(boolean visible) {
+		super.setVisible(visible);
+		
+		if(visible) {
+			for(int i = 0; i < getColumnCount(); i++) {
+				AggregatorColumn column = getColumn(i);
+				column.onTabActivated();
+			}
+		}
+	}
 }

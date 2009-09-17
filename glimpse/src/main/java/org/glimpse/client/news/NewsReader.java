@@ -54,6 +54,8 @@ public class NewsReader extends Component {
 	
 	private Label error;
 	
+	private boolean initialized;
+	
 	private class RefreshHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 			refresh();
@@ -146,11 +148,6 @@ public class NewsReader extends Component {
 		
 		synchronizeOptions();
 		
-		String url = getUrl();		
-		if(url != null && !url.trim().equals("")) {
-			optionPanel.setVisible(false);
-		}		
-		
 		Button button = new Button(constants.ok());
 		button.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
@@ -208,10 +205,11 @@ public class NewsReader extends Component {
 		
 		setContent(panel);
 		
-		refresh();
+		checkPreviousNext();
 	}
 	
 	public void refresh() {
+		initialized = true;
 		final String url = getUrl();
 		entriesTable.clear();
 		
@@ -293,5 +291,13 @@ public class NewsReader extends Component {
 	@Override
 	public Type getType() {
 		return Type.NEWS;
+	}
+
+	@Override
+	protected void onTabActivated() {
+		super.onTabActivated();
+		if(!initialized) {
+			refresh();
+		}
 	}
 }
