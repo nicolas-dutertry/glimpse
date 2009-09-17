@@ -78,7 +78,7 @@ public class XmlPageDescriptionService extends RemoteServiceServlet implements
 		if(StringUtils.isNotEmpty(connectionId)) {
 			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
 			ConnectionManager connectionManager = glimpseManager.getConnectionManager();
-			String userName = connectionManager.getUserName(connectionId);
+			String userName = connectionManager.getUserId(connectionId);
 			if(userName != null) {
 				return new File(usersDirectory, userName + "/page.xml");
 			}
@@ -96,7 +96,7 @@ public class XmlPageDescriptionService extends RemoteServiceServlet implements
 		if(StringUtils.isNotEmpty(connectionId)) {
 			ConnectionManager connectionManager =
 				GlimpseManager.getInstance(getServletContext()).getConnectionManager();
-			String userName = connectionManager.getUserName(connectionId);
+			String userName = connectionManager.getUserId(connectionId);
 			page.setUserName(userName);
 		}
 		

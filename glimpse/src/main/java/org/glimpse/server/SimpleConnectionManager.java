@@ -11,7 +11,7 @@ public class SimpleConnectionManager implements ConnectionManager {
 		
 	}
 
-	public String getUserName(String connectionId) {
+	public String getUserId(String connectionId) {
 		return connectionId;
 	}
 

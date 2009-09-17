@@ -34,6 +34,7 @@ public class NewsReader extends Component {
 	private static final String PROPERTY_URL = "url";
 	private static final String PROPERTY_DIRECT_OPEN = "directOpen";
 	private static final String PROPERTY_MAX_PER_PAGE = "maxPerPage";
+	private static final int MAX_VISITED_ENTRIES = 30;
 	
 	static NewsRetrieverServiceAsync newsRetrieverService =
 		GWT.create(NewsRetrieverService.class);
@@ -55,6 +56,7 @@ public class NewsReader extends Component {
 	private Label error;
 	
 	private boolean initialized;
+	private List<String> visitedEntries;
 	
 	private class RefreshHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
@@ -93,7 +95,9 @@ public class NewsReader extends Component {
 	
 	public NewsReader(Map<String, String> properties) {
 		super(properties);
-		entriesTable = new EntriesTable();
+		visitedEntries = stringToList(getProperty("visitedEntries"));
+		
+		entriesTable = new EntriesTable(this);
 		
 		// Les boutons de commande du titre
 		
@@ -299,5 +303,50 @@ public class NewsReader extends Component {
 		if(!initialized) {
 			refresh();
 		}
+	}
+	
+	public boolean isVisited(String entryId) {
+		return visitedEntries.contains(entryId);
+	}
+	
+	public void addVisitedEntry(String entryId) {
+		visitedEntries.add(entryId);
+		while(visitedEntries.size() > MAX_VISITED_ENTRIES) {
+			visitedEntries.remove(0);
+		}
+		
+		setProperty("visitedEntries", listToString(visitedEntries));
+		Aggregator.getInstance().update();
+	}
+	
+	private static String listToString(List<?> list) {
+		if(list == null) {
+			return "";
+		}
+		StringBuilder s = new StringBuilder();
+		for(Object o : list) {
+			if(s.length() > 0) {
+				s.append(",");
+			}
+			s.append(o.toString());
+		}
+		return s.toString();
+	}	
+	
+	private static List<String> stringToList(String s) {
+		List<String> list = new LinkedList<String>();
+		if(s != null && !s.equals("")) {
+			int begin = 0;
+			int end = s.indexOf(',');
+			while(begin < s.length()-1) {
+				list.add(s.substring(begin, end));
+				begin = end + 1;
+				end = s.indexOf(',', begin);
+				if(end == -1) {
+					end = s.length();
+				}
+			}
+		}
+		return list;
 	}
 }

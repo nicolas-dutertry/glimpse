@@ -470,7 +470,15 @@ h1 {
 	padding-bottom: 3px;
 }
 
-.entry-title:hover {
+.entry-title-visited, .entry-title-visited:visited {
+	display: block;
+	color: #AAAAAA;
+	text-decoration: none;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.entry-title:hover, .entry-title-visited:hover {
 	display: block;
 	color: #FF6600;
 	background-color: #FFFFE0;

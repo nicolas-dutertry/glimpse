@@ -16,20 +16,28 @@ public class EntriesTable extends FlexTable {
 	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
 	private AggregatorMessages messages = GWT.create(AggregatorMessages.class);
 	
+	private NewsReader component;
 	private List<Entry> entries = new LinkedList<Entry>();
+	
 	private int maxPerPage = 10;
 	private int currentPage = 0;
 	private String url;
 	private boolean directOpen = true;
 	private EntryContentDialog dialog;
 	
-	private class EntryTitle extends Anchor {
+	private class EntryTitle extends Anchor implements ClickHandler {
 		private int entryIndex = 0;
+		private String entryId;
 		
-		public EntryTitle(String label, String pubTime, int entryIndex) {
+		public EntryTitle(String entryId, String label, String pubTime, int entryIndex) {
 			super(createEntryTitleHtml(label, pubTime), true);
+			this.entryId = entryId;
 			this.entryIndex = entryIndex;
-			setStylePrimaryName("entry-title");
+			if(component.isVisited(entryId)) {
+				setStylePrimaryName("entry-title-visited");
+			} else {
+				setStylePrimaryName("entry-title");
+			}
 			setWidth("100%");
 			
 			if(directOpen) {
@@ -38,14 +46,16 @@ public class EntriesTable extends FlexTable {
 				setTarget("_blank");
 			} else {
 				setHref("javascript:void(0)");
-				
-				addClickHandler(new ClickHandler() {
-					public void onClick(ClickEvent event) {
-						setStylePrimaryName("entry-title");
-						Entry entry = entries.get(EntryTitle.this.entryIndex);
-						dialog.showEntry(url, entry);
-					}
-				});
+			}
+			addClickHandler(this);
+		}
+		
+		public void onClick(ClickEvent event) {
+			component.addVisitedEntry(entryId);
+			setStylePrimaryName("entry-title-visited");
+			if(!directOpen) {
+				Entry entry = entries.get(EntryTitle.this.entryIndex);
+				dialog.showEntry(url, entry);
 			}
 		}
 	}
@@ -60,7 +70,9 @@ public class EntriesTable extends FlexTable {
 		return html.toString();
 	}
 
-	public EntriesTable() {
+	public EntriesTable(NewsReader component) {
+		this.component = component;
+		
 		dialog = new EntryContentDialog();		
 		setStylePrimaryName("entries-table");
 	}
@@ -124,7 +136,7 @@ public class EntriesTable extends FlexTable {
 				}
 			}
 			
-			setWidget(getRowCount(), 0, new EntryTitle(entry.getTitle(), pubTime, i));
+			setWidget(getRowCount(), 0, new EntryTitle(entry.getId(), entry.getTitle(), pubTime, i));
 		}
 	}
 	
