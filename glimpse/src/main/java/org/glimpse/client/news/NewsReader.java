@@ -338,6 +338,9 @@ public class NewsReader extends Component {
 		if(s != null && !s.equals("")) {
 			int begin = 0;
 			int end = s.indexOf(',');
+			if(end == -1) {
+				end = s.length();
+			}
 			while(begin < s.length()-1) {
 				list.add(s.substring(begin, end));
 				begin = end + 1;

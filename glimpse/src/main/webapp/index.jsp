@@ -1,5 +1,6 @@
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://www.glimpse.org/glimpse" prefix="glimpse" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- The HTML 4.01 Transitional DOCTYPE declaration-->
 <!-- above set at the top of the file will set     -->
@@ -7,11 +8,10 @@
 <!-- "Quirks Mode". Replacing this declaration     -->
 <!-- with a "Standards Mode" doctype is supported, -->
 <!-- but may lead to some differences in layout.   -->
-
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="gwt:property" content="locale=<%=request.getLocale().toString()%>">
+    <meta name="gwt:property" content="locale=<glimpse:locale/>">
 
     <!--                                                               -->
     <!-- Consider inlining CSS to reduce the number of requested files -->

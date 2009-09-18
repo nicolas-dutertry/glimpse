@@ -53,7 +53,7 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 							getAtomEntries(doc));
 			}
 		} catch(Exception e) {
-			logger.error("Error while get Entries for <" + url + ">", e);
+			logger.error("Error while getting Entries for <" + url + ">", e);
 		}
 
 		return null;
@@ -102,7 +102,7 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 					rssEntry.setDate(date);
 				} catch(Exception e) {
 					// unparsable date
-					logger.error("Unable to parse date <" + pubDate + ">", e);
+					logger.warn("Unable to parse date <" + pubDate + ">", e);
 				}
 			}
 			
@@ -151,7 +151,7 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 					}
 				} catch(Exception e) {
 					// unparsable date
-					logger.error("Unable to parse date <" + updated + ">", e);
+					logger.warn("Unable to parse date <" + updated + ">", e);
 				}
 			}
 			

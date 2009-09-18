@@ -14,10 +14,12 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -30,7 +32,21 @@ public class AggregatorTabOptions extends Composite {
 	public AggregatorTabOptions(AggregatorTabPanel tabPanel) {
 		this.tabPanel = tabPanel;
 		
+		FlowPanel mainPanel = new FlowPanel();
+		mainPanel.setWidth("100%");
+		SimplePanel closePanel = new SimplePanel();
+		closePanel.setStylePrimaryName("taboptions-close");
+		mainPanel.add(closePanel);
+		Image closeButton = new Image("images/close-tab.png");
+		closePanel.add(closeButton);
+		closeButton.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				AggregatorTabOptions.this.tabPanel.hideOptions();
+			}
+		});
+		
 		HorizontalPanelExt panel = new HorizontalPanelExt();
+		mainPanel.add(panel);
 		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
 		HorizontalPanel movePanel = new HorizontalPanel();
@@ -119,7 +135,7 @@ public class AggregatorTabOptions extends Composite {
 		panel.add(delButton);
 		panel.setCellVerticalAlignment(delButton, VerticalPanel.ALIGN_MIDDLE);
 		
-		initWidget(panel);
+		initWidget(mainPanel);
 	}
 	
 	public void reinit() {

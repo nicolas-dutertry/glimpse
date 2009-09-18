@@ -107,4 +107,13 @@ public interface AggregatorConstants extends Constants {
 	
 	@DefaultStringValue("one year ago")
 	String oneYearAgo();
+	
+	@DefaultStringValue("Options")
+	String userOptions();
+	
+	@DefaultStringValue("Language")
+	String language();
+	
+	@DefaultStringValue("Theme")
+	String theme();
 }

@@ -9,11 +9,17 @@ import javax.servlet.ServletContextListener;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.LogManager;
 import org.apache.log4j.PropertyConfigurator;
 
 public class GlimpseManager implements ServletContextListener {
+	private static final Log logger = LogFactory.getLog(GlimpseManager.class);
+
 	private Configuration configuration;
 	private ConnectionManager connectionManager;
+	private UserManager userManager;
 
 	public void contextInitialized(ServletContextEvent sce) {
 		try {
@@ -26,11 +32,24 @@ public class GlimpseManager implements ServletContextListener {
 			}
 			
 			File logConfig = new File(confDir, "log4j.properties");
+			LogManager.resetConfiguration();
 			PropertyConfigurator.configure(logConfig.getAbsolutePath());
 			
 			configuration = new PropertiesConfiguration(new File(confDir,
 					"glimpse.properties"));
 			connectionManager = new SimpleConnectionManager();
+			
+			File usersDirectory = new File(configuration.getString(
+					"users.directory",
+					context.getRealPath("/WEB-INF/users")));
+			
+			if(logger.isDebugEnabled()) {
+				logger.debug("user directory : " +
+						usersDirectory.getAbsolutePath());
+			}
+			
+			userManager = new XmlUserManager(usersDirectory);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -47,6 +66,10 @@ public class GlimpseManager implements ServletContextListener {
 	
 	public ConnectionManager getConnectionManager() {
 		return connectionManager;
+	}
+	
+	public UserManager getUserManager() {
+		return userManager;
 	}
 	
 	public Proxy getProxy(String url) {

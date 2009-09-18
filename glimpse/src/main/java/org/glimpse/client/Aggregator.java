@@ -53,19 +53,27 @@ public class Aggregator implements EntryPoint, DragHandler {
 
 	/**
 	 * Create a remote service proxy to talk to the server-side service.
-	 */	
-	private PageDescriptionServiceAsync pageDescriptionService = GWT
-		.create(PageDescriptionService.class);
+	 */
 	private LoginServiceAsync loginService = GWT.create(LoginService.class);
+	private UserDescriptionServiceAsync userDescriptionService =
+		GWT.create(UserDescriptionService.class);
+	private PageDescriptionServiceAsync pageDescriptionService =
+		GWT.create(PageDescriptionService.class);
+	
 	
 	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
 	
-	private String userName;
+	private UserDescription userDescription;
 	private AggregatorTabPanel tabPanel;
 	private PopupPanel loadPopup;
 	private DialogBox addDialog;
 	private DialogBox loginDialog;
+	private DialogBox optionsDialog;
 	private PickupDragController dragController;
+	
+	public UserDescription getUserDescription() {
+		return userDescription;
+	}
 
 	/**
 	 * This is the entry point method.
@@ -84,25 +92,34 @@ public class Aggregator implements EntryPoint, DragHandler {
 		popupContent.add(new Label(constants.loading()));		
 		loadPopup.center();
 		
-		pageDescriptionService.getPageDescription(
-				new AsyncCallback<PageDescription>() {
+		userDescriptionService.getUserDescription(
+				new AsyncCallback<UserDescription>() {
 					public void onFailure(Throwable caught) {
 						Window.alert(SERVER_ERROR);
 					}
 
-					public void onSuccess(PageDescription pageDescription) {
-						load(pageDescription);
-					}					
+					public void onSuccess(UserDescription userDescription) {
+						Aggregator.this.userDescription = userDescription;
+						pageDescriptionService.getPageDescription(
+								new AsyncCallback<PageDescription>() {
+									public void onFailure(Throwable caught) {
+										Window.alert(SERVER_ERROR);
+									}
+
+									public void onSuccess(PageDescription pageDescription) {
+										load(pageDescription);
+									}					
+						});
+					}				
 		});
 	}
 	
 	private void load(PageDescription pageDescription) {
 		RootPanel.get("main").clear();
 		
-		userName = pageDescription.getUserName();
-		
 		addDialog = new AddContentDialog();
 		loginDialog = new LoginDialog();
+		optionsDialog = new UserOptionsDialog();
 		
 		FlowPanel mainPanel = new FlowPanel();
 		mainPanel.setWidth("100%");
@@ -114,42 +131,57 @@ public class Aggregator implements EntryPoint, DragHandler {
 		
 		Anchor addButton = new Anchor(constants.addContent(),
 				"javascript:void(0)");
-		addButton.setStylePrimaryName("add-content");
+		addButton.setStylePrimaryName("add-content-button");
 		addButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				addDialog.center();
 			}
 		});
 		topBar.add(addButton);
-		topBar.setCellHorizontalAlignment(addButton, HorizontalPanel.ALIGN_LEFT);		
+		topBar.setCellWidth(addButton, "100%");		
 		
-		String loginButtonLabel = constants.login();
-		if(userName != null && !userName.equals("")) {
-			loginButtonLabel = constants.logout();
-		}
-		Anchor loginButton = new Anchor(loginButtonLabel,
+		if(UserDescription.GUEST_ID.equals(userDescription.getId())) {
+			// Guest user
+			Anchor loginButton = new Anchor(constants.login(),
+					"javascript:void(0)");
+			loginButton.setStylePrimaryName("login-button");
+			loginButton.addClickHandler(new ClickHandler() {			
+				public void onClick(ClickEvent event) {
+					loginDialog.center();
+				}
+			});
+			topBar.add(loginButton);
+		} else {
+			// Connected user
+			Anchor optionsButton = new Anchor(constants.userOptions(),
+					"javascript:void(0)");
+			optionsButton.setStylePrimaryName("user-options-button");
+			optionsButton.addClickHandler(new ClickHandler() {			
+				public void onClick(ClickEvent event) {
+					optionsDialog.center();
+				}
+			});
+			topBar.add(optionsButton);
+			
+			Anchor logoutButton = new Anchor(constants.logout(),
 				"javascript:void(0)");
-		loginButton.setStylePrimaryName("add-content");
-		loginButton.addClickHandler(new ClickHandler() {			
-			public void onClick(ClickEvent event) {
-				if(userName != null && !userName.equals("")) {
+			logoutButton.setStylePrimaryName("logout-button");
+			logoutButton.addClickHandler(new ClickHandler() {			
+				public void onClick(ClickEvent event) {
 					loadPopup.center();
 					loginService.disconnnect(new AsyncCallback<Void>() {
 						public void onFailure(Throwable caught) {
 							reloadPage();
 						}
-
+		
 						public void onSuccess(Void result) {
 							reloadPage();
 						}
 					});
-				} else {
-					loginDialog.center();
 				}
-			}
-		});
-		topBar.add(loginButton);
-		topBar.setCellHorizontalAlignment(loginButton, HorizontalPanel.ALIGN_RIGHT);
+			});
+			topBar.add(logoutButton);
+		}
 		
 		mainPanel.add(topBar);
 		
@@ -241,10 +273,6 @@ public class Aggregator implements EntryPoint, DragHandler {
 	
 	public static Aggregator getInstance() {
 		return instance;
-	}
-	
-	public String getUserName() {
-		return userName;
 	}
 	
 	public void addComponent(Component component) {

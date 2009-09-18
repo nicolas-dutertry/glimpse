@@ -12,7 +12,6 @@ import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
@@ -45,8 +44,6 @@ public class LoginDialog extends DialogBox {
 		
 		rememberMe = new CheckBox(constants.rememberMe());
 		panel.add(rememberMe);
-		
-		panel.add(new Hidden("action", "connect"));
 		
 		HorizontalPanel buttonsPanel = new HorizontalPanel();
 		buttonsPanel.setWidth("100%");

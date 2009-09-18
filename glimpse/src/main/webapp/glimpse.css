@@ -210,10 +210,14 @@ h1 {
 	vertical-align: middle;
 }
 
-.add-content {
+.add-content-button, .login-button, .logout-button, .user-options-button {
 	color: #FFFFFF;
 	text-decoration: none;
 	font-weight: bold;
+}
+
+.user-options-button {
+	padding-right: 5px;
 }
 
 .header {
@@ -318,8 +322,17 @@ h1 {
 
 .taboptions {
 	background-color: #444444;
-	padding: 10px;
+	padding: 0px;
 	color: #FFFFFF;
+}
+
+.taboptions-close {
+	text-align: right;
+	padding: 5px;
+}
+
+.taboptions-close img {
+	cursor: pointer;
 }
 
 .taboptions td {
