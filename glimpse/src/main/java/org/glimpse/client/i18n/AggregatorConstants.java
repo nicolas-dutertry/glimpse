@@ -116,4 +116,10 @@ public interface AggregatorConstants extends Constants {
 	
 	@DefaultStringValue("Theme")
 	String theme();
+	
+	@DefaultStringValue("Français")
+	String francais();
+	
+	@DefaultStringValue("English")
+	String english();
 }

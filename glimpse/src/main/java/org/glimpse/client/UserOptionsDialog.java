@@ -30,8 +30,8 @@ public class UserOptionsDialog extends DialogBox {
 		FlexTable table = new FlexTable();
 		table.setText(0, 0, constants.language());
 		localesList = new Select();
-		localesList.addOption(new Select.Option("Français", "fr"));
-		localesList.addOption(new Select.Option("English", "en"));		
+		localesList.addOption(new Select.Option(constants.francais(), "fr"));
+		localesList.addOption(new Select.Option(constants.english(), "en"));		
 		table.setWidget(0, 1, localesList);
 		
 		table.setText(1, 0, constants.theme());
