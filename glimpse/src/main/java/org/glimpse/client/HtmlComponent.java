@@ -13,6 +13,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -58,9 +59,10 @@ public class HtmlComponent extends Component {
 		
 		List<Widget> actions = new LinkedList<Widget>();
 		
-		Image optionButton = new Image("images/options.png");
+		FocusPanel optionButton = new FocusPanel(new Image("images/p.png"));
 		optionButton.addClickHandler(new OptionHandler());
 		optionButton.setTitle(constants.options());
+		optionButton.setStylePrimaryName("component-action-options");
 		actions.add(optionButton);
 		
 		setActions(actions);

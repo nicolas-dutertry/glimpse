@@ -15,6 +15,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
@@ -37,8 +38,10 @@ public class AggregatorTabOptions extends Composite {
 		SimplePanel closePanel = new SimplePanel();
 		closePanel.setStylePrimaryName("taboptions-close");
 		mainPanel.add(closePanel);
-		Image closeButton = new Image("images/close-tab.png");
+		FocusPanel closeButton = new FocusPanel();		
 		closePanel.add(closeButton);
+		closeButton.setWidget(new Image("images/p.png"));
+		closeButton.setStylePrimaryName("taboptions-close-button");
 		closeButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				AggregatorTabOptions.this.tabPanel.hideOptions();
@@ -52,8 +55,9 @@ public class AggregatorTabOptions extends Composite {
 		HorizontalPanel movePanel = new HorizontalPanel();
 		movePanel.setSpacing(0);
 		panel.add(movePanel);
-		Image moveLeft = new Image("images/move-tab-left.png");
+		FocusPanel moveLeft = new FocusPanel();
 		movePanel.add(moveLeft);
+		moveLeft.setWidget(new Image("images/p.png"));
 		moveLeft.setStylePrimaryName("move-tab-left");
 		moveLeft.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
@@ -61,8 +65,9 @@ public class AggregatorTabOptions extends Composite {
 				Aggregator.getInstance().update();
 			}
 		});
-		Image moveRight = new Image("images/move-tab-right.png");
+		FocusPanel moveRight = new FocusPanel();
 		movePanel.add(moveRight);
+		moveRight.setWidget(new Image("images/p.png"));
 		moveRight.setStylePrimaryName("move-tab-right");
 		moveRight.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {

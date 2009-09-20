@@ -331,8 +331,13 @@ h1 {
 	padding: 5px;
 }
 
-.taboptions-close img {
+.taboptions-close-button {
 	cursor: pointer;
+	background-image: url(images/close-tab.png);
+	background-repeat: no-repeat;
+	width: 14px;
+	height: 14px;
+	float: right;
 }
 
 .taboptions td {
@@ -342,10 +347,18 @@ h1 {
 
 .move-tab-left {
 	cursor: pointer;
+	background-image: url('images/move-tab-left.png');
+	background-repeat: no-repeat;
+	width: 14px;
+	height: 14px;
 }
 
 .move-tab-right {
 	cursor: pointer;
+	background-image: url('images/move-tab-right.png');
+	background-repeat: no-repeat;
+	width: 14px;
+	height: 14px;
 }
 
 .tabcontent {
@@ -421,6 +434,34 @@ h1 {
 .component-action {
 	cursor: pointer;
 	padding: 5px;
+}
+
+.component-action-move {
+	background-image: url('images/move.png');
+	background-repeat: no-repeat;
+	width: 12px;
+	height: 12px;
+}
+
+.component-action-refresh {
+	background-image: url('images/refresh.png');
+	background-repeat: no-repeat;
+	width: 12px;
+	height: 12px;
+}
+
+.component-action-options {
+	background-image: url('images/options.png');
+	background-repeat: no-repeat;
+	width: 12px;
+	height: 12px;
+}
+
+.component-action-delete {
+	background-image: url('images/close.png');
+	background-repeat: no-repeat;
+	width: 12px;
+	height: 12px;
 }
 
 .component-left {

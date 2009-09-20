@@ -16,7 +16,7 @@
     <!--                                                               -->
     <!-- Consider inlining CSS to reduce the number of requested files -->
     <!--                                                               -->
-    <link type="text/css" rel="stylesheet" href="<glimpse:theme/>/style.css">
+    <link type="text/css" rel="stylesheet" href="themes/<glimpse:theme/>/style.css">
 
     <!--                                           -->
     <!-- Any title is fine                         -->

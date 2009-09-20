@@ -15,6 +15,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
@@ -57,13 +58,14 @@ public abstract class Component extends Composite implements HasDragHandle {
 				
 		actionsPanel = new HorizontalPanelExt();
 		actionsPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-		dragHandle = new Image("images/move.png");
+		dragHandle = new FocusPanel(new Image("images/p.png"));
+		dragHandle.setStylePrimaryName("component-action-move");
 		actionsPanel.add(dragHandle);
 		actionsPanel.setCellClass(dragHandle, "component-action");
 		
-		Image deleteButton = new Image();
-		deleteButton.setUrl("images/close.png");
+		FocusPanel deleteButton = new FocusPanel(new Image("images/p.png"));
 		deleteButton.setTitle(constants.delete());
+		deleteButton.setStylePrimaryName("component-action-delete");
 		deleteButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				if(Window.confirm(constants.deleteComponentConfirm())) {

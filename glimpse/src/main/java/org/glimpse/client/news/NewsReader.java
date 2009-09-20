@@ -20,6 +20,7 @@ import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
@@ -112,14 +113,16 @@ public class NewsReader extends Component {
 		setTitleWidget(titlePanel);
 		
 		List<Widget> actions = new LinkedList<Widget>();
-		Image refreshButton = new Image("images/refresh.png");
+		FocusPanel refreshButton = new FocusPanel(new Image("images/p.png"));
 		refreshButton.setTitle(constants.refresh());
+		refreshButton.setStylePrimaryName("component-action-refresh");
 		refreshButton.addClickHandler(new RefreshHandler());
 		actions.add(refreshButton);
 		
-		Image optionButton = new Image("images/options.png");
+		FocusPanel optionButton = new FocusPanel(new Image("images/p.png"));
 		optionButton.addClickHandler(new OptionHandler());
 		optionButton.setTitle(constants.options());
+		optionButton.setStylePrimaryName("component-action-options");
 		actions.add(optionButton);
 		
 		setActions(actions);
