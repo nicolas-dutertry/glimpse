@@ -11,11 +11,14 @@ public class UserDescription implements Serializable {
 	private String locale;
 	private String theme;
 	
-	public UserDescription() {		
+	public UserDescription() {
+		this(GUEST_ID);
 	}
 	
 	public UserDescription(String id) {
 		this.id = id;
+		this.locale = "en";
+		this.theme = "default";
 	}
 
 	public String getLabel() {
