@@ -48,7 +48,7 @@ public abstract class Component extends Composite implements HasDragHandle {
 		topPanel.setWidth("100%");
 		topPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
-		Image titleLeft = new Image("images/p.png");
+		Image titleLeft = new Image(Aggregator.TRANSPARENT_IMAGE);
 		topPanel.add(titleLeft);
 		topPanel.setCellClass(titleLeft, "component-title-left");
 		
@@ -58,12 +58,12 @@ public abstract class Component extends Composite implements HasDragHandle {
 				
 		actionsPanel = new HorizontalPanelExt();
 		actionsPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-		dragHandle = new FocusPanel(new Image("images/p.png"));
+		dragHandle = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
 		dragHandle.setStylePrimaryName("component-action-move");
 		actionsPanel.add(dragHandle);
 		actionsPanel.setCellClass(dragHandle, "component-action");
 		
-		FocusPanel deleteButton = new FocusPanel(new Image("images/p.png"));
+		FocusPanel deleteButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
 		deleteButton.setTitle(constants.delete());
 		deleteButton.setStylePrimaryName("component-action-delete");
 		deleteButton.addClickHandler(new ClickHandler() {			
@@ -81,14 +81,14 @@ public abstract class Component extends Composite implements HasDragHandle {
 		topPanel.setCellHorizontalAlignment(actionsPanel, HorizontalPanel.ALIGN_RIGHT);
 		topPanel.setCellClass(actionsPanel, "component-title-actions");
 		
-		Image titleRight = new Image("images/p.png");
+		Image titleRight = new Image(Aggregator.TRANSPARENT_IMAGE);
 		topPanel.add(titleRight);
 		topPanel.setCellClass(titleRight, "component-title-right");
 		
 		HorizontalPanelExt center = new HorizontalPanelExt();
 		center.setWidth("100%");
 		
-		Image left = new Image("images/p.png");
+		Image left = new Image(Aggregator.TRANSPARENT_IMAGE);
 		center.add(left);
 		center.setCellClass(left, "component-left");
 		
@@ -97,23 +97,23 @@ public abstract class Component extends Composite implements HasDragHandle {
 		center.add(contentPanel);
 		center.setCellClass(contentPanel, "component-content");
 		
-		Image right = new Image("images/p.png");
+		Image right = new Image(Aggregator.TRANSPARENT_IMAGE);
 		center.add(right);
 		center.setCellClass(right, "component-right");
 		
 		HorizontalPanelExt bottom = new HorizontalPanelExt();
 		bottom.setWidth("100%");
 		
-		Image bottomLeft = new Image("images/p.png");
+		Image bottomLeft = new Image(Aggregator.TRANSPARENT_IMAGE);
 		bottom.add(bottomLeft);
 		bottom.setCellClass(bottomLeft, "component-bottom-left");
 		
 		
-		Image bottomCenter = new Image("images/p.png");		
+		Image bottomCenter = new Image(Aggregator.TRANSPARENT_IMAGE);		
 		bottom.add(bottomCenter);
 		bottom.setCellClass(bottomCenter, "component-bottom-center");
 		
-		Image bottomRight = new Image("images/p.png");
+		Image bottomRight = new Image(Aggregator.TRANSPARENT_IMAGE);
 		bottom.add(bottomRight);
 		bottom.setCellClass(bottomRight, "component-bottom-right");
 		

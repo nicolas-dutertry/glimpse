@@ -21,7 +21,7 @@ public class AggregatorColumnDropController extends FlowPanelDropController {
 		framePositioner.setWidth("100%");
 		framePositioner.setStylePrimaryName("drop-positioner-frame");
 		positioner.add(framePositioner);
-		framePositioner.add(new Image("images/p.png"));
+		framePositioner.add(new Image(Aggregator.TRANSPARENT_IMAGE));
 		
 		return positioner;
 	}

@@ -47,7 +47,7 @@ public class AggregatorColumn extends Composite {
 		panel = new Panel();
 		panel.setHeight("200px");
 		panel.setStylePrimaryName("column");
-		panel.add(new Image("images/p.png"));
+		panel.add(new Image(Aggregator.TRANSPARENT_IMAGE));
 		
 		dropController = new AggregatorColumnDropController(panel);
 

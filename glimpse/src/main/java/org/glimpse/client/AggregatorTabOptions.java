@@ -40,7 +40,7 @@ public class AggregatorTabOptions extends Composite {
 		mainPanel.add(closePanel);
 		FocusPanel closeButton = new FocusPanel();		
 		closePanel.add(closeButton);
-		closeButton.setWidget(new Image("images/p.png"));
+		closeButton.setWidget(new Image(Aggregator.TRANSPARENT_IMAGE));
 		closeButton.setStylePrimaryName("taboptions-close-button");
 		closeButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
@@ -57,7 +57,7 @@ public class AggregatorTabOptions extends Composite {
 		panel.add(movePanel);
 		FocusPanel moveLeft = new FocusPanel();
 		movePanel.add(moveLeft);
-		moveLeft.setWidget(new Image("images/p.png"));
+		moveLeft.setWidget(new Image(Aggregator.TRANSPARENT_IMAGE));
 		moveLeft.setStylePrimaryName("move-tab-left");
 		moveLeft.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
@@ -67,7 +67,7 @@ public class AggregatorTabOptions extends Composite {
 		});
 		FocusPanel moveRight = new FocusPanel();
 		movePanel.add(moveRight);
-		moveRight.setWidget(new Image("images/p.png"));
+		moveRight.setWidget(new Image(Aggregator.TRANSPARENT_IMAGE));
 		moveRight.setStylePrimaryName("move-tab-right");
 		moveRight.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {

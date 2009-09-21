@@ -26,7 +26,7 @@ public class AggregatorTabTitle extends Composite implements ClickHandler {
 		panel = new HorizontalPanelExt();
 		panel.addClickHandler(this);
 		
-		left = new Image("images/p.png");
+		left = new Image(Aggregator.TRANSPARENT_IMAGE);
 		panel.add(left);
 		panel.setCellClass(left, "tabtitle-left");
 		
@@ -41,12 +41,12 @@ public class AggregatorTabTitle extends Composite implements ClickHandler {
 		panel.add(center);
 		panel.setCellClass(center, "tabtitle-center");
 		
-		options = new Image("images/p.png");
+		options = new Image(Aggregator.TRANSPARENT_IMAGE);
 		options.setVisible(false);
 		panel.add(options);
 		panel.setCellClass(options, "tabtitle-options");
 		
-		right = new Image("images/p.png");
+		right = new Image(Aggregator.TRANSPARENT_IMAGE);
 		panel.add(right);
 		panel.setCellClass(right, "tabtitle-right");
 		

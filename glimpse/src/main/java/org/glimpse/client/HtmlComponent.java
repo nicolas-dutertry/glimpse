@@ -59,7 +59,7 @@ public class HtmlComponent extends Component {
 		
 		List<Widget> actions = new LinkedList<Widget>();
 		
-		FocusPanel optionButton = new FocusPanel(new Image("images/p.png"));
+		FocusPanel optionButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
 		optionButton.addClickHandler(new OptionHandler());
 		optionButton.setTitle(constants.options());
 		optionButton.setStylePrimaryName("component-action-options");

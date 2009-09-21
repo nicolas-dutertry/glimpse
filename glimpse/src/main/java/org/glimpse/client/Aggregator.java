@@ -34,13 +34,6 @@ import com.google.gwt.user.client.ui.RootPanel;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class Aggregator implements EntryPoint, DragHandler {
-	public enum Direction {
-		LEFT,
-		RIGHT,
-		UP,
-		DOWN
-	}
-	
 	/**
 	 * The message displayed to the user when the server cannot be reached or
 	 * returns an error.
@@ -48,6 +41,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 	private static final String SERVER_ERROR = "An error occurred while "
 			+ "attempting to contact the server. Please check your network "
 			+ "connection and try again.";
+	
+	public static final String TRANSPARENT_IMAGE = "images/p.gif";
 	
 	private static Aggregator instance;
 
@@ -279,45 +274,6 @@ public class Aggregator implements EntryPoint, DragHandler {
 		AggregatorTab tab = tabPanel.getTab(tabPanel.getVisibleTab());
 		AggregatorColumn column = tab.getColumns().get(0);
 		column.add(component);
-	}
-	
-	public void moveComponent(Component component, Direction direction) {
-		AggregatorTab tab = tabPanel.getTab(
-				tabPanel.getVisibleTab());
-		AggregatorColumn column = getColumn(tab, component);
-		int col = tab.getColumnIndex(column);
-		int row = column.getComponentIndex(component);
-		boolean moved = false;
-		if(direction == Direction.RIGHT) {
-			if(col+1 < tab.getColumnCount()) {
-				column.remove(component);
-				AggregatorColumn rightColumn = tab.getColumn(col+1);
-				rightColumn.add(component);
-				moved = true;
-			}
-		} else if(direction == Direction.LEFT) {
-			if(col-1 >= 0) {
-				column.remove(component);
-				AggregatorColumn leftColumn = tab.getColumn(col-1);
-				leftColumn.add(component);
-				moved = true;
-			}
-		} else if(direction == Direction.UP) {
-			if(row-1 >= 0) {
-				column.remove(component);
-				column.insert(component, row-1);
-				moved = true;
-			}
-		}  else if(direction == Direction.DOWN) {
-			if(row+1 < column.getComponentCount()) {
-				column.remove(component);
-				column.insert(component, row+1);
-				moved = true;
-			}
-		}
-		if(moved) {
-			update();
-		}
 	}
 	
 	public AggregatorColumn getColumn(AggregatorTab tab, Component component) {
