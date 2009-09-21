@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <page>
 	<tab title="Home">
 		<column>
@@ -10,8 +10,8 @@
 		</column>
 		<column>
 			<component type="NEWS">
-				<property name="maxPerPage" value="7" />
 				<property name="directOpen" value="false" />
+				<property name="maxPerPage" value="7" />
 				<property name="url" value="http://standblog.org/blog/feed/rss2" />
 			</component>
 		</column>
@@ -19,6 +19,31 @@
 			<component type="NEWS">
 				<property name="maxPerPage" value="7" />
 				<property name="url" value="http://www.lequipe.fr/Xml/actu_rss.xml" />
+			</component>
+		</column>
+	</tab>
+	<tab title="News">
+		<column>
+			<component type="NEWS">
+				<property name="directOpen" value="true" />
+				<property name="maxPerPage" value="10" />
+				<property name="url" value="http://www.lemonde.fr/rss/une.xml" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="directOpen" value="true" />
+				<property name="maxPerPage" value="10" />
+				<property name="url"
+					value="http://www.20minutes.fr/rss/flux/une.xml?xts=290428&amp;xtor=RSS-1" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="directOpen" value="true" />
+				<property name="maxPerPage" value="10" />
+				<property name="url"
+					value="http://news.google.fr/news?pz=1&amp;ned=fr&amp;hl=fr&amp;topic=h&amp;num=3&amp;output=rss" />
 			</component>
 		</column>
 	</tab>
@@ -37,8 +62,9 @@
 	<tab title="Free software">
 		<column>
 			<component type="NEWS">
-				<property name="url"
-					value="http://nicolas.dutertry.com/ecran-noir/index.php?feed/atom" />
+				<property name="directOpen" value="true" />
+				<property name="maxPerPage" value="10" />
+				<property name="url" value="http://planet.ubuntu-fr.org/feed/atom" />
 			</component>
 		</column>
 		<column>
