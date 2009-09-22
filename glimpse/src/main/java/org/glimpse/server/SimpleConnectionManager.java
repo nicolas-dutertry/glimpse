@@ -1,7 +1,8 @@
 package org.glimpse.server;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -25,12 +26,14 @@ public class SimpleConnectionManager implements ConnectionManager {
 			throws AuthenticationException {
 		File userDir = new File(usersDirectory, login);
 		File passwordFile = new File(userDir, "password");
-		FileInputStream fis = null;
+		FileReader fr = null;
 		
 		try {
 			if(passwordFile.exists()) {
-				fis = new FileInputStream(passwordFile);
-				if(password.equals(IOUtils.toString(fis))) {
+				fr = new FileReader(passwordFile);
+				BufferedReader br = new BufferedReader(fr);
+				String rightPassword = br.readLine();
+				if(password.equals(rightPassword)) {
 					 String connectionId = RandomStringUtils.randomAlphanumeric(64);
 					 File connectionDir = new File(userDir, "connections");
 					 connectionDir.mkdir();
@@ -45,7 +48,7 @@ public class SimpleConnectionManager implements ConnectionManager {
 		} catch(Exception e) {
 			logger.error("Error", e);
 		} finally {
-			IOUtils.closeQuietly(fis);
+			IOUtils.closeQuietly(fr);
 		}
 		throw new AuthenticationException("Unable to authenticate " + login);
 	}
