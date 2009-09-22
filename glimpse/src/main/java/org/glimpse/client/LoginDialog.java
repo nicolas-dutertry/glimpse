@@ -5,6 +5,7 @@ import org.glimpse.client.i18n.AggregatorConstants;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
@@ -61,12 +62,12 @@ public class LoginDialog extends DialogBox {
 								if(result) {
 									Aggregator.getInstance().reloadPage();
 								} else {
-									hide();
+									Window.alert(constants.incorrectLoginPassword());
 								}
 							}
 							
 							public void onFailure(Throwable caught) {
-								hide();
+								Window.alert(Aggregator.SERVER_ERROR);
 							}
 						});
 			}
@@ -82,5 +83,23 @@ public class LoginDialog extends DialogBox {
 		buttonsPanel.add(cancel);
 		
 		setWidget(panel);		
+	}
+	
+	@Override
+	public void show() {
+		synchronize();
+		super.show();
+	}
+
+	@Override
+	public void center() {
+		synchronize();
+		super.center();
+	}
+	
+	private void synchronize() {
+		loginInput.setValue("");
+		passwordInput.setValue("");
+		rememberMe.setValue(false);
 	}
 }

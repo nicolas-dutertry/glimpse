@@ -36,8 +36,7 @@ public class GlimpseManager implements ServletContextListener {
 			PropertyConfigurator.configure(logConfig.getAbsolutePath());
 			
 			configuration = new PropertiesConfiguration(new File(confDir,
-					"glimpse.properties"));
-			connectionManager = new SimpleConnectionManager();
+					"glimpse.properties"));			
 			
 			File usersDirectory = new File(configuration.getString(
 					"users.directory",
@@ -48,6 +47,7 @@ public class GlimpseManager implements ServletContextListener {
 						usersDirectory.getAbsolutePath());
 			}
 			
+			connectionManager = new SimpleConnectionManager(usersDirectory);
 			userManager = new XmlUserManager(usersDirectory);
 			
 		} catch (Exception e) {

@@ -122,4 +122,7 @@ public interface AggregatorConstants extends Constants {
 	
 	@DefaultStringValue("English")
 	String english();
+	
+	@DefaultStringValue("Incorrect login/password")
+	String incorrectLoginPassword();
 }
