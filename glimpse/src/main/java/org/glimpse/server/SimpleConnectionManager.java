@@ -1,9 +1,9 @@
 package org.glimpse.server;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.io.IOUtils;
@@ -16,27 +16,29 @@ public class SimpleConnectionManager implements ConnectionManager {
 	private static final Log logger = LogFactory.getLog(SimpleConnectionManager.class);
 	
 	private File usersDirectory;
+	private File passwordsFile;
 	private transient Map<String, String>connectionsCache = new ConcurrentHashMap<String, String>(); 
 	
 	public SimpleConnectionManager(File usersDirectory) {
 		this.usersDirectory = usersDirectory;
+		passwordsFile = new File(usersDirectory, "passwords");
 	}
 	
 	public String connect(String login, String password)
 			throws AuthenticationException {
 		File userDir = new File(usersDirectory, login);
-		File passwordFile = new File(userDir, "password");
-		FileReader fr = null;
+		FileInputStream fis = null;
 		
 		try {
-			if(passwordFile.exists()) {
-				fr = new FileReader(passwordFile);
-				BufferedReader br = new BufferedReader(fr);
-				String rightPassword = br.readLine();
-				if(password.equals(rightPassword)) {
+			if(passwordsFile.exists()) {
+				Properties properties = new Properties();
+				fis = new FileInputStream(passwordsFile);
+				properties.load(fis);				
+				String rightPassword = properties.getProperty(login);
+				if(StringUtils.isNotEmpty(rightPassword) && rightPassword.equals(password)) {
 					 String connectionId = RandomStringUtils.randomAlphanumeric(64);
 					 File connectionDir = new File(userDir, "connections");
-					 connectionDir.mkdir();
+					 connectionDir.mkdirs();
 					 File connectionFile = new File(connectionDir, connectionId); 
 					 connectionFile.createNewFile();
 					 
@@ -48,7 +50,7 @@ public class SimpleConnectionManager implements ConnectionManager {
 		} catch(Exception e) {
 			logger.error("Error", e);
 		} finally {
-			IOUtils.closeQuietly(fr);
+			IOUtils.closeQuietly(fis);
 		}
 		throw new AuthenticationException("Unable to authenticate " + login);
 	}

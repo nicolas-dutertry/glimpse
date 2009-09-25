@@ -212,7 +212,10 @@ h1 {
 
 .add-content-button, .login-button, .logout-button, .user-options-button {
 	color: #FFFFFF;
-	text-decoration: none;
+	text-decoration: none;	
+}
+
+.add-content-button {
 	font-weight: bold;
 }
 

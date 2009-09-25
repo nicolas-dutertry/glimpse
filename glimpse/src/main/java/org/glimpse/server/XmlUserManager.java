@@ -40,19 +40,32 @@ public class XmlUserManager implements UserManager {
 	}
 
 	public UserDescription getDefaultUserDescription() {
-		UserDescription userDescription = new UserDescription("guest");
-		userDescription.setTheme("default");
+		UserDescription userDescription = getUserDescription(UserDescription.ADMIN_ID);
+		userDescription.setId(UserDescription.GUEST_ID);
+		return userDescription;
+	}
+	
+	public UserDescription getUserDescription(String userId) {
+		UserDescription userDescription = getExistingUserDescription(userId);
+		if(userDescription == null) {
+			userDescription = getExistingUserDescription(
+					UserDescription.ADMIN_ID);
+			if(userDescription != null) {
+				userDescription.setId(userId);
+			} else {
+				userDescription = new UserDescription(userId);
+				userDescription.setTheme("default");
+			}
+		}
 		return userDescription;
 	}
 
-	public UserDescription getUserDescription(String userId) {
+	private UserDescription getExistingUserDescription(String userId) {
 		File userDir = new File(usersDirectory, userId);
 		File userFile = new File(userDir, "description.xml");
 		
 		if(!userFile.exists()) {
-			UserDescription userDescription = new UserDescription(userId);
-			userDescription.setTheme("default");
-			return userDescription;
+			return null;
 		}
 		
 		try {
@@ -116,6 +129,10 @@ public class XmlUserManager implements UserManager {
 				themeElement.appendChild(doc.createTextNode(theme));
 			}
 			
+			if(!userDir.exists()) {
+				userDir.mkdir();
+			}
+			
 			Transformer transformer =
 				TransformerFactory.newInstance().newTransformer();
 			transformer.transform(new DOMSource(doc),
@@ -125,13 +142,36 @@ public class XmlUserManager implements UserManager {
 		}
 
 	}
-
+	
 	public PageDescription getUserPageDescription(String userId) {
+		PageDescription pageDescription = getExistingUserPageDescription(userId);
+		if(pageDescription == null) {
+			pageDescription = getExistingUserPageDescription(UserDescription.ADMIN_ID);
+		}
+		if(pageDescription == null) {
+			try {
+				DocumentBuilder builder =
+					DocumentBuilderFactory.newInstance().newDocumentBuilder();
+				InputStream is = getClass().getClassLoader().getResourceAsStream(
+						"/org/glimpse/server/default-page.xml");
+				Document doc = builder.parse(is);
+				
+				return buildPage(doc);
+				
+			} catch(Exception e) {
+				logger.error("Error while reading page description xml", e);
+				return null;
+			}
+		}
+		return pageDescription;
+	}
+
+	private PageDescription getExistingUserPageDescription(String userId) {
 		File userDir = new File(usersDirectory, userId);
 		File pageFile = new File(userDir, "page.xml");
 		
 		if(!pageFile.exists()) {
-			return getDefaultPageDescription();
+			return null;
 		}
 		
 		try {
@@ -148,19 +188,7 @@ public class XmlUserManager implements UserManager {
 	}
 	
 	public PageDescription getDefaultPageDescription() {
-		try {
-			DocumentBuilder builder =
-				DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			InputStream is = getClass().getClassLoader().getResourceAsStream(
-					"/org/glimpse/server/default-page.xml");
-			Document doc = builder.parse(is);
-			
-			return buildPage(doc);
-			
-		} catch(Exception e) {
-			logger.error("Error while reading page description xml", e);
-			return null;
-		}
+		return getUserPageDescription(UserDescription.ADMIN_ID);
 	}
 
 	public void setUserPageDescription(String userId,

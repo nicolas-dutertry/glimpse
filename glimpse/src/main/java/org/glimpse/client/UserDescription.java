@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class UserDescription implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final String GUEST_ID = "guest";
+	public static final String ADMIN_ID = "admin";
 	
 	private String id;
 	private String label;
@@ -49,5 +50,8 @@ public class UserDescription implements Serializable {
 		return id;
 	}
 	
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 }

@@ -2,8 +2,10 @@ package org.glimpse.client;
 
 import java.util.LinkedList;
 
+import org.glimpse.client.i18n.AggregatorConstants;
 import org.glimpse.client.widgets.HorizontalPanelExt;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Anchor;
@@ -20,6 +22,8 @@ public class AggregatorTabPanel extends Composite {
 	private FlowPanel tabContentsPanel;
 	private AggregatorTab visibleTabContent;
 	
+	private AggregatorConstants constants =
+		GWT.create(AggregatorConstants.class);
 	
 	public AggregatorTabPanel() {
 		panel = new FlowPanel();
@@ -29,11 +33,11 @@ public class AggregatorTabPanel extends Composite {
 		tabTitlesPanel.setStylePrimaryName("tabtitles");
 		
 		tabTitles = new HorizontalPanelExt();		
-		Anchor add = new Anchor("New tab", "javascript:void(0)");
+		Anchor add = new Anchor(constants.newTab(), "javascript:void(0)");
 		add.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				AggregatorTab tab = new AggregatorTab(3);
-				add(tab, "new tab");
+				add(tab, constants.newTab());
 				Aggregator.getInstance().update();
 				selectTab(getTabCount()-1);
 				showOptions();
