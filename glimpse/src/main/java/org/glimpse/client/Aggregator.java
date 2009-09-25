@@ -24,6 +24,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -123,6 +124,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 		HorizontalPanel topBar = new HorizontalPanel();
 		topBar.setWidth("100%");
 		topBar.setStylePrimaryName("topbar");
+		topBar.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
 		Anchor addButton = new Anchor(constants.addContent(),
 				"javascript:void(0)");

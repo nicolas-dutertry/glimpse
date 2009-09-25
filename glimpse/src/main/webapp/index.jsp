@@ -17,7 +17,8 @@
     <!-- Consider inlining CSS to reduce the number of requested files -->
     <!--                                                               -->
     <link type="text/css" rel="stylesheet" href="themes/<glimpse:theme/>/style.css">
-
+	<link rel="shortcut icon" href="themes/<glimpse:theme/>/favicon.ico"/>
+	
     <!--                                           -->
     <!-- Any title is fine                         -->
     <!--                                           -->
