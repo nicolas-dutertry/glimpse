@@ -106,7 +106,9 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 				}
 			}
 			
-			rssEntries.add(rssEntry);
+			if(StringUtils.isNotBlank(id) && StringUtils.isNotBlank(title) && StringUtils.isNotBlank(entryUrl)) {
+				rssEntries.add(rssEntry);
+			}
 		}
 		
 		return rssEntries;
@@ -155,7 +157,9 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 				}
 			}
 			
-			rssEntries.add(rssEntry);
+			if(StringUtils.isNotBlank(id) && StringUtils.isNotBlank(title) && StringUtils.isNotBlank(entryUrl)) {
+				rssEntries.add(rssEntry);
+			}
 		}
 		
 		return rssEntries;
