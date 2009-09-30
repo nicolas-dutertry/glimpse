@@ -37,6 +37,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -48,6 +49,7 @@ import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -181,12 +183,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 		topBar.add(addButton);
 		topBar.setCellWidth(addButton, "100%");		
 		
-		if(defaultPage) {
-			Anchor myPageButton = new Anchor(constants.myPage(),
-					"index.jsp");
-			myPageButton.setStylePrimaryName("mypage-button");
-			topBar.add(myPageButton);
-		} else if(UserDescription.GUEST_ID.equals(userDescription.getId())) {
+		 if(UserDescription.GUEST_ID.equals(userDescription.getId())) {
 			// Guest user
 			Anchor loginButton = new Anchor(constants.login(),
 					"javascript:void(0)");
@@ -199,11 +196,21 @@ public class Aggregator implements EntryPoint, DragHandler {
 			topBar.add(loginButton);
 		} else {
 			// Connected user
-			
-			Anchor defaultPageButton = new Anchor(constants.defaultPage(),
-					"default-page.jsp");
-			defaultPageButton.setStylePrimaryName("default-page-button");
-			topBar.add(defaultPageButton);
+			MenuBar menu = new MenuBar();
+			menu.setAutoOpen(true);
+			MenuBar pages = new MenuBar(true);
+			pages.addItem(constants.myPage(), new Command() {				
+				public void execute() {
+					Window.Location.replace("index.jsp");
+				}
+			});
+			pages.addItem(constants.defaultPage(), new Command() {				
+				public void execute() {
+					Window.Location.replace("default-page.jsp");
+				}
+			});
+			menu.addItem("pages", pages);
+			topBar.add(menu);
 	
 			Anchor optionsButton = new Anchor(constants.userOptions(),
 					"javascript:void(0)");
