@@ -11,6 +11,10 @@ body.glimpse, .glimpse table td, .glimpse select {
 	font-size: 11px;
 }
 
+td {
+	padding: 0px;
+}
+
 /** Example rules used by the template application (remove for your app) */
 h1 {
   font-size: 2em;
@@ -204,7 +208,7 @@ h1 {
   margin: 15px 6px 6px;
 }
 
-.topbar {
+.topbar td {
 	background-color: #444444;
 	padding: 8px;
 	vertical-align: middle;
@@ -217,10 +221,6 @@ h1 {
 
 .add-content-button {
 	font-weight: bold;
-}
-
-.user-options-button {
-	padding-right: 5px;
 }
 
 .header {
