@@ -145,4 +145,10 @@ public interface AggregatorConstants extends Constants {
 	
 	@DefaultStringValue("New tab")
 	String newTab();
+	
+	@DefaultStringValue("My page")
+	String myPage();
+	
+	@DefaultStringValue("Default page")
+	String defaultPage();
 }

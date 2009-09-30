@@ -27,6 +27,12 @@ public class PageDescriptionServiceImpl extends RemoteServiceServlet implements
 		PageDescriptionService {
 	private static final long serialVersionUID = 1L;
 	
+	public PageDescription getDefaultPageDescription() {
+		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
+		UserManager userManager = glimpseManager.getUserManager();
+		return userManager.getDefaultPageDescription();
+	}
+	
 	public PageDescription getPageDescription() {
 		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
 		UserManager userManager = glimpseManager.getUserManager();

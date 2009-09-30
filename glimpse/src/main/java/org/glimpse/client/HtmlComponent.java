@@ -74,15 +74,17 @@ public class HtmlComponent extends Component {
 		titleWidget = new Label(getTitle());
 		setTitleWidget(titleWidget);
 		
-		List<Widget> actions = new LinkedList<Widget>();
-		
-		FocusPanel optionButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
-		optionButton.addClickHandler(new OptionHandler());
-		optionButton.setTitle(constants.options());
-		optionButton.setStylePrimaryName("component-action-options");
-		actions.add(optionButton);
-		
-		setActions(actions);
+		if(Aggregator.getInstance().isModifiable()) {
+			List<Widget> actions = new LinkedList<Widget>();
+			
+			FocusPanel optionButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
+			optionButton.addClickHandler(new OptionHandler());
+			optionButton.setTitle(constants.options());
+			optionButton.setStylePrimaryName("component-action-options");
+			actions.add(optionButton);
+			
+			setActions(actions);
+		}
 		
 		// Contenu
 		VerticalPanel panel = new VerticalPanel();		

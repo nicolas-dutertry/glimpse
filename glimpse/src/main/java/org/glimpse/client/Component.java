@@ -75,24 +75,27 @@ public abstract class Component extends Composite implements HasDragHandle {
 				
 		actionsPanel = new HorizontalPanelExt();
 		actionsPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-		dragHandle = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
-		dragHandle.setStylePrimaryName("component-action-move");
-		actionsPanel.add(dragHandle);
-		actionsPanel.setCellClass(dragHandle, "component-action");
 		
-		FocusPanel deleteButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
-		deleteButton.setTitle(constants.delete());
-		deleteButton.setStylePrimaryName("component-action-delete");
-		deleteButton.addClickHandler(new ClickHandler() {			
-			public void onClick(ClickEvent event) {
-				if(Window.confirm(constants.deleteComponentConfirm())) {
-					removeFromParent();
-					Aggregator.getInstance().update();
+		if(Aggregator.getInstance().isModifiable()) {
+			dragHandle = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
+			dragHandle.setStylePrimaryName("component-action-move");
+			actionsPanel.add(dragHandle);
+			actionsPanel.setCellClass(dragHandle, "component-action");
+			
+			FocusPanel deleteButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
+			deleteButton.setTitle(constants.delete());
+			deleteButton.setStylePrimaryName("component-action-delete");
+			deleteButton.addClickHandler(new ClickHandler() {			
+				public void onClick(ClickEvent event) {
+					if(Window.confirm(constants.deleteComponentConfirm())) {
+						removeFromParent();
+						Aggregator.getInstance().update();
+					}
 				}
-			}
-		});
-		actionsPanel.add(deleteButton);
-		actionsPanel.setCellClass(deleteButton, "component-action");
+			});
+			actionsPanel.add(deleteButton);
+			actionsPanel.setCellClass(deleteButton, "component-action");
+		}
 		
 		topPanel.add(actionsPanel);
 		topPanel.setCellHorizontalAlignment(actionsPanel, HorizontalPanel.ALIGN_RIGHT);
@@ -140,7 +143,9 @@ public abstract class Component extends Composite implements HasDragHandle {
 		
 		initWidget(mainPanel);
 
-		Aggregator.getInstance().getDragController().makeDraggable(this);
+		if(Aggregator.getInstance().isModifiable()) {
+			Aggregator.getInstance().getDragController().makeDraggable(this);
+		}
 	}
 	
 	public void setTitleWidget(Widget widget) {
@@ -149,7 +154,11 @@ public abstract class Component extends Composite implements HasDragHandle {
 	
 	public void setActions(List<Widget> widgets) {
 		for (Widget widget : widgets) {
-			actionsPanel.insert(widget, actionsPanel.getWidgetCount()-1);
+			if(Aggregator.getInstance().isModifiable()) {
+				actionsPanel.insert(widget, actionsPanel.getWidgetCount()-1);
+			} else {
+				actionsPanel.add(widget);
+			}
 			actionsPanel.setCellClass(widget, "component-action");
 		}
 	}

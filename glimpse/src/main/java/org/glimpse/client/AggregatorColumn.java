@@ -82,7 +82,9 @@ public class AggregatorColumn extends Composite {
 	
 	public void add(Component component) {
 		panel.add(component);
-		Aggregator.getInstance().getDragController().makeDraggable(component);
+		if(Aggregator.getInstance().isModifiable()) {
+			Aggregator.getInstance().getDragController().makeDraggable(component);
+		}
 	}
 	
 	public boolean remove(Component component) {

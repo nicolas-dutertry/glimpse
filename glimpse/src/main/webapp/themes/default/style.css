@@ -230,9 +230,10 @@ h1 {
 	vertical-align: middle;
 }
 
-.add-content-button, .login-button, .logout-button, .user-options-button {
+.add-content-button, .login-button, .logout-button, .user-options-button, .mypage-button, .default-page-button {
 	color: #FFFFFF;
-	text-decoration: none;	
+	text-decoration: none;
+	white-space: nowrap;
 }
 
 .add-content-button {
@@ -416,6 +417,7 @@ h1 {
 	background-color: #CDCDCD;
 	color: #F2F2F2;
 	padding-left: 5px;
+	height: 23px;
 }
 
 .component-title-image {

@@ -20,6 +20,8 @@ package org.glimpse.client.news;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.glimpse.client.Aggregator;
+import org.glimpse.client.UserDescription;
 import org.glimpse.client.i18n.AggregatorConstants;
 import org.glimpse.client.i18n.AggregatorMessages;
 
@@ -68,8 +70,12 @@ public class EntriesTable extends FlexTable {
 		}
 		
 		public void onClick(ClickEvent event) {
-			component.addVisitedEntry(entryId);
-			setStylePrimaryName("entry-title-visited");
+			if(Aggregator.getInstance().isModifiable() &&
+					!UserDescription.ADMIN_ID.equals(
+							Aggregator.getInstance().getUserDescription().getId())) {
+				component.addVisitedEntry(entryId);
+				setStylePrimaryName("entry-title-visited");
+			}
 			if(!directOpen) {
 				Entry entry = entries.get(EntryTitle.this.entryIndex);
 				dialog.showEntry(url, entry);

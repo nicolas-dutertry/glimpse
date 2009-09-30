@@ -136,11 +136,13 @@ public class NewsReader extends Component {
 		refreshButton.addClickHandler(new RefreshHandler());
 		actions.add(refreshButton);
 		
-		FocusPanel optionButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
-		optionButton.addClickHandler(new OptionHandler());
-		optionButton.setTitle(constants.options());
-		optionButton.setStylePrimaryName("component-action-options");
-		actions.add(optionButton);
+		if(Aggregator.getInstance().isModifiable()) {
+			FocusPanel optionButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
+			optionButton.addClickHandler(new OptionHandler());
+			optionButton.setTitle(constants.options());
+			optionButton.setStylePrimaryName("component-action-options");
+			actions.add(optionButton);
+		}
 		
 		setActions(actions);
 		

@@ -28,6 +28,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
 
 public class AggregatorTabPanel extends Composite {
@@ -49,19 +50,25 @@ public class AggregatorTabPanel extends Composite {
 		FlowPanel tabTitlesPanel = new FlowPanel();
 		tabTitlesPanel.setStylePrimaryName("tabtitles");
 		
-		tabTitles = new HorizontalPanelExt();		
-		Anchor add = new Anchor(constants.newTab(), "javascript:void(0)");
-		add.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				AggregatorTab tab = new AggregatorTab(3);
-				add(tab, constants.newTab());
-				Aggregator.getInstance().update();
-				selectTab(getTabCount()-1);
-				showOptions();
-			}
-		});
-		tabTitles.add(add);
-		tabTitles.setCellClass(add, "tabtitles-add");
+		tabTitles = new HorizontalPanelExt();
+		if(Aggregator.getInstance().isModifiable()) {
+			Anchor add = new Anchor(constants.newTab(), "javascript:void(0)");
+			add.addClickHandler(new ClickHandler() {
+				public void onClick(ClickEvent event) {
+					AggregatorTab tab = new AggregatorTab(3);
+					add(tab, constants.newTab());
+					Aggregator.getInstance().update();
+					selectTab(getTabCount()-1);
+					showOptions();
+				}
+			});
+			tabTitles.add(add);
+			tabTitles.setCellClass(add, "tabtitles-add");
+		} else {
+			Image add = new Image("images/p.gif");
+			tabTitles.add(add);
+			tabTitles.setCellClass(add, "tabtitles-add");
+		} 
 		
 		tabTitlesPanel.add(tabTitles);
 		panel.add(tabTitlesPanel);
@@ -177,7 +184,7 @@ public class AggregatorTabPanel extends Composite {
 	}
 	
 	public void showOptions() {
-		if(!isOptionsVisible()) {
+		if(!isOptionsVisible() && Aggregator.getInstance().isModifiable()) {
 			AggregatorTabOptions options =
 				(AggregatorTabOptions)optionsPanel.getWidget();
 			options.reinit();

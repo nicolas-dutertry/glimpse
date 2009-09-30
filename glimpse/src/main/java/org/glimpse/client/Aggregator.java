@@ -34,14 +34,17 @@ import com.allen_sauer.gwt.dnd.client.PickupDragController;
 import com.allen_sauer.gwt.dnd.client.VetoDragException;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -83,6 +86,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 	private DialogBox loginDialog;
 	private DialogBox optionsDialog;
 	private PickupDragController dragController;
+	private boolean defaultPage = false;
 	
 	public UserDescription getUserDescription() {
 		return userDescription;
@@ -93,6 +97,13 @@ public class Aggregator implements EntryPoint, DragHandler {
 	 */
 	public void onModuleLoad() {
 		instance = this;
+		
+		String sDefaultPage = getHiddenValue("default-page");
+		if("true".equals(sDefaultPage)) {
+			defaultPage = true;
+		} else {
+			defaultPage = false;
+		}
 		
 		RootPanel.get("main").getElement().getStyle().setProperty("position" , "relative");
 		dragController = new PickupDragController(RootPanel.get("main"), false);
@@ -113,16 +124,29 @@ public class Aggregator implements EntryPoint, DragHandler {
 
 					public void onSuccess(UserDescription userDescription) {
 						Aggregator.this.userDescription = userDescription;
-						pageDescriptionService.getPageDescription(
-								new AsyncCallback<PageDescription>() {
-									public void onFailure(Throwable caught) {
-										Window.alert(SERVER_ERROR);
-									}
+						if(isModifiable()) {
+							pageDescriptionService.getPageDescription(
+									new AsyncCallback<PageDescription>() {
+										public void onFailure(Throwable caught) {
+											Window.alert(SERVER_ERROR);
+										}
+	
+										public void onSuccess(PageDescription pageDescription) {
+											load(pageDescription);
+										}					
+							});
+						} else {
+							pageDescriptionService.getDefaultPageDescription(
+									new AsyncCallback<PageDescription>() {
+										public void onFailure(Throwable caught) {
+											Window.alert(SERVER_ERROR);
+										}
 
-									public void onSuccess(PageDescription pageDescription) {
-										load(pageDescription);
-									}					
-						});
+										public void onSuccess(PageDescription pageDescription) {
+											load(pageDescription);
+										}					
+							});
+						} 
 					}				
 		});
 	}
@@ -151,10 +175,18 @@ public class Aggregator implements EntryPoint, DragHandler {
 				addDialog.center();
 			}
 		});
+		if(!isModifiable()) {
+			addButton.setVisible(false);
+		}
 		topBar.add(addButton);
 		topBar.setCellWidth(addButton, "100%");		
 		
-		if(UserDescription.GUEST_ID.equals(userDescription.getId())) {
+		if(defaultPage) {
+			Anchor myPageButton = new Anchor(constants.myPage(),
+					"index.jsp");
+			myPageButton.setStylePrimaryName("mypage-button");
+			topBar.add(myPageButton);
+		} else if(UserDescription.GUEST_ID.equals(userDescription.getId())) {
 			// Guest user
 			Anchor loginButton = new Anchor(constants.login(),
 					"javascript:void(0)");
@@ -167,6 +199,12 @@ public class Aggregator implements EntryPoint, DragHandler {
 			topBar.add(loginButton);
 		} else {
 			// Connected user
+			
+			Anchor defaultPageButton = new Anchor(constants.defaultPage(),
+					"default-page.jsp");
+			defaultPageButton.setStylePrimaryName("default-page-button");
+			topBar.add(defaultPageButton);
+	
 			Anchor optionsButton = new Anchor(constants.userOptions(),
 					"javascript:void(0)");
 			optionsButton.setStylePrimaryName("user-options-button");
@@ -248,6 +286,9 @@ public class Aggregator implements EntryPoint, DragHandler {
 	}
 	
 	public void update() {
+		if(!isModifiable()) {
+			return;
+		}
 		PageDescription pageDescription = generatePageDescription();
 		pageDescriptionService.setPageDescription(pageDescription, new AsyncCallback<Void>() {
 			public void onFailure(Throwable caught) {
@@ -326,4 +367,18 @@ public class Aggregator implements EntryPoint, DragHandler {
 	public native void reloadPage() /*-{
     	$wnd.location.reload();
 	}-*/;
+	
+	private String getHiddenValue(String id) {
+		Element elm = DOM.getElementById(id);
+		if(elm == null) {
+			return null;
+		}
+		final Hidden hidden = Hidden.wrap(elm);
+
+		return (hidden != null) ? hidden.getValue() : null;
+	}
+	
+	public boolean isModifiable() {
+		return !defaultPage && !userDescription.getId().equals(UserDescription.GUEST_ID);
+	}
 }
