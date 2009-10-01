@@ -224,16 +224,53 @@ h1 {
   margin: 15px 6px 6px;
 }
 
-.topbar td {
+.topbar {
 	background-color: #444444;
-	padding: 8px;
 	vertical-align: middle;
 }
 
-.add-content-button, .login-button, .logout-button, .user-options-button, .mypage-button, .default-page-button {
+.topbar-button {
 	color: #FFFFFF;
 	text-decoration: none;
 	white-space: nowrap;
+	cursor: pointer;
+	padding: 8px;
+}
+
+.login-button {
+	display: block;
+}
+
+.topbar-button-selected {
+	background-color: #5F5F5F;
+}
+
+.topbar-menu {
+	background-image: url("images/menu.gif");
+	background-position: right center;
+	background-repeat: no-repeat;
+	padding-right: 17px;
+}
+
+.topbar-submenu {
+	color: #FFFFFF;
+	background-color: #5F5F5F;
+}
+
+.topbar-submenu-item {
+	color: #FFFFFF;
+	cursor: pointer;
+	padding: 5px;
+}
+
+.topbar-submenu-item-selected {
+	background-color: #4A4A4A;
+}
+
+.topbar-submenu-item-current {
+	color: #FF6600;
+	font-weight: bold;
+	padding: 5px;
 }
 
 .add-content-button {

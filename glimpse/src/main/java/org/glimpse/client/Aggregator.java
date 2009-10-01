@@ -50,6 +50,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.MenuBar;
+import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -171,7 +172,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 		
 		Anchor addButton = new Anchor(constants.addContent(),
 				"javascript:void(0)");
-		addButton.setStylePrimaryName("add-content-button");
+		addButton.setStylePrimaryName("topbar-button");
+		addButton.addStyleName("add-content-button");
 		addButton.addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				addDialog.center();
@@ -187,7 +189,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 			// Guest user
 			Anchor loginButton = new Anchor(constants.login(),
 					"javascript:void(0)");
-			loginButton.setStylePrimaryName("login-button");
+			loginButton.setStylePrimaryName("topbar-button");
+			loginButton.addStyleName("login-button");
 			loginButton.addClickHandler(new ClickHandler() {			
 				public void onClick(ClickEvent event) {
 					loginDialog.center();
@@ -197,24 +200,46 @@ public class Aggregator implements EntryPoint, DragHandler {
 		} else {
 			// Connected user
 			MenuBar menu = new MenuBar();
-			menu.setAutoOpen(true);
-			MenuBar pages = new MenuBar(true);
-			pages.addItem(constants.myPage(), new Command() {				
+			
+			MenuBar pagesMenu = new MenuBar(true);
+			pagesMenu.setStylePrimaryName("topbar-submenu");
+			
+			MenuItem myPageItem = new MenuItem(constants.myPage(), new Command() {				
 				public void execute() {
-					Window.Location.replace("index.jsp");
+					if(defaultPage) {
+						Window.Location.replace("index.jsp");
+					}
+				}
+			});			
+			pagesMenu.addItem(myPageItem);
+			
+			MenuItem defaultPageItem = new MenuItem(constants.defaultPage(), new Command() {				
+				public void execute() {
+					if(!defaultPage) {
+						Window.Location.replace("default-page.jsp");
+					}
 				}
 			});
-			pages.addItem(constants.defaultPage(), new Command() {				
-				public void execute() {
-					Window.Location.replace("default-page.jsp");
-				}
-			});
-			menu.addItem("pages", pages);
+			pagesMenu.addItem(defaultPageItem);
+			
+			if(defaultPage) {
+				myPageItem.addStyleName("topbar-submenu-item");
+				defaultPageItem.addStyleName("topbar-submenu-item-current");				
+			} else {
+				myPageItem.addStyleName("topbar-submenu-item-current");
+				defaultPageItem.addStyleName("topbar-submenu-item");
+			}
+			
+			MenuItem pages = new MenuItem(constants.pages(), pagesMenu);			
+			pages.setStylePrimaryName("topbar-button");
+			pages.addStyleName("topbar-menu");
+			menu.addItem(pages);
 			topBar.add(menu);
 	
 			Anchor optionsButton = new Anchor(constants.userOptions(),
 					"javascript:void(0)");
-			optionsButton.setStylePrimaryName("user-options-button");
+			optionsButton.setStylePrimaryName("topbar-button");
+			optionsButton.addStyleName("user-options-button");
 			optionsButton.addClickHandler(new ClickHandler() {			
 				public void onClick(ClickEvent event) {
 					optionsDialog.center();
@@ -224,7 +249,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 			
 			Anchor logoutButton = new Anchor(constants.logout(),
 				"javascript:void(0)");
-			logoutButton.setStylePrimaryName("logout-button");
+			logoutButton.setStylePrimaryName("topbar-button");
+			logoutButton.addStyleName("logout-button");
 			logoutButton.addClickHandler(new ClickHandler() {			
 				public void onClick(ClickEvent event) {
 					loadPopup.center();
