@@ -15,6 +15,16 @@
 		<name>theme</name>
 		<tag-class>org.glimpse.server.tag.ThemeTag</tag-class>
 	</tag>
+	
+	<tag>
+		<name>themes-list</name>
+		<tag-class>org.glimpse.server.tag.ThemesListTag</tag-class>
+		<attribute>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
 
 	
 </taglib>

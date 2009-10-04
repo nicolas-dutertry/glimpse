@@ -397,11 +397,11 @@ public class Aggregator implements EntryPoint, DragHandler {
 			throws VetoDragException {
 	}
 	
-	public native void reloadPage() /*-{
-    	$wnd.location.reload();
-	}-*/;
+	public void reloadPage() {
+    	Window.Location.reload();
+	}
 	
-	private String getHiddenValue(String id) {
+	public static String getHiddenValue(String id) {
 		Element elm = DOM.getElementById(id);
 		if(elm == null) {
 			return null;

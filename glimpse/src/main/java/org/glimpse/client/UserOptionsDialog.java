@@ -53,7 +53,19 @@ public class UserOptionsDialog extends DialogBox {
 		
 		table.setText(1, 0, constants.theme());
 		themesList = new Select();
-		themesList.addOption(new Select.Option("Default", "default"));
+		
+		int themeIndex = 0;
+		while(true) {
+			String theme = Aggregator.getHiddenValue("theme_" + themeIndex);
+			if(theme != null) {
+				themesList.addOption(new Select.Option(theme));
+			} else {
+				break;
+			}
+			themeIndex++;
+		}
+		
+		
 		table.setWidget(1, 1, themesList);
 		
 		panel.add(table);
