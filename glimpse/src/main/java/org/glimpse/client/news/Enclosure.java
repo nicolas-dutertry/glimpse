@@ -18,33 +18,12 @@
 package org.glimpse.client.news;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
-public class Entry implements Serializable {
+public class Enclosure implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private String id;
-	private String title;
 	private String url;
-	private Date date;
-	private List<Enclosure> enclosures;
-	
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	public String getTitle() {
-		return title;
-	}
-	
-	public void setTitle(String title) {
-		this.title = title;
-	}
+	private String type;
 	
 	public String getUrl() {
 		return url;
@@ -53,20 +32,12 @@ public class Entry implements Serializable {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
-	public Date getDate() {
-		return date;
+	
+	public String getType() {
+		return type;
 	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public void setEnclosures(List<Enclosure> enclosures) {
-		this.enclosures = enclosures;
-	}
-
-	public List<Enclosure> getEnclosures() {
-		return enclosures;
+	
+	public void setType(String type) {
+		this.type = type;
 	}
 }

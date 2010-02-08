@@ -604,6 +604,14 @@ h1 {
 	font-size: 10px;
 }
 
+.entry-podcast {
+	display: block;
+	width: 13px;
+	height: 13px;
+	background-image: url(images/ipod.png);
+	cursor: pointer;
+}
+
 .news-next, .news-next:visited {
 	text-decoration: none;
 	color: #333333;

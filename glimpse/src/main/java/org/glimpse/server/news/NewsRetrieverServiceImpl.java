@@ -37,6 +37,7 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.glimpse.client.news.Enclosure;
 import org.glimpse.client.news.Entry;
 import org.glimpse.client.news.NewsChannel;
 import org.glimpse.client.news.NewsRetrieverService;
@@ -105,10 +106,28 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 			String title = (String)xpath.evaluate("title", elmEntry, XPathConstants.STRING);
 			String entryUrl = (String)xpath.evaluate("link", elmEntry, XPathConstants.STRING);
 			String pubDate = (String)xpath.evaluate("pubDate", elmEntry, XPathConstants.STRING);
-						
+			
+			NodeList enclosureList = (NodeList)xpath.evaluate("enclosure", elmEntry, XPathConstants.NODESET);
+			List<Enclosure> enclosures = new LinkedList<Enclosure>();
+			for(int j = 0; j < enclosureList.getLength(); j++) {
+				Element elmEnclosure = (Element)enclosureList.item(j);
+				Enclosure enclosure = new Enclosure();
+				enclosure.setUrl(elmEnclosure.getAttribute("url"));
+				enclosure.setType(elmEnclosure.getAttribute("type"));
+				enclosures.add(enclosure);
+			}
+			
+			if(StringUtils.isBlank(id)) {
+				id = pubDate;
+			}
+			if(StringUtils.isBlank(entryUrl)) {
+				entryUrl = getLink(doc);
+			}
+			
 			rssEntry.setId(id);
 			rssEntry.setTitle(title);
 			rssEntry.setUrl(entryUrl);
+			rssEntry.setEnclosures(enclosures);
 			
 			if(StringUtils.isNotBlank(pubDate)) {
 				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss Z");
@@ -142,12 +161,30 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 			Element elmEntry = (Element)entries.item(i);
 			String id = (String)xpath.evaluate("id", elmEntry, XPathConstants.STRING);
 			String title = (String)xpath.evaluate("title", elmEntry, XPathConstants.STRING);
-			String entryUrl = (String)xpath.evaluate("link/@href", elmEntry, XPathConstants.STRING);
+			
+			String entryUrl = null;
+			List<Enclosure> enclosures = new LinkedList<Enclosure>();
+			NodeList linkList = (NodeList)xpath.evaluate("link", elmEntry, XPathConstants.NODESET);
+			if(linkList != null) {
+				for(int j = 0; j < linkList.getLength(); j++) {
+					Element elmLink = (Element)linkList.item(j);
+					String rel = elmLink.getAttribute("rel"); 
+					if(StringUtils.isBlank(rel) || rel.equals("alternate")) {
+						entryUrl = elmLink.getAttribute("href");
+					} else if(rel.equals("enclosure")) {
+						Enclosure enclosure = new Enclosure();
+						enclosure.setUrl(elmLink.getAttribute("href"));
+						enclosure.setType(elmLink.getAttribute("type"));
+						enclosures.add(enclosure);
+					}
+				}
+			}
 			String updated = (String)xpath.evaluate("updated", elmEntry, XPathConstants.STRING);
 			
 			rssEntry.setId(id);
 			rssEntry.setTitle(title);
 			rssEntry.setUrl(entryUrl);
+			rssEntry.setEnclosures(enclosures);
 			
 			if(StringUtils.length(updated) > 19) {
 				try {

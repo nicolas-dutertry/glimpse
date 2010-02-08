@@ -83,6 +83,17 @@ public class EntriesTable extends FlexTable {
 		}
 	}
 	
+	private class EntryPodcast extends Anchor {		
+		public EntryPodcast(EntryTitle entryTitle, String url) {
+			super("<img src=\"" + Aggregator.TRANSPARENT_IMAGE + "\" border=\"0\"/>", true);
+			setStylePrimaryName("entry-podcast");
+			
+			setHref(url);
+			setTarget("_blank");
+			addClickHandler(entryTitle);
+		}
+	}
+	
 	private static String createEntryTitleHtml(String label, String pubTime) {
 		StringBuilder html = new StringBuilder(label);
 		if(pubTime != null) {
@@ -159,7 +170,20 @@ public class EntriesTable extends FlexTable {
 				}
 			}
 			
-			setWidget(getRowCount(), 0, new EntryTitle(entry.getId(), entry.getTitle(), pubTime, i));
+			EntryTitle entryTitle = new EntryTitle(entry.getId(), entry.getTitle(), pubTime, i);
+			int row = getRowCount();
+			setWidget(row, 0, entryTitle);
+			List<Enclosure> enclosures = entry.getEnclosures();
+			if(enclosures != null) {
+				for (Enclosure enclosure : enclosures) {
+					if(enclosure.getType().startsWith("audio") ||
+							enclosure.getType().startsWith("video")) {
+						setWidget(row, 1,
+								new EntryPodcast(entryTitle, enclosure.getUrl()));
+						break;
+					}
+				}
+			}
 		}
 	}
 	
