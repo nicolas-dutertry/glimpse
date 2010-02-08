@@ -27,8 +27,11 @@ public class ThemesListTag extends TagSupport {
 		File themesDir = new File(pageContext.getServletContext().getRealPath("themes"));
 		File[] files = themesDir.listFiles();
 		for (File file : files) {
-			if(file.isDirectory()) {
-				themes.add(file.getName());
+			if(file.isDirectory() && !file.getName().startsWith(".")) {
+				File style = new File(file, "style.css");
+				if(style.exists()) {
+					themes.add(file.getName());
+				}
 			}
 		}
 		pageContext.setAttribute(var, themes);
