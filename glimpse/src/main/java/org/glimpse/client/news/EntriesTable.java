@@ -90,6 +90,7 @@ public class EntriesTable extends FlexTable {
 			
 			setHref(url);
 			setTarget("_blank");
+			setTitle(constants.podcast());
 			addClickHandler(entryTitle);
 		}
 	}
