@@ -32,6 +32,9 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.lang.StringUtils;
@@ -59,17 +62,23 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 		ATOM
 	}
 
-	public NewsChannel getNewsChannel(String url) {
+	public NewsChannel getNewsChannel(String url, boolean refresh) {
 		try {
-			Document doc = getDocument(url);
-			switch(getType(doc)) {
-				case RSS :
-					return new NewsChannel(getRSSLink(doc), getRSSTitle(doc),
-							getRSSEntries(doc));			
-				case ATOM :
-					return new NewsChannel(getAtomLink(doc), getAtomTitle(doc),
-							getAtomEntries(doc));
+			ServerNewsChannel serverChannel = getServerNewChannel(url, refresh);
+			List<ServerEntry> serverEntries = serverChannel.getEntries();
+			List<Entry> entries = new LinkedList<Entry>();
+			for (ServerEntry serverEntry : serverEntries) {
+				Entry entry = new Entry();
+				entry.setId(serverEntry.getId());
+				entry.setDate(serverEntry.getDate());
+				entry.setTitle(serverEntry.getTitle());
+				entry.setUrl(serverEntry.getUrl());
+				entry.setEnclosures(serverEntry.getEnclosures());
+				entries.add(entry);
 			}
+			
+			return new NewsChannel(serverChannel.getUrl(), serverChannel.getTitle(),
+							entries);
 		} catch(Exception e) {
 			logger.error("Error while getting Entries for <" + url + ">", e);
 		}
@@ -77,7 +86,49 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 		return null;
 	}
 	
-	private Document getDocument(String url) throws Exception {
+	public String getEntryContent(String url, String entryId) {
+		try {
+			ServerNewsChannel serverChannel = getServerNewChannel(url, false);
+			return serverChannel.getEntry(entryId).getContent();
+		} catch(Exception e) {
+			logger.error("Error while getting content for <" + url + "," + entryId + ">", e);
+		}
+		return "";
+	}
+	
+	private ServerNewsChannel getServerNewChannel(String url, boolean refresh) throws Exception {
+		ServerNewsChannel channel = null;
+		
+		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
+		CacheManager cacheManager = glimpseManager.getCacheManager();
+		Cache cache = cacheManager.getCache("newsCache");
+		
+		if(!refresh) {
+			net.sf.ehcache.Element element = cache.get(url);
+			if(element != null) {
+				channel = (ServerNewsChannel)element.getValue();
+			}
+		}
+		
+		if(channel == null) {
+			Document doc = downloadDocument(url);
+			switch(getType(doc)) {
+				case RSS :
+					channel = new ServerNewsChannel(getRSSLink(doc), getRSSTitle(doc), getRSSEntries(doc));
+					break;
+				case ATOM :
+					channel = new ServerNewsChannel(getAtomLink(doc), getAtomTitle(doc), getAtomEntries(doc));
+					break;
+			}
+			if(channel != null) {
+				cache.put(new net.sf.ehcache.Element(url, channel));
+			}
+		}
+		
+		return channel;
+	}
+	
+	private Document downloadDocument(String url) throws Exception {
 		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
 		Proxy proxy = glimpseManager.getProxy(url);
 		
@@ -93,14 +144,14 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 		return builder.parse(method.getResponseBodyAsStream());
 	}
 	
-	private List<Entry> getRSSEntries(Document doc) throws Exception {
+	private List<ServerEntry> getRSSEntries(Document doc) throws Exception {
 		XPath xpath = XPathFactory.newInstance().newXPath();
-		List<Entry> rssEntries = new LinkedList<Entry>();
+		List<ServerEntry> rssEntries = new LinkedList<ServerEntry>();
 		NodeList entries = (NodeList)xpath.evaluate("/rss/channel/item",
 				doc,
 				XPathConstants.NODESET);
 		for(int i = 0; i < entries.getLength(); i++) {
-			Entry rssEntry = new Entry();
+			ServerEntry rssEntry = new ServerEntry();
 			Element elmEntry = (Element)entries.item(i);
 			String id = (String)xpath.evaluate("link", elmEntry, XPathConstants.STRING);
 			String title = (String)xpath.evaluate("title", elmEntry, XPathConstants.STRING);
@@ -117,17 +168,21 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 				enclosures.add(enclosure);
 			}
 			
+			String content = (String)xpath.evaluate("description", elmEntry, XPathConstants.STRING);
+			content += "<p><a href=\"" + entryUrl + "\" target=\"_blank\">Lire la suite</a></p>";
+			
 			if(StringUtils.isBlank(id)) {
 				id = pubDate;
 			}
 			if(StringUtils.isBlank(entryUrl)) {
-				entryUrl = getLink(doc);
+				entryUrl = getRSSLink(doc);
 			}
 			
 			rssEntry.setId(id);
 			rssEntry.setTitle(title);
 			rssEntry.setUrl(entryUrl);
 			rssEntry.setEnclosures(enclosures);
+			rssEntry.setContent(content);
 			
 			if(StringUtils.isNotBlank(pubDate)) {
 				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss Z");
@@ -150,14 +205,14 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 		return rssEntries;
 	}
 	
-	private List<Entry> getAtomEntries(Document doc) throws Exception {
+	private List<ServerEntry> getAtomEntries(Document doc) throws Exception {
 		XPath xpath = XPathFactory.newInstance().newXPath();
-		List<Entry> rssEntries = new LinkedList<Entry>();
+		List<ServerEntry> rssEntries = new LinkedList<ServerEntry>();
 		NodeList entries = (NodeList)xpath.evaluate("/feed/entry",
 				doc,
 				XPathConstants.NODESET);
 		for(int i = 0; i < entries.getLength(); i++) {
-			Entry rssEntry = new Entry();
+			ServerEntry rssEntry = new ServerEntry();
 			Element elmEntry = (Element)entries.item(i);
 			String id = (String)xpath.evaluate("id", elmEntry, XPathConstants.STRING);
 			String title = (String)xpath.evaluate("title", elmEntry, XPathConstants.STRING);
@@ -181,10 +236,17 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 			}
 			String updated = (String)xpath.evaluate("updated", elmEntry, XPathConstants.STRING);
 			
+			String content = (String)xpath.evaluate("content", elmEntry, XPathConstants.STRING);
+			if(StringUtils.isBlank(content)) {
+				content = (String)xpath.evaluate("summary", elmEntry, XPathConstants.STRING);
+				content += "<p><a href=\"" + entryUrl + "\" target=\"_blank\">Lire la suite</a></p>";
+			}
+			
 			rssEntry.setId(id);
 			rssEntry.setTitle(title);
 			rssEntry.setUrl(entryUrl);
 			rssEntry.setEnclosures(enclosures);
+			rssEntry.setContent(content);
 			
 			if(StringUtils.length(updated) > 19) {
 				try {
@@ -219,25 +281,6 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 		return rssEntries;
 	}
 	
-	public String getTitle(String url) {
-		try {
-			return getTitle(getDocument(url));
-		} catch(Exception e) {
-			logger.error("Error while getting title for <" + url + ">", e);
-		}
-		return "";
-	}
-	
-	private String getTitle(Document doc) throws XPathExpressionException {
-		switch(getType(doc)) {
-			case RSS :
-				return getRSSTitle(doc);
-			case ATOM :
-				return getAtomTitle(doc);
-		}
-		return "";
-	}
-	
 	private String getRSSTitle(Document doc) throws XPathExpressionException {
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		return (String)xpath.evaluate("/rss/channel/title", doc, XPathConstants.STRING);
@@ -248,25 +291,6 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 		return (String)xpath.evaluate("/feed/title", doc, XPathConstants.STRING);
 	}
 	
-	public String getLink(String url) {
-		try {
-			return getLink(getDocument(url));
-		} catch(Exception e) {
-			logger.error("Error while getting link for <" + url + ">", e);
-		}
-		return "";
-	}
-	
-	private String getLink(Document doc) throws XPathExpressionException {
-		switch(getType(doc)) {
-			case RSS :
-				return getRSSLink(doc);
-			case ATOM :
-				return getAtomLink(doc);
-		}
-		return "";
-	}
-	
 	private String getRSSLink(Document doc) throws XPathExpressionException {
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		return (String)xpath.evaluate("/rss/channel/link", doc, XPathConstants.STRING);
@@ -275,62 +299,6 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 	private String getAtomLink(Document doc) throws XPathExpressionException {
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		return (String)xpath.evaluate("/feed/link[@rel='alternate']/@href", doc, XPathConstants.STRING);
-	}
-	
-	public String getEntryContent(String url, String entryId) {
-		try {
-			return getEntryContent(getDocument(url), entryId);
-		} catch(Exception e) {
-			logger.error("Error while getting content for <" + url + "," + entryId + ">", e);
-		}
-		return "";
-	}
-	
-	private String getEntryContent(Document doc, String entryId) throws XPathExpressionException {
-		switch(getType(doc)) {
-			case RSS :
-				return getRSSEntryContent(doc, entryId);
-			case ATOM :
-				return getAtomEntryContent(doc, entryId);
-		}
-		return "";
-	}
-	
-	private String getRSSEntryContent(Document doc, String entryId) throws XPathExpressionException {
-		String content = "";
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		NodeList entries = (NodeList)xpath.evaluate("/rss/channel/item", doc, XPathConstants.NODESET);
-		for(int i = 0; i < entries.getLength(); i++) {
-			Element elmEntry = (Element)entries.item(i);
-			String id = (String)xpath.evaluate("link", elmEntry, XPathConstants.STRING);
-			if(entryId.equals(id)) {
-				String entryUrl = (String)xpath.evaluate("link", elmEntry, XPathConstants.STRING);
-				content = (String)xpath.evaluate("description", elmEntry, XPathConstants.STRING);
-				content += "<p><a href=\"" + entryUrl + "\" target=\"_blank\">Lire la suite</a></p>";
-				break;
-			}
-		}
-		return content;
-	}
-	
-	private String getAtomEntryContent(Document doc, String entryId) throws XPathExpressionException {
-		String content = "";
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		NodeList entries = (NodeList)xpath.evaluate("/feed/entry", doc, XPathConstants.NODESET);
-		for(int i = 0; i < entries.getLength(); i++) {
-			Element elmEntry = (Element)entries.item(i);
-			String id = (String)xpath.evaluate("id", elmEntry, XPathConstants.STRING);
-			if(entryId.equals(id)) {
-				content = (String)xpath.evaluate("content", elmEntry, XPathConstants.STRING);
-				if(StringUtils.isBlank(content)) {
-					String entryUrl = (String)xpath.evaluate("link/@href", elmEntry, XPathConstants.STRING);					
-					content = (String)xpath.evaluate("summary", elmEntry, XPathConstants.STRING);
-					content += "<p><a href=\"" + entryUrl + "\" target=\"_blank\">Lire la suite</a></p>";
-				}
-				break;
-			}
-		}
-		return content;
 	}
 	
 	private Type getType(Document doc) {

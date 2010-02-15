@@ -23,6 +23,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import net.sf.ehcache.CacheManager;
+
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
@@ -37,6 +39,7 @@ public class GlimpseManager implements ServletContextListener {
 	private Configuration configuration;
 	private ConnectionManager connectionManager;
 	private UserManager userManager;
+	private CacheManager cacheManager;
 
 	public void contextInitialized(ServletContextEvent sce) {
 		try {
@@ -66,6 +69,7 @@ public class GlimpseManager implements ServletContextListener {
 			
 			connectionManager = new SimpleConnectionManager(usersDirectory);
 			userManager = new XmlUserManager(usersDirectory);
+			cacheManager = CacheManager.create();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -87,6 +91,10 @@ public class GlimpseManager implements ServletContextListener {
 	
 	public UserManager getUserManager() {
 		return userManager;
+	}
+	
+	public CacheManager getCacheManager() {
+		return cacheManager;
 	}
 	
 	public Proxy getProxy(String url) {

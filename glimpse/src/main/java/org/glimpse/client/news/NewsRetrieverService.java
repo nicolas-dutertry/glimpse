@@ -22,6 +22,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("news-retriever")
 public interface NewsRetrieverService extends RemoteService {
-	NewsChannel getNewsChannel(String url);
+	NewsChannel getNewsChannel(String url, boolean refresh);
 	String getEntryContent(String url, String entryId);
 }

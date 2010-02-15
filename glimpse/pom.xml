@@ -8,8 +8,8 @@
 	
 	<properties>
 		<svn.url>https://epsilon.dutertry.com/svn/nicolas/glimpse/trunk</svn.url>
-		<gwt.version>1.7.0</gwt.version>
-		<gwt-dnd.version>2.6.5</gwt-dnd.version>
+		<gwt.version>2.0.1</gwt.version>
+		<gwt-dnd.version>3.0.0</gwt-dnd.version>
 	</properties>
 	
 	<scm>
@@ -98,6 +98,16 @@
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.8</version>
+		</dependency>
 		
 		<!-- GWT -->
 		<dependency>
@@ -116,7 +126,6 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
 			<version>${gwt.version}</version>
-			<classifier>${platform}</classifier>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -146,10 +155,6 @@
 						     générées par GWT sans polluer le répertoire des 
 						     sources -->
 						<warSourceDirectory>${project.build.directory}/webapp</warSourceDirectory>
-						<!-- Ignorer les ressources temporaires générées par la 
-						     compilation GWT -->
-						<!--
-						<warSourceExcludes>gwt/.gwt-tmp/**,gwt/com.hraccess.portlet.perspective.gwt.MyPerspective-aux/**,gwt/.gwt-tmp/**,gwt/com.hraccess.portlet.perspective.gwt.ExecuteAdhocReport-aux/**</warSourceExcludes>
 						-->
 					</configuration>
 				</plugin>
@@ -189,36 +194,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<!-- On configure le plug-in dependency de sorte qu'il décompacte 
-				     dans le dépôt local les fichiers natifs à la plate-forme
-				     requis par GWT !! Cela permet d'éviter l'installation locale
-				     et manuelle de GWT lors de l'utilisation du mode hosted -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>unpack</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>com.google.gwt</groupId>
-									<artifactId>gwt-dev</artifactId>
-									<version>${gwt.version}</version>
-									<classifier>${platform}-libs</classifier>
-									<type>zip</type>
-									<overWrite>true</overWrite>
-									<outputDirectory>${settings.localRepository}/com/google/gwt/gwt-dev/${gwt.version}</outputDirectory>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<!-- Tache Ant de compilation GWT. Ant permet de résoudre les
           		     problèmes liés à la présence d'espaces dans les chemins et
           		     à la longueur de classpath sous Windows, ce que ne savent
@@ -234,11 +209,12 @@
 						</goals>
 						<configuration>
 							<tasks>
+								<delete dir="${project.build.directory}/classes/javax"/>
 								<path id="full.classpath">
 									<pathelement path="${maven.compile.classpath}"/>
 									<pathelement location="src/main/java"/>
 									<pathelement location="src/main/resources"/>
-									<pathelement location="${settings.localRepository}/com/google/gwt/gwt-dev/${gwt.version}/gwt-dev-${gwt.version}-${platform}.jar"/>
+									<pathelement location="${settings.localRepository}/com/google/gwt/gwt-dev/${gwt.version}/gwt-dev-${gwt.version}.jar"/>
 									<pathelement location="${settings.localRepository}/com/google/gwt/gwt-user/${gwt.version}/gwt-user-${gwt.version}.jar"/>
 									<pathelement location="${settings.localRepository}/com/google/gwt/gwt-servlet/${gwt.version}/gwt-servlet-${gwt.version}.jar"/>
 									<pathelement location="${settings.localRepository}/com/google/code/gwt-dnd/gwt-dnd/${gwt-dnd.version}/gwt-dnd-${gwt-dnd.version}.jar"/>

@@ -78,7 +78,7 @@ public class NewsReader extends Component {
 	
 	private class RefreshHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
-			refresh();
+			refresh(true);
 		}
 	}
 	
@@ -235,6 +235,10 @@ public class NewsReader extends Component {
 	}
 	
 	public void refresh() {
+		refresh(false);
+	}
+	
+	public void refresh(boolean serverRefresh) {
 		initialized = true;
 		final String url = getUrl();
 		entriesTable.clear();
@@ -251,7 +255,7 @@ public class NewsReader extends Component {
 		loadingPanel.setVisible(true);
 		checkPreviousNext();
 		newsRetrieverService.getNewsChannel(
-				url,
+				url, serverRefresh,
 				new AsyncCallback<NewsChannel>() {
 					public void onFailure(Throwable caught) {
 						loadingPanel.setVisible(false);
