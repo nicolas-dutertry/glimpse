@@ -177,8 +177,9 @@ public class EntriesTable extends FlexTable {
 			List<Enclosure> enclosures = entry.getEnclosures();
 			if(enclosures != null) {
 				for (Enclosure enclosure : enclosures) {
-					if(enclosure.getType().startsWith("audio") ||
-							enclosure.getType().startsWith("video")) {
+					if(enclosure.getType() != null &&
+							(enclosure.getType().startsWith("audio") ||
+							enclosure.getType().startsWith("video"))) {
 						setWidget(row, 1,
 								new EntryPodcast(entryTitle, enclosure.getUrl()));
 						break;

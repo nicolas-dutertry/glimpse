@@ -20,6 +20,7 @@ package org.glimpse.server.news;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.glimpse.client.news.Enclosure;
@@ -31,7 +32,7 @@ public class ServerEntry implements Serializable {
 	private String title;
 	private String url;
 	private Date date;
-	private List<Enclosure> enclosures;
+	private List<Enclosure> enclosures = new LinkedList<Enclosure>();
 	private String content;
 	
 	public String getId() {
@@ -72,6 +73,10 @@ public class ServerEntry implements Serializable {
 
 	public List<Enclosure> getEnclosures() {
 		return new ArrayList<Enclosure>(enclosures);
+	}
+	
+	public void addEnclosure(Enclosure enclosure) {
+		enclosures.add(enclosure);
 	}
 
 	public void setContent(String content) {

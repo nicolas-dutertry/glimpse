@@ -7,54 +7,9 @@
 	<name>Glimpse</name>
 	
 	<properties>
-		<svn.url>https://epsilon.dutertry.com/svn/nicolas/glimpse/trunk</svn.url>
 		<gwt.version>2.0.1</gwt.version>
 		<gwt-dnd.version>3.0.0</gwt-dnd.version>
 	</properties>
-	
-	<scm>
-		<connection>scm:svn:${svn.url}/Java%20Projects/${project.artifactId}</connection>
-	</scm>
-	
-	<!-- Ces profils permettent de positionner les proprietes utiles a la configuration de GWT -->
-	<profiles>
-		<profile>
-			<id>gwt-dev-windows</id>
-			<properties>
-				<platform>windows</platform>
-			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-				<os>
-					<family>windows</family>
-				</os>
-			</activation>
-		</profile>
-		<profile>
-			<id>gwt-dev-mac</id>
-			<properties>
-				<platform>mac</platform>
-			</properties>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-				<os>
-					<family>mac</family>
-				</os>
-			</activation>
-		</profile>
-		<profile>
-			<id>gwt-dev-linux</id>
-			<properties>
-				<platform>linux</platform>
-			</properties>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-				<os>
-					<name>linux</name>
-				</os>
-			</activation>
-		</profile>
-	</profiles>
 	
 	<dependencies>
 		<dependency>
@@ -155,7 +110,6 @@
 						     générées par GWT sans polluer le répertoire des 
 						     sources -->
 						<warSourceDirectory>${project.build.directory}/webapp</warSourceDirectory>
-						-->
 					</configuration>
 				</plugin>
 				<plugin>
