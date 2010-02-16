@@ -1,0 +1,2015 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+	<title>Planète des utilisateurs Debian</title>
+	<link rel="self" href="http://planet-fr.debian.net/users/rss20.xml"/>
+	<link href="http://planet-fr.debian.net/users/"/>
+	<id>http://planet-fr.debian.net/users/rss20.xml</id>
+	<updated>2010-02-16T16:45:27+00:00</updated>
+	<generator uri="http://www.planetplanet.org/">Planet/2.0 +http://www.planetplanet.org</generator>
+
+	<entry xml:lang="en">
+		<title type="html">MeeGo, l’alliance des perdants ?</title>
+		<link href="http://debian.flext.net/meego/"/>
+		<id>http://debian.flext.net/?p=235</id>
+		<updated>2010-02-16T07:15:50+00:00</updated>
+		<content type="html">&lt;p&gt;Confrontés à la déferlante des produits Google basés sur Linux incarnée par la percée d&amp;#8217;&lt;a href=&quot;http://www.android.com/&quot; target=&quot;_blank&quot;&gt;Android&lt;/a&gt;, principal challenger de l&amp;#8217;iPhone, et la dynamique autour de &lt;a href=&quot;http://dev.chromium.org/chromium-os&quot; target=&quot;_blank&quot;&gt;Chrome OS&lt;/a&gt;, leurs concurrents respectifs, que sont le &lt;a href=&quot;http://maemo.org/&quot; target=&quot;_blank&quot;&gt;Maemo&lt;/a&gt; de Nokia et le &lt;a href=&quot;http://moblin.org/&quot; target=&quot;_blank&quot;&gt;Moblin&lt;/a&gt; d&amp;#8217;Intel, avaient bien du mal à percer.&lt;/p&gt;
+&lt;p&gt;Ils ont donc décidé d&amp;#8217;&lt;a href=&quot;http://www.nokia.com/press/press-releases/showpressrelease?newsid=1384419&quot;&gt;unir leurs efforts&lt;/a&gt; et de fournir une plateforme technologique commune : &lt;a href=&quot;http://meego.com/&quot; target=&quot;_blank&quot;&gt;MeeGo&lt;/a&gt;, annoncée ce 15 février au &lt;a href=&quot;http://www.mobileworldcongress.com/index.htm&quot; target=&quot;_blank&quot;&gt;Mobile World Congress&lt;/a&gt; de Barcelone et qui sera hébergée par la &lt;a href=&quot;http://www.linuxfoundation.org/&quot; target=&quot;_blank&quot;&gt;Linux Foundation&lt;/a&gt;. Que résulte-t-il de la fusion ? Une standardisation autour de &lt;a href=&quot;http://qt.nokia.com/products&quot; target=&quot;_blank&quot;&gt;Qt&lt;/a&gt;, alors que le meilleur de Moblin était le travail fait avec &lt;a href=&quot;http://www.clutter-project.org/&quot; target=&quot;_blank&quot;&gt;Clutter&lt;/a&gt; basé sur GTK+, et l&amp;#8217;utilisation du système de packaging &lt;a href=&quot;http://fr.wikipedia.org/wiki/RPM_Package_Manager&quot; target=&quot;_blank&quot;&gt;RPM&lt;/a&gt;, alors que le meilleur de Maemo était d&amp;#8217;être basé sur Debian&amp;#8230;&lt;/p&gt;
+&lt;p&gt;On m&amp;#8217;avait reproché d&amp;#8217;être trop dur avec la plateforme Maemo dans mon &lt;a href=&quot;http://fgallaire.flext.net/smartphones-linux-dev/&quot; target=&quot;_blank&quot;&gt;article sur les smartphones&lt;/a&gt;, mais force est de constater qu&amp;#8217;aujourd&amp;#8217;hui elle n&amp;#8217;existe plus et que bien malheureux le développeur qui s&amp;#8217;est investi successivement dans les technos Maemo 5 puis Maemo 6. Maintenant ce sera MeeGo&amp;#8230; ou pas.&lt;/p&gt;</content>
+		<author>
+			<name>Florent Gallaire</name>
+			<uri>http://debian.flext.net</uri>
+		</author>
+		<source>
+			<title type="html">Florent Gallaire's Blog</title>
+			<subtitle type="html">Debian and Python contributing and stuff</subtitle>
+			<link rel="self" href="http://fgallaire.flext.net/feed/"/>
+			<id>http://fgallaire.flext.net/feed/</id>
+			<updated>2010-02-16T07:45:06+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">USB Over IP sous Linux</title>
+		<link href="http://my1.fr/blog/2010/02/15/usb-over-ip-sous-linux/"/>
+		<id>http://my1.fr/blog/2010/02/15/usb-over-ip-sous-linux/</id>
+		<updated>2010-02-15T22:45:39+00:00</updated>
+		<content type="html">&lt;p&gt;Vous disposez d&amp;#8217;une imprimante USB (et seulement USB). Pour l&amp;#8217;instant, vous n&amp;#8217;avez aucun moyen de la contrôler depuis un autre ordinateur chez vous. Nous supposons bien entendu que les deux ordinateurs sont en réseaux (par le biais d&amp;#8217;une box par exemple).&lt;/p&gt;
+&lt;p&gt;Je veux pouvoir transformer mon imprimante USB en imprimante réseau (et donc pouvoir l&amp;#8217;utiliser et la contrôler partout chez moi).&lt;/p&gt;
+&lt;p&gt;La première solution qui s&amp;#8217;offre à vous consiste à acheter un appareil qui partage sur le réseau les périphériques USB. Prévoyez un budget minimum de 100 euros pour avoir quelque chose de bien.&lt;/p&gt;
+&lt;p&gt;Mais heureusement que l&amp;#8217;Open-Source est là, et nous allons nous débrouiller nous même, avec un budget de&amp;#8230; 0 euros !&lt;/p&gt;
+&lt;p&gt;USB/IP est une excellente solution logicielle.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Procédure coté serveur &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1- Téléchargez le logiciel présent dans les dépôts Debian / Ubuntu :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sudo aptitude install usbip &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Vous devez charger les modules suivants pour être capable de contrôler vos ports USB :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sudo modprobe usbip&lt;br /&gt;
+sudo modprobe usbip_common_mod &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Pour démarrer le service « usbip » comme un démon :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sudo usbipd -D &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Le message suivant s&amp;#8217;affiche.&lt;/p&gt;
+&lt;p&gt;Bind usbip.ko to a usb device to be exportable!&lt;/p&gt;
+&lt;p&gt;Pas de panique ! C&amp;#8217;est normal. Cela signifie vous devez choisir quel sera le port USB à partager.&lt;/p&gt;
+&lt;p&gt;1- Branchez votre appareil USB (imprimante, webcam, etc&amp;#8230;)&lt;/p&gt;
+&lt;p&gt;2- Exécutez la commande pour trouver l&amp;#8217;identifiant du vendeur et de l&amp;#8217;appareil :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;lsusb&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Il est sous la forme :&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Bus XXX Device ZZZ: ID VendorID:DeviceID &lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Les identifiants Vendeur / Appareil (Vendor / Device) sont codés sur 4 digits chacun (03f0:7a11 par exemple).Le premier (03f0) est pour Hewlett-Packard (qui est la marque de mon imprimante), et le second (7a11) est l&amp;#8217;appareil USB (ici, mon imprimante en elle même).&lt;/p&gt;
+&lt;p&gt;Maintenant que nous avons trouvé les identifiants matériel, nous sommes capable de localiser sa position sur le bus.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sudo usbip_bind_driver &amp;#8211;list &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Résultat :&lt;/p&gt;
+&lt;p&gt;busid 2-1.2 (03f0:7a11)&lt;br /&gt;
+2-1.2:1.0 -&amp;gt; none&lt;br /&gt;
+2-1.2:1.1 -&amp;gt; usblp&lt;br /&gt;
+2-1.2:1.2 -&amp;gt; none&lt;br /&gt;
+2-1.2:1.3 -&amp;gt; usb-storage&lt;/p&gt;
+&lt;p&gt;Trouvez l&amp;#8217;identifiant du bus sur lequel est notre imprimante. Ici, c&amp;#8217;est « 2-1.2 ».&lt;/p&gt;
+&lt;p&gt;Il est temps maintenant de connecter l&amp;#8217;appareil USB au réseau :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sudo usbip_bind_driver &amp;#8211;usbip 2-1.2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Vous devez avoir une réponse finale du genre :&lt;/p&gt;
+&lt;p&gt;** Message: bind 2-1.2 to usbip, complete!&lt;/p&gt;
+&lt;p&gt;Une fois cette commande exécutée, le serveur est maintenant en écoute sur le réseau dans l&amp;#8217;attente de connections clients.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Procédure coté client &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Installation du logiciel :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sudo apt-get install usbip &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Chargez le module &amp;laquo;&amp;nbsp;vhci-hcd&amp;nbsp;&amp;raquo; :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sudo modprobe vhci-hcd &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Pour lister les périphériques USB disponibles sur le serveur :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sudo usbip -l &amp;lt;@ ip&amp;gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Bien entendu, remplacer &amp;lt;@ ip&amp;gt; par l&amp;#8217;adresse IP du serveur.&lt;/p&gt;
+&lt;p&gt;Enfin, la commande qui nous apporte un nouveau périphérique USB :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sudo usbip -a &amp;lt;@ ip&amp;gt; X-Y&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Remplacer X-Y par le l&amp;#8217;identifiant du bus (2-1.2:1.1 pour l&amp;#8217;exemple de tout à l&amp;#8217;heure).&lt;/p&gt;
+&lt;p&gt;Si tout va bien, le périphérique est maintenant reconnu par le système. Si c&amp;#8217;est un périphérique amovible, le périphérique sera monté; dans le cas d&amp;#8217;une imprimante, il faudra l&amp;#8217;installer comme une imprimante normale.&lt;/p&gt;
+&lt;p&gt;Sachez également logiciel client existe aussi sous Windows et je vous donne même le &lt;a href=&quot;http://ignum.dl.sourceforge.net/project/usbip/usbip/usbip-win-preview/usbip-win.zip&quot;&gt;lien de téléchargement&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Tout d&amp;#8217;abord, il faut extraire l&amp;#8217;archive téléchargée.&lt;br /&gt;
+En premier lieu, il faut installer le driver en cliquant droit sur le fichier bus.inf, puis sur « Installer ».&lt;br /&gt;
+Ensuite, exécutez une invite de commande Windows (Menu Démarrer, Exécuter, « cmd »).&lt;br /&gt;
+Avec la commande « cd » (comme sous Linux !), déplacez vous dans le répertoire où se trouve l&amp;#8217;exécutable d&amp;#8217;usbip.&lt;/p&gt;
+&lt;p&gt;Pour lister les périphériques USB disponibles sur le serveur (dans une invite de commande) :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;usbip.exe -l &amp;lt;@ ip&amp;gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Et ensuite, la commande qui nous apporte un nouveau périphérique USB :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;usbip.exe -a &amp;lt;@ ip&amp;gt; USB-ID&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;C&amp;#8217;est bon ! Le périphérique USB doit maintenant être détecté par Windows !&lt;/p&gt;
+&lt;p&gt;J&amp;#8217;espère avoir été clair sur les explications. Si vous avez suivi ce que j&amp;#8217;ai fait à la lettre, tout devrait fonctionner. Sinon, vérifiez bien que vous avez choisi le bon identifiant du périphérique USB.&lt;br /&gt;
+J&amp;#8217;ai testé et ça fonctionne : Imprimante USB transformée en imprimante réseau, disque dur USB partagé sur le réseau, Webcam utilisée comme caméra de surveillance.&lt;/p&gt;
+&lt;a class=&quot;a2a_dd addtoany_share_save&quot; href=&quot;http://www.addtoany.com/share_save?linkurl=http%3A%2F%2Fmy1.fr%2Fblog%2F2010%2F02%2F15%2Fusb-over-ip-sous-linux%2F&amp;linkname=USB%20Over%20IP%20sous%20Linux&quot;&gt;Partager / Share&lt;/a&gt;</content>
+		<author>
+			<name>Emilien Macchi</name>
+			<uri>http://my1.fr/blog</uri>
+		</author>
+		<source>
+			<title type="html">My1' Blog » Logiciels libres</title>
+			<subtitle type="html">I'm not a Geek !</subtitle>
+			<link rel="self" href="http://my1.fr/blog/category/logiciels-libres/feed/"/>
+			<id>http://my1.fr/blog/category/logiciels-libres/feed/</id>
+			<updated>2010-02-15T23:16:04+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Mise à jour d’Android sur mon HTC Dream</title>
+		<link href="http://my1.fr/blog/2010/02/15/mise-a-jour-dandroid-sur-mon-htc-dream/"/>
+		<id>http://my1.fr/blog/2010/02/15/mise-a-jour-dandroid-sur-mon-htc-dream/</id>
+		<updated>2010-02-14T23:47:36+00:00</updated>
+		<content type="html">&lt;p&gt;Voilà un certain temps que je l&amp;#8217;attendais&amp;#8230;&lt;/p&gt;
+&lt;p&gt;Non, pas la Saint Valentin (quoi que).&lt;/p&gt;
+&lt;p&gt;La mise à jour d&amp;#8217;Android (1.5 vers 1.8) pour le HTC Dream de chez Orange !&lt;/p&gt;
+&lt;p&gt;Le &lt;a href=&quot;http://animation.orange.fr/maj_mobile/RUU_Dream_Orange_FR_1.86.73.4_release_signed_WithDriver.exe&quot;&gt;fichier&lt;/a&gt; est disponible sur le site d&amp;#8217;Orange et la &lt;a href=&quot;http://touslesmobiles.orange.fr/obj/pdf/HTCDream003_d.pdf&quot;&gt;documentation&lt;/a&gt; d&amp;#8217;installation aussi.&lt;/p&gt;
+&lt;p&gt;Rien de bien sorcier.&lt;/p&gt;
+&lt;p&gt;Vous branchez le téléphone, lancez l&amp;#8217;exécutable, et suivez les instructions.&lt;/p&gt;
+&lt;p&gt;Petite note intéressante. J&amp;#8217;ai été obligé de booter sur un Windows pour pouvoir exécuter le &amp;laquo;&amp;nbsp;.exe&amp;nbsp;&amp;raquo; (encore une fois on a pas pensé aux linuxiens), mais en plus sous Windows Seven 64 bits, le driver de fonctionne pas. J&amp;#8217;ai été contraint d&amp;#8217;utiliser un autre ordi avec Windows XP. Voilà, donc si vous avez ce problème, soyez rassurés !&lt;/p&gt;
+&lt;p&gt;Après cette petite aventure, l&amp;#8217;installation se passe très bien (10 minutes environ).&lt;/p&gt;
+&lt;p&gt;Le redémarrage un peu long, mais il faut être patient parfois.&lt;/p&gt;
+&lt;p&gt;Forcément, nous sommes obligés de reconfigurer le téléphone, mais rien de bien méchant, avec mon compte Google, mes agendas, mes contacts et mes messages sont restaurés.&lt;/p&gt;
+&lt;p&gt;L&amp;#8217;interface est retouchée, plus jolie même ! Je me surprends même à la trouver plus fluide. Moins de bugs, et quelques applications en plus ! Un lecteur PDF, une suite bureautique, la fonction Caméscope (enfin !) et quelques autres fonctionnalités supplémentaires (notemment l&amp;#8217;orientation automatique du téléphone et plus de widgets).&lt;/p&gt;
+&lt;p&gt;Je me sens à nouveau à la page, et vais pouvoir entamer une bonne semaine.&lt;/p&gt;
+&lt;p&gt;&lt;img title=&quot;HTC Dream&quot; src=&quot;http://high-tech.portail.free.fr/news/16-03-2009/htc-dream-d-orange-incompatible-avec-les-applications-google/htc-google-android.jpg&quot; alt=&quot;HTC Dream&quot; /&gt;&lt;/p&gt;
+&lt;a class=&quot;a2a_dd addtoany_share_save&quot; href=&quot;http://www.addtoany.com/share_save?linkurl=http%3A%2F%2Fmy1.fr%2Fblog%2F2010%2F02%2F15%2Fmise-a-jour-dandroid-sur-mon-htc-dream%2F&amp;linkname=Mise%20%C3%A0%20jour%20d%26%238217%3BAndroid%20sur%20mon%20HTC%20Dream&quot;&gt;Partager / Share&lt;/a&gt;</content>
+		<author>
+			<name>Emilien Macchi</name>
+			<uri>http://my1.fr/blog</uri>
+		</author>
+		<source>
+			<title type="html">My1' Blog » Logiciels libres</title>
+			<subtitle type="html">I'm not a Geek !</subtitle>
+			<link rel="self" href="http://my1.fr/blog/category/logiciels-libres/feed/"/>
+			<id>http://my1.fr/blog/category/logiciels-libres/feed/</id>
+			<updated>2010-02-15T23:16:04+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">Django : gérer plusieurs domaines avec un seul projet et les mêmes données</title>
+		<link href="http://blog.sietch-tabr.com/index.php/post/2010/02/14/Django-%3A-g%C3%A9rer-plusieurs-domaines-avec-un-seul-projet-et-les-m%C3%AAmes-donn%C3%A9es"/>
+		<id>urn:md5:83d54ffd15c22878abbb55cdae855bdd</id>
+		<updated>2010-02-14T13:52:00+00:00</updated>
+		<content type="html">&lt;h2&gt;Problématique&lt;/h2&gt;
+
+
+&lt;p&gt;Toujours en plein dans Django, mon projet actuel est de refaire tous mes sites web hébergés sur divers domaines en Django. Jusque là tout va bien je dirais. Ça se complique un peu quand l'idée est d'utiliser le même projet pour gérer tous ces sites web.&lt;/p&gt;
+
+
+&lt;p&gt;Pourquoi utiliser le même projet&amp;nbsp;?
+Plusieurs (bonnes) raisons à cela&amp;nbsp;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;simplifier le développement, la maintenance et le déploiement&amp;nbsp;: un projet à gérer c'est mieux que plusieurs&lt;/li&gt;
+&lt;li&gt;partager les mêmes données&amp;nbsp;: c'est à mon avis le point essentiel qui m'intéresse&amp;nbsp;: pouvoir créer du contenu (billet de blog, photo,...) et pouvoir facilement l'affecter à tel ou tel site ou à plusieurs à la fois &lt;em&gt;(cela dépend également des applications, cf plus bas)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;tout administrer de façon centralisée&amp;nbsp;: c'est la suite du point précédent&amp;nbsp;: pouvoir, dans une interface d'administration unique, créer du contenu et l'affecter à tel ou tel site web sans devoir changer d'interface d'admin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Je vais donc vous proposer ici la solution que j'ai retenu pour servir 2 domaines différents avec Django. Ceux-ci seront pour l'exemple www.domaine1.tld et www.domaine2.tld (ouaouh&amp;nbsp;! que c'est original&amp;nbsp;! - ça marche bien évidemment pour un sous-domaine...).&lt;/p&gt;
+
+
+&lt;p&gt;L'historique de cette configuration est expliqué en bas de ce billet pour ceux que ça intéresse.&lt;/p&gt;
+
+
+
+&lt;h2&gt;Arborescence&lt;/h2&gt;
+
+
+&lt;p&gt;Le premier point à voir est l'organisation des fichiers dans le répertoire du project. Afin de pas trop encombrer celui-ci, les fichiers ayant la même fonction (les fichiers settings.py, urls.py, les templates) sont déplacés dans des sous-répertoires, les fichiers manage.py restant eux à la racine, comme suit&amp;nbsp;:&lt;/p&gt;
+&lt;pre&gt;
+monprojet/
+          www_domaine1_tld_manage.py
+          www_domaine2_tld_manage.py
+          settings/
+                   __init__.py
+                   www_domaine1_tld.py
+                   www_domaine2_tld.py
+                   global_settings.py
+          urls/
+               __init__.py
+               www_domaine1_tld.py
+               www_domaine2_tld.py
+          templates/
+                    www_domaine1_tld
+                    www_domaine2_tld
+&lt;/pre&gt;
+
+&lt;p&gt;il ne faut pas oublier les fichiers __init__.py aux endroits indiqués.&lt;/p&gt;
+
+
+
+&lt;h2&gt;Fichiers manage.py&lt;/h2&gt;
+
+
+&lt;p&gt;Pour exécuter des commandes Django, on peut utiliser &lt;code&gt;$ django-admin.py &amp;lt;commande&amp;gt; &amp;lt;options&amp;gt;&lt;/code&gt; avec certaines contraintes (spécifier le fichier settings...) ou le &quot;raccourci&quot; &lt;code&gt;$ ./manage.py &amp;lt;commande&amp;gt; &amp;lt;options&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+
+&lt;p&gt;Dans le cas où l'on veut gérer plusieurs domaines, et où le fichier &quot;settings&quot; ne s'appelle pas &lt;code&gt;settings.py&lt;/code&gt;, il faut créer un fichier manage.py différent par domaine.&lt;/p&gt;
+
+
+&lt;p&gt;Exemple avec www_domaine1_tld_manage.py.&lt;/p&gt;
+&lt;pre&gt;
+#!/usr/bin/env python
+from django.core.management import execute_manager
+try:
+    import settings.www_domaine1_tld
+except ImportError:
+    import sys
+    sys.stderr.write(&amp;quot;Error: Can't find the file 'settings.www_domaine1_tld.py' in the directory containing %r....&amp;quot; % __file__)
+    sys.exit(1)
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    execute_manager(settings.www_domaine1_tld)
+&lt;/pre&gt;
+
+
+&lt;p&gt;Il suffira alors de lancer une commande comme la suivante pour exécuter des commandes Django sur un certain domaine&lt;/p&gt;
+&lt;pre&gt;
+$ ./www_domaine1_tld_manage.py &amp;lt;commande&amp;gt; &amp;lt;options&amp;gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;&lt;em&gt;&lt;ins&gt;mise à jour&lt;/ins&gt;&amp;nbsp;: vu qu'on me l'a signalé, cette manipulation concernant les fichiers manage.py n'est pas nécessaire puisqu'il suffit d'ajouter l'option --settings=settings.www_domaine1_tld pour pouvoir utiliser ./manage.py de manière classique&lt;/em&gt;&lt;/p&gt;
+
+
+&lt;h2&gt;Fichiers urls.py&lt;/h2&gt;
+
+
+&lt;p&gt;Pour les fichiers urls, il suffit de créer les fichiers suivant l'arborescence indiquée au-dessus en utilisant des fichiers urls.py &quot;classiques&quot;, avec la différence que si vous devez importer les &quot;settings&quot; du domaine il faut indiquer le module sous la forme &lt;code&gt;settings.www_domaine1_tld&lt;/code&gt;&lt;/p&gt;
+
+
+
+&lt;h2&gt;Framework &quot;sites&quot; de Django&lt;/h2&gt;
+
+
+&lt;p&gt;Si vous voulez utiliser les mêmes applications sur plusieurs domaines sans pour autant devoir publier le même contenu partout, il faut alors utiliser des applications qui utilisent le framework &quot;&lt;a href=&quot;http://docs.djangoproject.com/en/dev/ref/contrib/sites/&quot; hreflang=&quot;en&quot;&gt;sites&lt;/a&gt;&quot;.&lt;/p&gt;
+
+
+&lt;p&gt;Vous devez dans ce cas&amp;nbsp;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;créer des sites dans la base de données&lt;/li&gt;
+&lt;li&gt;et spécifier le SITE_ID qui va bien dans le fichier &quot;settings&quot; &lt;em&gt;(voir plus bas)&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;Fichiers settings.py&lt;/h2&gt;
+
+
+&lt;p&gt;Pour gérer les paramètres de chaque domaine/site on aura un fichier pour chacun ainsi qu'un fichier pour les paramètres globaux (pour les bases de données, les applications installées...).&lt;/p&gt;
+
+
+&lt;p&gt;Voici les paramètres spécifiques à chaque domaine, avec des commentaires.&lt;/p&gt;
+&lt;pre&gt;
+# paramètres Django pour le site www.domaine1.tld
+
+import os
+
+# on charge ici les paramètres spécifiés dans global_settings.py
+from global_settings import *
+
+# on initialise BASE_DIR avec le répertoire de base du projet,
+#  pour l'utiliser pour d'autres paramètres
+BASE_DIR = os.path.join(os.path.dirname(__file__), '..')
+
+# il faut indiquer ici l'identifiant du site (au sens Django), ansi que dans la base de données
+# cf http://docs.djangoproject.com/en/dev/ref/contrib/sites/
+SITE_ID = 1
+
+# chemin absolu vers le répertoire des médias du domaine
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'www_domaine1_tld')
+
+# URL pour gérer les médias venant de MEDIA_ROOT
+MEDIA_URL = 'http://www.domaine1.tld/static/'
+
+# il faut ici initialiser une clé secrète distincte pour chaque domaine
+SECRET_KEY = 'xxx'
+
+# on spécifie ici le fichier urls.py
+ROOT_URLCONF = 'monprojet.urls.www_domaine1_tld'
+
+# on spécifie ici le répertoires des templates
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates', 'www_domaine1_tld')
+)
+
+# ce qui suit n'est pas obligatoire mais permet d'avoir un fichier spécifique
+# en local afin par exemple de surcharger quelques paramètres pour le dev
+try:
+     from local_settings import *
+except ImportError:
+     pass
+&lt;/pre&gt;
+
+
+&lt;p&gt;Et voici un exemple de fichier global_settings.py avec les paramètres qui peuvent/doivent être partagés.&lt;/p&gt;
+&lt;pre&gt;
+DATABASE_ENGINE = ''
+DATABASE_NAME = ''
+DATABASE_USER = ''
+DATABASE_PASSWORD = ''
+DATABASE_HOST = ''
+DATABASE_PORT = ''
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.load_template_source',
+    'django.template.loaders.app_directories.load_template_source',
+)
+
+MIDDLEWARE_CLASSES = (
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+)
+
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.admin',
+)
+&lt;/pre&gt;
+
+
+
+&lt;h2&gt;Serveur web/Python/WSGI&lt;/h2&gt;
+
+
+&lt;p&gt;Pour cette partie, j'utilise pour ma part (pour l'instant) Apache+mod_wsgi mais je ne vais pas rentrer dans les détails puisque ça n'est pas spécifique au cas particulier qui nous intéresse ici.&lt;/p&gt;
+
+
+&lt;p&gt;J'ai un fichier pour Apache qui indique un VirtualHost pour chaque domaine et pointe vers un fichier WSGI pour chacun également.&lt;/p&gt;
+
+
+&lt;p&gt;Dans le fichier WSGI il faut faire attention à étendre le PYTHONPATH si nécessaire et indiquer le fichier settings correctement, un peu comme ce qui suit&amp;nbsp;:&lt;/p&gt;
+&lt;pre&gt;
+import sys
+
+sys.path.append('/opt/django/monprojet/')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'monprojet.settings.www_domaine1_tld'
+&lt;/pre&gt;
+
+
+
+&lt;h2&gt;Historique&lt;/h2&gt;
+
+
+&lt;p&gt;Au début de ma recherche sur cette problématique je me suis tout de suite dit que c'était le boulot de Django de faire ça, et quand j'ai compris que ce n'était pas le cas naturellement, je me suis orienté vers des applications qui, étendant Django, lui permettait de gérer cela. J'ai trouvé deux applications dont le but semble de combler ce manque&amp;nbsp;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://github.com/shestera/django-multisite&quot;&gt;django-multisite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://bitbucket.org/bkroeze/django-threaded-multihost&quot;&gt;django-threaded-multihost&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Je ne me souviens plus pourquoi j'ai mis de côté django-multisite mais mes tests ont porté sur django-threaded-multihost. L'application faisait ce pourquoi elle était prévu mais avait un problème majeur&amp;nbsp;: il n'y avait qu'un settings.py, un urls.py... pour tous les domaines servis et là je me suis rendu compte que ce n'était pas vraiment ce dont j'avais besoin puisque le but était de pouvoir servir le même contenu mais bien évidemment de façon différente...
+Retour à la case départ&amp;nbsp;!&lt;/p&gt;
+
+
+&lt;p&gt;Heureusement je suis tombé sur une discussion sur IRC #django-fr entre &lt;a href=&quot;http://www.biologeek.com&quot; hreflang=&quot;fr&quot;&gt;david`bgk&lt;/a&gt; et &lt;a href=&quot;http://cyberdelia.tryphon.org/&quot; hreflang=&quot;fr&quot;&gt;cyberdelia&lt;/a&gt; concernant ce thème et cyberdelia m'a alors expliqué comment ses divers domaines (pour &lt;a href=&quot;http://www.croisedanslemetro.com&quot; hreflang=&quot;fr&quot;&gt;http://www.croisedanslemetro.com&lt;/a&gt; il me semble &lt;em&gt;(j'aime le concept de ce site :) soit dit en passant&lt;/em&gt;) pointant vers un même projet étaient gérés... c'était ce qu'il me fallait&amp;nbsp;! Le temps que ça mûrisse, celui de m'y replonger, d'implémenter la solution et de la tester, je me suis dit qu'il serait intéressant de poster cette solution et me voilà donc... (en ajoutant le temps de rédaction de ce billet ;-)... j'espère que ça pourra être utile à d'autres.&lt;/p&gt;</content>
+		<author>
+			<name>Eric Veiras Galisson</name>
+			<uri>http://blog.sietch-tabr.com/index.php/</uri>
+		</author>
+		<source>
+			<title type="html">ka.da - Tag - planete-debian-fr-users</title>
+			<link rel="self" href="http://blog.sietch-tabr.com/index.php/feed/tag/planete-debian-fr-users/rss2"/>
+			<id>http://blog.sietch-tabr.com/index.php/feed/tag/planete-debian-fr-users/rss2</id>
+			<updated>2010-02-14T18:45:21+00:00</updated>
+			<rights type="html">CC-BY-NC-SA</rights>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">Installation de Bind</title>
+		<link href="http://mvl87.dyndns.org/index.php/post/2010/02/12/Installation-de-Bind"/>
+		<id>urn:md5:92d4e1c0823fc63799698a1730b7a225</id>
+		<updated>2010-02-12T09:30:00+00:00</updated>
+		<content type="html">&lt;p&gt;Suite au billet pré&amp;shy;cé&amp;shy;dent sur les&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/02/08/22-%C3%A0-Asni%C3%A8res&quot;&gt; DNS mer&amp;shy;di&amp;shy;ques d&amp;#8217;Orange&lt;/a&gt;, et &lt;a href=&quot;http://www.vanaryon.tk/2010/02/resolution-dns-faites-la-maison/&quot; hreflang=&quot;fr&quot;&gt;suite au billet de Vana&amp;shy;ryon&lt;/a&gt;je me suis lancé dans l&amp;#8217;ins&amp;shy;tal&amp;shy;la&amp;shy;tion de bind9.&lt;/p&gt;
+
+
+&lt;p&gt;Rien de plus sim&amp;shy;ple&amp;#160;:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;aptitude install bind9&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Si l&amp;#8217;inter&amp;shy;face lo a été désac&amp;shy;ti&amp;shy;vée par con&amp;shy;tre, l&amp;#8217;ins&amp;shy;tal&amp;shy;la&amp;shy;tion échouera avec des mes&amp;shy;sa&amp;shy;ges d&amp;#8217;erreur de type&amp;#160;:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;Stopping domain name service...: bind9rndc: connect failed: 127.0.0.1#953: timed out&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Pour régler ça il faut la réac&amp;shy;ti&amp;shy;ver&amp;#160;:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;ifconfig lo 127.0.0.1 up&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;p&gt;puis&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;dpkg --configure -a bind9&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Il est néces&amp;shy;saire d&amp;#8217;ouvrir le port 53&amp;#160;en sor&amp;shy;tie. Donc il faut con&amp;shy;fi&amp;shy;gu&amp;shy;rer si besoin ipta&amp;shy;bles et/ou sa machin&amp;shy;Box avant d&amp;#8217;aller plus loin.&lt;/p&gt;
+
+
+&lt;p&gt;Ensuite, on peut &lt;a href=&quot;http://www.vanaryon.tk/2010/02/resolution-dns-faites-la-maison/&quot; hreflang=&quot;fr&quot;&gt;repren&amp;shy;dre le tuto de Vana&amp;shy;ryon&lt;/a&gt;&amp;#160;: suf&amp;shy;fit de sup&amp;shy;pri&amp;shy;mer tou&amp;shy;tes les lignes du fichier /etc/resolv.conf afin de les rem&amp;shy;pla&amp;shy;cer par&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;nameserver 127.0.0.1&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Pour rechar&amp;shy;ger la nou&amp;shy;velle con&amp;shy;fi&amp;shy;gu&amp;shy;ra&amp;shy;tion&amp;#160;:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;/etc/init.d/bind9 restart&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Sous Gnome, le net&amp;shy;work mana&amp;shy;ger a ten&amp;shy;dance à réé&amp;shy;crire dans resolv.conf pour remet&amp;shy;tre sa con&amp;shy;fi&amp;shy;gu&amp;shy;ra&amp;shy;tion par défaut. Via le menu&amp;#160;: Sys&amp;shy;tème/Pré&amp;shy;fé&amp;shy;ren&amp;shy;ces/Con&amp;shy;nexions on peut modi&amp;shy;fier le ser&amp;shy;veur DNS qui sera uti&amp;shy;lisé par défaut en cli&amp;shy;quant sur con&amp;shy;fi&amp;shy;gu&amp;shy;rer sur cha&amp;shy;que con&amp;shy;nexion et en ren&amp;shy;sei&amp;shy;gnant uni&amp;shy;que&amp;shy;ment 127.0.0.1 dans l&amp;#8217;onglet DNS à la place de l&amp;#8217;adresse qui s&amp;#8217;y trouve (en géné&amp;shy;ral 192.168.X.X)
+Ensuite il est néces&amp;shy;saire de redé&amp;shy;mar&amp;shy;rer la con&amp;shy;nexion réseau.&lt;/p&gt;
+
+
+&lt;p&gt;Cette com&amp;shy;mande&amp;#160;:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;dig @127.0.0.1 www.google.fr&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;p&gt;per&amp;shy;met de tes&amp;shy;ter si la réso&amp;shy;lu&amp;shy;tion fonc&amp;shy;tionne car elle indi&amp;shy;que quel est le ser&amp;shy;veur inter&amp;shy;rogé pour la réso&amp;shy;lu&amp;shy;tion DNS afin d&amp;#8217;être cer&amp;shy;tain que c&amp;#8217;est bien bind en local qui répond.&lt;/p&gt;</content>
+		<author>
+			<name>mvl</name>
+			<uri>http://mvl87.dyndns.org/index.php/</uri>
+		</author>
+		<source>
+			<title type="html">mvl87 blog! - Tag - Debian</title>
+			<link rel="self" href="http://mvl87.dyndns.org/index.php/feed/tag/Debian/atom"/>
+			<id>urn:md5:0ddaf170c93078263b39d5de06927cef</id>
+			<updated>2010-02-16T01:15:08+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Linux Starter Kit</title>
+		<link href="http://my1.fr/blog/2010/02/10/linux-starter-kit-2/"/>
+		<id>http://my1.fr/blog/2010/02/10/linux-starter-kit-2/</id>
+		<updated>2010-02-10T22:46:45+00:00</updated>
+		<content type="html">&lt;p&gt;Une info toute fraîche pour les fans de Linux (j&amp;#8217;espère nombreux) ou ceux qui veulent se lancer :&lt;/p&gt;
+&lt;p&gt;Le magazine Linux Identity publie fin du mois une édition spéciale, en quelque sorte destinnée aux débutants désirant de &amp;laquo;&amp;nbsp;lancer&amp;nbsp;&amp;raquo; dans l&amp;#8217;univers palpitant de Linux : Linux Starter Kit.&lt;/p&gt;
+&lt;p&gt;Donc au programme, installations, comment faire cohabiter Ubuntu avec Windows, pas mal d&amp;#8217;articles sur les applications intéressantes, et plein de trucs et astuces pour mieux utiliser son ordinateur.&lt;/p&gt;
+&lt;p&gt;Le magazine traîte surtout sur la distribution Ubuntu 9.10 Karmic Koala, en raison de sa popularité écrasante. Mais la pluparts des logiciels libres évoqués sont présents dans d&amp;#8217;autres distrib&amp;#8217;, donc pas de panique !&lt;/p&gt;
+&lt;p&gt;Bon je n&amp;#8217;en dis pas plus !&lt;/p&gt;
+&lt;p&gt;Alors je vous donne rendez-vous dans quelques jours, dans votre kiosque, vous savez ce qu&amp;#8217;il vous reste à faire !&lt;/p&gt;
+&lt;p&gt;NdM : Vous vous demandez certainement comment suis-je aussi bien informé, c&amp;#8217;est parce que j&amp;#8217;ai écris quelques articles pour le magazine.&lt;/p&gt;
+&lt;a class=&quot;a2a_dd addtoany_share_save&quot; href=&quot;http://www.addtoany.com/share_save?linkurl=http%3A%2F%2Fmy1.fr%2Fblog%2F2010%2F02%2F10%2Flinux-starter-kit-2%2F&amp;linkname=Linux%20Starter%20Kit&quot;&gt;Partager / Share&lt;/a&gt;</content>
+		<author>
+			<name>Emilien Macchi</name>
+			<uri>http://my1.fr/blog</uri>
+		</author>
+		<source>
+			<title type="html">My1' Blog » Logiciels libres</title>
+			<subtitle type="html">I'm not a Geek !</subtitle>
+			<link rel="self" href="http://my1.fr/blog/category/logiciels-libres/feed/"/>
+			<id>http://my1.fr/blog/category/logiciels-libres/feed/</id>
+			<updated>2010-02-15T23:16:04+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">Les aventuriers du paquet (debian) recommandé perdu</title>
+		<link href="http://jean-christophe.dubacq.fr/post/Les-aventuriers-du-paquet-%28debian%29-recommand%C3%A9-perdu"/>
+		<id>urn:md5:efbfd2cd8a549306c862dea8f9348120</id>
+		<updated>2010-02-07T23:15:04+00:00</updated>
+		<content type="html">&lt;p&gt;Avez-vous déjà eu un dysfonctionnement d&amp;rsquo;un programme lié au fait qu&amp;rsquo;un paquet recommandé, que vous ne jugiez pas utile, avait été enlevé alors qu&amp;rsquo;il était, en fait, utile&amp;thinsp;?&lt;/p&gt;
+&lt;p&gt;Parce que les paquets recommandés sont maintenant installés par défaut en même temps que le paquet demandé, mais pas toujours (il y a une heuristique un peu spéciale pour ne pas tenter de réinstaller tout le temps le même paquet dont vous ne voulez vraiment pas&amp;thinsp;; pour autant que je le sache, il s&amp;rsquo;agit de ne pas installer un paquet recommandé s&amp;rsquo;il aurait dû l&amp;rsquo;être et qu&amp;rsquo;il ne l&amp;rsquo;est pas, tout simplement). Au bout d&amp;rsquo;un certain temps, ça peut être agréable (nécessaire&amp;thinsp;?) de faire un inventaire des paquets qui auraient pu être installés mais refusés à un moment donné. De plus, certaines manipulations brutales du gestionnaire de paquets peuvent mettre des paquets sur votre système et qu&amp;rsquo;il lui manque une vraie dépendance (Depends ou Pre-Depends). Même si &lt;code&gt;aptitude&lt;/code&gt; est capable de lister les problèmes for la deuxième question (aptitude search ~i~b est &lt;em&gt;grosso modo&lt;/em&gt; la réponse), le premier problème n&amp;rsquo;admet pas de solutions simples (les recherches avec &lt;code&gt;aptitude&lt;/code&gt; ne permettent pas de faire la différence entre un dépendance de A ou B, et une dépendance de A et B).
+&lt;/p&gt;
+&lt;p&gt;J&amp;rsquo;ai donc écrit (toujours en python avec &lt;a href=&quot;http://apt.alioth.debian.org/python-apt-doc/&quot; hreflang=&quot;en&quot;&gt;python-apt&lt;/a&gt; ≥ 0.7.93, donc dans &lt;em&gt;unstable&lt;/em&gt; actuellement) un programme &lt;code&gt;apt-missing&lt;/code&gt;.
+&lt;/p&gt;
+&lt;p&gt;Seules les dépendances positives ont été envisagées (Pre-Depends, Depends, Recommends, Suggests et aussi si on veut Enhances). Les dépendances négatives ne sont pas encore traitées mais là c&amp;rsquo;est la présence d&amp;rsquo;un paquet dépendant dans une clause qui doit déclencher une réaction, pas l&amp;rsquo;absence de tous les paquets de la clause.
+&lt;/p&gt;
+&lt;p&gt;Le programme est hébergé &lt;a href=&quot;https://www-lipn.univ-paris13.fr/projects/jcdubacq/wiki/AptMoreUtils&quot; hreflang=&quot;en&quot;&gt;là&lt;/a&gt;, et les paquets sont hébergés  &lt;a href=&quot;http://debian.lipn.fr/html/package.apt-moreutils.html&quot; hreflang=&quot;en&quot;&gt;ici&lt;/a&gt;.
+&lt;/p&gt;
+&lt;h3&gt;Exemples&lt;/h3&gt;
+Lancer &lt;code&gt;apt-missing&lt;/code&gt; seul (comme &lt;code&gt;apt-missing --recommends&lt;/code&gt;)&amp;nbsp;:
+&lt;pre&gt;# Package abiword has some Recommends missing:&lt;br /&gt;abiword-docs&lt;br /&gt;# Package defoma has some Recommends missing:&lt;br /&gt;libfont-freetype-perl&lt;br /&gt;# Package doc-debian-fr has some Recommends missing:&lt;br /&gt;developers-reference-fr&lt;br /&gt;maint-guide-fr&lt;br /&gt;apt-howto-fr&lt;br /&gt;# Package dwww has some Recommends missing:&lt;br /&gt;swish++&lt;br /&gt;[...]&lt;br /&gt;# Package xchat has some Recommends missing:&lt;br /&gt;tcl&lt;br /&gt;## &quot;Depends&quot; broken in 0 packages&lt;br /&gt;## &quot;Pre-Depends&quot; broken in 0 packages&lt;br /&gt;## &quot;Recommends&quot; broken in 31 packages&lt;/pre&gt;
+D&amp;rsquo;ailleurs, j&amp;rsquo;ai pu ainsi localiser des modules noyaux installés qui recommandaient des noyaux absents, parce que tout simplement ils avaient disparus. J&amp;rsquo;ai donc pu les effacer.
+&lt;code&gt;apt-missing -a&lt;/code&gt; cherche tous les types de dépendance positifs&amp;nbsp;:
+&lt;pre&gt;# Package a2ps has some Suggests missing:&lt;br /&gt;html2ps&lt;br /&gt;t1-cyrillic&lt;br /&gt;# Package abiword has some Recommends missing:&lt;br /&gt;abiword-docs&lt;br /&gt;[...]&lt;br /&gt;## &quot;Depends&quot; broken in 0 packages&lt;br /&gt;## &quot;Pre-Depends&quot; broken in 0 packages&lt;br /&gt;## &quot;Recommends&quot; broken in 31 packages&lt;br /&gt;## &quot;Suggests&quot; broken in 377 packages&lt;/pre&gt;
+&lt;h3&gt;Options&lt;/h3&gt;
+&lt;dl&gt;
+&lt;dt&gt;-h|--help&lt;/dt&gt;&lt;dd&gt;
+Ce texte d&amp;rsquo;aide
+&lt;/dd&gt;&lt;dt&gt;-d|--depends&lt;/dt&gt;&lt;dd&gt;
+Depends ou Pre-Depends manquants
+&lt;/dd&gt;&lt;dt&gt;-r|--recommends&lt;/dt&gt;&lt;dd&gt;
+Recommends manquants (par défaut)
+&lt;/dd&gt;&lt;dt&gt;-s|--suggests&lt;/dt&gt;&lt;dd&gt;
+Suggests manquants
+&lt;/dd&gt;&lt;dd&gt;-a|--any&lt;/dd&gt;&lt;dd&gt;
+N&amp;rsquo;importe quelle dépendance positive (comme ci-dessus)
+&lt;/dd&gt;&lt;dt&gt;-t|--type=&lt;em&gt;string&lt;/em&gt;&lt;/dt&gt;&lt;dd&gt;
+&lt;em&gt;     Dépendance quelconque (par ex. Enhances)
+&lt;/em&gt;&lt;/dd&gt;&lt;dt&gt;&lt;em&gt;-p|--package=&lt;em&gt;string&lt;/em&gt;&lt;/em&gt;&lt;/dt&gt;&lt;dd&gt;
+&lt;em&gt;&lt;em&gt;    Liste de paquets à analyser séparés par un espace (on peut répéter l&amp;rsquo;option, et si aucune option -p n&amp;rsquo;est présente, tous les paquets sont analysés)&lt;/em&gt;&lt;/em&gt;&lt;/dd&gt;&lt;/dl&gt;</content>
+		<author>
+			<name>Jean-Christophe Dubacq</name>
+			<uri>http://jean-christophe.dubacq.fr/</uri>
+		</author>
+		<source>
+			<title type="html">Grosso Modo - fr - debian</title>
+			<subtitle type="html">Post hoc, ergo propter hoc</subtitle>
+			<link rel="self" href="http://jean-christophe.dubacq.fr/superfeed/lang:fr/tag:debian?navlang=fr"/>
+			<id>http://jean-christophe.dubacq.fr/superfeed/lang:fr/tag:debian?navlang=fr</id>
+			<updated>2010-02-08T13:15:03+00:00</updated>
+			<rights type="html">© Jean-Christophe Dubacq, licence CC-BY</rights>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Fosdem2010 : Les premières conférences</title>
+		<link href="http://carlchenet.wordpress.com/2010/02/06/fosdem2010-les-premieres-conferences/"/>
+		<id>http://carlchenet.wordpress.com/?p=271</id>
+		<updated>2010-02-06T14:59:05+00:00</updated>
+		<content type="html">&lt;br /&gt;&lt;p&gt;Après une arrivée tôt ce matin, nous avons rejoint les conférences du &lt;a title=&quot;Page d'accueil du Fosdem&quot; href=&quot;http://www.fosdem.org/2010/&quot; target=&quot;_blank&quot;&gt;FOSDEM&lt;/a&gt; qui bat actuellement son plein.&lt;/p&gt;
+&lt;p&gt;La première impression : beaucoup, beaucoup de monde. Des gens calés. Des célébrités du libre un peu partout. Des tonnes de passionnés. Des développeurs Debian en kilt. Les membres de &lt;a title=&quot;Page d'accueil de l'AFPY&quot; href=&quot;http://www.afpy.org/&quot; target=&quot;_blank&quot;&gt;l&amp;#8217;Afpy&lt;/a&gt; venus en masse. C&amp;#8217;est aussi l&amp;#8217;occasion de croiser des personnes avec lesquelles nous discutons sur Internet tous les jours mais ne voyons que rarement.&lt;/p&gt;
+&lt;p&gt;À chaque break, les stands des distributions et des projets phare sont pris d&amp;#8217;assaut par des foules en manque de goodies. Les cadavres de différentes bières belges remplissent les poubelles ici et là.&lt;/p&gt;
+&lt;p&gt;Des dizaines de personnes font la queue devant la salle Mozilla qui s&amp;#8217;annonce déjà pleine pour la conférence HTML5&lt;/p&gt;
+&lt;p&gt;La suite dans un prochain billet.&lt;/p&gt;
+  &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/gocomments/carlchenet.wordpress.com/271/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/comments/carlchenet.wordpress.com/271/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/godelicious/carlchenet.wordpress.com/271/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/delicious/carlchenet.wordpress.com/271/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/gostumble/carlchenet.wordpress.com/271/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/stumble/carlchenet.wordpress.com/271/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/godigg/carlchenet.wordpress.com/271/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/digg/carlchenet.wordpress.com/271/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/goreddit/carlchenet.wordpress.com/271/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/reddit/carlchenet.wordpress.com/271/&quot; /&gt;&lt;/a&gt; &lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://stats.wordpress.com/b.gif?host=carlchenet.wordpress.com&amp;blog=7722010&amp;post=271&amp;subd=carlchenet&amp;ref=&amp;feed=1&quot; /&gt;</content>
+		<author>
+			<name>Carl Chenet</name>
+			<uri>http://carlchenet.wordpress.com</uri>
+		</author>
+		<source>
+			<title type="html">Carl Chenet's Blog » debian-fr</title>
+			<subtitle type="html">Debian contributing and stuff</subtitle>
+			<link rel="self" href="http://carlchenet.wordpress.com/category/debian-fr/feed/"/>
+			<id>http://carlchenet.wordpress.com/category/debian-fr/feed/</id>
+			<updated>2010-02-06T15:15:07+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Gestion de la lumière d’ambiance avec le protocole DMX sous Debian GNU/Linux</title>
+		<link href="http://www.csquad.org/2010/01/31/dmx-lumiere-ambiance-debian/"/>
+		<id>http://www.csquad.org/?p=1057</id>
+		<updated>2010-01-31T10:39:51+00:00</updated>
+		<content type="html">&lt;p&gt;La technologie des lumières à LEDs offre la possibilité de placer une source de lumière &lt;strong&gt;n&amp;#8217;importe où&lt;/strong&gt; (aquarium, meubles, faux plafonds, derrière un écran, etc&amp;#8230;). &lt;/p&gt;
+&lt;p&gt;Par contre, les LEDs disposent de &lt;strong&gt;plus de fonctionnalités&lt;/strong&gt; que les ampoules classiques.&lt;br /&gt;
+En effet, en plus d&amp;#8217;un bouton d&amp;#8217;allumage, vous avez la possibilité de changer la couleur de la lumière, la faire varier dans le temps, modifier son intensité, jouer une séquence, etc&amp;#8230; &lt;/p&gt;
+&lt;p&gt;Avec un nombre de possiblités plus grand, les interfaces de contrôle classique (&lt;a href=&quot;http://en.wikipedia.org/wiki/X10_(industry_standard)&quot;&gt;X10&lt;/a&gt;, &lt;a href=&quot;http://wiki.linuxmce.org/index.php/PLCBUS&quot;&gt;PLCBUS&lt;/a&gt;, etc&amp;#8230;) ne suffisent pas.&lt;/p&gt;
+&lt;p&gt;Il est donc nécessaire de placer un peu plus d&amp;#8217;intelligence dans le réseau d&amp;#8217;illumination à l&amp;#8217;aide du protocole &lt;a href=&quot;http://en.wikipedia.org/wiki/DMX512&quot;&gt;DMX&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Ce protocole est utilisé dans le monde des concerts, des plateaux de télévision et des spectacles.&lt;br /&gt;
+Néanmoins, il est tout à fait possible de le détourner pour un usage domotique.&lt;/p&gt;
+&lt;p&gt;Dans ce billet, je vais décrire l&amp;#8217;utilisation d&amp;#8217;un contrôleur LED RGB DMX et de l&amp;#8217;interface &lt;a href=&quot;http://www.enttec.com/index.php?main_menu=Products&amp;pn=70303&amp;show=description&amp;name=opendmxusb&quot;&gt;OpenDMX&lt;/a&gt; de chez ENTTEC, à l&amp;#8217;aide du projet &lt;a href=&quot;http://code.google.com/p/linux-lighting/&quot;&gt;OLA&lt;/a&gt; sous &lt;a href=&quot;http://www.debian.org/&quot;&gt;Debian GNU/Linux&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Principe de fonctionnement&lt;/h3&gt;
+&lt;p&gt;Voici le schèma du montage:&lt;br /&gt;
+&lt;img src=&quot;http://www.csquad.org/wp-content/uploads/2009/12/dmx_led_overview.png&quot; alt=&quot;dmx_led_overview&quot; title=&quot;dmx_led_overview&quot; width=&quot;814&quot; height=&quot;205&quot; class=&quot;alignnone size-full wp-image-886&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;le PC communique à l&amp;#8217;aide du port USB avec un contrôleur DMX ; &lt;/li&gt;
+&lt;li&gt;les contrôleurs LEDs mis en série convertissent les ordres en instructions RGB ;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Et voici ce que cela donne :&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.csquad.org/wp-content/uploads/2010/01/opendmx_rgb_led_strip_usb.jpg&quot;&gt;&lt;img src=&quot;http://www.csquad.org/wp-content/uploads/2010/01/opendmx_rgb_led_strip_usb-300x197.jpg&quot; alt=&quot;OpenDMX RGB LED&quot; title=&quot;opendmx_rgb_led_strip_usb&quot; width=&quot;300&quot; height=&quot;197&quot; class=&quot;alignnone size-medium wp-image-1087&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Matériel&lt;/h3&gt;
+&lt;p&gt;Voici le matériel nécessaire pour un bandeau à LED, le tout fonctionne biensûr sous Debian GNU/Linux est &lt;em&gt;FOSS Friendly&lt;/em&gt; &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt; &lt;/p&gt;
+&lt;table border=&quot;1&quot; width=&quot;80%&quot;&gt;
+&lt;tr&gt;
+&lt;th&gt;Produit&lt;/th&gt;
+&lt;th&gt;Prix&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.sirs-e.com/st/open-dmx-usb-p-47.html&quot;&gt;OPEN DMX USB Hardware Interface&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;$52.00 &amp;#8211; $60.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.sirs-e.com/st/rgb-led-dmx-controller-2-p-2930.html&quot;&gt;RGB LED DMX Controller 2&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;$48.00 &amp;#8211; $76.80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.sirs-e.com/st/rj45-female-cable-adapter-p-2976.html&quot;&gt;RJ45 Connetor to XLR Female Connector&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;$11.20 &amp;#8211; $14.25 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.sirs-e.com/st/rj45-male-cable-adapter-p-2944.html&quot;&gt;RJ45 to XLR Male DMX Cable Adapter 3ft&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;$10.99 &amp;#8211; $14.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.sirs-e.com/st/adapter-pole-female-pole-male-p-35.html&quot;&gt;DMX/XLR converter connector&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;$10.50 &amp;#8211; $12.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.sirs-e.com/st/controller-power-supply-usaeu-p-2923.html&quot;&gt;LED Controller Power Supply, USA/EU&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;$23.10 &amp;#8211; $36.96&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.sirs-e.com/st/terminator-pole-male-connector-p-133.html&quot;&gt;DMX 512 Terminator, 3 Pole Male Connector&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;$7.94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.ampoule-leds.fr/mini-bandeau-rigide-rgb-12-led-20cm-150degres-12v-dc-p-2491.html&quot;&gt;Mini Bandeau Rigide RGB 12 Led 20cm 150° 12v DC&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;6 &amp;euro; &amp;#8211; 12,95 &amp;euro;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.ampoule-leds.fr/raccord-intermediaire-pour-bandeau-lumineux-led-longueur-5cm-p-638.html&quot;&gt;Raccord intermédiaire pour Bandeau lumineux à Led Longueur 5cm&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;1.5 &amp;euro; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;Pour le cablage, entre le bandeau lumineux et le contrôleur à LED, Il faut couper une extrémité du cable de raccord et la dénuder pour brancher sur le bornier à quatre vis de sortie RGB.&lt;/p&gt;
+&lt;h3&gt;Installation du matériel&lt;/h3&gt;
+&lt;p&gt;Une fois que vous avez branché l&amp;#8217;OpenDMX au PC, vous devez voir un convertisseur USB-Serial (UART) à l&amp;#8217;aide de &lt;em&gt;lsusb&lt;/em&gt; :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+$ lsusb&lt;br /&gt;
+Bus 002 Device 006: ID 0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Pour faire fonctionner l&amp;#8217;OpenDMX, vous avez besoin du module noyau &lt;em&gt;dmx-usb&lt;/em&gt; et d&amp;#8217;un environnement de compilation pour les modules. (paquet linux-headers*, etc&amp;#8230;).&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+# cd /usr/src&lt;br /&gt;
+# git-clone http://www.erwinrol.com/git/dmx_usb_module/&lt;br /&gt;
+# cd dmx_usb_module&lt;br /&gt;
+# make&lt;br /&gt;
+# cp ./dmx_usb.ko /lib/modules/$(uname -r)/kernel/drivers/usb/serial&lt;br /&gt;
+# depmod -a&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Comme, l&amp;#8217;OpenDMX est un convertiseur &lt;em&gt;USB-Serial&lt;/em&gt;, le noyau par défaut le présente comme une interface &lt;em&gt;/dev/ttyUSB&lt;/em&gt;.&lt;br /&gt;
+Il est donc nécessaire de &lt;em&gt;blacklister&lt;/em&gt; les modules &lt;em&gt;usbserial&lt;/em&gt; dans le fichier &lt;em&gt;/etc/modprobe.d/blacklist&lt;/em&gt;, en ajoutant les lignes suivantes :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+blacklist usbserial&lt;br /&gt;
+blacklist usb-serial&lt;br /&gt;
+blacklist ftdi_sio&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+Ensuite, ajouter le module &lt;em&gt;dmx_usb&lt;/em&gt; dans le fichier &lt;em&gt;/etc/modules&lt;/em&gt; et rebooter la machine.&lt;br /&gt;
+Au reboot, vous devez avoir une interface &lt;em&gt;/dev/dmx0&lt;/em&gt;, qu&amp;#8217;il faut rendre accessible pour tous les utilisateurs :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+# ls -l /dev/dmx0&lt;br /&gt;
+crw-rw---- 1 root root 180, 192 2010-01-30 00:37 /dev/dmx0&lt;br /&gt;
+# chmod a+rw /dev/dmx0&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Installation du logiciel pour la gestion de la lumière : Open Lighting Architecture (OLA)&lt;/h3&gt;
+&lt;p&gt;Comme, il n&amp;#8217;y a pas de paquets Debian disponibles pour ce programme, je vais décrire une procédure d&amp;#8217;installation à partir des sources :&lt;/p&gt;
+&lt;h4&gt;Dépendances&lt;/h4&gt;
+&lt;p&gt;Vous allez avoir besoin des dépendances suivantes pour la compilation :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+# apt-get install  build-essential uuid-dev libcppunit-dev libgcrypt-dev&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Compilation de Protocol Buffers de Google&lt;/h4&gt;
+&lt;p&gt;Vous avez besoin de &lt;a href=&quot;http://code.google.com/p/protobuf/&quot;&gt;protobuf&lt;/a&gt;, pour la gestion de l&amp;#8217;échange de données :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+# cd /usr/src&lt;br /&gt;
+# wget http://protobuf.googlecode.com/files/protobuf-2.3.0.tar.bz2&lt;br /&gt;
+# tar xjf protobuf-2.3.0.tar.bz2&lt;br /&gt;
+# cd protobuf-2.3.0&lt;br /&gt;
+# ./configure ; make ; make install&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Compilation de google-ctemplate&lt;/h4&gt;
+&lt;p&gt;Vous avez besoin du système &lt;a href=&quot;http://code.google.com/p/google-ctemplate/&quot;&gt;ctemplate&lt;/a&gt; :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+# cd /usr/src&lt;br /&gt;
+# wget http://google-ctemplate.googlecode.com/files/ctemplate-0.96.tar.gz&lt;br /&gt;
+# tar xzf ctemplate-0.96.tar.gz&lt;br /&gt;
+# cd ctemplate-0.96&lt;br /&gt;
+# ./configure; make ; make install&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Compilation de microhttpd (optionnel)&lt;/h4&gt;
+&lt;p&gt;Vous avez besoin de la &lt;a href=&quot;ftp://ftp.gnu.org/gnu/libmicrohttpd/&quot;&gt;libmicrohttpd&lt;/a&gt; version &gt; à 0.4 (non disponible dans Debian) pour l&amp;#8217;interface web de gestion :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+# cd /usr/src&lt;br /&gt;
+# wget ftp://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.4.5.tar.gz&lt;br /&gt;
+# tar xzf libmicrohttpd-0.4.5.tar.gz&lt;br /&gt;
+# cd libmicrohttpd-0.4.5&lt;br /&gt;
+# ./configure; make ; make install&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Compilation de OLA&lt;/h4&gt;
+&lt;p&gt;Le projet OLA se découpe en deux parties : un serveur et des clients, dont voici la procédure de compilation.&lt;br /&gt;
+Pour le serveur :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+# cd /usr/src&lt;br /&gt;
+# wget http://linux-lighting.googlecode.com/files/ola-0.6.0.tar.gz&lt;br /&gt;
+# tar xzf ola-0.6.0.tar.gz&lt;br /&gt;
+# cd ola-0.6.0&lt;br /&gt;
+# ./configure; make ; make install&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+Pour le client en C++ :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+# cd /usr/src&lt;br /&gt;
+# wget http://linux-lighting.googlecode.com/files/ola-0.6.0.tar.gz&lt;br /&gt;
+# tar xzf ola-0.6.0.tar.gz&lt;br /&gt;
+# cd ola-examples-0.6.0&lt;br /&gt;
+# ./configure; make ; make install&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Lancement d&amp;#8217;OLAd&lt;/h4&gt;
+&lt;p&gt;Vous pouvez lancer &lt;em&gt;olad&lt;/em&gt;, avec un utilisateur qui disspose des droits de lecture / écriture du &lt;em&gt;/dev/dmx0&lt;/em&gt; :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+$ olad -l 3&lt;br /&gt;
+...&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+Vous pouvez ensuite vérifier si l&amp;#8217;OpenDMX a bien été détecté par le serveur à l&amp;#8217;aide du client &lt;em&gt;ola_dev_info&lt;/em&gt; :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+$ ola_dev_info&lt;br /&gt;
+...&lt;br /&gt;
+Device 3: OpenDmx USB Device&lt;br /&gt;
+  port 0, OUT Open Dmx at /dev/dmx0&lt;br /&gt;
+...&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Et si vouz avez compilé &lt;em&gt;libmicrohttpd&lt;/em&gt;, vous devez pouvoir accèder à l&amp;#8217;interface web du &lt;em&gt;daemon&lt;/em&gt;, sur le port 9090 :&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;a href=&quot;http://www.csquad.org/wp-content/uploads/2010/01/dmx_console_ola_web.png&quot;&gt;&lt;img src=&quot;http://www.csquad.org/wp-content/uploads/2010/01/dmx_console_ola_web-300x168.png&quot; alt=&quot;DMX OLA web console&quot; title=&quot;dmx_console_ola_web&quot; width=&quot;300&quot; height=&quot;168&quot; class=&quot;alignnone size-medium wp-image-1110&quot; /&gt;&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&quot;http://www.csquad.org/wp-content/uploads/2010/01/ola_web_interface.png&quot;&gt;&lt;img src=&quot;http://www.csquad.org/wp-content/uploads/2010/01/ola_web_interface-300x172.png&quot; alt=&quot;&quot; title=&quot;ola_web_interface&quot; width=&quot;300&quot; height=&quot;172&quot; class=&quot;alignnone size-medium wp-image-1112&quot; /&gt;&lt;/a&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;h4&gt;Test et validation du bon fonctionnement&lt;/h4&gt;
+&lt;p&gt;Avant de pouvoir manipuler les LEDs, il est nécessaire d&amp;#8217;attribuer un&lt;em&gt;univers&lt;/em&gt; au contrôleur OpenDMX à l&amp;#8217;aide de la commande &lt;em&gt;ola_patch&lt;/em&gt; :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+$ ola_patch -d 3 -p 0 -u 0&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ensuite vous pouvez lancer dans deux terminaux les commandes &lt;em&gt;ola_dmxmonitor&lt;/em&gt; et &lt;em&gt;ola_dmxconsole&lt;/em&gt;.&lt;br /&gt;
+La première permet de suivre le statut des diffèrents composants et la seconde permet de les controler à l&amp;#8217;aide d&amp;#8217;un interface graphique en curses.&lt;/p&gt;
+&lt;p&gt;L&amp;#8217;identifiant du contrôleur LED RGB sur le réseau DMX, est fonction de la valeur prise par le petit switch qui se situe sur celui-ci.&lt;br /&gt;
+Et se découpe de la manière suivante : &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Rouge = valeur du switch ;&lt;/li&gt;
+&lt;li&gt;Vert = valeur du switch + 1 ;&lt;/li&gt;
+&lt;li&gt;Bleu = valeur du switch + 2.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Vous pouvez faire varier les trois valeurs pour obtenir les diffèrentes couleurs possibles.  &lt;/p&gt;
+&lt;h3&gt;Allez plus loin avec l&amp;#8217;Open Lighting Architecture (OLA)&lt;/h3&gt;
+&lt;p&gt;OLA supporte de nombreux contrôleurs &lt;a href=&quot;http://www.opendmx.net/index.php/Category:USB&quot;&gt;USB&lt;/a&gt; et Ethernet.&lt;br /&gt;
+Il dispose d&amp;#8217;une &lt;a href=&quot;http://www.opendmx.net/index.php/OLA_Client_API&quot;&gt;API Client C++&lt;/a&gt; et &lt;a href=&quot;http://www.opendmx.net/index.php/OLA_Python_API&quot;&gt;Python&lt;/a&gt;, ce qui rend son intégration possible et facile dans d&amp;#8217;autres projets et offre de nombreuses possiblités. &lt;/p&gt;
+&lt;h3&gt;La diffusion d&amp;#8217;informations à l&amp;#8217;aide de la lumière d&amp;#8217;ambiance et ses possiblités&lt;/h3&gt;
+&lt;p&gt;L&amp;#8217;idée de pouvoir contrôler l&amp;#8217;intensité et la couleur d&amp;#8217;un bandeau à LED qui se situe dans n&amp;#8217;importe quel endroit de la maison, offre des possiblités interessantes en matière de diffusion d&amp;#8217;informations.&lt;/p&gt;
+&lt;p&gt;En effet, la lumière permet de diffuser l&amp;#8217;information de manière non intrusive.&lt;br /&gt;
+Voici quelques exemples des possibilités offertes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;comme la lampe &lt;a href=&quot;http://www.linuxfordevices.com/c/a/Linux-For-Devices-Articles/Device-Profile-Violet-Dal-the-first-emotional-lamp/&quot;&gt;DAL de Violet&lt;/a&gt;, se connecter à l&amp;#8217;Internet pour exploiter des ressources ;&lt;/li&gt;
+&lt;li&gt;Pour ceux qui disposent de l&amp;#8217;option &lt;a href=&quot;http://www.edf-bleuciel.fr/accueil/mon-quotidien-avec-bleu-ciel-d-edf/option-tempo-141090.html&quot;&gt;Tempo d&amp;#8217;EDF&lt;/a&gt;, il est possible de diffuser la couleur du jour ;&lt;/li&gt;
+&lt;li&gt;Modifier l&amp;#8217;Intensité lumineuse en fonction de nombreux paramètres : tempèrature, l&amp;#8217;ensoleillement, nombre de personnes présentes dans la pièces, activation d&amp;#8217;une alarme, réveil du bébé, etc&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ce sont quelques exemples des possiblités offertes. Pour le reste vous pouvez faire marcher votre imagination pour créer des nouvelles manières d&amp;#8217;inter-agir avec les machines et cette &lt;a href=&quot;http://fr.wikipedia.org/wiki/Intelligence_ambiante&quot;&gt;Intelligence ambiante&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Réferences&lt;/h3&gt;
+&lt;p&gt;Voici mes réferences :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Le Wiki d&amp;#8217;&lt;a href=&quot;http://www.opendmx.net/index.php/OpenDMX.net&quot;&gt;OpenDMX.net&lt;/a&gt; ; &lt;/li&gt;
+&lt;li&gt;Le site du constructeur &lt;a href=&quot;http://www.enttec.com/&quot;&gt;ENTTEC&lt;/a&gt; ;&lt;/li&gt;
+&lt;li&gt;Le tutorial &lt;a href=&quot;http://www.opendmx.net/index.php/LLA,_OpenDMX_USB_and_Q_Light_Controller_Tutorial&quot;&gt;LLA, OpenDMX USB and Q Light Controller Tutorial&lt;/a&gt; ;&lt;/li&gt;
+&lt;li&gt;L&amp;#8217;article &lt;a href=&quot;http://www.sonomag.com/Archives/Article,Go,comprendre,dmx,Id,1980.html&quot;&gt;Comprendre: Le DMX&lt;/a&gt;, chez SONOMag ;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://members.westnet.com.au/rowanmac/opendmx.html&quot;&gt;Hippy&amp;#8217;s Open DMX USB Resources&lt;/a&gt; ; &lt;/li&gt;
+&lt;li&gt;Le site du projet &lt;a href=&quot;http://llg.cubic.org/dmx4linux/&quot;&gt;DMX4Linux&lt;/a&gt; ;&lt;/li&gt;
+&lt;li&gt;La présentation du &lt;a href=&quot;http://wiki.binkey.nl/DMX&quot;&gt;DMX&lt;/a&gt;, chez Automated Home.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;Le protocole DMX est ancien et souffre de nombreux défaults, mais il présente encore de nombreux avantages tels que :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;la disponiblité de &lt;a href=&quot;http://www.conrad.fr/webapp/wcs/stores/servlet/CatalogSearchFASResultView?storeId=10001&amp;catalogId=10001&amp;langId=-2&amp;searchSKU=&amp;fh_search=DMX&quot;&gt;nombreux équipements&lt;/a&gt; à prix abordable ;&lt;/li&gt;
+&lt;li&gt;sa simplicité. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Il faut noter qu&amp;#8217;il existe une alternative plus récente au protocole DMX : &lt;a href=&quot;http://www.dalicontrol.com/dali/whatisdali.htm&quot;&gt;Digital Addressable Lighting Interface (DALI)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Il est aussi possible de remplacer le contôleur OpenDMX par une carte &lt;a href=&quot;http://www.arduino.cc/&quot;&gt;Arduino&lt;/a&gt;, comme décrit  &lt;a href=&quot;http://www.arduino.cc/playground/DMX/Opendmx&quot;&gt;ici&lt;/a&gt;.&lt;/p&gt;</content>
+		<author>
+			<name>Christophe Nowicki</name>
+			<uri>http://www.csquad.org</uri>
+		</author>
+		<source>
+			<title type="html">Christophe Nowicki » Debian</title>
+			<subtitle type="html">Just for fun</subtitle>
+			<link rel="self" href="http://www.csquad.org/category/debian/feed/"/>
+			<id>http://www.csquad.org/category/debian/feed/</id>
+			<updated>2010-01-31T10:45:14+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">twidge le client identica et twitter en ligne de commande</title>
+		<link href="http://www.cure.nom.fr/blog/archives/194-twidge-le-client-identica-et-twitter-en-ligne-de-commande.html"/>
+		<id>http://www.cure.nom.fr/blog/archives/194-guid.html</id>
+		<updated>2010-01-30T22:21:00+00:00</updated>
+		<content type="html">&lt;p&gt;Cherchant un client en ligne de commande pour IdentiCA (et accessoirement pour Twitter), j'ai découvert twidge.&lt;/p&gt;
+&lt;p&gt;Une fois essayé et adopté, j'ai backporté une version pour Debian Lenny 32 bits. Le paquet est disponible dans &lt;a href=&quot;http://www.cure.nom.fr/blog/archives/68-Depot-Debian.html&quot;&gt;mon dépôt&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Bon gazouilli.&amp;#160;&lt;/p&gt;</content>
+		<author>
+			<name>David</name>
+			<email>nospam@example.com</email>
+			<uri>http://www.cure.nom.fr/blog/</uri>
+		</author>
+		<source>
+			<title type="html">David On Net - Debian</title>
+			<link rel="self" href="http://www.cure.nom.fr/blog/feeds/categories/7-Debian.rss2"/>
+			<id>http://www.cure.nom.fr/blog/feeds/categories/7-Debian.rss2</id>
+			<updated>2010-01-30T22:45:18+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">Des mots de passe forts</title>
+		<link href="http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts"/>
+		<id>urn:md5:a63e63f0db7cbac1240e7cdac051e648</id>
+		<updated>2010-01-27T23:00:00+00:00</updated>
+		<content type="html">&lt;p&gt;À l&amp;#8217;occa&amp;shy;sion du &lt;a href=&quot;http://dataprivacyday2010.org/&quot; hreflang=&quot;en&quot;&gt;Data Pri&amp;shy;vacy Day 2010&lt;/a&gt; un billet sur la créa&amp;shy;tion de mots de passe forts avec en préam&amp;shy;bule quel&amp;shy;ques réflexions sur la notion de vie pri&amp;shy;vée.&lt;/p&gt;    &lt;h2&gt;En quoi la pro&amp;shy;tec&amp;shy;tion effec&amp;shy;tive de la vie pri&amp;shy;vée est-elle impor&amp;shy;tante&lt;/h2&gt;
+
+
+&lt;p&gt;Oui, la notion de vie pri&amp;shy;vée est impor&amp;shy;tante. On est au cou&amp;shy;rant de ça &lt;em&gt;grosso modo&lt;/em&gt; depuis le siè&amp;shy;cle des lumiè&amp;shy;res. Un des piliers de la phi&amp;shy;lo&amp;shy;so&amp;shy;phie des lumiè&amp;shy;res&lt;sup&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#pnote-8-1&quot; id=&quot;rev-pnote-8-1&quot;&gt;1&lt;/a&gt;]&lt;/sup&gt;, était l&amp;#8217;inven&amp;shy;tion de la sépa&amp;shy;ra&amp;shy;tion entre sphère pri&amp;shy;vée et sphère publi&amp;shy;que.&lt;/p&gt;
+
+
+&lt;p&gt;Appor&amp;shy;ter à cha&amp;shy;cun les moyens de sépa&amp;shy;rer ce qui relève du privé et du public lui apporte méca&amp;shy;ni&amp;shy;que&amp;shy;ment un cer&amp;shy;tain nom&amp;shy;bre de liber&amp;shy;tés. Ainsi, la phi&amp;shy;lo&amp;shy;so&amp;shy;phie des lumiè&amp;shy;res a pris une grande part&lt;sup&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#pnote-8-2&quot; id=&quot;rev-pnote-8-2&quot;&gt;2&lt;/a&gt;]&lt;/sup&gt; dans l&amp;#8217;émer&amp;shy;gence des démo&amp;shy;cra&amp;shy;ties moder&amp;shy;nes. Comme par hasard, ça fonc&amp;shy;tionne aussi dans l&amp;#8217;autre sens, réduire la sphère pri&amp;shy;vée comme peau de cha&amp;shy;grin entraîne méca&amp;shy;ni&amp;shy;que&amp;shy;ment une atteinte aux liber&amp;shy;tés indi&amp;shy;vi&amp;shy;duel&amp;shy;les. Les exem&amp;shy;ples sont vrai&amp;shy;ment légions, l&amp;#8217;objet du billet n&amp;#8217;est pas de les lis&amp;shy;ter j&amp;#8217;en retien&amp;shy;drais ici deux&amp;#160;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;la vidéo&amp;shy;sur&amp;shy;veillance qui est une atteinte à la liberté d&amp;#8217;aller et venir,&lt;/li&gt;
+&lt;li&gt;le vote élec&amp;shy;tro&amp;shy;ni&amp;shy;que qui rend atro&amp;shy;ce&amp;shy;ment com&amp;shy;plexe voire illu&amp;shy;soire des notions aussi basi&amp;shy;ques que le secret de l&amp;#8217;iso&amp;shy;loir ou la sin&amp;shy;cé&amp;shy;rité d&amp;#8217;un scru&amp;shy;tin.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Quand les déri&amp;shy;ves sont len&amp;shy;tes, &lt;a href=&quot;http://fr.wikipedia.org/wiki/All%C3%A9gorie_de_la_grenouille&quot; hreflang=&quot;fr&quot;&gt;on ne s&amp;#8217;en aper&amp;shy;çoit pas for&amp;shy;cé&amp;shy;ment&lt;/a&gt;, mais les attein&amp;shy;tes répé&amp;shy;tées à la pro&amp;shy;tec&amp;shy;tion de la vie pri&amp;shy;vée esquis&amp;shy;sent la société de sur&amp;shy;veillance et de trans&amp;shy;pa&amp;shy;rence abso&amp;shy;lue que le pou&amp;shy;voir poli&amp;shy;ti&amp;shy;que et les indus&amp;shy;triels essaient de nous ven&amp;shy;dre de gré ou de force&amp;#160;:&lt;/p&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;«&amp;#160;La sécu&amp;shy;rité est très sou&amp;shy;vent vécue dans nos socié&amp;shy;tés démo&amp;shy;cra&amp;shy;ti&amp;shy;ques comme une atteinte aux liber&amp;shy;tés indi&amp;shy;vi&amp;shy;duel&amp;shy;les. Il faut donc faire accep&amp;shy;ter par la popu&amp;shy;la&amp;shy;tion les tech&amp;shy;no&amp;shy;lo&amp;shy;gies uti&amp;shy;li&amp;shy;sées et parmi cel&amp;shy;les-ci la bio&amp;shy;mé&amp;shy;trie, la vidéo&amp;shy;sur&amp;shy;veillance et les con&amp;shy;trô&amp;shy;les. Plu&amp;shy;sieurs métho&amp;shy;des devront être déve&amp;shy;lop&amp;shy;pées par les pou&amp;shy;voirs publics et les indus&amp;shy;triels pour faire accep&amp;shy;ter la bio&amp;shy;mé&amp;shy;trie. Édu&amp;shy;ca&amp;shy;tion dès l&amp;#8217;école mater&amp;shy;nelle, les enfants uti&amp;shy;li&amp;shy;sent cette tech&amp;shy;no&amp;shy;lo&amp;shy;gie pour ren&amp;shy;trer dans l&amp;#8217;école, en sor&amp;shy;tir, déjeu&amp;shy;ner à la can&amp;shy;tine, et les parents ou leurs repré&amp;shy;sen&amp;shy;tants s&amp;#8217;iden&amp;shy;ti&amp;shy;fie&amp;shy;ront pour aller cher&amp;shy;cher les enfants. Intro&amp;shy;duc&amp;shy;tion dans des biens de con&amp;shy;som&amp;shy;ma&amp;shy;tion, de con&amp;shy;fort ou des jeux&amp;#160;: télé&amp;shy;phone por&amp;shy;ta&amp;shy;ble, ordi&amp;shy;na&amp;shy;teur, voi&amp;shy;ture, domo&amp;shy;ti&amp;shy;que, jeux vidéo. Déve&amp;shy;lop&amp;shy;per les ser&amp;shy;vi&amp;shy;ces «&amp;#160;card&amp;shy;less&amp;#160;» à la ban&amp;shy;que, au super&amp;shy;mar&amp;shy;ché, dans les trans&amp;shy;ports, pour l&amp;#8217;accès Inter&amp;shy;net&amp;#8230; La même appro&amp;shy;che ne peut pas être prise pour faire accep&amp;shy;ter les tech&amp;shy;no&amp;shy;lo&amp;shy;gies de sur&amp;shy;veillance et de con&amp;shy;trôle, il fau&amp;shy;dra pro&amp;shy;ba&amp;shy;ble&amp;shy;ment recou&amp;shy;rir à la per&amp;shy;sua&amp;shy;sion et à la régle&amp;shy;men&amp;shy;ta&amp;shy;tion en démon&amp;shy;trant l&amp;#8217;apport de ces tech&amp;shy;no&amp;shy;lo&amp;shy;gies à la séré&amp;shy;nité des popu&amp;shy;la&amp;shy;tions et en mini&amp;shy;mi&amp;shy;sant la gène occa&amp;shy;sion&amp;shy;née. Là encore, l&amp;#8217;élec&amp;shy;tro&amp;shy;ni&amp;shy;que et l&amp;#8217;infor&amp;shy;ma&amp;shy;ti&amp;shy;que peu&amp;shy;vent con&amp;shy;tri&amp;shy;buer lar&amp;shy;ge&amp;shy;ment à cette tâche.&amp;#160;» (extrait du Livre bleu du Grou&amp;shy;pe&amp;shy;ment des indus&amp;shy;tries de l’inter&amp;shy;con&amp;shy;nexion des com&amp;shy;po&amp;shy;sants et des sous-ensem&amp;shy;bles élec&amp;shy;tro&amp;shy;ni&amp;shy;ques GIXEL).&lt;/p&gt;&lt;/blockquote&gt;
+
+
+&lt;h2&gt;Les mots de passe&amp;#160;: un maillon impor&amp;shy;tant et sou&amp;shy;vent négligé&lt;/h2&gt;
+
+
+&lt;p&gt;Ils per&amp;shy;met&amp;shy;tent, dans un monde où la vie numé&amp;shy;ri&amp;shy;que prend une place de plus en plus impor&amp;shy;tante, d&amp;#8217;être un des élé&amp;shy;ments d&amp;#8217;une pro&amp;shy;tec&amp;shy;tion effi&amp;shy;cace de res&amp;shy;sour&amp;shy;ces numé&amp;shy;ri&amp;shy;ques dont la pro&amp;shy;tec&amp;shy;tion de la vie pri&amp;shy;vée exige d&amp;#8217;en res&amp;shy;trein&amp;shy;dre l&amp;#8217;accès. Idéa&amp;shy;le&amp;shy;ment, la sai&amp;shy;sie du mot de passe valide devrait être la seule façon d&amp;#8217;accé&amp;shy;der à ces res&amp;shy;sour&amp;shy;ces. Dans la pra&amp;shy;ti&amp;shy;que, il existe bien évi&amp;shy;dem&amp;shy;ment 1001 maniè&amp;shy;res d&amp;#8217;obte&amp;shy;nir un accès indu à ces don&amp;shy;nées autre&amp;shy;ment que par la sai&amp;shy;sie du mot de passe. Néan&amp;shy;moins, il doit être suf&amp;shy;fi&amp;shy;sam&amp;shy;ment fort pour décou&amp;shy;ra&amp;shy;ger toute ten&amp;shy;ta&amp;shy;tive de l&amp;#8217;atta&amp;shy;quant de le cas&amp;shy;ser, quels que soient sa moti&amp;shy;va&amp;shy;tion, ses moyens et ainsi le for&amp;shy;cer à pour&amp;shy;sui&amp;shy;vre ses ten&amp;shy;ta&amp;shy;ti&amp;shy;ves par d&amp;#8217;autres métho&amp;shy;des. Dans ce cas, le mot de passe aura rem&amp;shy;pli son rôle.&lt;/p&gt;
+
+
+&lt;p&gt;Le CERTA&lt;sup&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#pnote-8-3&quot; id=&quot;rev-pnote-8-3&quot;&gt;3&lt;/a&gt;]&lt;/sup&gt; donne &lt;a href=&quot;http://www.certa.ssi.gouv.fr/site/CERTA-2005-INF-001/CERTA-2005-INF-001.html&quot; hreflang=&quot;fr&quot;&gt;une défi&amp;shy;ni&amp;shy;tion du mot de passe fort &lt;/a&gt;&amp;#160;:&lt;/p&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;Un mot de passe fort est un mot de passe qui est dif&amp;shy;fi&amp;shy;cile à retou&amp;shy;ver, même à l&amp;#8217;aide d&amp;#8217;outils auto&amp;shy;ma&amp;shy;ti&amp;shy;sés. La force d&amp;#8217;un mot de passe dépend de sa lon&amp;shy;gueur et du nom&amp;shy;bre de pos&amp;shy;si&amp;shy;bi&amp;shy;li&amp;shy;tés exis&amp;shy;tan&amp;shy;tes pour cha&amp;shy;que carac&amp;shy;tère le com&amp;shy;po&amp;shy;sant.&lt;/p&gt;&lt;/blockquote&gt;
+
+
+&lt;h2&gt;Mythes et réa&amp;shy;li&amp;shy;tés sur la mémo&amp;shy;ri&amp;shy;sa&amp;shy;tion des mots de passe&lt;/h2&gt;
+
+&lt;p&gt;Si il y a bien un truc qui m&amp;#8217;énerve c&amp;#8217;est Mme Michu qui choi&amp;shy;sit &lt;code&gt;Michu&lt;/code&gt; comme mot de passe pour se con&amp;shy;nec&amp;shy;ter sur sa machine, son web&amp;shy;mail etc. Je trouve com&amp;shy;plè&amp;shy;te&amp;shy;ment ahu&amp;shy;ris&amp;shy;sant que les atta&amp;shy;ques à coup de dic&amp;shy;tion&amp;shy;naire puis&amp;shy;sent avoir un taux de réus&amp;shy;site signi&amp;shy;fi&amp;shy;ca&amp;shy;tif.&lt;/p&gt;
+
+
+&lt;p&gt;L&amp;#8217;argu&amp;shy;ment prin&amp;shy;ci&amp;shy;pal de madame Michu quand on lui met sous les yeux un vrai mot de passe&amp;#160;: &amp;#171;Oulà! J&amp;#8217;arri&amp;shy;ve&amp;shy;rais jamais à m&amp;#8217;en sou&amp;shy;ve&amp;shy;nir, c&amp;#8217;est trop com&amp;shy;pli&amp;shy;qué, je vais con&amp;shy;ti&amp;shy;nuer à met&amp;shy;tre une date d&amp;#8217;anni&amp;shy;ver&amp;shy;saire ou des pré&amp;shy;noms, au moins j&amp;#8217;arri&amp;shy;ve&amp;shy;rais à m&amp;#8217;en rap&amp;shy;pe&amp;shy;ler&amp;#187;&lt;/p&gt;
+
+
+&lt;p&gt;C&amp;#8217;est faux. La mémoire est plu&amp;shy;tôt bien fou&amp;shy;tue sur ce point là&amp;#160;: En tapent régu&amp;shy;liè&amp;shy;re&amp;shy;ment un mot de passe, on le mémo&amp;shy;rise défi&amp;shy;ni&amp;shy;ti&amp;shy;ve&amp;shy;ment quelle que soit sa com&amp;shy;plexité. Je pense que ce rai&amp;shy;son&amp;shy;ne&amp;shy;ment est appli&amp;shy;ca&amp;shy;ble à une très large frange de la popu&amp;shy;la&amp;shy;tion. Il y a cer&amp;shy;tes une phase d&amp;#8217;appren&amp;shy;tis&amp;shy;sage au début où l&amp;#8217;on ne se rap&amp;shy;pelle plus trop etc. mais au fur et à mesure, les doigts se pla&amp;shy;cent de mieux en mieux sur les bon&amp;shy;nes tou&amp;shy;ches, et quand on a passé deux, trois jours, à le taper rapi&amp;shy;de&amp;shy;ment et sans hési&amp;shy;ta&amp;shy;tion, ça veut dire que la mémo&amp;shy;ri&amp;shy;sa&amp;shy;tion est défi&amp;shy;ni&amp;shy;tive. Donc, il suf&amp;shy;fit juste de s&amp;#8217;y met&amp;shy;tre, c&amp;#8217;est l&amp;#8217;his&amp;shy;toire d&amp;#8217;une semaine.&lt;/p&gt;
+
+
+&lt;h2&gt;Cal&amp;shy;cul d&amp;#8217;entro&amp;shy;pie ou com&amp;shy;ment quan&amp;shy;ti&amp;shy;fier le bor&amp;shy;del con&amp;shy;tenu dans un mot de passe&lt;/h2&gt;
+
+
+&lt;p&gt;Là, ça com&amp;shy;mence à être inté&amp;shy;res&amp;shy;sant, on va pou&amp;shy;voir cal&amp;shy;cu&amp;shy;ler l&amp;#8217;entro&amp;shy;pie d&amp;#8217;un mot de passe. Cette valeur carac&amp;shy;té&amp;shy;rise sa force, plus elle est éle&amp;shy;vée plus le mot de passe sera infer&amp;shy;nal à trou&amp;shy;ver.&lt;/p&gt;
+
+
+&lt;p&gt;Le cal&amp;shy;cul pré&amp;shy;senté ici n&amp;#8217;est vala&amp;shy;ble que pour un mot de passe généré aléa&amp;shy;toi&amp;shy;re&amp;shy;ment avec une source d&amp;#8217;entro&amp;shy;pie rela&amp;shy;ti&amp;shy;ve&amp;shy;ment sérieuse&lt;sup&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#pnote-8-4&quot; id=&quot;rev-pnote-8-4&quot;&gt;4&lt;/a&gt;]&lt;/sup&gt;. Appli&amp;shy;quer le cal&amp;shy;cul qui va sui&amp;shy;vre à un mot de passe con&amp;shy;te&amp;shy;nant des mots (y com&amp;shy;pris des noms pro&amp;shy;pres ou pré&amp;shy;noms), mènera à une large sures&amp;shy;ti&amp;shy;ma&amp;shy;tion de l&amp;#8217;entro&amp;shy;pie du mot de passe étu&amp;shy;dié. En effet en cas d&amp;#8217;atta&amp;shy;que, des dic&amp;shy;tion&amp;shy;nai&amp;shy;res spé&amp;shy;cia&amp;shy;li&amp;shy;sés sont uti&amp;shy;li&amp;shy;sés avant d&amp;#8217;enta&amp;shy;mer la recher&amp;shy;che par force brute.&lt;/p&gt;
+
+
+&lt;p&gt;On peut donc cal&amp;shy;cu&amp;shy;ler la robus&amp;shy;tesse d&amp;#8217;un mot de passe face à une atta&amp;shy;que par force brute en cal&amp;shy;cu&amp;shy;lant son entro&amp;shy;pie. Pour cela, on fait l&amp;#8217;hypo&amp;shy;thèse que cha&amp;shy;que sym&amp;shy;bole qui le com&amp;shy;pose est pro&amp;shy;duit indé&amp;shy;pen&amp;shy;dam&amp;shy;ment des autres. Dans ce cas, la for&amp;shy;mule sui&amp;shy;vante est appli&amp;shy;ca&amp;shy;ble&amp;#160;:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;img src=&quot;http://upload.wikimedia.org/math/1/7/f/17fc16b5e23ca94b3c92c2c227b748c9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+
+&lt;p&gt;où N est le nom&amp;shy;bre de sym&amp;shy;bo&amp;shy;les pos&amp;shy;si&amp;shy;bles dif&amp;shy;fé&amp;shy;rents et L la lon&amp;shy;gueur du mot de passe. La fonc&amp;shy;tion log est en base 2 et l&amp;#8217;entro&amp;shy;pie H se mesure en bits.&lt;/p&gt;
+
+
+&lt;p&gt;Quel&amp;shy;ques exem&amp;shy;ples d&amp;#8217;appli&amp;shy;ca&amp;shy;tion numé&amp;shy;ri&amp;shy;que ci-des&amp;shy;sous avec les jeux de carac&amp;shy;tère usuels&amp;#160;:&lt;/p&gt;
+&lt;table&gt;
+&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+ &lt;th&gt; Jeu de carac&amp;shy;tè&amp;shy;res uti&amp;shy;lisé &lt;/th&gt;
+ &lt;th&gt; N &lt;/th&gt;
+ &lt;th&gt; Entro&amp;shy;pie par sym&amp;shy;bole &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt; Chif&amp;shy;fres seuls &lt;/td&gt;
+&lt;td&gt;10&amp;#160;&lt;/td&gt;
+&lt;td&gt; 3,32 bits &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Let&amp;shy;tres (a-z)&lt;/td&gt;
+&lt;td&gt;26&lt;/td&gt;
+&lt;td&gt;4,7 bits&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Let&amp;shy;tres et chif&amp;shy;fres (a-z, 0-9)&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;5,17 bits&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Let&amp;shy;tres majus&amp;shy;cu&amp;shy;les, minus&amp;shy;cu&amp;shy;les et chif&amp;shy;fres (A-Z, a-z, 0-9)&lt;/td&gt;
+&lt;td&gt;62&lt;/td&gt;
+&lt;td&gt;5,95 bits&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Tous les carac&amp;shy;tè&amp;shy;res ASCII&lt;/td&gt;
+&lt;td&gt;94&lt;/td&gt;
+&lt;td&gt;6,55 bits&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+
+
+&lt;h2&gt;Quelle valeur d&amp;#8217;entro&amp;shy;pie rete&amp;shy;nir&amp;#160;?&lt;/h2&gt;
+
+&lt;p&gt;Sur la page wiki&amp;shy;pe&amp;shy;dia anglo&amp;shy;phone &lt;a href=&quot;http://en.wikipedia.org/wiki/Password_strength&quot; hreflang=&quot;en&quot;&gt;con&amp;shy;sa&amp;shy;crée à la force des mots de passe&lt;/a&gt; il est indi&amp;shy;qué qu&amp;#8217;en 2002, cas&amp;shy;ser une clef de 64 bits a pris 4 years, 9 months, and 23 days. De nos jours, il est estimé que cas&amp;shy;ser une clef de 72 bits pren&amp;shy;drait plus d&amp;#8217;un mil&amp;shy;lé&amp;shy;naire.
+Les con&amp;shy;nais&amp;shy;san&amp;shy;ces actuel&amp;shy;les en phy&amp;shy;si&amp;shy;que fon&amp;shy;da&amp;shy;men&amp;shy;tale et mathé&amp;shy;ma&amp;shy;ti&amp;shy;ques, ne per&amp;shy;met&amp;shy;tent pas d&amp;#8217;espé&amp;shy;rer cas&amp;shy;ser une clef de 128 bits ou de 256 bits par la force brute dans un ave&amp;shy;nir loin&amp;shy;tain.&lt;/p&gt;
+
+
+&lt;p&gt;En con&amp;shy;clu&amp;shy;sion, un mot de passe de 128 bits per&amp;shy;met d&amp;#8217;être tran&amp;shy;quille dans tous les cas. Il ne sera pas trouvé par force brute à l&amp;#8217;insu de son pro&amp;shy;prié&amp;shy;taire. Néan&amp;shy;moins un mot de passe plus fai&amp;shy;ble de l&amp;#8217;ordre de 70-80 bits peut éga&amp;shy;le&amp;shy;ment être con&amp;shy;si&amp;shy;déré comme fort.&lt;/p&gt;
+
+
+&lt;h2&gt;Com&amp;shy;ment géné&amp;shy;rer un mot de passe à l&amp;#8217;aide d&amp;#8217;apg&lt;/h2&gt;
+
+
+&lt;p&gt;Je décris suc&amp;shy;cinc&amp;shy;te&amp;shy;ment ici, l&amp;#8217;uti&amp;shy;li&amp;shy;sa&amp;shy;tion d&amp;#8217;apg&lt;sup&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#pnote-8-5&quot; id=&quot;rev-pnote-8-5&quot;&gt;5&lt;/a&gt;]&lt;/sup&gt;, petit pro&amp;shy;gramme fonc&amp;shy;tion&amp;shy;nant en ligne de com&amp;shy;mande per&amp;shy;met&amp;shy;tant de géné&amp;shy;rer rapi&amp;shy;de&amp;shy;ment et faci&amp;shy;le&amp;shy;ment des mots de passe soli&amp;shy;des.&lt;/p&gt;
+
+
+&lt;h3&gt;Ins&amp;shy;tal&amp;shy;la&amp;shy;tion&lt;/h3&gt;
+
+&lt;p&gt;Rien de plus sim&amp;shy;ple sous GNU/Linux&lt;sup&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#pnote-8-6&quot; id=&quot;rev-pnote-8-6&quot;&gt;6&lt;/a&gt;]&lt;/sup&gt; avec votre ges&amp;shy;tion&amp;shy;naire de paquets favori. Ici apt&amp;#160;:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;apt-get install apg&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;h3&gt;Uti&amp;shy;li&amp;shy;sa&amp;shy;tion basi&amp;shy;que&lt;/h3&gt;
+
+&lt;p&gt;La sor&amp;shy;tie par défaut d&amp;#8217;apg pro&amp;shy;duit des mots de passe pro&amp;shy;non&amp;shy;ça&amp;shy;bles sen&amp;shy;sés favo&amp;shy;ri&amp;shy;ser la mémo&amp;shy;ri&amp;shy;sa&amp;shy;tion&lt;sup&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#pnote-8-7&quot; id=&quot;rev-pnote-8-7&quot;&gt;7&lt;/a&gt;]&lt;/sup&gt;. Par exem&amp;shy;ple&amp;#160;:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;apg&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Il est bien entendu pos&amp;shy;si&amp;shy;ble de ne pas acti&amp;shy;ver cette fonc&amp;shy;tion en choi&amp;shy;sis&amp;shy;sant le deuxième algo&amp;shy;rithme de géné&amp;shy;ra&amp;shy;tion de mots de passe pré&amp;shy;sent dans le logi&amp;shy;ciel via l&amp;#8217;option &lt;code&gt;-a 1&lt;/code&gt;. Ainsi on peut géné&amp;shy;rer des mots de passe somme toute cor&amp;shy;rects comme nous allons le voir plus loin.&lt;/p&gt;
+
+
+&lt;p&gt;Une autre option utile est de spé&amp;shy;ci&amp;shy;fier la lon&amp;shy;gueur mini&amp;shy;male du mot de passe à géné&amp;shy;rer. Ainsi il est très sim&amp;shy;ple de géné&amp;shy;rer un mot de passe de la force sou&amp;shy;hai&amp;shy;tée. Par exem&amp;shy;ple pour avoir des mots de passe de 80 bits d&amp;#8217;entro&amp;shy;pie, le tableau ci-des&amp;shy;sus nous indi&amp;shy;que qu&amp;#8217;il faut au mini&amp;shy;mum 13 carac&amp;shy;tè&amp;shy;res ASCII. La com&amp;shy;mande est donc&amp;#160;:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;apg -a 1 -m 13&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Pour un mot de passe de 128 bits, il fau&amp;shy;dra un mini&amp;shy;mum de 20 carac&amp;shy;tè&amp;shy;res ASCII&amp;#160;:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;apg -a 1 -m 20&lt;/code&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Il est éga&amp;shy;le&amp;shy;ment pos&amp;shy;si&amp;shy;ble de res&amp;shy;trein&amp;shy;dre la liste des carac&amp;shy;tè&amp;shy;res pré&amp;shy;sents dans les mots de passe géné&amp;shy;rés par apg, mais à entro&amp;shy;pie cons&amp;shy;tante, le mot de passe sera plus long.&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;&lt;h4&gt;Notes&lt;/h4&gt;
+&lt;p&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#rev-pnote-8-1&quot; id=&quot;pnote-8-1&quot;&gt;1&lt;/a&gt;] au même titre que la laï&amp;shy;cité&lt;/p&gt;
+&lt;p&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#rev-pnote-8-2&quot; id=&quot;pnote-8-2&quot;&gt;2&lt;/a&gt;] tout au moins rendu pos&amp;shy;si&amp;shy;ble&lt;/p&gt;
+&lt;p&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#rev-pnote-8-3&quot; id=&quot;pnote-8-3&quot;&gt;3&lt;/a&gt;] Cen&amp;shy;tre d&amp;#8217;Exper&amp;shy;tise Gou&amp;shy;ver&amp;shy;ne&amp;shy;men&amp;shy;tal de Réponse et de Trai&amp;shy;te&amp;shy;ment des Atta&amp;shy;ques infor&amp;shy;ma&amp;shy;ti&amp;shy;ques&lt;/p&gt;
+&lt;p&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#rev-pnote-8-4&quot; id=&quot;pnote-8-4&quot;&gt;4&lt;/a&gt;] /dev/ran&amp;shy;dom ou jets de dés non pipés par exem&amp;shy;ple pour ceux qui veu&amp;shy;lent les fabri&amp;shy;quer à la main&lt;/p&gt;
+&lt;p&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#rev-pnote-8-5&quot; id=&quot;pnote-8-5&quot;&gt;5&lt;/a&gt;] &lt;a href=&quot;http://www.adel.nursat.kz/index.shtml&quot; hreflang=&quot;en&quot;&gt;http://www.adel.nur&amp;shy;sat.kz/index.shtml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#rev-pnote-8-6&quot; id=&quot;pnote-8-6&quot;&gt;6&lt;/a&gt;] que les win&amp;shy;dow&amp;shy;siens se démer&amp;shy;dent&lt;/p&gt;
+&lt;p&gt;[&lt;a href=&quot;http://mvl87.dyndns.org/index.php/post/2010/01/28/Des-mots-de-passe-forts#rev-pnote-8-7&quot; id=&quot;pnote-8-7&quot;&gt;7&lt;/a&gt;] fonc&amp;shy;tionne sur&amp;shy;tout pour les anglo&amp;shy;pho&amp;shy;nes&lt;/p&gt;&lt;/div&gt;&lt;/table&gt;</content>
+		<author>
+			<name>mvl</name>
+			<uri>http://mvl87.dyndns.org/index.php/</uri>
+		</author>
+		<source>
+			<title type="html">mvl87 blog! - Tag - Debian</title>
+			<link rel="self" href="http://mvl87.dyndns.org/index.php/feed/tag/Debian/atom"/>
+			<id>urn:md5:0ddaf170c93078263b39d5de06927cef</id>
+			<updated>2010-02-16T01:15:08+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">Paquets et origines</title>
+		<link href="http://jean-christophe.dubacq.fr/post/Paquets-et-origines"/>
+		<id>urn:md5:8c021b88ba690dd88fc17243aaf76d9b</id>
+		<updated>2010-01-27T12:45:03+00:00</updated>
+		<content type="html">&lt;p&gt;Des fois, je veux vérifier d&amp;rsquo;où viennent mes paquets. C&amp;rsquo;est déjà ce que fait &lt;code&gt;apt-show-versions&lt;/code&gt;, mais en se concentrant uniquement sur l&amp;rsquo;aspect distribution (stable/testing/unstable) et non pas sur le site d&amp;rsquo;où vient le paquet. De plus, je voulais pouvoir préciser un ordre entre les distributions (quand un paquet est à la fois dans unstable et testing, je veux qu&amp;rsquo;il apparaisse comme venant de testing; quand il est dans un dépôt local que j&amp;rsquo;ai créé, je veux qu&amp;rsquo;il apparaisse comme venant de ce dépôt, même s&amp;rsquo;il est une copie de unstable ou d&amp;rsquo;experimental).&lt;/p&gt;
+&lt;p&gt;Du coup, j&amp;rsquo;ai écrit mon premier programme (sérieux) en Python. La documentation est en anglais.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;package_origins [options]&lt;/strong&gt;&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;-h|--help&lt;/dt&gt;&lt;dd&gt;This help text
+&lt;/dd&gt;&lt;dt&gt;-l|--list            &lt;/dt&gt;&lt;dd&gt;Just list available distributions
+&lt;/dd&gt;&lt;dt&gt;-c|--count           &lt;/dt&gt;&lt;dd&gt;Just display package count by origin
+&lt;/dd&gt;&lt;dt&gt;-t|--tabular         &lt;/dt&gt;&lt;dd&gt;Use tabular output format for origin display
+&lt;/dd&gt;&lt;dt&gt;-C|--columns=&lt;em&gt;integer&lt;/em&gt; &lt;/dt&gt;&lt;dd&gt;Set the number of columns of the output
+&lt;/dd&gt;&lt;dt&gt;-L|--lines=&lt;em&gt;integer&lt;/em&gt;   &lt;/dt&gt;&lt;dd&gt;Set the maximal number of packages that can be displayed
+&lt;/dd&gt;&lt;dt&gt;-o|--order=&lt;em&gt;string&lt;/em&gt;    &lt;/dt&gt;&lt;dd&gt;Set the order in which packages are in the distributions.
+This is a space-jointed string of stanzas like alias1=site1/archive1
+where alias1 is the display name of a distribution of name archive1
+at site1.
+&lt;/dd&gt;&lt;/dl&gt;
+&lt;p&gt;Le programme lit aussi les dénominations dans un fichier &lt;code&gt;~/.package_origins&lt;/code&gt; sous la même forme, mais avec une origine par ligne. De multiples options -o peuvent être utilisées (elles sont accolées).&lt;/p&gt;
+&lt;p&gt;Un exemple de fonctionnement:&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;./package_origins -o 'stable=ftp.fr.debian.org/stable testing=ftp.fr.debian.org/testing unstable=ftp.fr.debian.org/unstable experimental=ftp.fr.debian.org/experimental  multimedia=www.debian-multimedia.org/unstable' -L 20 --columns 40 &lt;br /&gt;,--------------------------------------.&lt;br /&gt;|                stable                |&lt;br /&gt;`--------------------------------------'&lt;br /&gt;Too many packages (189). Use --tabular or --lines=X (x&amp;gt;=189).&lt;br /&gt;,--------------------------------------.&lt;br /&gt;|               testing                |&lt;br /&gt;`--------------------------------------'&lt;br /&gt;Too many packages (1529). Use --tabular or --lines=X (x&amp;gt;=1529).&lt;br /&gt;,--------------------------------------.&lt;br /&gt;|               unstable               |&lt;br /&gt;`--------------------------------------'&lt;br /&gt;Too many packages (317). Use --tabular or --lines=X (x&amp;gt;=317).&lt;br /&gt;,--------------------------------------.&lt;br /&gt;|             experimental             |&lt;br /&gt;`--------------------------------------'&lt;br /&gt;calendar-google-provider&lt;br /&gt;calendar-timezones enigmail&lt;br /&gt;,--------------------------------------.&lt;br /&gt;|              multimedia              |&lt;br /&gt;`--------------------------------------'&lt;br /&gt;Too many packages (33). Use --tabular or --lines=X (x&amp;gt;=33).&lt;br /&gt;,--------------------------------------.&lt;br /&gt;|                other                 |&lt;br /&gt;`--------------------------------------'&lt;br /&gt;emacs-snapshot emacs-snapshot-bin-common&lt;br /&gt;emacs-snapshot-common emacs-snapshot-nox&lt;br /&gt;fixkeyboard lipn-archive-keyring&lt;br /&gt;nvidia-kernel-2.6.26-2-amd64&lt;br /&gt;nvidia-kernel-2.6.30-2-amd64&lt;br /&gt;nvidia-kernel-2.6.31-1-amd64&lt;br /&gt;pbuilder-utils rftg rftg-data&lt;br /&gt;,--------------------------------------.&lt;br /&gt;|              installed               |&lt;br /&gt;`--------------------------------------'&lt;br /&gt;Too many packages (55). Use --tabular or --lines=X (x&amp;gt;=55).&lt;/pre&gt;</content>
+		<author>
+			<name>Jean-Christophe Dubacq</name>
+			<uri>http://jean-christophe.dubacq.fr/</uri>
+		</author>
+		<source>
+			<title type="html">Grosso Modo - fr - debian</title>
+			<subtitle type="html">Post hoc, ergo propter hoc</subtitle>
+			<link rel="self" href="http://jean-christophe.dubacq.fr/superfeed/lang:fr/tag:debian?navlang=fr"/>
+			<id>http://jean-christophe.dubacq.fr/superfeed/lang:fr/tag:debian?navlang=fr</id>
+			<updated>2010-02-08T13:15:03+00:00</updated>
+			<rights type="html">© Jean-Christophe Dubacq, licence CC-BY</rights>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Autres exemples de migration Etch-&amp;gt;Lenny [1]</title>
+		<link href="http://gcolpart.evolix.net/blog21/autres-exemples-de-migration-etch-lenny-1/"/>
+		<id>http://gcolpart.evolix.net/blog21/?p=302</id>
+		<updated>2010-01-24T18:05:52+00:00</updated>
+		<content type="html">&lt;p&gt;La &lt;a href=&quot;http://www.debian.org/News/2010/20100121&quot;&gt;fin du support officiel de Debian Etch approchant&lt;/a&gt;, il est grand temps de migrer vers Lenny pour les machines pas encore à jour. Après un &lt;a href=&quot;http://gcolpart.evolix.net/blog21/un-exemple-de-migration-debian-etch-lenny-0/&quot;&gt;premier exemple de migration Debian Etch-&amp;gt;Lenny&lt;/a&gt;, je poursuis la série avec des informations tirées de plusieurs migrations récentes sur des serveurs en production.&lt;/p&gt;
+&lt;p&gt;Je ne rappellerais &lt;strong&gt;pas&lt;/strong&gt; toutes les précautions nécessaires (tests préalables, sauvegardes, désactivations des services, etc.) ni la classique question  sur  &amp;#8220;quand faut-il migrer ?&amp;#8221;, vous trouverez tout cela dans &lt;a href=&quot;http://gcolpart.evolix.net/blog21/?s=migration+etch&quot;&gt;mes exemples précédents&lt;/a&gt;. Je rappelle simplement l&amp;#8217;idée de base : prendre les précieuses &lt;a href=&quot;http://www.debian.org/releases/stable/releasenotes&quot;&gt;Release Notes&lt;/a&gt;, mettre à jour le fichier &lt;em&gt;sources.list&lt;/em&gt;, puis exécuter les commandes &lt;em&gt;aptitude update &amp;amp;&amp;amp; aptitude upgrade&lt;/em&gt;x, puis mettre-à-jour les services les plus critiques via &lt;em&gt;aptitude install &amp;lt;PACKAGE&amp;gt;&lt;/em&gt;, et enfin &lt;em&gt;aptitude dist-upgrade &amp;amp;&amp;amp; aptitude dist-upgrade&lt;/em&gt; (répéter &lt;em&gt;dist-upgrade&lt;/em&gt; est souvent nécessaire).&lt;/p&gt;
+&lt;p&gt;Passons désormais aux différentes remarques sur ces migrations :&lt;/p&gt;
+&lt;p&gt;- PostgreSQL : on passe de la version 8.1 à 8.3. Notez qu&amp;#8217;il s&amp;#8217;agit de paquets différents, il est donc possible de garder la version 8.1 en Etch, et d&amp;#8217;installer en parallèle la version 8.3, afin de faciliter encore plus la migration. Pour migrer les données, on réalisera un dump avec &lt;em&gt;pg_dumpall &lt;/em&gt;qui sera réinjecté dans la nouvelle base. On pourra ensuite adapter le port dans &lt;em&gt;postgresql.conf&lt;/em&gt; pour passer la version 8.3 en production.&lt;/p&gt;
+&lt;p&gt;- phpPgAdmin : avec PostgreSQL 8.3, on ne peut plus se connecter à la table &lt;em&gt;template1&lt;/em&gt; : c&amp;#8217;est le comportement par défaut de phpPgAdmin, qu&amp;#8217;on devra donc modifier en mettant postgres à la place (pour la variable &lt;em&gt;$conf['servers'][0]['defaultdb']&lt;/em&gt; dans le fichier &lt;em&gt;config.inc.php&lt;/em&gt;)&lt;/p&gt;
+&lt;p&gt;- Apache : la configuration de l&amp;#8217;alias &lt;em&gt;/icons/&lt;/em&gt; est déplacé dans le fichier &lt;em&gt;mods-available/alias.conf&lt;/em&gt;, il peut donc faire doublon avec la déclaration dans &lt;em&gt;apache2.conf&lt;/em&gt;, ce qui sera signalé via le warning suivant : &lt;em&gt;[warn] The Alias directive in /etc/apache2/apache2.conf at line 240 will probably never match because it overlaps an earlier Alias&lt;/em&gt;. Commenter les directives dans le fichier &lt;em&gt;apache2.conf&lt;/em&gt; résoudra ce petit soucis.&lt;/p&gt;
+&lt;p&gt;- OpenLDAP : on passe d&amp;#8217;une version 2.3 à 2.4, mais le plus marquant pour la migration est que cela force le processus à tourner avec un utilisateur/groupe dédié. Pour diverses raisons (&lt;em&gt;dist-upgrade&lt;/em&gt; interrompu par exemple), on pourra rencontrer des soucis plus ou moins alarmants. Ainsi, j&amp;#8217;ai pu rencontrer cette erreur :&lt;br /&gt;
+&lt;em&gt; bdb(dc=example,dc=com): PANIC: fatal region error detected; run recovery&lt;br /&gt;
+bdb_db_open: database &amp;#8220;dc=example,dc=com&amp;#8221; cannot be opened, err -30978. Restore from backup!&lt;br /&gt;
+backend_startup_one: bi_db_open failed! (-30978)&lt;br /&gt;
+slap_startup failed&lt;br /&gt;
+&lt;/em&gt;On veillera donc sur l&amp;#8217;utilisateur/groupe propriétaire des fichiers dans le répertoire &lt;em&gt;/var/lib/ldap&lt;/em&gt; et, au besoin, on ajustera : &lt;em&gt;chown -R openldap:openldap /var/lib/ldap/&lt;br /&gt;
+&lt;/em&gt;Mon conseil : mettre-à-jour le paquet &lt;em&gt;slapd&lt;/em&gt; de façon spécifique avant le &lt;em&gt;dist-upgrade&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;- Postfix : on passe de 2.3 à 2.5. On notera simplement la valeur par défaut de &lt;em&gt;$smtp_line_length_limit characters&lt;/em&gt; qui passe à 990, ce qui coupe les lignes trop longues pour se conformer au standard SMTP. Si cela posait problème, on pourrait revenir à l&amp;#8217;ancien comportement en positionnant &lt;em&gt;smtp_line_length_limit=0&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;- SpamAssassin : l&amp;#8217;utilisant en stockant la configuration des utilisateurs dans un annuaire LDAP, le daemon spamd s&amp;#8217;est mis à râler : &lt;em&gt;cannot use &amp;#8211;ldap-config without -u&lt;/em&gt;&lt;br /&gt;
+Le problème sera résolu en ajoutant l&amp;#8217;option &lt;em&gt;-u nobody&lt;/em&gt;, ce qui fera tourner spamd en tant que nobody (ce qui n&amp;#8217;est pas une mauvaise chose, au contraire).&lt;/p&gt;
+&lt;p&gt;- Amavis : apparemment, lors de la détection d&amp;#8217;un virus, le code retourné n&amp;#8217;est plus 2.7.1 mais 2.7.0 : &lt;em&gt;2.7.0 Ok, discarded, id=13735-07 &amp;#8211; VIRUS: Eicar-Test-Signature&lt;/em&gt;&lt;br /&gt;
+Rien de bien grave, mais cela a nécessité d&amp;#8217;adapter un plugin Nagios pour qu&amp;#8217;il attende le bon code de retour.&lt;/p&gt;
+&lt;p&gt;- Courier-imapd-ssl : après une mise-à-jour gardant mon fichier &lt;em&gt;/etc/courier/imapd-ssl&lt;/em&gt; actuel, j&amp;#8217;obtenai des erreurs avec certains clients IMAP :&lt;br /&gt;
+&lt;em&gt; couriertls: accept: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number&lt;/em&gt;&lt;br /&gt;
+En regardant de plus près, certaines directives changent dans ce fichier de configuration, et il est donc conseillé de repartir du fichier proposé par Lenny, et d&amp;#8217;y apporter ses modifications (souvent, cela se limite à préciser le certificat).&lt;/p&gt;
+&lt;p&gt;- Horde : si vous utilisez une base de données pour stocker les paramètres ou autres, la paquet &lt;em&gt;php-db&lt;/em&gt; (déjà en Recommends: en Etch) est d&amp;#8217;autant plus nécessaire, sous peine d&amp;#8217;obtenir l&amp;#8217;erreur : &lt;em&gt;PHP Fatal error:  _init() [&amp;lt;a href='function.require'&amp;gt;function.require&amp;lt;/a&amp;gt;]: Failed opening required &amp;#8216;DB.php&amp;#8217; (include_path=&amp;#8217;/usr/share/horde3/lib:.:/usr/share/php:/usr/share/pear&amp;#8217;) in /usr/share/horde3/lib/Horde/DataTree/sql.php on line 1877&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;- Sympa : on attaque là le cauchemard de mes migrations. À chaque fois, tellement de soucis majeurs et mineurs, que j&amp;#8217;ai l&amp;#8217;impression d&amp;#8217;être le seul à utiliser ce paquet. Voici en vrac tous les soucis rencontrés : les accents dans les descriptions ont sautés (une sorte de double encodage) et cela a nécessité des corrections manuelles, la table logs_table doit être créée à la main (j&amp;#8217;utilise Sympa avec PostgreSQL), et enfin une typo surprenante un &amp;#8220;GROUP BY&amp;#8221; à la place d&amp;#8217;un &amp;#8220;ORDER BY&amp;#8221; (j&amp;#8217;ai ouvert le bug &lt;a href=&quot;http://bugs.debian.org/566252&quot;&gt;#566252&lt;/a&gt; à ce sujet).&lt;/p&gt;
+&lt;p&gt;- Asterisk : on passe de la version 1.2 à la version 1.4. Lors de la migration, j&amp;#8217;ai constaté un bug étrange, le fichier &lt;em&gt;modules.conf &lt;/em&gt;qui charge les modules additionnels a disparu. Du coup, sans lui, Asterisk ne charge pas les modules nécessaires (SIP, etc.). Il a donc fallu le restaurer.&lt;/p&gt;
+&lt;p&gt;- udev : le meilleur ami des sysadmins (ou pas). Si les migrations douloureuses Sarge-&amp;gt;Etch sont loin derrière nous, il reste néanmoins quelques blagues. La dernière en date a été un renommage des interfaces réseau : eth0-&amp;gt;eth1 et eth1-&amp;gt;eth2. Classique mais étonnant, ce genre d&amp;#8217;humour est sensé être dépassé grâce aux &amp;#8220;persistent rules&amp;#8221; qui nomment les interfaces en fonction de l&amp;#8217;adresse MAC. À rester vigilant sur ce point avant le redémarrage donc.&lt;/p&gt;
+&lt;p&gt;Voilà pour les remarques. Vous noterez que je n&amp;#8217;ai pas abordé le noyau Linux. C&amp;#8217;est parce que pour la majorité de nos serveurs, ils sont gérés de façons spécifiques (au lieu d&amp;#8217;utiliser les noyaux officiels Debian). Ainsi, ils restent dans leur version actuelle (2.6.31 à cette heure) pendant la migration. Bien sûr, cela n&amp;#8217;empêche pas d&amp;#8217;effectuer un redémarrage de la machine suite à la mise-à-jour : cela permet de s&amp;#8217;assurer que tout est bien en place et le sera toujours après un éventuel redémarrage d&amp;#8217;urgence.&lt;/p&gt;
+&lt;p&gt;Rendez-vous pour de prochaines migrations !&lt;/p&gt;</content>
+		<author>
+			<name>Gr&amp;#233;gory Colpart</name>
+			<uri>http://gcolpart.evolix.net/blog21</uri>
+		</author>
+		<source>
+			<title type="html">Gregory Colpart's blog » Debian-fr</title>
+			<subtitle type="html">Labor omnia vincit improbus</subtitle>
+			<link rel="self" href="http://gcolpart.evolix.net/blog21/category/debian-fr/feed/"/>
+			<id>http://gcolpart.evolix.net/blog21/category/debian-fr/feed/</id>
+			<updated>2010-01-24T18:15:03+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Reportbug vs Launchpad</title>
+		<link href="http://carlchenet.wordpress.com/2010/01/24/reportbug-vs-launchpad/"/>
+		<id>http://carlchenet.wordpress.com/?p=208</id>
+		<updated>2010-01-23T22:08:52+00:00</updated>
+		<content type="html">&lt;br /&gt;&lt;p&gt;Suite &lt;a title=&quot;Commentaire Reportbug vs Launchpad&quot; href=&quot;http://carlchenet.wordpress.com/2010/01/12/importance-des-rapports-de-bugs/#comment-100&quot; target=&quot;_blank&quot;&gt;à ce commentaire&lt;/a&gt; sur &lt;a title=&quot;Billet importance des rapports de bugs&quot; href=&quot;http://carlchenet.wordpress.com/2010/01/12/importance-des-rapports-de-bugs/&quot; target=&quot;_blank&quot;&gt;mon billet précédent&lt;/a&gt; concernant &lt;a title=&quot;Page d'accueil du projet Reportbug&quot; href=&quot;http://packages.debian.org/sid/reportbug&quot; target=&quot;_blank&quot;&gt;Reportbug&lt;/a&gt;, j&amp;#8217;ai pensé devoir développer un peu une réponse.&lt;/p&gt;
+&lt;p&gt;Launchpad, jusqu&amp;#8217;à très récemment, était un logiciel propriétaire. L&amp;#8217;année dernière, il a été finalement libéré par Canonical. C&amp;#8217;est selon moi une bonne chose, et on en avait tellement parlé que je ne m&amp;#8217;y attendais plus vraiment. Après tout Canonical est une entreprise et le but d&amp;#8217;une entreprise intrinsèquement est de faire de l&amp;#8217;argent, les considération éthiques n&amp;#8217;ayant généralement dans les entreprises qu&amp;#8217;un poids très restreint.&lt;/p&gt;
+&lt;p&gt;Bien, donc Reportbug face à Launchpad ? Il y a moins d&amp;#8217;un an j&amp;#8217;aurais répondu que comparer un logiciel libre et un logiciel privateur est par essence un exercice biaisé et quasi inutile. L&amp;#8217;un appartient au patrimoine de l&amp;#8217;humanité et l&amp;#8217;autre à une entreprise qui peut en faire ce qu&amp;#8217;elle veut et dont le but est de faire de l&amp;#8217;argent. Je vais donc parler un peu de Reportbug (que je contribue à développer, les lecteurs réguliers de ce blog sont au courant) qui, lui, est un logiciel libre depuis sa naissance et depuis des années l&amp;#8217;une des briques logicielles les plus importantes de Debian. Nous arrivons bientôt à 570000 rapports de bugs (qui peuvent aussi être des demandes d&amp;#8217;amélioration). Reportbug offre ses services principalement en mode texte et en mode graphique (GTK2) aux utilisateurs. Comme je l&amp;#8217;ai dit dans mon précédent billet, chaque rapport de bug est (potentiellement si le rapport est recevable) le début d&amp;#8217;un mouvement au sein de Debian. Considérant le travail de Debian qui met en place une distribution multi-noyaux (Linux et le noyau de FreeBSD aujourd&amp;#8217;hui gérés) et multi-architectures (un grand nombre est officiellement supporté), on peut facilement comprendre que toucher à l&amp;#8217;outil qui est au coeur de l&amp;#8217;organisation et du suivi de ce travail est une opération très délicate. Et pourtant Reportbug ne cesse d&amp;#8217;évoluer, supporte de nouvelles options et travaille à satisfaire les désirs parfois contradictoires et souvent pointilleux de ses utilisateurs.&lt;/p&gt;
+&lt;p&gt;De fait Debian fonctionne grâce à l&amp;#8217;e-mail, le courrier électronique et l&amp;#8217;IRC étant les deux canaux de communication principaux des utilisateurs et développeurs de Debian. Reportbug s&amp;#8217;appuie donc sur l&amp;#8217;e-mail, qui s&amp;#8217;avère avoir des avantages non négligeables pour une organisation à la communication largement asynchrone (il est rare d&amp;#8217;avoir une réponse à ses questions dans la minute, qu&amp;#8217;on soit développeur ou utilisateur) et décentralisée comme Debian.&lt;/p&gt;
+&lt;p&gt;Je pense avoir donné ici des pistes qui permettent de comprendre que Reportbug satisfait très bien ses utilisateurs et n&amp;#8217;a pas de problème d&amp;#8217;ergonomie, sauf à considérer que tout ce qui n&amp;#8217;est pas une appli Web n&amp;#8217;est pas ergonomique, argument pour le moins spécieux. Launchpad fait sûrement très bien son travail et est digne d&amp;#8217;intérêt depuis sa libération. Reportbug fait également très bien son travail et soutient le travail journalier des acteurs de Debian, la distribution grâce à laquelle Canonical et Ubuntu vivent et (je leur souhaite) continueront à vivre longtemps.&lt;/p&gt;
+  &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/gocomments/carlchenet.wordpress.com/208/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/comments/carlchenet.wordpress.com/208/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/godelicious/carlchenet.wordpress.com/208/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/delicious/carlchenet.wordpress.com/208/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/gostumble/carlchenet.wordpress.com/208/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/stumble/carlchenet.wordpress.com/208/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/godigg/carlchenet.wordpress.com/208/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/digg/carlchenet.wordpress.com/208/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/goreddit/carlchenet.wordpress.com/208/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/reddit/carlchenet.wordpress.com/208/&quot; /&gt;&lt;/a&gt; &lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://stats.wordpress.com/b.gif?host=carlchenet.wordpress.com&amp;blog=7722010&amp;post=208&amp;subd=carlchenet&amp;ref=&amp;feed=1&quot; /&gt;</content>
+		<author>
+			<name>Carl Chenet</name>
+			<uri>http://carlchenet.wordpress.com</uri>
+		</author>
+		<source>
+			<title type="html">Carl Chenet's Blog » debian-fr</title>
+			<subtitle type="html">Debian contributing and stuff</subtitle>
+			<link rel="self" href="http://carlchenet.wordpress.com/category/debian-fr/feed/"/>
+			<id>http://carlchenet.wordpress.com/category/debian-fr/feed/</id>
+			<updated>2010-02-06T15:15:07+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Solutions Linux 2010</title>
+		<link href="http://tuxicoman.jesuislibre.net/2010/01/solutions-linux-2010.html"/>
+		<id>http://tuxicoman.jesuislibre.net/?p=1794</id>
+		<updated>2010-01-23T11:23:41+00:00</updated>
+		<content type="html">&lt;p&gt;Le salon &lt;a href=&quot;http://www.solutionslinux.fr/&quot;&gt;Solutions Linux&lt;/a&gt; ouvre ses portes le 16,17,18 mars 2010 au parc des expositions de Versailles. Apparement dans le grand hall 1 !&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://tuxicoman.jesuislibre.net/blog/wp-content/uploads/solutionslinux.gif&quot;&gt;&lt;img class=&quot;aligncenter size-full wp-image-1795&quot; title=&quot;solutionslinux&quot; src=&quot;http://tuxicoman.jesuislibre.net/blog/wp-content/uploads/solutionslinux.gif&quot; alt=&quot;&quot; width=&quot;140&quot; height=&quot;109&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;C'est l'occasion de parcourir les stands des grands noms de l'écosystème Linux, mais aussi ceux du &lt;a href=&quot;http://www.solutionslinux.fr/Le+village+associatif+_154_161.html&quot;&gt;village associatif&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.solutionslinux.fr/preinscription_154_204_p.html&quot;&gt;Réserver vos badges gratuits&lt;/a&gt; dès à présent.&lt;/p&gt;</content>
+		<author>
+			<name>Tuxicoman</name>
+			<uri>http://tuxicoman.jesuislibre.net</uri>
+		</author>
+		<source>
+			<title type="html">Tuxicoman » Debian</title>
+			<subtitle type="html">La route est longue mais la voie est libre</subtitle>
+			<link rel="self" href="http://tuxicoman.jesuislibre.net/category/debian/feed"/>
+			<id>http://tuxicoman.jesuislibre.net/category/debian/feed</id>
+			<updated>2010-02-16T08:15:31+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Smartphones Linux : le point du dev</title>
+		<link href="http://debian.flext.net/smartphones-linux-dev/"/>
+		<id>http://debian.flext.net/?p=143</id>
+		<updated>2010-01-15T06:05:19+00:00</updated>
+		<content type="html">&lt;p&gt;Un petit point sur le hardware et le software disponibles pour un développeur libre qui voudrait utiliser un smartphone et développer dessus.&lt;/p&gt;
+&lt;p&gt;Il existe trois plateformes basées sur Linux (je n&amp;#8217;écris volontairement pas GNU/Linux car si Android utilise bien le noyau Linux, il n&amp;#8217;utilise pas pour autant les outils GNU) :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://maemo.org/&quot; target=&quot;_blank&quot;&gt;Maemo&lt;/a&gt; de Nokia&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.android.com/&quot; target=&quot;_blank&quot;&gt;Android&lt;/a&gt; de Google&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://developer.palm.com/&quot; target=&quot;_blank&quot;&gt;webOS&lt;/a&gt; de Palm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Maemo :&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Maemo est censé, chez Nokia, remplacer &lt;a href=&quot;http://www.symbian.org/&quot; target=&quot;_blank&quot;&gt;Symbian&lt;/a&gt; qui est dépassé technologiquement pour les nouveaux usages mobiles. Après avoir été expérimenté (trop) longuement (depuis 2005 !) sur les tablettes &lt;a href=&quot;http://fr.wikipedia.org/wiki/Nokia_770_Internet_Tablet&quot; target=&quot;_blank&quot;&gt;N770&lt;/a&gt;, &lt;a href=&quot;http://fr.wikipedia.org/wiki/Nokia_N800&quot; target=&quot;_blank&quot;&gt;N800&lt;/a&gt; et &lt;a href=&quot;http://fr.wikipedia.org/wiki/Nokia_N810&quot; target=&quot;_blank&quot;&gt;N810&lt;/a&gt;, il est enfin disponible sur un téléphone : le &lt;a href=&quot;http://fr.wikipedia.org/wiki/Nokia_N900&quot; target=&quot;_blank&quot;&gt;N900&lt;/a&gt;, depuis novembre 2009.&lt;/p&gt;
+&lt;p&gt;Or, si le N900 est disponible, il utilise la plateforme Maemo 5 qui va disparaitre et aucun smartphone n&amp;#8217;est disponible sous Maemo 6. Je ne lancerai donc pas une énième fois le &lt;a href=&quot;http://www.wikivs.com/wiki/GTK_vs_Qt&quot; target=&quot;_blank&quot;&gt;troll&lt;/a&gt; &lt;a href=&quot;http://fr.wikipedia.org/wiki/GTK%2B&quot; target=&quot;_blank&quot;&gt;GTK&lt;/a&gt; (Maemo 5) vs &lt;a href=&quot;http://fr.wikipedia.org/wiki/Qt&quot; target=&quot;_blank&quot;&gt;Qt&lt;/a&gt; (Maemo 6) qui n&amp;#8217;a juste pas lieu d&amp;#8217;être : &lt;em&gt;Maemo n&amp;#8217;est pas dans la course&lt;/em&gt;. Et à la vitesse où va cette course, il ne parviendra peut-être jamais à y rentrer.&lt;/p&gt;
+&lt;p&gt;Je ne m&amp;#8217;étendrai pas sur Maemo car je veux à la fois développer des applications  que je puisse  tester,  et que d&amp;#8217;autres puissent utiliser, et il faut pour cela pouvoir se procurer un smartphone adapté, et ne pas m&amp;#8217;investir dans une plateforme en fin de vie. &lt;span&gt;De plus, le fait que Maemo utilise &lt;a href=&quot;http://fr.wikipedia.org/wiki/X.Org&quot; target=&quot;_blank&quot;&gt;Xorg&lt;/a&gt; le rend techniquement contestable, tant &lt;a href=&quot;http://www.art.net/~hopkins/Don/unix-haters/x-windows/disaster.html&quot; target=&quot;_blank&quot;&gt;la complexité et la lourdeur&lt;/a&gt; inhérentes à &lt;a href=&quot;http://fr.wikipedia.org/wiki/X_Window_System&quot; target=&quot;_blank&quot;&gt;X11&lt;/a&gt; sont malvenues sur un smartphone.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Android :&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Du côté d&amp;#8217;Android c&amp;#8217;est une toute autre histoire. Des smartphones sont disponibles depuis octobre 2008 aux États-Unis et mars 2009 en France. Au niveau commercial c&amp;#8217;est déjà une grande réussite : Android est la plateforme qui progresse le plus et s&amp;#8217;est imposé en un an comme le principal (le seul ?) challenger de l&amp;#8217;iPhone (voir les &lt;a href=&quot;http://metrics.admob.com/2010/01/metrics-update-android/&quot; target=&quot;_blank&quot;&gt;statistiques d&amp;#8217;AdMob&lt;/a&gt; pour plus de détails).&lt;/p&gt;
+&lt;p&gt;D&amp;#8217;un point de vue technique, Android fournit un &lt;a href=&quot;http://en.wikipedia.org/wiki/Software_development_kit&quot; target=&quot;_blank&quot;&gt;SDK&lt;/a&gt; basé sur le langage de programmation &lt;a href=&quot;http://fr.wikipedia.org/wiki/Java_(langage)&quot; target=&quot;_blank&quot;&gt;Java&lt;/a&gt;. Cependant, il ne repose pas sur la &lt;a href=&quot;http://fr.wikipedia.org/wiki/JVM_(informatique)&quot; target=&quot;_blank&quot;&gt;JVM&lt;/a&gt; de Sun, mais sur &lt;a href=&quot;http://fr.wikipedia.org/wiki/Machine_virtuelle_Dalvik&quot; target=&quot;_blank&quot;&gt;Dalvik&lt;/a&gt;, une machine virtuelle à registres (comme &lt;a href=&quot;http://www.parrot.org/&quot; target=&quot;_blank&quot;&gt;Parrot&lt;/a&gt;) spécialement développée pour les contraintes hardware (mémoire faible, processeur peu puissant&amp;#8230;) de l&amp;#8217;embarqué. Dalvik est à ma connaissance la seule machine virtuelle à registres qui soit un succès industriel, face à la masse des machines virtuelles à pile (JVM de Sun, &lt;a href=&quot;http://fr.wikipedia.org/wiki/Common_Language_Runtime&quot; target=&quot;_blank&quot;&gt;CLR&lt;/a&gt; de Microsoft&amp;#8230;).&lt;/p&gt;
+&lt;p&gt;Mais que peut-on faire si on ne veut pas programmer en Java ? Les développeurs ont souvent un langage de programmation favori, qu&amp;#8217;ils ont peu ou pas envie d&amp;#8217;abandonner ; dans mon cas c&amp;#8217;est &lt;a href=&quot;http://www.python.org/&quot; target=&quot;_blank&quot;&gt;Python&lt;/a&gt;. &lt;span&gt;On pense alors naturellement aux implémentations des langages écrites en Java, &lt;a href=&quot;http://www.jython.org/&quot; target=&quot;_blank&quot;&gt;Jython&lt;/a&gt; pour Python ; mais si elles fonctionnent sur la JVM de Sun, ce n&amp;#8217;est pas forcément le cas pas sur Dalvik ! Heureusement, Google a pensé à nous avec &lt;a href=&quot;http://code.google.com/p/android-scripting/&quot; target=&quot;_blank&quot;&gt;ASE&lt;/a&gt;, l&amp;#8217;Android Scripting Environment, qui permet d&amp;#8217;utiliser l&amp;#8217;ensemble des API Android à partir de différents langages interprétés, et le choix est vraiment grand : Python, &lt;a href=&quot;http://www.lua.org/&quot; target=&quot;_blank&quot;&gt;Lua&lt;/a&gt;, &lt;a href=&quot;http://www.perl.org/&quot; target=&quot;_blank&quot;&gt;Perl&lt;/a&gt;, Ruby, JavaScript, &lt;a href=&quot;http://www.beanshell.org/&quot; target=&quot;_blank&quot;&gt;BeanShell&lt;/a&gt; et même shell !!&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Tous les langages ne sont pas égaux devant ASE. Les langages natifs, c&amp;#8217;est-à-dire écrits en Java, comme Ruby basé sur &lt;a href=&quot;http://jruby.org/&quot; target=&quot;_blank&quot;&gt;JRuby&lt;/a&gt;, JavaScript basé sur &lt;a href=&quot;http://www.mozilla.org/rhino/&quot; target=&quot;_blank&quot;&gt;Rhino&lt;/a&gt; ou encore BeanShell, peuvent théoriquement accéder directement aux API Java natives, alors que les langages &amp;#8220;cross-compilés&amp;#8221;, comme Python (basé sur CPython) ou Lua qui sont écrits en C, ne peuvent procéder que par des appels &lt;a href=&quot;http://fr.wikipedia.org/wiki/JavaScript_Object_Notation&quot; target=&quot;_blank&quot;&gt;JSON&lt;/a&gt; &lt;a href=&quot;http://fr.wikipedia.org/wiki/Remote_procedure_call&quot; target=&quot;_blank&quot;&gt;RPC&lt;/a&gt;. C&amp;#8217;est cependant cette dernière méthode qui semble conseillée quel que soit le langage utilisé.&lt;/p&gt;
+&lt;p&gt;Je suis donc maintenant motivé pour me lancer dans l&amp;#8217;aventure Android, d&amp;#8217;autant que Google vient d&amp;#8217;anoncer, lors d&amp;#8217;une conférence de presse le 5 janvier, le lancement de son premier smartphone : le &lt;a href=&quot;http://fr.wikipedia.org/wiki/Nexus_One&quot;&gt;Nexus One &lt;/a&gt;fabriqué par HTC. C&amp;#8217;est tout simplement une &amp;#8220;bête de course&amp;#8221; du point de vue hardware : processeur à 1 Ghz, 512 Mo de RAM et un écran 3,7&amp;#8243; d&amp;#8217;une résolution de 480*800 (pour rappel l&amp;#8217;&lt;a href=&quot;http://en.wikipedia.org/wiki/IPhone_3GS&quot;&gt;iPhone 3GS&lt;/a&gt; fonctionne à 600 Mhz avec 256 Mo de RAM et un écran 3,5&amp;#8243; en 320*480) !!! La disponibilité du Nexus One en France est prévue pour le mois de mars.&lt;/p&gt;
+&lt;p&gt;J&amp;#8217;hésite cependant encore avec le &lt;a href=&quot;http://fr.wikipedia.org/wiki/Motorola_Milestone&quot; target=&quot;_blank&quot;&gt;Motorola Milestone&lt;/a&gt;, qui a lui l&amp;#8217;avantage d&amp;#8217;être déjà disponible et de posséder un clavier physique, ce qui pourrait se révéler bien pratique pour des sessions d&amp;#8217;administration de machines par &lt;a href=&quot;http://fr.wikipedia.org/wiki/OpenSSH&quot; target=&quot;_blank&quot;&gt;SSH&lt;/a&gt;, avec le terminal en plein écran !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;webOS :&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Il y a un an, lors du &lt;a href=&quot;http://fr.wikipedia.org/wiki/Consumer_Electronics_Show&quot; target=&quot;_blank&quot;&gt;CES&lt;/a&gt; de janvier 2009, Palm avait créé l&amp;#8217;évènement avec l&amp;#8217;annonce du &lt;a href=&quot;http://fr.wikipedia.org/wiki/Palm_Pre&quot; target=&quot;_blank&quot;&gt;Palm Pré&lt;/a&gt; et de son nouveau système d&amp;#8217;exploitation : webOS. Les critiques avaient été très élogieuses et l&amp;#8217;on a même pensé que l&amp;#8217;on tenait là le principal concurrent de l&amp;#8217;iPhone. En effet, webOS est le seul système alternatif  à proposer les mêmes facilités multitouch que l&amp;#8217;iPhone (il semblerait que sur ce sujet, Palm et Apple se tiennent par la barbichette des &lt;a href=&quot;http://brevets-logiciels.info/&quot; target=&quot;_blank&quot;&gt;brevets logiciels&lt;/a&gt;). La qualité et la simplicité de l&amp;#8217;ergonomie étaient aussi tout à fait remarquables, et le design très &amp;#8220;sexy&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;Le Palm Pré a été introduit au États-Unis le 6 juin, et les ventes ont été bonnes. Mais tout cela s&amp;#8217;est un peu essouflé car &lt;a href=&quot;http://fr.wikipedia.org/wiki/Sprint_Nextel&quot; target=&quot;_blank&quot;&gt;Sprint&lt;/a&gt;, l&amp;#8217;opérateur exclusif aux USA, est semble-t-il en perte de vitesse, et le Palm Pré n&amp;#8217;a pas été commercialisé dans beaucoup d&amp;#8217;autres pays : il n&amp;#8217;est par exemple toujours pas disponible en France. Seule nouveauté depuis un an, l&amp;#8217;introduction d&amp;#8217;un nouveau modèle moins puissant visant l&amp;#8217;entrée de gamme des smartphones, le &lt;a href=&quot;http://en.wikipedia.org/wiki/Palm_Pixi&quot; target=&quot;_blank&quot;&gt;Palm Pixi&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Et puis voilà à nouveau que, lors de la &lt;a href=&quot;http://www.youtube.com/watch?v=Mn6oNKVd29g&quot; target=&quot;_blank&quot;&gt;présentation&lt;/a&gt; du 7 janvier au CES, Palm fait des annonces tonitruantes ! &lt;span&gt;D&amp;#8217;abord l&amp;#8217;arrivée de deux nouveaux modèles : le Palm Pré Plus et le Palm Pixi Plus, qui proposent de grandes améliorations matérielles. Le Palm Pré voit sa capacité de stockage et sa RAM doublées, à 16 Go et 512 Mo respectivement, tandis que le Palm Pixi n&amp;#8217;est plus castré des possibilités Wi-Fi que l&amp;#8217;on peut légitimement attendre d&amp;#8217;un smartphone, fût-il d&amp;#8217;entrée de gamme. Et ces deux modèles seront disponibles en France au début du second trimestre.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Ensuite, le programme pour développeur, qui permet de fournir ses applications via le App Catalog officiel de Palm (équivalent du célèbre &lt;a href=&quot;http://fr.wikipedia.org/wiki/App_Store&quot; target=&quot;_blank&quot;&gt;App Store&lt;/a&gt; d&amp;#8217;Apple) est maintenant &lt;a href=&quot;http://developer.palm.com/index.php?option=com_content&amp;view=article&amp;id=1839&amp;Itemid=33&quot; target=&quot;_blank&quot;&gt;ouvert à tous&lt;/a&gt;. Mais ce n&amp;#8217;est pas tout, un &lt;a href=&quot;http://developer.palm.com/index.php?option=com_content&amp;view=article&amp;id=1843&quot; target=&quot;_blank&quot;&gt;programme spécial pour les développeurs Open Source&lt;/a&gt; existe, qui offre comme avantage d&amp;#8217;économiser les 99$ de cotisation annuelle (en ce moment offerts à tous) et les 50$ par application soumises au App Catalog. De plus, Palm montre sa compréhension des logiciels libres, car l&amp;#8217;on peut tout à fait commercialiser ses applications libres, et il n&amp;#8217;y a aucune discrimination, comme pour les applications propriétaires c&amp;#8217;est 70% du prix pour le développeur (comme sur l&amp;#8217;App Store).&lt;/p&gt;
+&lt;p&gt;Développeur qui pourra désormais programmer de vrais jeux exploitant tout la puissance du la puce graphique, grâce à la mise à disposition d&amp;#8217;un nouveau SDK spécialement destiné au jeux : le &lt;a href=&quot;http://developer.palm.com/index.php?option=com_content&amp;view=article&amp;id=1850&amp;Itemid=20&quot; target=&quot;_blank&quot;&gt;Plug-in Development Kit&lt;/a&gt;. Ce dernier est basé sur l&amp;#8217;excellente et très utilisée librairie &lt;a href=&quot;http://www.libsdl.org/&quot; target=&quot;_blank&quot;&gt;SDL&lt;/a&gt;, véritable standard des logiciels libres. Le PDK est censé être programmé en C ou en C++, mais il existe des &lt;a href=&quot;http://fr.wikipedia.org/wiki/Binding&quot;&gt;bindings&lt;/a&gt; SDL pour un nombre de langage de programmation très impressionnant, et j&amp;#8217;ai du mal à voir ce qui pourrait m&amp;#8217;empêcher d&amp;#8217;utiliser sous peu &lt;a href=&quot;http://www.pygame.org/&quot; target=&quot;_blank&quot;&gt;Pygame&lt;/a&gt; pour programmer des jeux en Python !&lt;/p&gt;
+&lt;p&gt;Pour ce qui est des applications plus classiques, Palm propose désormais un &lt;a href=&quot;http://fr.wikipedia.org/wiki/Environnement_de_développement_intégré&quot; target=&quot;_blank&quot;&gt;IDE&lt;/a&gt; fonctionnant dans votre navigateur web : &lt;a href=&quot;http://ares.palm.com/Ares/about.html&quot; target=&quot;_blank&quot;&gt;Project Ares&lt;/a&gt;. On pourra saluer la cohérence technologique qui permet de faire aisément cela puisque l&amp;#8217;ensemble du SDK Palm est construit à base  de technologies web, et espérer que cela permettra de faciliter l&amp;#8217;accès à la programmation webOS au plus grand nombre.&lt;/p&gt;
+&lt;p&gt;Enfin, pour motiver les développeurs à se lancer et ainsi remplir son App Catalog, Palm propose le concours &lt;a href=&quot;http://developer.palm.com/index.php?option=com_content&amp;view=article&amp;id=1841&amp;Itemid=35&quot; target=&quot;_blank&quot;&gt;Hot Apps&lt;/a&gt; doté d&amp;#8217;un million de dollars à partager entre les applications les plus téléchargées du 1er février au 31 mai.&lt;/p&gt;
+&lt;p&gt;Sur le front des smartphones Linux est là et bien là, en position de force, prêt à exterminer les systèmes d&amp;#8217;exploitation privateurs de liberté Windows Mobile et BlackBerry OS et à mener le grand combat final contre l&amp;#8217;iPhone !&lt;/p&gt;</content>
+		<author>
+			<name>Florent Gallaire</name>
+			<uri>http://debian.flext.net</uri>
+		</author>
+		<source>
+			<title type="html">Florent Gallaire's Blog</title>
+			<subtitle type="html">Debian and Python contributing and stuff</subtitle>
+			<link rel="self" href="http://fgallaire.flext.net/feed/"/>
+			<id>http://fgallaire.flext.net/feed/</id>
+			<updated>2010-02-16T07:45:06+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Importance des rapports de bugs</title>
+		<link href="http://carlchenet.wordpress.com/2010/01/12/importance-des-rapports-de-bugs/"/>
+		<id>http://carlchenet.wordpress.com/?p=202</id>
+		<updated>2010-01-12T00:46:58+00:00</updated>
+		<content type="html">&lt;br /&gt;&lt;p&gt;Note à moi-même pour la nouvelle année : dès que je constate un bug sur un logiciel dans ma distribution préférée, j&amp;#8217;ouvre un rapport de bug immédiatement et surtout pas un lendemain hypothétique.&lt;/p&gt;
+&lt;p&gt;Comme le souligne &lt;a title=&quot;Retour sur mes bugs ...&quot; href=&quot;http://www.chevrel.org/fr/carnet/?post/2010/01/09/Retour-sur-mes-bugs-en-cours-mes-2-nouveaux-bugs-de-d%C3%A9but-janvier&quot; target=&quot;_blank&quot;&gt;cette note à propos de Firefox&lt;/a&gt;, les rapports de bugs sont fondamentaux pour le maintien en vie et l&amp;#8217;amélioration de la qualité dans le monde des logiciels libres. Certains bugs sont vicieux, difficiles à reproduire. La plupart sont très simples à mettre en avant.&lt;/p&gt;
+&lt;p&gt;Dans tous les cas, la participation des utilisateurs qui découvrent ces bugs est précieuse. Rapporter un bug est le début et la condition sine qua none de la résolution du bug. Même si vous avez l&amp;#8217;impression que ce bug est tellement gros qu&amp;#8217;on doit avoir fait le travail avant vous, il est nécessaire de le déclarer. Dans l&amp;#8217;idéal vous jeterez un œil aux bugs existants avant d&amp;#8217;ouvrir votre rapport mais dans tous les cas, rédigez des rapports de bugs.&lt;/p&gt;
+&lt;p&gt;Utilisateur averti ou programmeur chevronné, acquérir cette bonne habitude est la garantie d&amp;#8217;enrichir de votre expérience les logiciels que vous utilisez au quotidien.&lt;/p&gt;
+&lt;p&gt;Sous Debian, l&amp;#8217;outil pour rédiger des rapports de bug est &lt;a title=&quot;page d'accueil de Reportbug&quot; href=&quot;http://packages.debian.org/sid/reportbug&quot; target=&quot;_blank&quot;&gt;Reportbug&lt;/a&gt;. Une quinzaine de minutes suffit à le prendre en main, pour rédiger et envoyer votre premier rapport. Ne vous en privez pas, vous contribuerez directement par ce moyen à Debian.&lt;/p&gt;
+  &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/gocomments/carlchenet.wordpress.com/202/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/comments/carlchenet.wordpress.com/202/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/godelicious/carlchenet.wordpress.com/202/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/delicious/carlchenet.wordpress.com/202/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/gostumble/carlchenet.wordpress.com/202/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/stumble/carlchenet.wordpress.com/202/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/godigg/carlchenet.wordpress.com/202/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/digg/carlchenet.wordpress.com/202/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/goreddit/carlchenet.wordpress.com/202/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/reddit/carlchenet.wordpress.com/202/&quot; /&gt;&lt;/a&gt; &lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://stats.wordpress.com/b.gif?host=carlchenet.wordpress.com&amp;blog=7722010&amp;post=202&amp;subd=carlchenet&amp;ref=&amp;feed=1&quot; /&gt;</content>
+		<author>
+			<name>Carl Chenet</name>
+			<uri>http://carlchenet.wordpress.com</uri>
+		</author>
+		<source>
+			<title type="html">Carl Chenet's Blog » debian-fr</title>
+			<subtitle type="html">Debian contributing and stuff</subtitle>
+			<link rel="self" href="http://carlchenet.wordpress.com/category/debian-fr/feed/"/>
+			<id>http://carlchenet.wordpress.com/category/debian-fr/feed/</id>
+			<updated>2010-02-06T15:15:07+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Faire son propre moteur de recherche avec Nutch</title>
+		<link href="http://www.csquad.org/2010/01/11/nutch/"/>
+		<id>http://www.csquad.org/?p=973</id>
+		<updated>2010-01-11T22:22:26+00:00</updated>
+		<content type="html">&lt;p&gt;Allez aujourd&amp;#8217;hui, je lâche mon troll, qui n&amp;#8217;a pas manger depuis plusieurs semaines :&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;S&amp;#8217;il y a quelque chose que vous faites et que personne ne doit savoir, peut-être qu&amp;#8217;il faudrait commencer par ne pas le faire&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Source : &lt;a href=&quot;http://www.eff.org/deeplinks/2009/12/google-ceo-eric-schmidt-dismisses-privacy&quot;&gt;Google CEO Eric Schmidt Dismisses the Importance of Privacy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Il a raison le bon docteur Schmidt, il aurait du faire plus attention &lt;a href=&quot;http://en.wikipedia.org/wiki/Liu_Xiaobo&quot;&gt;Liu Xiaobo&lt;/a&gt; avant de chercher &lt;em&gt;droits de l’homme&lt;/em&gt; sur un &lt;a href=&quot;http://news.google.cn/news?q=Liu%20Xiaobo&amp;hl=zh-CN&amp;ie=UTF-8&amp;ned=ccn&amp;tab=Hn&quot;&gt;moteur de recherche censuré&lt;/a&gt;&amp;#8230;&lt;/p&gt;
+&lt;p&gt;Bref vous m&amp;#8217;avez compris ce genre de parole dans la bouche de l&amp;#8217;homme le plus puissant de la plante ne m&amp;#8217;inspire pas confiance  et je continue à penser que le slogan de Google &lt;a href=&quot;http://en.wikipedia.org/wiki/Don%27t_be_evil&quot;&gt;Don&amp;#8217;t be evil&lt;/a&gt; est une véritable plaisanterie.&lt;/p&gt;
+&lt;p&gt;Alors au lieu de vous conseiller de passer à Bling, je vais vous expliquer comment faire votre propre moteur de recherche.&lt;/p&gt;
+&lt;p&gt;Ce billet décrit la mise en place d&amp;#8217;un moteur de recherche sous Debian GNU/Linux basé sur &lt;a href=&quot;http://lucene.apache.org/nutch/&quot;&gt;Nutch&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Pré-requis&lt;/h3&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td valign=&quot;top&quot;&gt;
+&lt;a href=&quot;http://www.csquad.org/wp-content/uploads/2010/01/140px-Google’s_First_Production_Server.jpg&quot;&gt;&lt;img src=&quot;http://www.csquad.org/wp-content/uploads/2010/01/140px-Google’s_First_Production_Server.jpg&quot; alt=&quot;140px-Google’s_First_Production_Server&quot; title=&quot;140px-Google’s_First_Production_Server&quot; width=&quot;140&quot; height=&quot;232&quot; class=&quot;alignleft size-full wp-image-1005&quot; /&gt;&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;
+Pour faire votre propre moteur de recherche vous avez besoin de :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;450 000 serveurs répartis sur toute la planète ;&lt;/li&gt;
+&lt;li&gt;80Go d&amp;#8217;espace disque par machine ;&lt;/li&gt;
+&lt;li&gt;4Go de mémoire par machine ;&lt;/li&gt;
+&lt;li&gt;Une connexion fibre optique entre vos &lt;em&gt;&amp;#8220;data centers&amp;#8221;&lt;/em&gt; ; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;
+Bref, si vous n&amp;#8217;avez pas cette infrastructure à votre disposition ce n&amp;#8217;est pas la peine d&amp;#8217;aller plus loin &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt;&lt;br /&gt;
+Bon d&amp;#8217;accord, vous voulez simplement un moteur de recherche personnel?
+&lt;/p&gt;
+&lt;p&gt;Un seul serveur avec les caractéristiques suivantes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un bon processeur ;&lt;/li&gt;
+&lt;li&gt;Beaucoup de mémoire (4Go, ba oui, c&amp;#8217;est du Java ma petite dame &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt;  ) ;&lt;/li&gt;
+&lt;li&gt;Un gros disque dur très rapide de plus de 500Go (des &lt;a href=&quot;http://en.wikipedia.org/wiki/Western_Digital_Raptor&quot;&gt; Raptor&lt;/a&gt; par exemple ) ;&lt;/li&gt;
+&lt;li&gt;Une bonne bande passante, avec plus de 2Mb en &lt;em&gt;download&lt;/em&gt;;&lt;/li&gt;
+&lt;li&gt;Une distribution Debian GNU/Linux ;&lt;/li&gt;
+&lt;li&gt;Des compétences en administration d&amp;#8217;Apache, Tomcat et ligne de commande ;&lt;/li&gt;
+&lt;li&gt;Un peu de temps pour configurer le système et le paramétrer aux petits oignons.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;C&amp;#8217;est bien plus abordable ? &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt; &lt;/p&gt;
+&lt;h3&gt;Fonctionnalités&lt;/h3&gt;
+&lt;p&gt;En mettant en place mon propre moteur de recherche, je voulais obtenir les fonctionnalités suivantes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Indexation des documents locaux (ex: un Intranet) ;&lt;/li&gt;
+&lt;li&gt;Indexation plus poussé de mes centres d&amp;#8217;intérêts ;&lt;/li&gt;
+&lt;li&gt;Indépendance par rapport à un moteur de recherche ;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Néanmoins, je dois faire une croix sur : &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;la publicité ciblée ;&lt;/li&gt;
+&lt;li&gt;la recherche d&amp;#8217;images, de vidéos et temps réel ;&lt;/li&gt;
+&lt;li&gt;la correction orthographique.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Les limitations&lt;/h3&gt;
+&lt;p&gt;On pourrait dire que Nutch est un moteur de recherche de l&amp;#8217;époque &lt;em&gt;&amp;#8220;web 1.0&amp;#8243;&lt;/em&gt;. En effet, il ne contient pas d&amp;#8217;algorithme d&amp;#8217;&lt;a href=&quot;http://fr.wikipedia.org/wiki/Intelligence_collective&quot;&gt;Intelligence Bolchevique^Wcollective&lt;/a&gt; comme la plupart des moteurs de recherche. Cela signifie que seul le &lt;a href=&quot;http://fr.wikipedia.org/wiki/PageRank&quot;&gt;Page rank&lt;/a&gt; est utilisé et que les votes des utilisateurs ne sont pas pris en compte. Il est aussi plus sensible au &lt;a href=&quot;http://fr.wikipedia.org/wiki/Spamdexing&quot;&gt;Spamdexing&lt;/a&gt;. &lt;/p&gt;
+&lt;h3&gt;Présentation des composants&lt;/h3&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td valign=&quot;top&quot;&gt;&lt;img src=&quot;http://www.csquad.org/wp-content/uploads/2010/01/ubuntu_nutch_small.png&quot; alt=&quot;&quot; title=&quot;ubuntu_nutch_small&quot; width=&quot;128&quot; height=&quot;187&quot; class=&quot;alignleft size-full wp-image-1034&quot; /&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;
+L&amp;#8217;architecture d&amp;#8217;un moteur de recherche est assez simple, vous avez besoin :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;d&amp;#8217;un &lt;a href=&quot;http://en.wikipedia.org/wiki/Web_crawler&quot;&gt;Web crawler&lt;/a&gt;, un logiciel qui explore automatiquement le Web à la recherche de ressources.&lt;/li&gt;
+&lt;li&gt;un système d&amp;#8217;indexation, dans le cas de Nutch c&amp;#8217;est &lt;a href=&quot;http://lucene.apache.org/&quot;&gt;Apache Lucene&lt;/a&gt; ; &lt;/li&gt;
+&lt;li&gt;des interfaces de recherche ;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;h3&gt;Installation&lt;/h3&gt;
+&lt;p&gt;Voici les étapes nécessaires pour faire fonctionner la version 1.0 Nuch sur une machine &lt;a href=&quot;http://www.debian.org/&quot;&gt;Debian GNU/Linux&lt;/a&gt; version &amp;#8220;lenny&amp;#8221;.&lt;/p&gt;
+&lt;h4&gt;Dépendances&lt;/h4&gt;
+&lt;p&gt;Vous avez besoin des composants suivants :&lt;br /&gt;
+&lt;code&gt;# apt-get install tomcat5.5 tomcat5.5-admin tomcat5.5-webapps sun-java6-jre&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+Configurer le JRE par default :&lt;br /&gt;
+&lt;code&gt;# update-alternatives  --set java /usr/lib/jvm/java-6-sun/jre/bin/java&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Nutch&lt;/h4&gt;
+&lt;p&gt;C&amp;#8217;est une application en Java, que je place dans le repertoire &lt;em&gt;opt&lt;/em&gt; :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+# cd /opt&lt;br /&gt;
+# wget http://mirror.mkhelif.fr/apache/lucene/nutch/nutch-1.0.tar.gz&lt;br /&gt;
+# tar xzf nutch-1.0.tar.gz&lt;br /&gt;
+# ln -s nutch-1.0 nutch&lt;br /&gt;
+# mkdir nutch/urls&lt;br /&gt;
+# mkdir nutch/crawl&lt;br /&gt;
+# chown tomcat55: nutch-1.0&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Configuration&lt;/h4&gt;
+&lt;p&gt;La configuration du moteur de recherche se trouve dans le fichier &lt;em&gt;conf/nutch-default.xml&lt;/em&gt;, vous disposez de votre fichier &lt;em&gt;conf/nutch-site.xml&lt;/em&gt;, spécifique à votre instance. Les variables intéressantes sont :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;http.agent.* : la politesse, pour décrire votre robot ou bien prendre l&amp;#8217;identité d&amp;#8217;un autre ; &lt;/li&gt;
+&lt;li&gt;db.fetch.interval.(default|max) : ces variables définissent le nombre de jours entre chaque passage du robot, comme vous ne pourrez pas faire le tour du web en moins de 30 jours &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt; , une bonne idée est d&amp;#8217;augmenter ces valeurs ;&lt;/li&gt;
+&lt;li&gt;plugin.includes : la définition des plugins pris en charge, ici vous pouvez ajouter la gestion des documents pdf, microsoft word et du protocole https.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Bootstrapping du moteur de recherche&lt;/h3&gt;
+&lt;p&gt;Votre moteur de recherche doit avaler une quantité de donnée importante avant de pouvoir faire une recherche pertinente.&lt;br /&gt;
+Voici quelques sources pour l&amp;#8217;initialiser.&lt;/p&gt;
+&lt;h4&gt;A l&amp;#8217;aide d&amp;#8217;un annuaire&lt;/h4&gt;
+&lt;p&gt;Il  existe de très bons annuaires complets comme le projet &lt;a href=&quot;http://www.dmoz.org/&quot;&gt;Open Directory Project&lt;/a&gt;.&lt;br /&gt;
+Dont l&amp;#8217;ensemble des données sont disponibles au format RDF et téléchargeables librement : &lt;a href=&quot;http://rdf.dmoz.org/rdf/&quot;&gt;http://rdf.dmoz.org/rdf/&lt;/a&gt;.&lt;br /&gt;
+Par contre, attention ce fichier référence 4 446 480 sites web et vous allez avoir besoin de beaucoup de place pour les référencer tout ce contenu.&lt;/p&gt;
+&lt;p&gt;Voici la procédure pour utiliser l&amp;#8217;annuaire DMOZ avec Nutch :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+$ cd /opt/nutch&lt;br /&gt;
+$ mkdir urls&lt;br /&gt;
+$ wget http://rdf.dmoz.org/rdf/content.rdf.u8.gz -O urls/content.rdf.u8.gz&lt;br /&gt;
+$ gunzip urls/content.rdf.u8.gz&lt;br /&gt;
+$ bin/nutch org.apache.nutch.tools.DmozParser urls/content.rdf.u8 &gt; urls/dmoz&lt;br /&gt;
+$ bin/nutch inject crawl/crawldb urls/dmoz&lt;br /&gt;
+Injector: starting&lt;br /&gt;
+Injector: crawlDb: crawl/crawldb&lt;br /&gt;
+Injector: urlDir: urls/dmoz&lt;br /&gt;
+Injector: Converting injected urls to crawl db entries.&lt;br /&gt;
+Injector: Merging injected urls into crawl db.&lt;br /&gt;
+Injector: done&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;A l&amp;#8217;aide d&amp;#8217;un Marque-page&lt;/h4&gt;
+&lt;p&gt;Une autre source pour initialiser le moteur de recherche est d&amp;#8217;utiliser les adresses contenues dans votre marque-page. Le principal avantage de cette technique est la faible quantité de données  à analyser et une pertinence de recherche accrue.&lt;br /&gt;
+Pour ce faire, vous devez exporter votre marque-page au format HTML (pour Mozilla Firefox) et en extraire les adresses de la manière suivante :&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;br /&gt;
+$ cd /opt/nutch&lt;br /&gt;
+$ grep &quot;A HREF=\&quot;http&quot;  bookmarks.html | cut -d '&quot;' -f 2  &gt; urls/bookmarks&lt;br /&gt;
+$ bin/nutch inject crawl/crawldb urls/bookmarks&lt;br /&gt;
+Injector: starting&lt;br /&gt;
+Injector: crawlDb: crawl/crawldb&lt;br /&gt;
+Injector: urlDir: urls/bookmarks&lt;br /&gt;
+Injector: Converting injected urls to crawl db entries.&lt;br /&gt;
+Injector: Merging injected urls into crawl db.&lt;br /&gt;
+Injector: done&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;A l&amp;#8217;aide de Wikipedia&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://fr.wikipedia.org&quot;&gt;Wikipedia&lt;/a&gt; fourni des &lt;em&gt;dumps&lt;/em&gt; de sa &lt;a href=&quot;http://en.wikipedia.org/wiki/Wikipedia_database&quot;&gt;base de données&lt;/a&gt; au format XML. Il est donc possible d&amp;#8217;utiliser les URLs des articles de wikipedia comme source.&lt;br /&gt;
+Voici la procédure pour la version française de Wikipedia, celle-ci contient 897 974 urls.&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+$ cd /opt/nutch/&lt;br /&gt;
+$ mkdir urls&lt;br /&gt;
+$ wget http://download.wikimedia.org/frwiki/latest/frwiki-latest-abstract.xml -O urls/frwiki-latest-abstract.xml&lt;br /&gt;
+$ grep &quot;&amp;lt;url&amp;gt;&quot; urls/frwiki-latest-abstract.xml | cut -d '&gt;' -f 2 | cut -d ' ' -f 1 &gt; urls/wikipedia-fr&lt;br /&gt;
+$ bin/nutch inject crawl/crawldb urls/wikipedia-fr&lt;br /&gt;
+Injector: starting&lt;br /&gt;
+Injector: crawlDb: crawl/crawldb&lt;br /&gt;
+Injector: urlDir: urls/wikipedia-fr&lt;br /&gt;
+Injector: Converting injected urls to crawl db entries.&lt;br /&gt;
+Injector: Merging injected urls into crawl db.&lt;br /&gt;
+Injector: done&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;What you&amp;#8217;re waitin&amp;#8217; for ? Christmas ?&lt;/h3&gt;
+&lt;h4&gt;Come get some!&lt;/h4&gt;
+&lt;p&gt;Une fois que vous avez chargé la base de données avec vos urls, il faut les parcourir afin de les indexer. Cela se fait à l&amp;#8217;aide de plusieurs commandes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;generate&lt;/strong&gt; : sélections des adresses à parcourir ;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;fetch&lt;/strong&gt; : parcourt des urls ;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;updatedb&lt;/strong&gt; : mise à jours de la base des adresses ;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;invertlinks&lt;/strong&gt; : mise à jours de l&amp;#8217;index des adresses inversées  ;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;index&lt;/strong&gt; : indexation des données  ;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Une séquence classique ressemble donc à cela :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+bin/nutch generate crawl/crawldb crawl/segments -topN 1000&lt;br /&gt;
+s1=`ls -d crawl/segments/2* | tail -1`&lt;br /&gt;
+bin/nutch fetch $s1&lt;br /&gt;
+bin/nutch updatedb crawl/crawldb $s1&lt;br /&gt;
+bin/nutch invertlinks crawl/linkdb $s1&lt;br /&gt;
+bin/nutch index crawl/indexes crawl/crawldb crawl/linkdb $s1&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+Cette suite de commandes vous permet de parcourir et d´indexer 1000 adresses issues de votre base.&lt;br /&gt;
+C&amp;#8217;est un très bon 1er test pour voir si cela fonctionne. &lt;/p&gt;
+&lt;h4&gt;Shake it, baby!&lt;/h4&gt;
+&lt;p&gt;Une autre commande intéressante est &lt;em&gt;readdb&lt;/em&gt; avec l&amp;#8217;option &lt;em&gt;stats&lt;/em&gt;, qui permet d&amp;#8217;obtenir des informations sur le contenu de votre base  :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+$ bin/nutch readdb crawl/crawldb/ -stats&lt;br /&gt;
+CrawlDb statistics start: crawl/crawldb/&lt;br /&gt;
+Statistics for CrawlDb: crawl/crawldb/&lt;br /&gt;
+TOTAL urls:     3377315&lt;br /&gt;
+...&lt;br /&gt;
+min score:      0.0&lt;br /&gt;
+avg score:      0.13178158&lt;br /&gt;
+max score:      401.402&lt;br /&gt;
+status 1 (db_unfetched):        2966337&lt;br /&gt;
+status 2 (db_fetched):  300008&lt;br /&gt;
+status 3 (db_gone):     46659&lt;br /&gt;
+status 4 (db_redir_temp):       27857&lt;br /&gt;
+status 5 (db_redir_perm):       36454&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+Une bonne idées serait de mettre en place un système de monitoring sur ces informations pour suivre le déroulement. Par contre, il faut faire attention car la commande prend plusieurs minutes à s&amp;#8217;exécuter.  (donc hors de question de la placer dans un plugin munin, un mail tous les soirs serait une meilleur méthode). &lt;/p&gt;
+&lt;h4&gt;Damn&amp;#8230; I&amp;#8217;m looking good!&lt;/h4&gt;
+&lt;p&gt;Vous pouvez tester en ligne de commande  le fonctionnement du moteur de recherche :&lt;br /&gt;
+&lt;code&gt;$ bin/nutch org.apache.nutch.searcher.NutchBean apache&lt;br /&gt;
+Total hits: 6413&lt;br /&gt;
+ 0 20100104001440/http://xmlgraphics.apache.org/fop/&lt;br /&gt;
+ ... be part of Apache's XML Graphics project . Demonstration ... goals of the Apache FOP project are to ...&lt;br /&gt;
+ 1 20100103201220/http://velocity.apache.org/&lt;br /&gt;
+ ... Library Site building Site tools Apache Reference Apache Website How the ASF ... way in its field. Apache&lt;br /&gt;
+...&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Voilà cela fonctionne en ligne de commande, nous pouvons passer à l&amp;#8217;interface end user (enfin un moteur de recherche en ligne de commande c&amp;#8217;est très pratique aussi &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt;  )&lt;/p&gt;
+&lt;h3&gt;Configuration de l&amp;#8217;interface web&lt;/h3&gt;
+&lt;p&gt;Nutch fournir un application pour Tomcat / Jboss. Il suffit de la déployer et de lui indiquer l&amp;#8217;emplacement de votre index de la manière suivante :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+# cd /opt/nutch&lt;br /&gt;
+# cp nutch-1.0.war /var/lib/tomcat5.5/webapps&lt;br /&gt;
+... attendre&lt;br /&gt;
+# vim /var/lib/tomcat5.5/webapps/nutch-1.0/WEB-INF/classes/nutch-default.xml&lt;br /&gt;
+... remplacer la value de &lt;em&gt;searcher.dir&lt;/em&gt;  par /opt/nutch/crawl&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+Mais aussi modifier la sécurité de tomcat, via le fichier &lt;em&gt;/etc/default/tomcat5.5&lt;/em&gt; en mettant la variable &lt;em&gt;TOMCAT5_SECURITY&lt;/em&gt; à no.&lt;br /&gt;
+Ou bien en créant un fichier policy donnant l&amp;#8217;accès au répertoire &lt;em&gt;/opt/nutch/crawl&lt;/em&gt;. (c&amp;#8217;est plus propre &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt;  )&lt;/p&gt;
+&lt;p&gt;Vous pouvez ensuite redémarrer tomcat et accèder au moteur de recherche via votre navigateur sur le port 8180.&lt;/p&gt;
+&lt;h3&gt;Problèmes rencontrés&lt;/h3&gt;
+&lt;p&gt;Voici quelques problèmes que j&amp;#8217;ai rencontré lors de mes tests de la version 1.0 de Nutch :&lt;/p&gt;
+&lt;h4&gt;La directive merge ne fonctionne pas&lt;/h4&gt;
+&lt;p&gt;Impossible de &lt;em&gt;fusionner&lt;/em&gt; deux index, il est nécessaire de re-creer l&amp;#8217;ensemble de l&amp;#8217;index à chaque fois.&lt;/p&gt;
+&lt;h4&gt;La directive fetch flanche&lt;/h4&gt;
+&lt;p&gt;Lorsque trop nombreux sites sont choisis dans la liste des sites à parcourir par le robot d&amp;#8217;indexation à l&amp;#8217;aide de l&amp;#8217;option &lt;em&gt;topN&lt;/em&gt;, le programme produit une erreur et le &lt;em&gt;segement&lt;/em&gt; produit est corrompu. (c&amp;#8217;est pour cette raison que je limite le nombre de site dans un segment à 5000)&lt;/p&gt;
+&lt;h3&gt;Maintenance de l&amp;#8217;index&lt;/h3&gt;
+&lt;p&gt;Une fois le moteur de recherche mise en place, il faut maintenir l&amp;#8217;index à jours. Pour cela, j&amp;#8217;ai mis en place un simple script de crawl avec cron qui se lance tous les soirs :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+#!/bin/sh&lt;br /&gt;
+bin/nutch generate crawl/crawldb crawl/segments -topN 5000&lt;br /&gt;
+s1=`ls -d crawl/segments/2* | tail -1`&lt;br /&gt;
+bin/nutch fetch $s1&lt;br /&gt;
+bin/nutch updatedb crawl/crawldb $s1&lt;br /&gt;
+bin/nutch invertlinks crawl/linkdb $s1&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+et un autre qui re-créer l&amp;#8217;index :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+#!/bin/sh&lt;br /&gt;
+rm -rf crawl/indexes/&lt;br /&gt;
+bin/nutch index crawl/indexes/ crawl/crawldb/ crawl/linkdb/ crawl/segments/*&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Optimisation du robot d&amp;#8217;indexation&lt;/h3&gt;
+&lt;p&gt;La principale difficulté de ce projet est l&amp;#8217;indexation d&amp;#8217;une énorme quantité de données avec des moyens techniques très limité.&lt;br /&gt;
+Voici donc quelques idées pour optimiser l&amp;#8217;indexation de votre moteur de recherche. &lt;/p&gt;
+&lt;h4&gt;Utiliser le serveur mandataire de votre fournisseur d&amp;#8217;accès à Internet&lt;/h4&gt;
+&lt;p&gt;Vous pouvez ajouter l&amp;#8217;adresse du serveur mandataire de votre FAI dans le fichier &lt;em&gt;conf/nutch-site.xml&lt;/em&gt; :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+&amp;lt;property&gt;&lt;br /&gt;
+  &amp;lt;name&gt;http.proxy.host&amp;lt;/name&gt;&lt;br /&gt;
+  &amp;lt;value&gt;proxy.free.fr&amp;lt;/value&gt;&lt;br /&gt;
+&amp;lt;/property&gt;&lt;br /&gt;
+&amp;lt;property&gt;&lt;br /&gt;
+  &amp;lt;name&gt;http.proxy.port&amp;lt;/name&gt;&lt;br /&gt;
+  &amp;lt;value&gt;3128&amp;lt;/value&gt;&lt;br /&gt;
+&amp;lt;/property&gt;&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Note : On me signale dans l&amp;#8217;oreillette, que &lt;a href=&quot;http://www.freenews.fr/spip.php?article7300&quot;&gt;mon FAI à fermer son proxy&lt;/a&gt; à cause d&amp;#8217;une sombre histoire de &lt;a href=&quot;http://fr.wikipedia.org/wiki/Loi_Cr%C3%A9ation_et_Internet&quot;&gt;Haute Autorité De l&amp;#8217;Ouverture Postale Inopinée&lt;/a&gt;.&lt;/p&gt;
+&lt;h4&gt;Mise en place d&amp;#8217;un serveur DNS locale&lt;/h4&gt;
+&lt;p&gt;Vous avez besoin de mettre en place un serveur cache DNS locale qui prend en charge les requêtes du robot. Vous pouvez faire cela avec &lt;a href=&quot;https://www.isc.org/products/BIND/&quot;&gt;ISC BIND&lt;/a&gt; ou bien &lt;a href=&quot;http://www.phys.uu.nl/~rombouts/pdnsd.html&quot;&gt;pdnsd&lt;/a&gt;. &lt;/p&gt;
+&lt;h4&gt;Augmentation du nombre de Threads&lt;/h4&gt;
+&lt;p&gt;Vous pouvez aussi augmenter le nombre de processus utiliser par le robot d&amp;#8217;indexation en modifiant les variables du fichier de configuration :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;fetcher.threads.fetch&lt;/em&gt; : nombre de threads au total (42) ;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour plus d&amp;#8217;informations, vous pouvez voir sur le wiki du projet : &lt;a href=&quot;http://wiki.apache.org/nutch/OptimizingCrawls&quot;&gt;OptimizingCrawls&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Imposer^WIntégrer Nutch&lt;/h3&gt;
+&lt;p&gt;Voici quelques astuces pour intégrer Nutch à votre architecture. &lt;/p&gt;
+&lt;h4&gt;Mozilla Firefox&lt;/h4&gt;
+&lt;p&gt;Pour Mozilla Firefox, le système de plugin permet d&amp;#8217;inclure votre &lt;a href=&quot;https://developer.mozilla.org/en/Creating_OpenSearch_plugins_for_Firefox&quot;&gt;propre moteur de recherche&lt;/a&gt;.&lt;br /&gt;
+Pour faire cela, il faut placer le fichier &lt;a href=&quot;http://www.csquad.org/wp-content/contrib/nutch.xml&quot;&gt;nutch.xml&lt;/a&gt; dans votre profile Firefox : &lt;em&gt;~/.mozilla/firefox/*.default/searchplugins&lt;/em&gt; (en remplacant par l&amp;#8217;addresse de votre instance ) .&lt;/p&gt;
+&lt;h4&gt;DNS Menteur&lt;/h4&gt;
+&lt;p&gt;Vous pouvez modifier la configuration de votre DNS pour résoudre le domaine google avec l&amp;#8217;adresse de votre moteur de recherche. (Ouais, je sais Net Neutrality, toussa &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt;  ). En modifiant la feuille de style de l&amp;#8217;interface web certains utilisateurs ne verront surement pas la diffèrence.&lt;/p&gt;
+&lt;h3&gt;Est-ce bien raisonnable ?&lt;/h3&gt;
+&lt;p&gt;Vous allez me dire. Héberger son propre moteur de recherche chez soit, quelle drôle d&amp;#8217;idée  &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt;&lt;br /&gt;
+Je pousse, le concept d&amp;#8217;&lt;a href=&quot;http://fr.wikipedia.org/wiki/Auto-h%C3%A9bergement&quot;&gt;Auto-hébergement&lt;/a&gt; au maximum, mais il est clair que j&amp;#8217;ai fait cette article &lt;em&gt;&amp;#8220;Just for fun&amp;#8221;&lt;/em&gt;, car même si je ne peut indexer que 5000 sites par jours (le script fonctionne durant les heures creuses) , soit 1 825 000 en un an, je vais avoir beaucoup de mal à indexer les 4 446 480 urls de DMOZ.&lt;/p&gt;
+&lt;h3&gt;Références&lt;/h3&gt;
+&lt;p&gt;Voici quelques références intéressantes sur le sujet :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://infolab.stanford.edu/~backrub/google.html&quot;&gt;The Anatomy of a Large-Scale Hypertextual Web Search Engine&lt;/a&gt; : description de l&amp;#8217;architecture de Google ;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.schneier.com/blog/archives/2009/12/my_reaction_to.html&quot;&gt;La réponse de Bruce Schneier&lt;/a&gt; à Eric Schmidt ;&lt;/li&gt;
+&lt;li&gt;Le &lt;a href=&quot;http://lucene.apache.org/nutch/tutorial8.html&quot;&gt;tutorial&lt;/a&gt; pour les versions 0.8.x de Nutch ;&lt;/li&gt;
+&lt;li&gt;Le &lt;a href=&quot;http://wiki.apache.org/nutch/FrontPage&quot;&gt;Wiki&lt;/a&gt; du projet Nutch ; &lt;/li&gt;
+&lt;li&gt;Un &lt;a href=&quot;http://www.bustedtees.com/skynet&quot;&gt;tee short&lt;/a&gt; très googlitude ;&lt;/li&gt;
+&lt;li&gt;Un autre tutorial similaire pour une version plus ancienne : &lt;a href=&quot;http://goupil.arnaud.free.fr/nutch.php&quot;&gt;Installation de Nutch 0.8.1 sous Ubuntu 6.10&lt;/a&gt; d&amp;#8217;Arnaud Goupil ;&lt;/li&gt;
+&lt;li&gt;Le blog du groupe de travail francophone : &lt;a href=&quot;http://frutch.blogspot.com/&quot;&gt;Frutch&lt;/a&gt; ;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.motrech.com/&quot;&gt;Motrech&lt;/a&gt;, le blog consacré aux moteurs de recherche. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;Vous avez maintenant à votre disposition un moteur de recherche personnel.&lt;br /&gt;
+Et vous êtes libre de rechercher des choses sans que personne ne puisse le savoir &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt;&lt;br /&gt;
+L&amp;#8217;étape la plus dure est de se passer de l&amp;#8217;utilisation google &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt;&lt;br /&gt;
+Si vous voulez aller plus loin dans le monde des moteurs de recherche libre vous pouvez intégrer Nutch avec &lt;a href=&quot;http://lucene.apache.org/solr/features.html&quot;&gt;Solr&lt;/a&gt;, comme décrit dans cette article : &lt;a href=&quot;http://www.lucidimagination.com/blog/2009/03/09/nutch-solr/&quot;&gt;Using Nutch with Solr&lt;/a&gt;.&lt;br /&gt;
+Afin d&amp;#8217;obtenir un moteur de recherche professionnel pour une entreprise. (principalement pour éviter la fuite d&amp;#8217;information).&lt;br /&gt;
+Ou bien si vous si êtes intéressé par un produit similaire aux &lt;a href=&quot;http://www.google.com/enterprise/intranet_search.html&quot;&gt;Solutions d&amp;#8217;entreprise&lt;/a&gt; de Google.&lt;/p&gt;
+&lt;p&gt;Pour finir, la petite cerise sur la gâteau, comme Nutch utilise &lt;a href=&quot;http://hadoop.apache.org/&quot;&gt;Hadoop&lt;/a&gt;, il &lt;em&gt;scale&lt;/em&gt; comme un troupeau éléphants &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt; &lt;/p&gt;</content>
+		<author>
+			<name>Christophe Nowicki</name>
+			<uri>http://www.csquad.org</uri>
+		</author>
+		<source>
+			<title type="html">Christophe Nowicki » Debian</title>
+			<subtitle type="html">Just for fun</subtitle>
+			<link rel="self" href="http://www.csquad.org/category/debian/feed/"/>
+			<id>http://www.csquad.org/category/debian/feed/</id>
+			<updated>2010-01-31T10:45:14+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Bonne année !</title>
+		<link href="http://carlchenet.wordpress.com/2010/01/04/bonne-annee/"/>
+		<id>http://carlchenet.wordpress.com/?p=195</id>
+		<updated>2010-01-04T18:38:02+00:00</updated>
+		<content type="html">&lt;br /&gt;&lt;p&gt;C&amp;#8217;est le moment traditionnel d&amp;#8217;annoncer ses bonnes résolutions pour l&amp;#8217;année à venir. Pour ne pas déroger à la tradition, voici ce à quoi je vais essayer de me tenir :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Continuer à développer mes activités dans Debian. Je gère&lt;a title=&quot;Paquets Debian gérés par Carl Chenet&quot; href=&quot;http://qa.debian.org/developer.php?login=chaica@ohmytux.com&quot; target=&quot;_blank&quot;&gt; 11 paquets à ce jour&lt;/a&gt;, majoritairement des petits projets prometteurs écrits en Python et souhaite intégrer encore quelques nouveautés. J&amp;#8217;avais suspendu mon travail sur &lt;a title=&quot;Page d'accueil du projet Reportbug&quot; href=&quot;http://packages.debian.org/sid/reportbug&quot; target=&quot;_blank&quot;&gt;Reportbug&lt;/a&gt; et vais tâcher de m&amp;#8217;y remettre dès cette semaine.&lt;/li&gt;
+&lt;li&gt;Communiquer davantage sur mon travail dans les logiciels libres, et ce afin de permettre une plus grande visibilité des petits projets que j&amp;#8217;essaie de promouvoir au sein de Debian.&lt;/li&gt;
+&lt;li&gt;Apprendre un nouveau langage. Je m&amp;#8217;intéressais de façon intermittente au &lt;a title=&quot;Page du projet Haskell&quot; href=&quot;http://haskell.org/&quot; target=&quot;_blank&quot;&gt;Haskell&lt;/a&gt; et je vais essayer de faire l&amp;#8217;effort cette année pour acquérir une réelle maîtrise du langage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sur ce, je vous souhaite encore une très bonne année 2010 à tous !&lt;/p&gt;
+&lt;p&gt;Ps :&lt;br /&gt;
+&lt;img class=&quot;alignnone&quot; title=&quot;I'm going to Fosdem 2010&quot; src=&quot;http://www.fosdem.org/promo/going-to&quot; alt=&quot;&quot; width=&quot;150&quot; height=&quot;89&quot; /&gt;&lt;br /&gt;
+Si vous souhaitez me rencontrer là-bas, laissez-moi un message dans les commentaires.&lt;/p&gt;
+  &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/gocomments/carlchenet.wordpress.com/195/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/comments/carlchenet.wordpress.com/195/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/godelicious/carlchenet.wordpress.com/195/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/delicious/carlchenet.wordpress.com/195/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/gostumble/carlchenet.wordpress.com/195/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/stumble/carlchenet.wordpress.com/195/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/godigg/carlchenet.wordpress.com/195/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/digg/carlchenet.wordpress.com/195/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/goreddit/carlchenet.wordpress.com/195/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/reddit/carlchenet.wordpress.com/195/&quot; /&gt;&lt;/a&gt; &lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://stats.wordpress.com/b.gif?host=carlchenet.wordpress.com&amp;blog=7722010&amp;post=195&amp;subd=carlchenet&amp;ref=&amp;feed=1&quot; /&gt;</content>
+		<author>
+			<name>Carl Chenet</name>
+			<uri>http://carlchenet.wordpress.com</uri>
+		</author>
+		<source>
+			<title type="html">Carl Chenet's Blog » debian-fr</title>
+			<subtitle type="html">Debian contributing and stuff</subtitle>
+			<link rel="self" href="http://carlchenet.wordpress.com/category/debian-fr/feed/"/>
+			<id>http://carlchenet.wordpress.com/category/debian-fr/feed/</id>
+			<updated>2010-02-06T15:15:07+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Bélier dans GNU/Linux magazine France</title>
+		<link href="http://carlchenet.wordpress.com/2010/01/03/belier-dans-gnulinux-magazine-france/"/>
+		<id>http://carlchenet.wordpress.com/?p=188</id>
+		<updated>2010-01-03T11:56:44+00:00</updated>
+		<content type="html">&lt;br /&gt;&lt;p&gt;Bonjour à tous,&lt;/p&gt;
+&lt;p&gt;Un article détaillant le fonctionnement de &lt;a title=&quot;Page d'accueil du projet Bélier&quot; href=&quot;http://www.ohmytux.com/belier&quot; target=&quot;_blank&quot;&gt;Bélier&lt;/a&gt;, l&amp;#8217;outil d&amp;#8217;automatisation de connexions SSH complexes, est paru dans le numéro 123 (janvier 2010) de GNU/Linux Magazine France (GLMF pour les initiés).  Un bon moyen de découvrir les possibilités offertes par ce programme autrement que par &lt;a title=&quot;Documentation officielle du projet Bélier&quot; href=&quot;http://www.ohmytux.com/belier/documentation.html&quot; target=&quot;_blank&quot;&gt;la documentation officielle&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;À bientôt&lt;/p&gt;
+  &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/gocomments/carlchenet.wordpress.com/188/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/comments/carlchenet.wordpress.com/188/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/godelicious/carlchenet.wordpress.com/188/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/delicious/carlchenet.wordpress.com/188/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/gostumble/carlchenet.wordpress.com/188/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/stumble/carlchenet.wordpress.com/188/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/godigg/carlchenet.wordpress.com/188/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/digg/carlchenet.wordpress.com/188/&quot; /&gt;&lt;/a&gt; &lt;a rel=&quot;nofollow&quot; href=&quot;http://feeds.wordpress.com/1.0/goreddit/carlchenet.wordpress.com/188/&quot;&gt;&lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://feeds.wordpress.com/1.0/reddit/carlchenet.wordpress.com/188/&quot; /&gt;&lt;/a&gt; &lt;img alt=&quot;&quot; border=&quot;0&quot; src=&quot;http://stats.wordpress.com/b.gif?host=carlchenet.wordpress.com&amp;blog=7722010&amp;post=188&amp;subd=carlchenet&amp;ref=&amp;feed=1&quot; /&gt;</content>
+		<author>
+			<name>Carl Chenet</name>
+			<uri>http://carlchenet.wordpress.com</uri>
+		</author>
+		<source>
+			<title type="html">Carl Chenet's Blog » debian-fr</title>
+			<subtitle type="html">Debian contributing and stuff</subtitle>
+			<link rel="self" href="http://carlchenet.wordpress.com/category/debian-fr/feed/"/>
+			<id>http://carlchenet.wordpress.com/category/debian-fr/feed/</id>
+			<updated>2010-02-06T15:15:07+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">Des commandes bash pures et dures</title>
+		<link href="http://about-gnulinux.info/dotclear/index.php?post/2009/12/29/Des-commandes-bash-pures-et-dures"/>
+		<id>urn:md5:d1dfdfa3d5bfbea0459faf5e2640e445</id>
+		<updated>2009-12-29T19:05:00+00:00</updated>
+		<content type="html">&lt;p&gt;Je trouve que beaucoup d'utilisateurs de bash ne connaissent pas certaines astuces utiles liées à des commandes usuelles, parce qu'elles ne sont pas assez mises en avant dans les documentations. Nous allons donc voir ici quelques commandes/astuces bash que tout le monde ne connait pas.&lt;/p&gt;
+
+
+&lt;h2&gt;Les expressions : utlisation de &quot;?&quot; :&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Afficher tous les répertoires/fichiers comportant un seul caractère après le point :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;ls *.? # ajoutez autant de &quot;?&quot; que vous souhaitez (??? pour trois caractères)&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Afficher tous les répertoires/fichiers comportant 5 caractères :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;ls &lt;acronym&gt;&lt;/acronym&gt;? # adaptez le nombre de &quot;?&quot;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Afficher  tous les fichiers/répertoires dont le nom débute par &quot;a&quot; ou &quot;b&quot; :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;ls [ab]* # vous pouvez remplacer les lettres, et même en ajouter/supprimer&lt;/pre&gt;
+
+
+&lt;h2&gt;Redirections :&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Rediriger les erreurs renvoyées par une commande :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;macommande 2&amp;gt; erreur.file # vous pouvez faire 2&amp;gt;&amp;gt; pour ne pas écraser le erreur.file si il existe&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Rediriger les erreurs renvoyées par une commande vers &quot;nul part&quot; :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;macommande 2&amp;gt; /dev/null&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Rediriger le résultat d'une commande dans un fichier qui n'existe pas :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt; ls | tee my_file&lt;/pre&gt;
+
+&lt;p&gt;ou&lt;/p&gt;
+
+&lt;pre&gt; ls &amp;gt; my_file&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Rediriger le résultat d'une commande dans un fichier qui existe (on veut concaténer) :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt; ls | tee -a my_file&lt;/pre&gt;
+
+&lt;p&gt;ou&lt;/p&gt;
+
+&lt;pre&gt; ls &amp;gt;&amp;gt; my_file&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Rediriger le résultat de plusieurs commandes dans un fichier, en restant dans le shell courant :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;(cd /root/ ; pwd ; ls) &amp;gt; file&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Rediriger le résultat de plusieurs commandes dans un fichier, en allant dans /root :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;{ cd /root/ ; pwd ; ls ;} &amp;gt; file&lt;/pre&gt;
+
+
+&lt;p&gt;Voilà globalement des astuces bien utiles mais trop peu utilisées !&lt;/p&gt;</content>
+		<author>
+			<name>Scurz</name>
+			<uri>http://about-gnulinux.info/dotclear/index.php</uri>
+		</author>
+		<source>
+			<title type="html">A propos de GNU/Linux - Tag - debian</title>
+			<subtitle type="html">Blog parlant technique au sujet des systèmes libres GNU/Linux.</subtitle>
+			<link rel="self" href="http://about-gnulinux.info/dotclear/index.php?feed/tag/debian/atom"/>
+			<id>urn:md5:b9802bb4369c16c96632912fc7c76f80</id>
+			<updated>2010-02-12T06:15:20+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Simple Scan : Numériser simplement sous GNU/Linux</title>
+		<link href="http://blog.v-jeremy.net/simple-scan-numeriser-simplement-sous-gnulinux/"/>
+		<id>http://blog.v-jeremy.net/?p=606</id>
+		<updated>2009-12-29T16:37:47+00:00</updated>
+		<content type="html">&lt;p&gt;Comme son nom l&amp;#8217;indique, Simple Scan est une interface toute simple pour numériser vos textes et images sous GNU/Linux. Il s&amp;#8217;agit d&amp;#8217;une sur-couche à Sane (votre scanner devant donc être détecté par ce dernier pour fonctionner) mais qui se veut plus simple que Xsane. Il dispose cependant de bien moins d&amp;#8217;options que ce dernier, mais fais très bien son travail.&lt;/p&gt;
+&lt;p&gt;Il vous propose la numérisation en mode texte ou en mode image. Une fois votre document numériser, il vous permet de le recadrer, de le sauvegarder ou bien de l&amp;#8217;envoyer directement par e-mail via votre logiciel par défaut.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.v-jeremy.net/wp-content/uploads/2009/12/simple-scan.jpg&quot;&gt;&lt;img class=&quot;aligncenter size-medium wp-image-607&quot; title=&quot;Simple Scan&quot; src=&quot;http://blog.v-jeremy.net/wp-content/uploads/2009/12/simple-scan-300x162.jpg&quot; alt=&quot;&quot; width=&quot;300&quot; height=&quot;162&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Cliquez sur l&amp;#8217;image pour l&amp;#8217;agrandir.&lt;/p&gt;
+&lt;p&gt;En bref, un logiciel qui fait le travail qu&amp;#8217;on lui demande sans poser trop de questions.&lt;/p&gt;
+&lt;p&gt;Idéal lorsqu&amp;#8217;on désire rapidement numériser un document, mais moins lorsqu&amp;#8217;on désire peaufiner toute une série d&amp;#8217;option.&lt;/p&gt;
+&lt;p&gt;Pour plus d&amp;#8217;information au sujet de Simple Scan, cela ce passe sur &lt;a title=&quot;Simple Scan&quot; href=&quot;https://launchpad.net/simple-scan&quot;&gt;cette page&lt;/a&gt; du launchpad.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://blog.v-jeremy.net/simple-scan-numeriser-simplement-sous-gnulinux/&quot;&gt;Article&lt;/a&gt; écrit par &lt;a href=&quot;http://blog.v-jeremy.net&quot;&gt;Jérémy Verda&lt;/a&gt; et sous licence &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-sa/2.0/be/&quot;&gt;Creative Commons BY-NC-SA&lt;/a&gt;.
+&lt;br /&gt;
+&lt;/small&gt;&lt;/p&gt;
+	Tags:&lt;a href=&quot;http://blog.v-jeremy.net/tag/gnome/&quot; title=&quot;GNOME&quot; rel=&quot;tag&quot;&gt;GNOME&lt;/a&gt;, &lt;a href=&quot;http://blog.v-jeremy.net/tag/gnulinux/&quot; title=&quot;Gnu/Linux&quot; rel=&quot;tag&quot;&gt;Gnu/Linux&lt;/a&gt;, &lt;a href=&quot;http://blog.v-jeremy.net/tag/libreopen-source/&quot; title=&quot;Libre/Open-source&quot; rel=&quot;tag&quot;&gt;Libre/Open-source&lt;/a&gt;, &lt;a href=&quot;http://blog.v-jeremy.net/tag/planet-libre/&quot; title=&quot;Planet Libre&quot; rel=&quot;tag&quot;&gt;Planet Libre&lt;/a&gt;, &lt;a href=&quot;http://blog.v-jeremy.net/tag/scriptslogiciel/&quot; title=&quot;Scripts/Logiciel&quot; rel=&quot;tag&quot;&gt;Scripts/Logiciel&lt;/a&gt;&lt;br /&gt;</content>
+		<author>
+			<name>J&amp;#233;r&amp;#233;my Verda</name>
+			<uri>http://blog.v-jeremy.net</uri>
+		</author>
+		<source>
+			<title type="html">Jérémy Verda's blog! » Libre/Open-source</title>
+			<subtitle type="html">Une tasse de thé et un air de musique dans un jardin de geek...</subtitle>
+			<link rel="self" href="http://blog.v-jeremy.net/category/libreopen-source/feed/"/>
+			<id>http://blog.v-jeremy.net/category/libreopen-source/feed/</id>
+			<updated>2010-02-09T05:45:39+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Notifications Nagios par Téléphone</title>
+		<link href="http://www.csquad.org/2009/12/09/notifications-nagios-par-telephone/"/>
+		<id>http://www.csquad.org/?p=780</id>
+		<updated>2009-12-09T19:39:02+00:00</updated>
+		<content type="html">&lt;p&gt;J&amp;#8217;ai configuré mon instance de &lt;a href=&quot;http://www.nagios.org/&quot;&gt;Nagios&lt;/a&gt; pour recevoir une notification par téléphone en cas d&amp;#8217;incident. (déclenchement d&amp;#8217;une alarme ou d&amp;#8217;un détecteur d&amp;#8217;eau / fumée dans mon &lt;a href=&quot;http://www.csquad.org/installation-domotique/&quot;&gt;installation domotique&lt;/a&gt;). &lt;/p&gt;
+&lt;p&gt;Ce billet décrit comment mettre en place un système de  la notification par téléphone avec Nagios.&lt;/p&gt;
+&lt;h3&gt;Pré-requis&lt;/h3&gt;
+&lt;p&gt;Vous avez besoin des composants suivants :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Une distribution &lt;a href=&quot;http://www.debian.org/&quot;&gt;Debian GNU/Linux&lt;/a&gt; ;&lt;/li&gt;
+&lt;li&gt;Une installation fonctionnelle de &lt;a href=&quot;http://www.nagios.org/&quot;&gt;Nagios&lt;/a&gt; ; &lt;/li&gt;
+&lt;li&gt;Une PABX IP avec le support du protocole SIP, comme &lt;a href=&quot;http://www.asterisk.org/&quot;&gt;Asterisk&lt;/a&gt; ;&lt;/li&gt;
+&lt;li&gt;Un système de Synthèse vocale fonctionnelle, comme &lt;a href=&quot;http://espeak.sourceforge.net/&quot;&gt;eSpeak&lt;/a&gt; + &lt;a href=&quot;http://tcts.fpms.ac.be/synthesis/mbrola.html&quot;&gt;MBROLA&lt;/a&gt; ;&lt;/li&gt;
+&lt;li&gt;Un client SIP en ligne de commande comme &lt;a href=&quot;http://www.pjsip.org/pjsua.htm&quot;&gt;PJSUA&lt;/a&gt;. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Installation&lt;/h3&gt;
+&lt;p&gt;Le client SIP en ligne de commande PJSUA n&amp;#8217;est pas disponible dans les paquets du projet Debian.&lt;br /&gt;
+Il est donc nécessaire de l&amp;#8217;installer manuellement à l&amp;#8217;aide du classique : &lt;em&gt;configure, make, make install&lt;/em&gt;.&lt;br /&gt;
+La procédure est décrite dans ce billet : &lt;a href=&quot;http://blog.nicolargo.com/2009/02/un-client-sip-en-ligne-de-commande.html&quot;&gt;Un client SIP en ligne de commande&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Pour l&amp;#8217;installation du système de synthèse vocale, vous pouvez vous référer à mon précèdent billet sur le sujet : &lt;a href=&quot;http://www.csquad.org/2009/08/27/text-to-speech-avec-espeak-mbrola-et-speech-dispatcher/&quot;&gt;Text-to-Speech avec eSpeak, MBROLA et Speech Dispatcher&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Configuration&lt;/h3&gt;
+&lt;p&gt;Vous devez créer un compte SIP pour Nagios sur votre PABX et tester que l&amp;#8217;enregistrement est fonctionnel. &lt;/p&gt;
+&lt;p&gt;Pour cela vous avez besoin d&amp;#8217;un fichier de configuration spécifique à Nagios pour PJSUA, dans &lt;em&gt;/etc/nagios/sip.cfg&lt;/em&gt; par exemple :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+--id sip:nagios@pabx.csquad.lan&lt;br /&gt;
+--registrar sip:pabx.csquad.lan&lt;br /&gt;
+--realm *&lt;br /&gt;
+--username nagios&lt;br /&gt;
+--password secret&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Vous pouvez ensuite tester l&amp;#8217;enregistrement en ligne de commande :&lt;br /&gt;
+&lt;code&gt;$ pjsua --config-file /etc/nagios/sip.cfg&lt;br /&gt;
+...&lt;br /&gt;
+ 11:17:05.376    pjsua_acc.c  sip:nagios@pabx.csquad.lan: registration success, status=200 (OK), will re-register in 300 seconds&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Un appel de test :&lt;br /&gt;
+&lt;code&gt;$ pjsua --config-file /etc/nagios/sip.cfg --null-audio sip:secretariat@pabx.csquad.lan&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ensuite un appel de test audio avec un message :&lt;br /&gt;
+&lt;code&gt; $ espeak -v mb/mb-fr1 &quot;E.T. téléphone maison&quot; | /usr/local/bin/mbrola /usr/share/mbrola/fr1/fr1 - test.wav&lt;br /&gt;
+$ pjsua --config-file /etc/nagios/sip.cfg --play-file=test.wav --auto-play --null-audio sip:secretariat@pabx.csquad.lan&lt;br /&gt;
+$ rm -f test.wav&lt;br /&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;On met le tout dans un petit script &lt;a href=&quot;http://expect.nist.gov/&quot;&gt;expect&lt;/a&gt; pour prendre en charge la déconnections de manière polie :&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+#!/usr/bin/expect  --&lt;br /&gt;
+set timeout 45&lt;br /&gt;
+set addr [lindex $argv 0]&lt;br /&gt;
+set text [lindex $argv 1]&lt;br /&gt;
+exec /usr/bin/espeak -v mb/mb-fr1 $text | /usr/local/bin/mbrola /usr/share/mbrola/fr1/fr1 - /tmp/phone-call.wav;&lt;br /&gt;
+spawn /usr/local/bin/pjsua --app-log-level=3 --config-file /etc/nagios/sip.cfg --play-file /tmp/phone-call.wav --auto-play --null-audio --max-calls 1 sip:$addr&lt;br /&gt;
+expect {&lt;br /&gt;
+        &quot;DISCONNCTD&quot; {&lt;br /&gt;
+                exit&lt;br /&gt;
+        }&lt;br /&gt;
+        timeout {&lt;br /&gt;
+                send &quot;h\n&quot;&lt;br /&gt;
+                exit&lt;br /&gt;
+        }&lt;br /&gt;
+        eof {&lt;br /&gt;
+                exit&lt;br /&gt;
+        }&lt;br /&gt;
+}&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+Et voilà &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;Il ne nous reste plus qu&amp;#8217;à configurer ce type de notification dans Nagios.&lt;br /&gt;
+Pour cela, il faut modifier le fichier &lt;em&gt;contacts.cfg&lt;/em&gt; :&lt;br /&gt;
+&lt;code&gt;# 'nagios-phone' contact definition&lt;br /&gt;
+define contact{&lt;br /&gt;
+        contact_name                    nagios-phone&lt;br /&gt;
+        alias                           Nagios Admin via Phone&lt;br /&gt;
+        service_notification_period     24x7 ; mouahahahahahaha&lt;br /&gt;
+        host_notification_period        24x7 ; moiahahahahahahah&lt;br /&gt;
+        service_notification_options    w,u,c,r&lt;br /&gt;
+        host_notification_options       d,u,r&lt;br /&gt;
+        service_notification_commands   notify-by-phone&lt;br /&gt;
+        host_notification_commands      host-notify-by-phone&lt;br /&gt;
+        email sip:secretariat@pabx.csquad.lan&lt;br /&gt;
+        }&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+Puis le fichier &lt;em&gt;misccommands.cfg&lt;/em&gt; :&lt;br /&gt;
+&lt;code&gt;# 'notify-by-phone' personnal command definition&lt;br /&gt;
+define command{&lt;br /&gt;
+  command_name notify-by-phone&lt;br /&gt;
+  command_line /usr/local/bin/phone-call.sh $CONTACTEMAIL$ &quot;$NOTIFICATIONTYPE$ alert - $HOSTALIAS$/$SERVICEDESC$ is $SERVICESTATE$&quot;&lt;br /&gt;
+}&lt;br /&gt;
+# 'host-notify-by-phone' personnal command definition&lt;br /&gt;
+define command{&lt;br /&gt;
+  command_name host-notify-by-phone&lt;br /&gt;
+  command_line /usr/local/bin/phone-call.sh $CONTACTEMAIL$ &quot;Host $HOSTSTATE$ alert for $HOSTNAME$!&quot;&lt;br /&gt;
+}&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+Ensuite, vous pouvez définir &lt;em&gt;nagios-phone&lt;/em&gt; comme un contact pour des services ou hosts. &lt;/p&gt;
+&lt;p&gt;Il faut aussi modifier la valeur de la variable &lt;a href=&quot;http://nagios.sourceforge.net/docs/2_0/configmain.html#notification_timeout&quot;&gt;notification_timeout&lt;/a&gt; dans le fichier de configuration &lt;em&gt;nagios.cfg&lt;/em&gt;, pour avoir le temps de décrocher le téléphone et d&amp;#8217;en tendre le message. &lt;/p&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;Vous n&amp;#8217;avez plus aucune excuse pour ne pas brancher vos esclaves^Wéquipe d&amp;#8217;administrateurs systèmes directement sur le système de surveillance de vos serveurs &lt;img src=&quot;http://www.csquad.org/wp-includes/images/smilies/icon_wink.gif&quot; alt=&quot;;-)&quot; class=&quot;wp-smiley&quot; /&gt;  &lt;/p&gt;
+&lt;p&gt;Plus sérieusement, la notification par téléphone est une méthode très intrusive. Il est nécessaire de décrocher le téléphone. Il faut donc l&amp;#8217;utiliser avec parcimonie. &lt;/p&gt;</content>
+		<author>
+			<name>Christophe Nowicki</name>
+			<uri>http://www.csquad.org</uri>
+		</author>
+		<source>
+			<title type="html">Christophe Nowicki » Debian</title>
+			<subtitle type="html">Just for fun</subtitle>
+			<link rel="self" href="http://www.csquad.org/category/debian/feed/"/>
+			<id>http://www.csquad.org/category/debian/feed/</id>
+			<updated>2010-01-31T10:45:14+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">Faire du multi-écrans avec xrandr</title>
+		<link href="http://about-gnulinux.info/dotclear/index.php?post/2009/12/08/Faire-du-multi-%C3%A9crans-avec-xrandr"/>
+		<id>urn:md5:f47b23fcdac77ffe6e45d532e2d43392</id>
+		<updated>2009-12-08T14:43:00+00:00</updated>
+		<content type="html">&lt;p&gt;Vous allez voir dans cet article comment utiliser deux écrans affichant la même chose avec un même écran (c'est ce que nous appellons le &quot;multi-écrans&quot;). Nous allons utiliser xrandr, ce dernier est normalement déjà sur votre système.&lt;/p&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Hypothèses&lt;/strong&gt; : vous avez un pc portable (ou de bureau) avec un écran, et vous souhaiteriez y ajouter un second écran affichant les mêmes choses. Tout peut être fait en tant que simple utilisateur.&lt;/p&gt;
+
+
+&lt;h3&gt;Obtenir des informations sur l'écran de votre pc portable :&lt;/h3&gt;
+
+
+&lt;pre&gt;xrandr&lt;/pre&gt;
+
+
+&lt;p&gt;Voici la sortie de la commande :&lt;/p&gt;
+
+
+&lt;pre&gt;$ xrandr 
+Screen 0: minimum 320 x 200, current 1280 x 1024, maximum 1600 x 1600
+VGA disconnected (normal left inverted right x axis y axis) 338mm x 270mm
+LVDS connected 1280x800+0+0 (normal left inverted right x axis y axis) 331mm x 207mm
+  1280x800       60.0*+   60.0  
+  1280x768       60.0  
+  1024x768       60.0  
+  800x600        60.3  
+  640x480        59.9  
+TV disconnected (normal left inverted right x axis y axis)&lt;/pre&gt;
+
+
+&lt;p&gt;&lt;strong&gt;LVDS&lt;/strong&gt; : ceci représente l'écran du pc..&lt;br /&gt;
+&lt;strong&gt;VGA&lt;/strong&gt; :  ceci représente le second écran (pas encore branché).&lt;/p&gt;
+
+
+&lt;h3&gt;Ajouter le second écran :&lt;/h3&gt;
+
+
+&lt;p&gt;Nous allons ajouter le second écran. Le premier et le second n'ont pas la même résolution (dans mon cas). Je dois donner deux résolutions différentes aux écrans. A noter que vous ne pouvez ajouter que les résolutions indiquées avec la commande &quot;xrandr&quot;. Une commande suffit :&lt;/p&gt;
+
+
+&lt;pre&gt;xrandr --output VGA --mode 1280x1024 --output LVSD --mode 1280x768&lt;/pre&gt;
+
+
+&lt;p&gt;&lt;ins&gt;Détails&lt;/ins&gt; :&lt;/p&gt;
+
+
+&lt;pre&gt;--output VGA --mode 1280x1024&lt;/pre&gt;
+
+
+&lt;p&gt;Ceci est pour la résolution du second écran.&lt;/p&gt;
+
+
+&lt;pre&gt; --output LVSD --mode 1280x768&lt;/pre&gt;
+
+
+&lt;p&gt;Ceci est pour la résolution de l'écran du pc.&lt;/p&gt;
+
+
+&lt;h3&gt;Ajouter des résolutions (c'est possible !) :&lt;/h3&gt;
+
+
+&lt;p&gt;Si la résolution que vous voulez n'est pas disponible, vous devez ajouter un &quot;mode&quot;, lisez cet &lt;a href=&quot;http://www.arunviswanathan.com/node/53&quot;&gt;article (en)&lt;/a&gt; pour plus d'informations.&lt;/p&gt;
+
+
+&lt;h3&gt;Déconnecter un écran :&lt;/h3&gt;
+
+
+&lt;p&gt;Si vous ne voulez pas utiliser l'écran du pc :&lt;/p&gt;
+
+
+
+&lt;pre&gt;xrandr --output VGA --mode 1280x1024 --output LVDS --off&lt;/pre&gt;
+
+
+&lt;p&gt;Et pour le second écran :&lt;/p&gt;
+
+
+&lt;pre&gt;xrandr --output LVDS --mode 1280x768 --output VGA --off&lt;/pre&gt;
+
+
+&lt;h3&gt;Logiciel graphique :&lt;/h3&gt;
+
+
+&lt;p&gt;Un logiciel avec une interface graphique pour gérer tout cela est disponible : lxrandr.&lt;/p&gt;</content>
+		<author>
+			<name>Scurz</name>
+			<uri>http://about-gnulinux.info/dotclear/index.php</uri>
+		</author>
+		<source>
+			<title type="html">A propos de GNU/Linux - Tag - debian</title>
+			<subtitle type="html">Blog parlant technique au sujet des systèmes libres GNU/Linux.</subtitle>
+			<link rel="self" href="http://about-gnulinux.info/dotclear/index.php?feed/tag/debian/atom"/>
+			<id>urn:md5:b9802bb4369c16c96632912fc7c76f80</id>
+			<updated>2010-02-12T06:15:20+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">sixth sense: quand le réel et le virtuel se mêlent...</title>
+		<link href="http://blog.sietch-tabr.com/index.php/post/2009/12/01/sixth-sense%3A-quand-le-r%C3%A9el-et-le-virtuel-se-m%C3%AAlent..."/>
+		<id>urn:md5:8c5a5535292593a133bc7293ba6d2ab1</id>
+		<updated>2009-12-01T06:44:00+00:00</updated>
+		<content type="html">&lt;p&gt;tout simplement &lt;strong&gt;énorme&lt;/strong&gt; et bientôt disponible en open source&lt;/p&gt;
+
+ 
+
+
+
+&lt;p&gt;à voir sur le site de &lt;a href=&quot;http://www.ted.com/talks/pranav_mistry_the_thrilling_potential_of_sixthsense_technology.html&quot;&gt;TED&lt;/a&gt; [via &lt;a href=&quot;http://www.blendernation.com/sixth-sense-technology/&quot;&gt;blendernation&lt;/a&gt;]&lt;/p&gt;
+
+
+&lt;p&gt;je vous l&amp;#8217;avais dit&amp;#160;: É-NOR-ME&amp;#160;!&lt;/p&gt;</content>
+		<author>
+			<name>Eric Veiras Galisson</name>
+			<uri>http://blog.sietch-tabr.com/index.php/</uri>
+		</author>
+		<source>
+			<title type="html">ka.da - Tag - planete-debian-fr-users</title>
+			<link rel="self" href="http://blog.sietch-tabr.com/index.php/feed/tag/planete-debian-fr-users/rss2"/>
+			<id>http://blog.sietch-tabr.com/index.php/feed/tag/planete-debian-fr-users/rss2</id>
+			<updated>2010-02-14T18:45:21+00:00</updated>
+			<rights type="html">CC-BY-NC-SA</rights>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Back to the trees</title>
+		<link href="http://linux-attitude.fr/post/back-to-the-trees-2"/>
+		<id>http://linux-attitude.fr/?p=652</id>
+		<updated>2009-11-24T17:35:06+00:00</updated>
+		<content type="html">&lt;p&gt;I'm back ! Pour ceux qui suivent, les vacances c'était sympa. Allez au Vietnam, vous verrez, c'est beau et pas cher.&lt;/p&gt;
+
+
+&lt;p&gt;Aujourd'hui, comme à chaque fois que je sens que je n'avance pas trop, je vais faire une liste de sujets que j'aurais aimé traiter mais dont je sais pour lesquels je ne trouverai pas le temps et le courage d'écrire un article, j'essaie donc de vous fournir un lien intéressant à la place.&lt;/p&gt;
+
+
+&lt;p&gt;Sujet non traités :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.glendix.org/gsoc/&quot; hreflang=&quot;en&quot;&gt;Glendix&lt;/a&gt; : plein de bonnes idée donc le concept d'une nouvelle interruption pour implémenter une nouvelle série de syscall&lt;/li&gt;
+&lt;li&gt;Utiliser GPG sur les webmails : &lt;a href=&quot;http://fr.getfiregpg.org/s/home&quot; title=&quot;http://fr.getfiregpg.org/s/home&quot;&gt;http://fr.getfiregpg.org/s/home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Optimisation assistée de mysql : &lt;a href=&quot;http://blog.mysqltuner.com/faq/&quot; title=&quot;http://blog.mysqltuner.com/faq/&quot;&gt;http://blog.mysqltuner.com/faq/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Suspendre et reprendre des processus individuellement : &lt;a href=&quot;http://www.checkpointing.org/&quot; title=&quot;http://www.checkpointing.org/&quot;&gt;http://www.checkpointing.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Les &lt;a href=&quot;http://www.ibm.com/developerworks/aix/library/au-badunixhabits.html&quot; hreflang=&quot;en&quot;&gt;bonnes habitudes&lt;/a&gt; de l'unixien&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lectures intéressantes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Récupérer l'état de la mémoire après un démarrage à froid c'est possible, &lt;a href=&quot;http://www.mcgrewsecurity.com/tools/msramdmp/&quot; hreflang=&quot;en&quot;&gt;attention à vos mots de passe ...&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://sysadvent.blogspot.com/&quot; hreflang=&quot;en&quot;&gt;25 articles&lt;/a&gt; pour sysadmin&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.move-your-tux.fr/?langue=fr&quot; hreflang=&quot;fr&quot;&gt;Déplacez tux dans la vraie vie&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.travailleursduweb.com/2008/03/26/faits-et-erreurs-du-developpement-logiciel.html&quot; hreflang=&quot;fr&quot;&gt;Faits et erreurs du développement logiciel&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pas d'article parce que sujet trop naze :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;xmond et &lt;a href=&quot;http://www.digipedia.pl/man/doc/view/xmonui.1x.html&quot; hreflang=&quot;en&quot;&gt;xmonui &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+	Tags:&lt;a href=&quot;http://linux-attitude.fr/tag/lectures&quot; title=&quot;Lectures&quot; rel=&quot;tag&quot;&gt;Lectures&lt;/a&gt;, &lt;a href=&quot;http://linux-attitude.fr/tag/planet-libre&quot; title=&quot;planet-libre&quot; rel=&quot;tag&quot;&gt;planet-libre&lt;/a&gt;&lt;br /&gt;</content>
+		<author>
+			<name>Benoit Peccatte</name>
+			<uri>http://linux-attitude.fr</uri>
+		</author>
+		<source>
+			<title type="html">Linux Attitude</title>
+			<subtitle type="html">Le libre est un état d'esprit</subtitle>
+			<link rel="self" href="http://linux-attitude.fr/feed"/>
+			<id>http://linux-attitude.fr/feed</id>
+			<updated>2010-02-16T16:45:12+00:00</updated>
+			<rights type="html">(c) peck</rights>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Google Chrome OS</title>
+		<link href="http://debian.flext.net/google-chrome-os/"/>
+		<id>http://debian.flext.net/?p=59</id>
+		<updated>2009-11-19T19:54:52+00:00</updated>
+		<content type="html">&lt;p&gt;Aujourd&amp;#8217;hui à 19 heures, heure de Paris, Google a enfin livré les informations techniques de son Google &lt;a href=&quot;http://www.chromium.org/chromium-os&quot; target=&quot;_blank&quot;&gt;Chrome OS&lt;/a&gt; basé sur GNU/Linux.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;aligncenter size-full wp-image-62&quot; title=&quot;chromeOS&quot; src=&quot;http://debian.flext.net/wp-content/uploads/2009/11/chromeOS.png&quot; alt=&quot;chromeOS&quot; width=&quot;450&quot; height=&quot;259&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Le système est, on n&amp;#8217;en sera pas surpris, totalement orienté &amp;#8220;Web&amp;#8221;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;toutes les applications ChromeOS sont des Webapps, en fait l&amp;#8217;&lt;a href=&quot;http://www.chromium.org/chromium-os/user-experience&quot; target=&quot;_blank&quot;&gt;interface de Chrome OS&lt;/a&gt; est principalement le navigateur web Chrome en plein écran.&lt;/li&gt;
+&lt;li&gt; toutes les données sont &amp;#8220;in the cloud&amp;#8221;, l&amp;#8217;avantage étant que la défaillance ou la perte de son ordinateur n&amp;#8217;a aucune incidence sur l&amp;#8217;utilisateur, il lui suffit d&amp;#8217;en prendre un autre et tout recommence de manière transparente ; par contre on est bien sûr en plein dans l&amp;#8217;évolution vers &lt;a href=&quot;http://www.guardian.co.uk/technology/2008/sep/29/cloud.computing.richard.stallman&quot; target=&quot;_blank&quot;&gt;une informatique &amp;#8220;à la Big Brother&amp;#8221;&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le boot ultra-rapide est une spécificité importante : 7 secondes pour arriver à l&amp;#8217;écran de login, puis 3 secondes supplémentaires pour l&amp;#8217;accès au bureau fonctionnel.&lt;/p&gt;
+&lt;p&gt;Il semble qu&amp;#8217;un grand travail ait été accompli sur les &lt;a href=&quot;http://www.chromium.org/chromium-os/chromiumos-design-docs/security-overview&quot; target=&quot;_blank&quot;&gt;problématiques de sécurité&lt;/a&gt;, notamment sur le processus de boot et la stratégie des droits d&amp;#8217;écriture de la partition racine.&lt;/p&gt;
+&lt;p&gt;Google Chrome OS ne permettra pas de base de faire fonctionner les applications Android : &amp;#8220;tout est webapp&amp;#8221;, et supportera les processeurs X86 et ARM.&lt;/p&gt;
+&lt;p&gt;Bien sûr comme c&amp;#8217;est un logiciel libre, chacun peut décider de rajouter les fonctionnalités manquantes au &lt;a href=&quot;http://www.chromium.org/chromium-os/building-chromium-os/getting-the-chromium-os-source-code&quot; target=&quot;_blank&quot;&gt;code source&lt;/a&gt; !&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://googleblog.blogspot.com/2009/11/releasing-chromium-os-open-source.html&quot; target=&quot;_blank&quot;&gt;L&amp;#8217;annonce officielle&lt;/a&gt; sur le blog de Google.&lt;/p&gt;</content>
+		<author>
+			<name>Florent Gallaire</name>
+			<uri>http://debian.flext.net</uri>
+		</author>
+		<source>
+			<title type="html">Florent Gallaire's Blog</title>
+			<subtitle type="html">Debian and Python contributing and stuff</subtitle>
+			<link rel="self" href="http://fgallaire.flext.net/feed/"/>
+			<id>http://fgallaire.flext.net/feed/</id>
+			<updated>2010-02-16T07:45:06+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">Logiciels de surveillance</title>
+		<link href="http://about-gnulinux.info/dotclear/index.php?post/2009/11/16/Logiciels-de-surveillance"/>
+		<id>urn:md5:9ae122b35b5a3c0e71465095be7bc70d</id>
+		<updated>2009-11-16T17:55:00+00:00</updated>
+		<content type="html">&lt;p&gt;Quelques noms de logiciels pour surveiller votre serveur :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;munin (graphiques) ;&lt;/li&gt;
+&lt;li&gt;cacti ;&lt;/li&gt;
+&lt;li&gt;monit : surveillance ;&lt;/li&gt;
+&lt;li&gt;vnstat(-gui) : quantité de données passant par votre interfaces réseaux&lt;/li&gt;
+&lt;li&gt;mailgraph : graphiques qui donnent des stats sur les emails ;&lt;/li&gt;
+&lt;li&gt;nagios : surveillance complète ;&lt;/li&gt;
+&lt;li&gt;pflogsumm : surveillance des mails ;&lt;/li&gt;
+&lt;li&gt;smartctl : surveillance de vos disques dur ;&lt;/li&gt;
+&lt;li&gt;logwatch&lt;/li&gt;
+&lt;/ul&gt;</content>
+		<author>
+			<name>Scurz</name>
+			<uri>http://about-gnulinux.info/dotclear/index.php</uri>
+		</author>
+		<source>
+			<title type="html">A propos de GNU/Linux - Tag - debian</title>
+			<subtitle type="html">Blog parlant technique au sujet des systèmes libres GNU/Linux.</subtitle>
+			<link rel="self" href="http://about-gnulinux.info/dotclear/index.php?feed/tag/debian/atom"/>
+			<id>urn:md5:b9802bb4369c16c96632912fc7c76f80</id>
+			<updated>2010-02-12T06:15:20+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="fr">
+		<title type="html">Paquet debian pour pgtune</title>
+		<link href="http://blog.rodolphe.quiedeville.org/index.php?post/2009/11/Paquet-debian-pour-pgtune"/>
+		<id>urn:md5:4bdb64869b55b3221371e5c27dc5f46e</id>
+		<updated>2009-11-15T17:46:00+00:00</updated>
+		<content type="html">&lt;p&gt;Le paquet debian pour &lt;a href=&quot;http://pgfoundry.org/projects/pgtune/&quot;&gt;pgtune&lt;/a&gt; est finit et uploadé sur les serveurs FTP. Vous pouvez suivre son évolution au travers du bug report ITP &lt;a href=&quot;http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=553975&quot;&gt;#553975&lt;/a&gt;. La file d'inclusion de nouveaux paquets est assez chargée ces temps-ci, cela va peut-être prendre plusieurs jours pour voir le paquet apparaître dans SID. Je laisse le paquet disponible dans &lt;a href=&quot;http://mentors.debian.net/cgi-bin/sponsor-pkglist?action=details;package=pgtune&quot;&gt;mentors&lt;/a&gt; le temps de son inclusion.&lt;/p&gt;</content>
+		<author>
+			<name>Rodolphe Quiédeville</name>
+			<uri>http://blog.rodolphe.quiedeville.org/index.php</uri>
+		</author>
+		<source>
+			<title type="html">One more geek - Tag - debian</title>
+			<subtitle type="html">Les tribulations d'un geek sur le web</subtitle>
+			<link rel="self" href="http://blog.rodolphe.quiedeville.org/index.php?feed/tag/debian/rss2"/>
+			<id>http://blog.rodolphe.quiedeville.org/index.php?feed/tag/debian/rss2</id>
+			<updated>2010-02-16T16:45:21+00:00</updated>
+		</source>
+	</entry>
+
+	<entry xml:lang="en">
+		<title type="html">Installation d’une Debian sur l’EeePC 1005HA-H</title>
+		<link href="http://blog.v-jeremy.net/installation-dune-debian-sur-leeepc-1005ha-h/"/>
+		<id>http://blog.v-jeremy.net/?p=556</id>
+		<updated>2009-11-14T16:48:17+00:00</updated>
+		<content type="html">&lt;p&gt;J&amp;#8217;ai fait récemment l&amp;#8217;acquisition d&amp;#8217;un &lt;a href=&quot;http://www.ldlc.be/fiche/PB00093742.html&quot;&gt;EeePC 1005HA-H&lt;/a&gt;. Celui-ci m&amp;#8217;a été livré avec Windows Seven Starter (je pourrais largement &amp;#8220;troller&amp;#8221; sur cette version mais bon ce n&amp;#8217;est pas le sujet) et un disque dur de 250Go. J&amp;#8217;ai bien entendu voulu installer Debian sur ce dernier mais tout en réalisant un dual boot avec Seven.&lt;/p&gt;
+&lt;p&gt;Je me suis donc renseigné pour voir comment Debian supportait ce modèle et bonne nouvelle, ce dernier est vraiment bien géré. On retrouve toutes les touches de fonctions, la mise en veille et l&amp;#8217;hibernation. Ainsi que le support réseaux et de la carte graphique. Et ce sans devoir fouiller sur Google pour trouver de bon tutoriels, en effet, tout est utilisable directement après l&amp;#8217;installation.&lt;/p&gt;
+&lt;p&gt;J&amp;#8217;ai voulu faire l&amp;#8217;installation sur base d&amp;#8217;une Squeeze (actuelle Testing) pour ensuite passer après configuration sur une Sid/Exp. Cela me permettra aussi de voir ce que la Testing a dans le ventre. Avant de débuter l&amp;#8217;installation j&amp;#8217;ai effectué un partitionnement comme suis : une partition pour Seven (environ 50Go, une partition de données pour avoir accès depuis les deux OS et une partition en ext4 pour Debian d&amp;#8217;environ 60Go). J&amp;#8217;ai aussi vérifié si Grub2 (qui est le loader par défaut sur Squeeze) et le loader de Windows Seven ne rentrait pas en conflit mais aucun soucis. Ensuite j&amp;#8217;ai suivi &lt;a title=&quot;Installation EeePC 1005HA-H sous Debian&quot; href=&quot;http://wiki.debian.org/DebianEeePC/Model/1005HA&quot;&gt;le tutoriel&lt;/a&gt; (en anglais) du wiki Debian dédié à l&amp;#8217;installation sur ce modèle d&amp;#8217;EeePc et j&amp;#8217;avais même mis en favoris &lt;a href=&quot;http://wiki.debian.org/DebianEeePC/HowTo/Configure&quot;&gt;la page suivante&lt;/a&gt; pour avoir les dernières astuces au cas où, mais ce ne fut pas nécessaire.&lt;/p&gt;
+&lt;p&gt;Au final, j&amp;#8217;ai un EeePc sous Debian avec toutes les fonctions du netbook que je peux retrouver sous Windows tout en étant sur un OS libre et avec une consommation mémoire d&amp;#8217;environ 10% là où j&amp;#8217;atteins minimum 30 à 40% sous Seven. En clair, j&amp;#8217;en suis pleinement satisfait !&lt;/p&gt;
+&lt;p&gt;Vous pourrez trouver un &lt;a href=&quot;http://www.blogeee.net/2009/08/test-eeepc-1005ha-h/&quot;&gt;test de l&amp;#8217;EeePC 1005HA-H&lt;/a&gt; sur Blogeee.net et &lt;a href=&quot;http://wiki.debian.org/fr/EeePC/TipsAndTricks&quot;&gt;quelques astuces&lt;/a&gt; sur le wiki Debian à cette page.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://blog.v-jeremy.net/installation-dune-debian-sur-leeepc-1005ha-h/&quot;&gt;Article&lt;/a&gt; écrit par &lt;a href=&quot;http://blog.v-jeremy.net&quot;&gt;Jérémy Verda&lt;/a&gt; et sous licence &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-sa/2.0/be/&quot;&gt;Creative Commons BY-NC-SA&lt;/a&gt;.
+&lt;br /&gt;
+&lt;/small&gt;&lt;/p&gt;
+	Tags:&lt;a href=&quot;http://blog.v-jeremy.net/tag/debian/&quot; title=&quot;Debian&quot; rel=&quot;tag&quot;&gt;Debian&lt;/a&gt;, &lt;a href=&quot;http://blog.v-jeremy.net/tag/gnulinux/&quot; title=&quot;Gnu/Linux&quot; rel=&quot;tag&quot;&gt;Gnu/Linux&lt;/a&gt;, &lt;a href=&quot;http://blog.v-jeremy.net/tag/libreopen-source/&quot; title=&quot;Libre/Open-source&quot; rel=&quot;tag&quot;&gt;Libre/Open-source&lt;/a&gt;, &lt;a href=&quot;http://blog.v-jeremy.net/tag/planet-libre/&quot; title=&quot;Planet Libre&quot; rel=&quot;tag&quot;&gt;Planet Libre&lt;/a&gt;&lt;br /&gt;</content>
+		<author>
+			<name>J&amp;#233;r&amp;#233;my Verda</name>
+			<uri>http://blog.v-jeremy.net</uri>
+		</author>
+		<source>
+			<title type="html">Jérémy Verda's blog! » Libre/Open-source</title>
+			<subtitle type="html">Une tasse de thé et un air de musique dans un jardin de geek...</subtitle>
+			<link rel="self" href="http://blog.v-jeremy.net/category/libreopen-source/feed/"/>
+			<id>http://blog.v-jeremy.net/category/libreopen-source/feed/</id>
+			<updated>2010-02-09T05:45:39+00:00</updated>
+		</source>
+	</entry>
+
+</feed>
