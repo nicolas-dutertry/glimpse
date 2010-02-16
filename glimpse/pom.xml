@@ -209,7 +209,13 @@
 						</goals>
 						<configuration>
 							<tasks>
+								<!--
+									En java 6 on se retrouve mysterieusement avec les classes servlets dans les classes compilés.
+									On les supprime sinon le war ne fonctionnera pas.
+									GWT issue #3439
+								-->
 								<delete dir="${project.build.directory}/classes/javax"/>
+								
 								<path id="full.classpath">
 									<pathelement path="${maven.compile.classpath}"/>
 									<pathelement location="src/main/java"/>
