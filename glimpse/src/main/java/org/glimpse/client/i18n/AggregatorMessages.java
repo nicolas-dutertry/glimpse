@@ -34,4 +34,7 @@ public interface AggregatorMessages extends Messages {
 	
 	@DefaultMessage("{0} years ago")
 	String someYearsAgo(long l);
+	
+	@DefaultMessage("Powered by {0}")
+	String poweredBy(String s);
 }

@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.glimpse.client.i18n.AggregatorConstants;
+import org.glimpse.client.i18n.AggregatorMessages;
 import org.glimpse.client.layout.ColumnDescription;
 import org.glimpse.client.layout.ComponentDescription;
 import org.glimpse.client.layout.PageDescription;
@@ -44,6 +45,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -81,6 +83,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 	
 	
 	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
+	private AggregatorMessages messages = GWT.create(AggregatorMessages.class);
 	
 	private UserDescription userDescription;
 	private AggregatorTabPanel tabPanel;
@@ -313,6 +316,16 @@ public class Aggregator implements EntryPoint, DragHandler {
 		tabPanel.selectTab(0);
 		
 		mainPanel.add(tabPanel);
+		
+		// Footer
+		FlowPanel footer = new FlowPanel();
+		footer.setStylePrimaryName("footer");
+		HTML poweredBy = new HTML(
+				messages.poweredBy(
+						"<a href=\"http://nicolas.dutertry.com/glimpse-project\">Glimpse</a>"));
+		footer.add(poweredBy);		
+		mainPanel.add(footer);
+		
 		RootPanel.get("main").add(mainPanel);
 		
 		loadPopup.hide();

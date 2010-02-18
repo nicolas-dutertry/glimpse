@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 body.glimpse {
-	background-color: #81D1D0;
+	background-color: #FFD697;
 	margin: 0px;
 	border: 0px;
 	padding: 0px;
@@ -279,9 +279,13 @@ h1 {
 
 .header {
 	height: 30px;
+	
+	background-color: #AE6B47;
+	/*
 	background-image: url('images/header.png');
 	background-position: center bottom;
 	background-repeat: repeat-x;
+	*/
 }
 
 .footer {
@@ -293,7 +297,7 @@ h1 {
 	padding-left: 10px;
 	padding-top: 2px;
 	padding-bottom: 2px;
-	background-color: #94D8D7;
+	background-color: #FCFFBC;
 	font-size: 10px;
 }
 
@@ -341,7 +345,7 @@ h1 {
 	cursor: pointer;
 	background-image: url('images/tab.png');
 	background-repeat: repeat-x;
-	color: #63A308;
+	color: #7C4930;
 	font-family: Arial,sans-serif;
 	font-size: 11px;
 	font-weight: bold;
@@ -373,7 +377,7 @@ h1 {
 .tabtitle-center-selected {
 	background-image: url('images/tab-selected.png');
 	background-repeat: repeat-x;
-	color: #FFFFFF;
+	color: #FCFFBC;
 	font-family: Arial,sans-serif;
 	font-size: 11px;
 	font-weight: bold;
