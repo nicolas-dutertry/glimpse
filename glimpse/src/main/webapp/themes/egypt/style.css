@@ -401,7 +401,7 @@ h1 {
 }
 
 .taboptions {
-	background-color: #444444;
+	background-color: #2F1C12;
 	padding: 0px;
 	color: #FFFFFF;
 }
@@ -665,6 +665,6 @@ h1 {
 }
 
 .drop-positioner-frame {
-	border: 1px dotted red;
+	border: 1px dotted #FCFFBC;
 	height: 150px;
 }
