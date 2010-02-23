@@ -17,15 +17,18 @@
  */
 package org.glimpse.client;
 
+
 import org.glimpse.client.layout.PageDescription;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface PageDescriptionServiceAsync {
-	void getDefaultPageDescription(AsyncCallback<PageDescription> callback);
-	void getPageDescription(AsyncCallback<PageDescription> callback);
-	void setDefaultPageDescription(PageDescription pageDescription,
+	void getDefaultPageDescription(String localeName, AsyncCallback<PageDescription> callback);
+	void setDefaultPageDescription(String localeName, PageDescription pageDescription,
 			AsyncCallback<Void> callback);
+	
+	
+	void getPageDescription(String localeName, AsyncCallback<PageDescription> callback);
 	void setPageDescription(PageDescription pageDescription,
 			AsyncCallback<Void> callback);
 }

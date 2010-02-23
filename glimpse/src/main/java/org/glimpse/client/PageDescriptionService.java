@@ -24,8 +24,9 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("page-description")
 public interface PageDescriptionService extends RemoteService {
-	PageDescription getDefaultPageDescription();
-	PageDescription getPageDescription();
-	void setDefaultPageDescription(PageDescription pageDescription);
+	PageDescription getDefaultPageDescription(String localeName);
+	void setDefaultPageDescription(String localeName, PageDescription pageDescription);
+	
+	PageDescription getPageDescription(String localeName);
 	void setPageDescription(PageDescription pageDescription);
 }

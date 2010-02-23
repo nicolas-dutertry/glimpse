@@ -34,14 +34,17 @@ public class LocaleTag extends TagSupport {
 
 	public int doStartTag() throws JspException {
 		HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
-		String locale = request.getLocale().toString();
-    	if(GlimpseUtils.isConnected(request)) {
-    		GlimpseManager glimpseManager = GlimpseManager.getInstance(pageContext.getServletContext());
-			UserManager userManager = glimpseManager.getUserManager();
-			UserDescription userDescription = userManager.getUserDescription(
-					GlimpseUtils.getUserId(request));
-			locale = userDescription.getPreferences().getLocale();
-    	}
+		String locale = request.getParameter("locale");
+		if(locale == null || locale.equals("")) {
+			locale = request.getLocale().toString();
+	    	if(GlimpseUtils.isConnected(request)) {
+	    		GlimpseManager glimpseManager = GlimpseManager.getInstance(pageContext.getServletContext());
+				UserManager userManager = glimpseManager.getUserManager();
+				UserDescription userDescription = userManager.getUserDescription(
+						GlimpseUtils.getUserId(request));
+				locale = userDescription.getPreferences().getLocale();
+	    	}
+		}    	
     	try {
 			pageContext.getOut().print(locale);
 		} catch (IOException e) {

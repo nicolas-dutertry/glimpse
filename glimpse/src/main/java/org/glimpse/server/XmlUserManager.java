@@ -171,17 +171,22 @@ public class XmlUserManager implements UserManager {
 
 	}
 	
-	public PageDescription getUserPageDescription(String userId) {
+	public PageDescription getUserPageDescription(String localeName, String userId) {
 		PageDescription pageDescription = getExistingUserPageDescription(userId);
 		if(pageDescription == null) {
-			pageDescription = getExistingUserPageDescription(UserDescription.GUEST_ID);
+			pageDescription = getExistingUserPageDescription(
+					UserDescription.GUEST_ID + "_" + localeName);
 		}
 		if(pageDescription == null) {
 			try {
 				DocumentBuilder builder =
 					DocumentBuilderFactory.newInstance().newDocumentBuilder();
 				InputStream is = getClass().getResourceAsStream(
+					"/org/glimpse/server/default-page-" + localeName + ".xml");
+				if(is == null) {
+					is = getClass().getResourceAsStream(
 						"/org/glimpse/server/default-page.xml");
+				}
 				Document doc = builder.parse(is);
 				
 				return buildPage(doc);
@@ -213,10 +218,6 @@ public class XmlUserManager implements UserManager {
 			logger.error("Error while reading page description xml", e);
 			return null;
 		}
-	}
-	
-	public PageDescription getDefaultPageDescription() {
-		return getUserPageDescription(UserDescription.GUEST_ID);
 	}
 
 	public void setUserPageDescription(String userId,
@@ -274,6 +275,15 @@ public class XmlUserManager implements UserManager {
 		} catch(Exception e) {
 			logger.error("Error while updating page description xml", e);
 		}
+	}
+	
+	public PageDescription getDefaultPageDescription(String localeName) {
+		return getUserPageDescription(localeName, UserDescription.GUEST_ID + "_" + localeName);
+	}
+
+	public void setDefaultPageDescription(String localeName, PageDescription pageDescription) {
+		setUserPageDescription(UserDescription.GUEST_ID + "_" + localeName, pageDescription);
+		
 	}
 	
 	private PageDescription buildPage(Document doc) throws Exception {
@@ -351,11 +361,6 @@ public class XmlUserManager implements UserManager {
 			logger.error("Error while reading user description xml", e);
 			return false;
 		}
-	}
-
-	public void setDefaultPageDescription(PageDescription pageDescription) {
-		setUserPageDescription(UserDescription.GUEST_ID, pageDescription);
-		
 	}
 
 }

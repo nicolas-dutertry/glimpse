@@ -86,11 +86,13 @@ public class Aggregator implements EntryPoint, DragHandler {
 	private AggregatorMessages messages = GWT.create(AggregatorMessages.class);
 	
 	private UserDescription userDescription;
+	private String locale;
 	private AggregatorTabPanel tabPanel;
 	private PopupPanel loadPopup;
 	private DialogBox addDialog;
 	private DialogBox loginDialog;
 	private DialogBox optionsDialog;
+	private DialogBox defaultPageDialog;
 	private PickupDragController dragController;
 	private boolean defaultPage = false;
 	
@@ -122,6 +124,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 		popupContent.add(new Label(constants.loading()));		
 		loadPopup.center();
 		
+		locale = getHiddenValue("locale");
+		
 		userDescriptionService.getUserDescription(
 				new AsyncCallback<UserDescription>() {
 					public void onFailure(Throwable caught) {
@@ -129,9 +133,11 @@ public class Aggregator implements EntryPoint, DragHandler {
 					}
 
 					public void onSuccess(UserDescription userDescription) {
-						Aggregator.this.userDescription = userDescription;
+						Aggregator.this.userDescription = userDescription;						
+						
 						if(!isDefaultPage()) {
 							pageDescriptionService.getPageDescription(
+									locale,
 									new AsyncCallback<PageDescription>() {
 										public void onFailure(Throwable caught) {
 											Window.alert(SERVER_ERROR);
@@ -143,6 +149,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 							});
 						} else {
 							pageDescriptionService.getDefaultPageDescription(
+									locale,
 									new AsyncCallback<PageDescription>() {
 										public void onFailure(Throwable caught) {
 											Window.alert(SERVER_ERROR);
@@ -163,6 +170,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 		addDialog = new AddContentDialog();
 		loginDialog = new LoginDialog();
 		optionsDialog = new UserOptionsDialog();
+		defaultPageDialog = new DefaultPageDialog();
 		
 		FlowPanel mainPanel = new FlowPanel();
 		mainPanel.setWidth("100%");
@@ -216,21 +224,38 @@ public class Aggregator implements EntryPoint, DragHandler {
 			});			
 			pagesMenu.addItem(myPageItem);
 			
-			MenuItem defaultPageItem = new MenuItem(constants.defaultPage(), new Command() {				
-				public void execute() {
-					if(!defaultPage) {
-						Window.Location.replace("default-page.jsp");
+			
+			
+			if(userDescription.isAdministrator()) {
+				MenuItem defaultPageLocItem = new MenuItem(constants.defaultPage(), new Command() {				
+					public void execute() {
+						defaultPageDialog.center();
 					}
+				});
+				pagesMenu.addItem(defaultPageLocItem);
+				
+				defaultPageLocItem.addStyleName("topbar-submenu-item");
+			} else {
+				MenuItem defaultPageItem = new MenuItem(constants.defaultPage(), new Command() {				
+					public void execute() {
+						if(!defaultPage) {
+							Window.Location.replace("default-page.jsp");
+						}
+					}
+				});
+				pagesMenu.addItem(defaultPageItem);
+				
+				if(defaultPage) {
+					defaultPageItem.addStyleName("topbar-submenu-item-current");				
+				} else {
+					defaultPageItem.addStyleName("topbar-submenu-item");
 				}
-			});
-			pagesMenu.addItem(defaultPageItem);
+			}
 			
 			if(defaultPage) {
-				myPageItem.addStyleName("topbar-submenu-item");
-				defaultPageItem.addStyleName("topbar-submenu-item-current");				
+				myPageItem.addStyleName("topbar-submenu-item");				
 			} else {
 				myPageItem.addStyleName("topbar-submenu-item-current");
-				defaultPageItem.addStyleName("topbar-submenu-item");
 			}
 			
 			MenuItem pages = new MenuItem(constants.pages(), pagesMenu);			
@@ -337,7 +362,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 		}
 		PageDescription pageDescription = generatePageDescription();
 		if(isDefaultPage()) {
-			pageDescriptionService.setDefaultPageDescription(pageDescription, new AsyncCallback<Void>() {
+			pageDescriptionService.setDefaultPageDescription(
+					locale, pageDescription, new AsyncCallback<Void>() {
 				public void onFailure(Throwable caught) {
 					Window.alert(SERVER_ERROR);
 				}

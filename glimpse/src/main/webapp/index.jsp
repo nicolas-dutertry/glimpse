@@ -50,5 +50,7 @@
 	<c:forEach var="theme" varStatus="status" items="${themesList}">
 		<input type="hidden" name="theme_${status.index}" id="theme_${status.index}" value="${theme}"/>
 	</c:forEach>
+	
+	<input type="hidden" name="locale" id="locale" value="<glimpse:locale/>"/>
   </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.glimpse.org/glimpse" prefix="glimpse" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- The HTML 4.01 Transitional DOCTYPE declaration-->
@@ -43,6 +44,14 @@
     <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
 
 	<div id="main"></div>
+	
+	<glimpse:themes-list var="themesList"/>
+	
+	<c:forEach var="theme" varStatus="status" items="${themesList}">
+		<input type="hidden" name="theme_${status.index}" id="theme_${status.index}" value="${theme}"/>
+	</c:forEach>
+	
 	<input type="hidden" name="default-page" id="default-page" value="true"/>
+	<input type="hidden" name="locale" id="locale" value="<glimpse:locale/>"/>
   </body>
 </html>

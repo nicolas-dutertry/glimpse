@@ -27,8 +27,8 @@ public interface UserManager {
 	
 	void setUserPreferences(String userId, UserPreferences userPreferences);	
 	
-	PageDescription getUserPageDescription(String userId);
+	PageDescription getUserPageDescription(String localeName, String userId);
 	void setUserPageDescription(String userId, PageDescription pageDescription);
-	PageDescription getDefaultPageDescription();
-	void setDefaultPageDescription(PageDescription pageDescription);
+	PageDescription getDefaultPageDescription(String localeName);
+	void setDefaultPageDescription(String localeName, PageDescription pageDescription);
 }

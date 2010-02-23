@@ -157,4 +157,10 @@ public interface AggregatorConstants extends Constants {
 	
 	@DefaultStringValue("Podcast")
 	String podcast();
+	
+	@DefaultStringValue("Default page administration")
+	String defaultPageAdministration();
+	
+	@DefaultStringValue("Page locale")
+	String pageLocale();
 }
