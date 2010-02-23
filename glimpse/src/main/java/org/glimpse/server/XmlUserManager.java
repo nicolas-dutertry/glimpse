@@ -169,7 +169,7 @@ public class XmlUserManager implements UserManager {
 			try {
 				DocumentBuilder builder =
 					DocumentBuilderFactory.newInstance().newDocumentBuilder();
-				InputStream is = getClass().getClassLoader().getResourceAsStream(
+				InputStream is = getClass().getResourceAsStream(
 						"/org/glimpse/server/default-page.xml");
 				Document doc = builder.parse(is);
 				
