@@ -21,7 +21,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.glimpse.client.Aggregator;
-import org.glimpse.client.UserDescription;
 import org.glimpse.client.i18n.AggregatorConstants;
 import org.glimpse.client.i18n.AggregatorMessages;
 
@@ -71,8 +70,7 @@ public class EntriesTable extends FlexTable {
 		
 		public void onClick(ClickEvent event) {
 			if(Aggregator.getInstance().isModifiable() &&
-					!UserDescription.ADMIN_ID.equals(
-							Aggregator.getInstance().getUserDescription().getId())) {
+					!Aggregator.getInstance().isDefaultPage()) {
 				component.addVisitedEntry(entryId);
 				setStylePrimaryName("entry-title-visited");
 			}

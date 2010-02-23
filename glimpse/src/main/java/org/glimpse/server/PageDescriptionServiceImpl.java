@@ -19,6 +19,7 @@ package org.glimpse.server;
 
 import org.apache.commons.lang.StringUtils;
 import org.glimpse.client.PageDescriptionService;
+import org.glimpse.client.UserDescription;
 import org.glimpse.client.layout.PageDescription;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -41,6 +42,18 @@ public class PageDescriptionServiceImpl extends RemoteServiceServlet implements
 			return userManager.getDefaultPageDescription();
 		} else {
 			return userManager.getUserPageDescription(userId);
+		}
+	}
+	
+	public void setDefaultPageDescription(PageDescription pageDescription) {
+		String userId = getUserId();
+		if(userId != null) {
+			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
+			UserManager userManager = glimpseManager.getUserManager();
+			UserDescription description = userManager.getUserDescription(userId);
+			if(description != null && description.isAdministrator()) {
+				userManager.setDefaultPageDescription(pageDescription);
+			}
 		}
 	}
 	

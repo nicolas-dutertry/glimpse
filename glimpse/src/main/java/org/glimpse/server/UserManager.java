@@ -18,14 +18,17 @@
 package org.glimpse.server;
 
 import org.glimpse.client.UserDescription;
+import org.glimpse.client.UserPreferences;
 import org.glimpse.client.layout.PageDescription;
 
 public interface UserManager {
 	UserDescription getUserDescription(String userId);
-	void setUserDescription(String userId, UserDescription userDescription);
 	UserDescription getDefaultUserDescription();
+	
+	void setUserPreferences(String userId, UserPreferences userPreferences);	
 	
 	PageDescription getUserPageDescription(String userId);
 	void setUserPageDescription(String userId, PageDescription pageDescription);
-	PageDescription getDefaultPageDescription();	
+	PageDescription getDefaultPageDescription();
+	void setDefaultPageDescription(PageDescription pageDescription);
 }

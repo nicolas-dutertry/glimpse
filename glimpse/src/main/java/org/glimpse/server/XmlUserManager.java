@@ -38,6 +38,7 @@ import javax.xml.xpath.XPathFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.UserDescription;
+import org.glimpse.client.UserPreferences;
 import org.glimpse.client.layout.ColumnDescription;
 import org.glimpse.client.layout.ComponentDescription;
 import org.glimpse.client.layout.PageDescription;
@@ -57,8 +58,7 @@ public class XmlUserManager implements UserManager {
 	}
 
 	public UserDescription getDefaultUserDescription() {
-		UserDescription userDescription = getUserDescription(UserDescription.ADMIN_ID);
-		userDescription.setId(UserDescription.GUEST_ID);
+		UserDescription userDescription = getUserDescription(UserDescription.GUEST_ID);
 		return userDescription;
 	}
 	
@@ -66,12 +66,11 @@ public class XmlUserManager implements UserManager {
 		UserDescription userDescription = getExistingUserDescription(userId);
 		if(userDescription == null) {
 			userDescription = getExistingUserDescription(
-					UserDescription.ADMIN_ID);
+					UserDescription.GUEST_ID);
 			if(userDescription != null) {
 				userDescription.setId(userId);
 			} else {
 				userDescription = new UserDescription(userId);
-				userDescription.setTheme("default");
 			}
 		}
 		return userDescription;
@@ -93,17 +92,20 @@ public class XmlUserManager implements UserManager {
 			UserDescription userDescription = new UserDescription(userId);
 			XPath xpath = XPathFactory.newInstance().newXPath();
 			
+			userDescription.setAdministrator(
+					"true".equals(doc.getDocumentElement().getAttribute("administrator")));
+			
 			String label = (String)xpath.evaluate("/user/label",
 					doc, XPathConstants.STRING);
-			userDescription.setLabel(label);
+			userDescription.getPreferences().setLabel(label);
 			
 			String locale = (String)xpath.evaluate("/user/locale",
 					doc, XPathConstants.STRING);
-			userDescription.setLocale(locale);
+			userDescription.getPreferences().setLocale(locale);
 			
 			String theme = (String)xpath.evaluate("/user/theme",
 					doc, XPathConstants.STRING);
-			userDescription.setTheme(theme);
+			userDescription.getPreferences().setTheme(theme);
 			
 			return userDescription;			
 		} catch(Exception e) {
@@ -111,8 +113,15 @@ public class XmlUserManager implements UserManager {
 			return null;
 		}
 	}
+	
+	public void setUserPreferences(String userId,
+			UserPreferences userPreferences) {
+		UserDescription userDescription = getUserDescription(userId);
+		userDescription.setPreferences(userPreferences);
+		setUserDescription(userId, userDescription);
+	}
 
-	public void setUserDescription(String userId,
+	private void setUserDescription(String userId,
 			UserDescription userDescription) {
 		File userDir = new File(usersDirectory, userId);
 		File userFile = new File(userDir, "description.xml");
@@ -123,23 +132,25 @@ public class XmlUserManager implements UserManager {
 			Document doc = builder.newDocument();
 			
 			Element userElement = doc.createElement("user");
+			userElement.setAttribute("administrator",
+					Boolean.toString(userDescription.isAdministrator()));
 			doc.appendChild(userElement);
 			
-			String label = userDescription.getLabel();
+			String label = userDescription.getPreferences().getLabel();
 			if(label != null) {
 				Element labelElement = doc.createElement("label");
 				userElement.appendChild(labelElement);
 				labelElement.appendChild(doc.createTextNode(label));
 			}
 			
-			String locale = userDescription.getLocale();
+			String locale = userDescription.getPreferences().getLocale();
 			if(locale != null) {
 				Element localeElement = doc.createElement("locale");
 				userElement.appendChild(localeElement);
 				localeElement.appendChild(doc.createTextNode(locale));
 			}
 			
-			String theme = userDescription.getTheme();
+			String theme = userDescription.getPreferences().getTheme();
 			if(theme != null) {
 				Element themeElement = doc.createElement("theme");
 				userElement.appendChild(themeElement);
@@ -163,7 +174,7 @@ public class XmlUserManager implements UserManager {
 	public PageDescription getUserPageDescription(String userId) {
 		PageDescription pageDescription = getExistingUserPageDescription(userId);
 		if(pageDescription == null) {
-			pageDescription = getExistingUserPageDescription(UserDescription.ADMIN_ID);
+			pageDescription = getExistingUserPageDescription(UserDescription.GUEST_ID);
 		}
 		if(pageDescription == null) {
 			try {
@@ -205,7 +216,7 @@ public class XmlUserManager implements UserManager {
 	}
 	
 	public PageDescription getDefaultPageDescription() {
-		return getUserPageDescription(UserDescription.ADMIN_ID);
+		return getUserPageDescription(UserDescription.GUEST_ID);
 	}
 
 	public void setUserPageDescription(String userId,
@@ -319,6 +330,32 @@ public class XmlUserManager implements UserManager {
 		}
 		component.setProperties(properties);
 		return component;
+	}
+
+	public boolean isAdministrator(String userId) {
+		File userDir = new File(usersDirectory, userId);
+		File userFile = new File(userDir, "description.xml");
+		
+		if(!userFile.exists()) {
+			return false;
+		}
+		
+		try {
+			DocumentBuilder builder =
+				DocumentBuilderFactory.newInstance().newDocumentBuilder();			
+			Document doc = builder.parse(userFile);
+			
+			return "true".equals(
+					doc.getDocumentElement().getAttribute("administrator"));			
+		} catch(Exception e) {
+			logger.error("Error while reading user description xml", e);
+			return false;
+		}
+	}
+
+	public void setDefaultPageDescription(PageDescription pageDescription) {
+		setUserPageDescription(UserDescription.GUEST_ID, pageDescription);
+		
 	}
 
 }

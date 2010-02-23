@@ -23,5 +23,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("user-description")
 public interface UserDescriptionService  extends RemoteService {
 	UserDescription getUserDescription();
-	void setUserDescription(UserDescription userDescription);
+	void setUserPreferences(UserPreferences userPreferences);
 }

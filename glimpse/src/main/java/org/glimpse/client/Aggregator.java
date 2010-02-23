@@ -130,7 +130,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 
 					public void onSuccess(UserDescription userDescription) {
 						Aggregator.this.userDescription = userDescription;
-						if(isModifiable()) {
+						if(!isDefaultPage()) {
 							pageDescriptionService.getPageDescription(
 									new AsyncCallback<PageDescription>() {
 										public void onFailure(Throwable caught) {
@@ -336,14 +336,25 @@ public class Aggregator implements EntryPoint, DragHandler {
 			return;
 		}
 		PageDescription pageDescription = generatePageDescription();
-		pageDescriptionService.setPageDescription(pageDescription, new AsyncCallback<Void>() {
-			public void onFailure(Throwable caught) {
-				Window.alert(SERVER_ERROR);
-			}
-
-			public void onSuccess(Void result) {
-			}			
-		});
+		if(isDefaultPage()) {
+			pageDescriptionService.setDefaultPageDescription(pageDescription, new AsyncCallback<Void>() {
+				public void onFailure(Throwable caught) {
+					Window.alert(SERVER_ERROR);
+				}
+	
+				public void onSuccess(Void result) {
+				}			
+			});
+		} else {
+			pageDescriptionService.setPageDescription(pageDescription, new AsyncCallback<Void>() {
+				public void onFailure(Throwable caught) {
+					Window.alert(SERVER_ERROR);
+				}
+	
+				public void onSuccess(Void result) {
+				}			
+			});
+		}
 	}
 	
 	private PageDescription generatePageDescription() {
@@ -425,6 +436,11 @@ public class Aggregator implements EntryPoint, DragHandler {
 	}
 	
 	public boolean isModifiable() {
-		return !defaultPage && !userDescription.getId().equals(UserDescription.GUEST_ID);
+		return userDescription.isAdministrator() ||
+			(!defaultPage && !userDescription.getId().equals(UserDescription.GUEST_ID));
+	}
+	
+	public boolean isDefaultPage() {
+		return defaultPage;
 	}
 }

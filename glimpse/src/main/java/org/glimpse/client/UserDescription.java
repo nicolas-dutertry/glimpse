@@ -22,46 +22,20 @@ import java.io.Serializable;
 public class UserDescription implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final String GUEST_ID = "guest";
-	public static final String ADMIN_ID = "admin";
 	
 	private String id;
-	private String label;
-	private String locale;
-	private String theme;
+	private boolean administrator;
+	private UserPreferences preferences;
 	
 	public UserDescription() {
-		this(GUEST_ID);
+		this(GUEST_ID);		
 	}
 	
 	public UserDescription(String id) {
 		this.id = id;
-		this.locale = "en";
-		this.theme = "default";
-	}
-
-	public String getLabel() {
-		return label;
-	}
-
-	public void setLabel(String label) {
-		this.label = label;
-	}
-
-	public String getLocale() {
-		return locale;
-	}
-
-	public void setLocale(String locale) {
-		this.locale = locale;
-	}
-
-	public String getTheme() {
-		return theme;
-	}
-
-	public void setTheme(String theme) {
-		this.theme = theme;
-	}
+		administrator = false;
+		setPreferences(new UserPreferences());
+	}	
 
 	public String getId() {
 		return id;
@@ -69,6 +43,21 @@ public class UserDescription implements Serializable {
 	
 	public void setId(String id) {
 		this.id = id;
+	}
+	public void setAdministrator(boolean administrator) {
+		this.administrator = administrator;
+	}
+	
+	public boolean isAdministrator() {
+		return administrator;
+	}
+
+	public void setPreferences(UserPreferences preferences) {
+		this.preferences = preferences;
+	}
+
+	public UserPreferences getPreferences() {
+		return preferences;
 	}
 	
 }

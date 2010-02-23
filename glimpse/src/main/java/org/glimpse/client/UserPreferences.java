@@ -17,15 +17,42 @@
  */
 package org.glimpse.client;
 
-import org.glimpse.client.layout.PageDescription;
+import java.io.Serializable;
 
-import com.google.gwt.user.client.rpc.RemoteService;
-import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+public class UserPreferences implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	private String label;
+	private String locale;
+	private String theme;
+	
+	public UserPreferences() {
+		this.locale = "en";
+		this.theme = "default";
+	}
+	
+	public String getLabel() {
+		return label;
+	}
 
-@RemoteServiceRelativePath("page-description")
-public interface PageDescriptionService extends RemoteService {
-	PageDescription getDefaultPageDescription();
-	PageDescription getPageDescription();
-	void setDefaultPageDescription(PageDescription pageDescription);
-	void setPageDescription(PageDescription pageDescription);
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	public String getLocale() {
+		return locale;
+	}
+
+	public void setLocale(String locale) {
+		this.locale = locale;
+	}
+
+	public String getTheme() {
+		return theme;
+	}
+
+	public void setTheme(String theme) {
+		this.theme = theme;
+	}
+
 }

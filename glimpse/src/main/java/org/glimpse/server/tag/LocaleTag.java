@@ -40,7 +40,7 @@ public class LocaleTag extends TagSupport {
 			UserManager userManager = glimpseManager.getUserManager();
 			UserDescription userDescription = userManager.getUserDescription(
 					GlimpseUtils.getUserId(request));
-			locale = userDescription.getLocale();
+			locale = userDescription.getPreferences().getLocale();
     	}
     	try {
 			pageContext.getOut().print(locale);

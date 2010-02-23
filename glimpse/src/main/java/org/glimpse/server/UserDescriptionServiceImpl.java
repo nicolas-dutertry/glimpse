@@ -20,6 +20,7 @@ package org.glimpse.server;
 import org.apache.commons.lang.StringUtils;
 import org.glimpse.client.UserDescription;
 import org.glimpse.client.UserDescriptionService;
+import org.glimpse.client.UserPreferences;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -38,12 +39,12 @@ public class UserDescriptionServiceImpl extends RemoteServiceServlet implements
 		}
 	}
 
-	public void setUserDescription(UserDescription userDescription) {
+	public void setUserPreferences(UserPreferences userPreferences) {
 		String userId = getUserId();
 		if(userId != null) {
 			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
 			UserManager userManager = glimpseManager.getUserManager();			
-			userManager.setUserDescription(userId, userDescription);
+			userManager.setUserPreferences(userId, userPreferences);
 		}
 	}
 	

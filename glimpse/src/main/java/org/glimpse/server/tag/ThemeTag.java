@@ -40,7 +40,7 @@ public class ThemeTag extends TagSupport {
 			UserManager userManager = glimpseManager.getUserManager();
 			UserDescription userDescription = userManager.getUserDescription(
 					GlimpseUtils.getUserId(request));
-			theme = userDescription.getTheme();
+			theme = userDescription.getPreferences().getTheme();
     	}
     	try {
 			pageContext.getOut().print(theme);
