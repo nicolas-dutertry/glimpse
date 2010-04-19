@@ -163,4 +163,16 @@ public interface AggregatorConstants extends Constants {
 	
 	@DefaultStringValue("Page locale")
 	String pageLocale();
+	
+	@DefaultStringValue("Stock Exchange")
+	String stockExchange();
+	
+	@DefaultStringValue("Label")
+	String label();
+	
+	@DefaultStringValue("Value")
+	String value();
+	
+	@DefaultStringValue("Variation")
+	String variation();
 }

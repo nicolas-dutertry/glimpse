@@ -665,3 +665,20 @@ h1 {
 	border: 1px dotted #FCFFBC;
 	height: 150px;
 }
+
+.quotations-table {
+	width: 100%;
+}
+
+.quotation-title {
+	text-align: center;
+	font-weight: bold;
+}
+
+.quotation-variation-positive {
+	color: #00FF00;
+}
+
+.quotation-variation-negative {
+	color: #FF0000;
+}

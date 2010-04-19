@@ -17,6 +17,7 @@
  */
 package org.glimpse.client;
 
+import org.glimpse.client.finance.QuotationComponent;
 import org.glimpse.client.i18n.AggregatorConstants;
 import org.glimpse.client.news.NewsReader;
 
@@ -47,6 +48,7 @@ public class AddContentDialog extends DialogBox {
 		typePanel.add(typeList);
 		typeList.addItem(constants.newsReader());
 		typeList.addItem(constants.html());
+		typeList.addItem(constants.stockExchange());
 		
 		HorizontalPanel buttonPanel = new HorizontalPanel();
 		dialogContent.add(buttonPanel);
@@ -57,6 +59,8 @@ public class AddContentDialog extends DialogBox {
 				Component component = null;
 				if(typeList.getSelectedIndex() == 1) {
 					component = new HtmlComponent();
+				} else if(typeList.getSelectedIndex() == 2) {
+					component = new QuotationComponent();
 				} else {
 					component = new NewsReader();
 				}

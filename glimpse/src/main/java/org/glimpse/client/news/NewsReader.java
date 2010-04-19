@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.glimpse.client.Aggregator;
+import org.glimpse.client.ClientUtils;
 import org.glimpse.client.Component;
 import org.glimpse.client.i18n.AggregatorConstants;
 import org.glimpse.client.layout.ComponentDescription.Type;
@@ -113,7 +114,7 @@ public class NewsReader extends Component {
 	
 	public NewsReader(Map<String, String> properties) {
 		super(properties);
-		visitedEntries = stringToList(getProperty("visitedEntries"));
+		visitedEntries = ClientUtils.stringToList(getProperty("visitedEntries"));
 		
 		entriesTable = new EntriesTable(this);
 		
@@ -357,25 +358,5 @@ public class NewsReader extends Component {
 			s.append(o.toString());
 		}
 		return s.toString();
-	}	
-	
-	private static List<String> stringToList(String s) {
-		List<String> list = new LinkedList<String>();
-		if(s != null && !s.equals("")) {
-			int begin = 0;
-			int end = s.indexOf(',');
-			if(end == -1) {
-				end = s.length();
-			}
-			while(begin < s.length()-1) {
-				list.add(s.substring(begin, end));
-				begin = end + 1;
-				end = s.indexOf(',', begin);
-				if(end == -1) {
-					end = s.length();
-				}
-			}
-		}
-		return list;
 	}
 }

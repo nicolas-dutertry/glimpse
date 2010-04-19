@@ -43,6 +43,11 @@
 		<servlet-class>org.glimpse.server.news.NewsIconServlet</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>QuotationService</servlet-name>
+		<servlet-class>org.glimpse.server.finance.QuotationServiceImpl</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>LoginService</servlet-name>
 		<url-pattern>/glimpse_gwt/login</url-pattern>
@@ -66,6 +71,11 @@
 	<servlet-mapping>
 		<servlet-name>NewsIconServlet</servlet-name>
 		<url-pattern>/servlets/news-icon</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>QuotationService</servlet-name>
+		<url-pattern>/glimpse_gwt/quotation</url-pattern>
 	</servlet-mapping>
 
 	<!-- Default page to serve -->

@@ -20,6 +20,7 @@ package org.glimpse.client;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.glimpse.client.finance.QuotationComponent;
 import org.glimpse.client.i18n.AggregatorConstants;
 import org.glimpse.client.i18n.AggregatorMessages;
 import org.glimpse.client.layout.ColumnDescription;
@@ -327,6 +328,9 @@ public class Aggregator implements EntryPoint, DragHandler {
 							break;
 						case HTML :
 							component = new HtmlComponent(componentDescription.getProperties());
+							break;
+						case QUOTE :
+							component = new QuotationComponent(componentDescription.getProperties());
 							break;
 					}
 					if(component != null) {

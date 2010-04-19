@@ -15,41 +15,30 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package org.glimpse.client.layout;
+package org.glimpse.client.finance;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
-public class ComponentDescription implements Serializable {
+public class Quotation implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	public enum Type {
-		NEWS,
-		HTML,
-		QUOTE
+	private double value;
+	private double variation;
+	
+	public Quotation() {
+		this(0,0);
 	}
 	
-	private Type type;
-	private Map<String, String> properties = new HashMap<String, String>();
-	
-	public ComponentDescription() {
-		type = Type.NEWS;
+	public Quotation(double value, double variation) {
+		this.value = value;
+		this.variation = variation;
 	}
 	
-	public ComponentDescription(Type type) {
-		this.type = type;
+	public double getValue() {
+		return value;
 	}
-	
-	public Type getType() {
-		return type;
+	public double getVariation() {
+		return variation;
 	}
-	
-	public Map<String, String> getProperties() {
-		return new HashMap<String, String>(properties);
-	}
-	
-	public void setProperties(Map<String, String> properties) {
-		this.properties = new HashMap<String, String>(properties);
-	}
+
 }
