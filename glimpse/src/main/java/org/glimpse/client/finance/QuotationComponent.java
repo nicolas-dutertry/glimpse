@@ -38,6 +38,8 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
+import com.google.gwt.user.client.ui.HTMLTable.RowFormatter;
 
 public class QuotationComponent extends Component {
 	
@@ -105,15 +107,27 @@ public class QuotationComponent extends Component {
 	}
 	
 	public void refresh() {
+		final RowFormatter rowFormatter = valueTable.getRowFormatter();
+		final CellFormatter cellFormatter = valueTable.getCellFormatter();
 		for (int i = 0; i < quotationDescriptions.size(); i++) {
 			QuotationDescription description = quotationDescriptions.get(i);
-			Label label = new Label(description.getLabel());
-			label.setStylePrimaryName("quotation-label");
-			valueTable.setWidget(i+1, 0, label);
-			valueTable.setText(i+1, 1, "loading...");
-			valueTable.setText(i+1, 2, "");
-			
 			final int row = i+1;
+			
+			valueTable.setText(row, 0, description.getLabel());
+			cellFormatter.setStyleName(row, 0, "quotation-label");
+			valueTable.setText(row, 1, "loading...");
+			cellFormatter.setStyleName(row, 1, "quotation-label");
+			valueTable.setText(row, 2, "");
+			cellFormatter.setStyleName(row, 2, "quotation-label");
+			
+			rowFormatter.setStyleName(row, "quotation-line");
+			if(row % 2 == 0) {
+				rowFormatter.addStyleName(row, "quotation-line-even");
+			} else {
+				rowFormatter.addStyleName(row, "quotation-line-odd");
+			}
+			
+			
 			quotationService.getQuotation(
 					description.getCode(),
 					
@@ -125,18 +139,15 @@ public class QuotationComponent extends Component {
 						}
 	
 						public void onSuccess(Quotation quotation) {
-							Label valueLabel = new Label(String.valueOf(quotation.getValue()));
-							valueLabel.setStylePrimaryName("quotation-value");
-							valueTable.setWidget(row, 1, valueLabel);
+							valueTable.setText(row, 1, String.valueOf(quotation.getValue()));
+							cellFormatter.setStyleName(row, 1, "quotation-value");
 							
-							Label variationLabel = new Label(String.valueOf(quotation.getVariation()));
+							valueTable.setText(row, 2, String.valueOf(quotation.getVariation()));
 							if(quotation.getVariation() >= 0) {
-								variationLabel.setStylePrimaryName("quotation-variation-positive");
+								cellFormatter.setStyleName(row, 2, "quotation-variation-positive");
 							} else {
-								variationLabel.setStylePrimaryName("quotation-variation-negative");
+								cellFormatter.setStyleName(row, 2, "quotation-variation-negative");
 							}
-								
-							valueTable.setWidget(row, 2, variationLabel);
 						}
 					}
 			);

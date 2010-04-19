@@ -667,11 +667,16 @@ h1 {
 
 .quotations-table {
 	width: 100%;
+	border-collapse: collapse;
 }
 
 .quotation-title {
 	text-align: center;
 	font-weight: bold;
+}
+
+.quotation-line-even {
+	background-color: #DDDDDD;
 }
 
 .quotation-variation-positive {
