@@ -39,12 +39,12 @@ public class QuotationServiceImpl extends RemoteServiceServlet implements Quotat
 
 	Pattern pattern =
 		Pattern.compile(
-				"<div class=\"InfB\"><span class=\"gras\">([0-9\\s\\.]+).*Pts</span>(&nbsp;)*<span\\s+class=\"gras\"><span class=\"VARmoins\">([-\\+]?[0-9\\s\\.]+)%</span>");
+				"<div class=\"InfB\"><span class=\"gras\">([0-9\\s\\.]+).*</span>(&nbsp;)*<span\\s+class=\"gras\"><span class=\"VAR[a-z]*\">([-\\+]?[0-9\\s\\.]+)%</span>");
 	
 	public Quotation getQuotation(String code) {
 		try {
 			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-			Proxy proxy = glimpseManager.getProxy("http://www.boursorama.com/cours.phtml?symbole=1rPCAC");
+			Proxy proxy = glimpseManager.getProxy("http://www.boursorama.com/");
 			
 			HttpClient client = new HttpClient();		
 			if(proxy != null) {

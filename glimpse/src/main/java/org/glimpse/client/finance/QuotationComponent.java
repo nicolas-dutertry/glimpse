@@ -32,10 +32,12 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FocusPanel;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
@@ -75,7 +77,16 @@ public class QuotationComponent extends Component {
 			}
 		}
 		
-		setTitleWidget(new Label(constants.stockExchange()));
+		HorizontalPanel titlePanel = new HorizontalPanel();
+		titlePanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		Image titleImage = new Image("images/boursorama.png");
+		titleImage.setStylePrimaryName("component-title-image");
+		titlePanel.add(titleImage);
+		Anchor title = new Anchor("Boursorama");
+		title.setHref("http://www.boursorama.com");
+		title.setTarget("_blank");
+		titlePanel.add(title);
+		setTitleWidget(titlePanel);
 		
 		List<Widget> actions = new LinkedList<Widget>();
 		FocusPanel refreshButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
@@ -96,6 +107,8 @@ public class QuotationComponent extends Component {
 		valueTable.setText(0, 0, constants.label());
 		valueTable.setText(0, 1, constants.value());
 		valueTable.setText(0, 2, constants.variation());
+		valueTable.setCellPadding(0);
+		valueTable.setCellSpacing(0);
 		
 		valueTable.getRowFormatter().setStylePrimaryName(0, "quotation-title");
 		
@@ -142,11 +155,18 @@ public class QuotationComponent extends Component {
 							valueTable.setText(row, 1, String.valueOf(quotation.getValue()));
 							cellFormatter.setStyleName(row, 1, "quotation-value");
 							
-							valueTable.setText(row, 2, String.valueOf(quotation.getVariation()));
-							if(quotation.getVariation() >= 0) {
-								cellFormatter.setStyleName(row, 2, "quotation-variation-positive");
+							double variation = quotation.getVariation();
+							String cellContent = variation + "%";
+							if(variation > 0) {
+								cellContent = "+" + cellContent;
+							}
+							valueTable.setText(row, 2, cellContent);
+							cellFormatter.setStyleName(row, 2, "quotation-variation");
+							
+							if(variation >= 0) {
+								rowFormatter.addStyleName(row, "quotation-line-positive");
 							} else {
-								cellFormatter.setStyleName(row, 2, "quotation-variation-negative");
+								rowFormatter.addStyleName(row, "quotation-line-negative");
 							}
 						}
 					}
