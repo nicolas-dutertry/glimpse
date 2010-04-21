@@ -671,8 +671,7 @@ h1 {
 	border-collapse: collapse;
 }
 
-.quotations-table td {
-	border: 1px solid #AAAAAA;
+.quotations-table td {	
 	padding-left: 5px;
 	padding-right: 5px;
 	padding-top: 2px;
@@ -680,17 +679,17 @@ h1 {
 }
 
 .quotation-title {
+	display: none;
 	text-align: center;
 	font-weight: bold;
 	background-color: #CFCFCF;
 }
 
-.quotation-line-even {
-	background-color: #EEEEEE;
+.quotation-line-odd {
+	background-color: #EAEAEA;
 }
 
 .quotations-table td.quotation-label {
-	font-weight: bold;
 	background-repeat: no-repeat;
 	background-position: 1px 4px;
 	padding-left: 10px;
