@@ -126,7 +126,11 @@ public class QuotationComponent extends Component {
 			QuotationDescription description = quotationDescriptions.get(i);
 			final int row = i+1;
 			
-			valueTable.setText(row, 0, description.getLabel());
+			Anchor anchor = new Anchor(description.getLabel(),
+					"http://www.boursorama.com/cours.phtml?symbole=" + description.getCode(),
+					"_blank");
+			
+			valueTable.setWidget(row, 0, anchor);
 			cellFormatter.setStyleName(row, 0, "quotation-label");
 			valueTable.setText(row, 1, "loading...");
 			cellFormatter.setStyleName(row, 1, "quotation-label");

@@ -19,6 +19,7 @@ package org.glimpse.server;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
@@ -43,7 +44,29 @@ public class SimpleConnectionManager implements ConnectionManager {
 	
 	public String connect(String login, String password)
 			throws AuthenticationException {
+		checkPassword(login, password);
+		
 		File userDir = new File(usersDirectory, login);
+		
+		String connectionId = RandomStringUtils.randomAlphanumeric(64);
+		File connectionDir = new File(userDir, "connections");
+		connectionDir.mkdirs();
+		File connectionFile = new File(connectionDir, connectionId);
+		try {
+			connectionFile.createNewFile();
+		} catch (IOException e) {
+			logger.error("Unable to create user <" + login + "> directory");
+			throw new AuthenticationException("Error");
+		}
+			
+		connectionsCache.put(connectionId, login);
+					 
+		return connectionId;
+		
+	}
+	
+	public void checkPassword(String login, String password)
+			throws AuthenticationException {
 		FileInputStream fis = null;
 		
 		try {
@@ -53,15 +76,7 @@ public class SimpleConnectionManager implements ConnectionManager {
 				properties.load(fis);				
 				String rightPassword = properties.getProperty(login);
 				if(StringUtils.isNotEmpty(rightPassword) && rightPassword.equals(password)) {
-					 String connectionId = RandomStringUtils.randomAlphanumeric(64);
-					 File connectionDir = new File(userDir, "connections");
-					 connectionDir.mkdirs();
-					 File connectionFile = new File(connectionDir, connectionId); 
-					 connectionFile.createNewFile();
-					 
-					 connectionsCache.put(connectionId, login);
-					 
-					 return connectionId;
+					 return;
 				}
 			}
 		} catch(Exception e) {

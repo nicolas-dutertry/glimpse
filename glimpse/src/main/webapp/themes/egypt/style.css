@@ -241,6 +241,10 @@ h1 {
 	display: block;
 }
 
+.logout-button {
+	display: block;
+}
+
 .topbar-button-selected {
 	background-color: #5F5F5F;
 }
@@ -693,6 +697,16 @@ h1 {
 	background-repeat: no-repeat;
 	background-position: 1px 4px;
 	padding-left: 10px;
+}
+
+.quotations-table td.quotation-label a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.quotations-table td.quotation-label a:hover {
+	text-decoration: none;
+	color: #FF6600;
 }
 
 .quotation-line-positive .quotation-label {

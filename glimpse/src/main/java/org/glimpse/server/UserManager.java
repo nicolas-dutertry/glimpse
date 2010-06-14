@@ -17,11 +17,18 @@
  */
 package org.glimpse.server;
 
+import java.util.Set;
+
 import org.glimpse.client.UserDescription;
 import org.glimpse.client.UserPreferences;
 import org.glimpse.client.layout.PageDescription;
 
 public interface UserManager {
+	void createUser(String userId, String password);
+	void setUserPassword(String userId, String password);
+	
+	Set<String> getUsers();
+	
 	UserDescription getUserDescription(String userId);
 	UserDescription getDefaultUserDescription();
 	

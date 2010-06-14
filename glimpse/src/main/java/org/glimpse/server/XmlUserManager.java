@@ -18,11 +18,17 @@
 package org.glimpse.server;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.Map.Entry;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -35,6 +41,7 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.UserDescription;
@@ -52,10 +59,92 @@ public class XmlUserManager implements UserManager {
 	private static final Log logger = LogFactory.getLog(XmlUserManager.class);
 	
 	private File usersDirectory;
+	private File passwordsFile;
 	
 	public XmlUserManager(File usersDirectory) {
 		this.usersDirectory = usersDirectory;
+		passwordsFile = new File(usersDirectory, "passwords");
 	}
+
+
+	public synchronized void createUser(String userId, String password) {
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+		try {
+			Properties properties = new Properties();
+			if(passwordsFile.exists()) {
+				fis = new FileInputStream(passwordsFile);
+				properties.load(fis);
+				fis.close();
+			}
+			
+			String oldPassword = properties.getProperty(userId);
+			if(oldPassword != null) {
+				throw new RuntimeException("User <" + userId + "> already exists");
+			}
+			
+			properties.setProperty(userId, password);
+			fos = new FileOutputStream(passwordsFile);
+			properties.store(fos, "");			
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} finally {
+			IOUtils.closeQuietly(fis);
+			IOUtils.closeQuietly(fos);
+		}
+	}
+
+	public synchronized void setUserPassword(String userId, String password) {
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+		try {
+			Properties properties = new Properties();
+			if(passwordsFile.exists()) {
+				fis = new FileInputStream(passwordsFile);
+				properties.load(fis);
+				fis.close();
+			}
+			
+			String oldPassword = properties.getProperty(userId);
+			if(oldPassword == null) {
+				throw new RuntimeException("User <" + userId + "> not found");
+			}
+			
+			properties.setProperty(userId, password);
+			fos = new FileOutputStream(passwordsFile);
+			properties.store(fos, "");			
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} finally {
+			IOUtils.closeQuietly(fis);
+			IOUtils.closeQuietly(fos);
+		}
+	}
+
+	public Set<String> getUsers() {
+		FileInputStream fis = null;
+		try {
+			Properties properties = new Properties();
+			if(passwordsFile.exists()) {
+				fis = new FileInputStream(passwordsFile);
+				properties.load(fis);
+				fis.close();
+			}
+			
+			TreeSet<String> users = new TreeSet<String>();
+			Enumeration<String> names = (Enumeration<String>)properties.propertyNames();
+			while (names.hasMoreElements()) {
+				String user = (String) names.nextElement();
+				users.add(user);
+			}
+			return users;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} finally {
+			IOUtils.closeQuietly(fis);
+		}
+	}
+
 
 	public UserDescription getDefaultUserDescription() {
 		UserDescription userDescription = getUserDescription(UserDescription.GUEST_ID);

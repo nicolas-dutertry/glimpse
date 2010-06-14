@@ -211,6 +211,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 			topBar.add(loginButton);
 		} else {
 			// Connected user
+			/*
 			MenuBar menu = new MenuBar();
 			
 			MenuBar pagesMenu = new MenuBar(true);
@@ -264,6 +265,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 			pages.addStyleName("topbar-menu");
 			menu.addItem(pages);
 			topBar.add(menu);
+			*/
 	
 			Anchor optionsButton = new Anchor(constants.userOptions(),
 					"javascript:void(0)");
