@@ -23,20 +23,27 @@ public class Quotation implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private double value;
+	private String unit;
 	private double variation;
 	
 	public Quotation() {
-		this(0,0);
+		this(0,"",0);
 	}
 	
-	public Quotation(double value, double variation) {
+	public Quotation(double value, String unit, double variation) {
 		this.value = value;
+		this.unit = unit;
 		this.variation = variation;
 	}
 	
 	public double getValue() {
 		return value;
 	}
+	
+	public String getUnit() {
+		return unit;
+	}
+	
 	public double getVariation() {
 		return variation;
 	}

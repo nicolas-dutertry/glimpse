@@ -156,7 +156,7 @@ public class QuotationComponent extends Component {
 						}
 	
 						public void onSuccess(Quotation quotation) {
-							valueTable.setText(row, 1, String.valueOf(quotation.getValue()));
+							valueTable.setText(row, 1, String.valueOf(quotation.getValue()) + " " + quotation.getUnit());
 							cellFormatter.setStyleName(row, 1, "quotation-value");
 							
 							double variation = quotation.getVariation();
