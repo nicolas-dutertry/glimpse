@@ -37,9 +37,9 @@ public class QuotationServiceImpl extends RemoteServiceServlet implements Quotat
 	private static final long serialVersionUID = 1L;
 	private static Log logger = LogFactory.getLog(QuotationServiceImpl.class);
 
-	Pattern pattern =
+	private Pattern pattern =
 		Pattern.compile(
-				"<div class=\"InfB\"><span class=\"gras\">([0-9\\s\\.]+).*</span>(&nbsp;)*<span\\s+class=\"gras\"><span class=\"VAR[a-z]*\">([-\\+]?[0-9\\s\\.]+)%</span>");
+				"<div class=\"InfB\"><span class=\"gras\">([0-9\\s\\.]+)\\s*(\\(c\\))?\\s*(\\w*)</span>(&nbsp;)*<span\\s+class=\"gras\"><span class=\"VAR[a-z]*\">([-\\+]?[0-9\\s\\.]+)%</span>");
 	
 	public Quotation getQuotation(String code) {
 		try {
@@ -57,21 +57,22 @@ public class QuotationServiceImpl extends RemoteServiceServlet implements Quotat
 			String response = method.getResponseBodyAsString();
 			
 			double value = 0;
+			String unit = "";
 			double variation = 0;
 			Matcher matcher = pattern.matcher(response);
 			if(matcher.find()) {
 				String s = matcher.group(1);
 				s = StringUtils.remove(s, " ");
 				value = Double.parseDouble(s);
-				
-				s = matcher.group(3);
+				unit = matcher.group(3);
+				s = matcher.group(5);
 				s = StringUtils.remove(s, " ");
 				variation = Double.parseDouble(s);
 			} else {
 				logger.debug("Unable to find quotation for <" + code + ">\n" + response);
 			}
 			
-			return new Quotation(value, variation);
+			return new Quotation(value, unit, variation);
 			
 		} catch (Exception e) {
 			logger.error("Error while getting quotation for <" + code + ">", e);
