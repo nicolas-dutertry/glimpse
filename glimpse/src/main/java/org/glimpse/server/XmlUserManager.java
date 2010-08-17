@@ -31,6 +31,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.Map.Entry;
 
+import javax.servlet.ServletContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -41,6 +42,7 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.commons.configuration.Configuration;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -51,21 +53,29 @@ import org.glimpse.client.layout.ComponentDescription;
 import org.glimpse.client.layout.PageDescription;
 import org.glimpse.client.layout.TabDescription;
 import org.glimpse.client.layout.ComponentDescription.Type;
+import org.springframework.web.context.ServletContextAware;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-public class XmlUserManager implements UserManager {
+public class XmlUserManager implements UserManager, ServletContextAware {
 	private static final Log logger = LogFactory.getLog(XmlUserManager.class);
+	
+	private Configuration configuration;
 	
 	private File usersDirectory;
 	private File passwordsFile;
 	
-	public XmlUserManager(File usersDirectory) {
-		this.usersDirectory = usersDirectory;
+	public XmlUserManager(Configuration configuration) {
+		this.configuration = configuration;
+	}
+	
+	public void setServletContext(ServletContext servletContext) {
+		this.usersDirectory = new File(configuration.getString(
+				"users.directory",
+				servletContext.getRealPath("/WEB-INF/users")));
 		passwordsFile = new File(usersDirectory, "passwords");
 	}
-
 
 	public synchronized void createUser(String userId, String password) {
 		FileInputStream fis = null;

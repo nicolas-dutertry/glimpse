@@ -20,7 +20,7 @@ package org.glimpse.client.finance;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-@RemoteServiceRelativePath("quotation")
+@RemoteServiceRelativePath("quotation.rpc")
 public interface QuotationService extends RemoteService {
 	Quotation getQuotation(String code);
 }

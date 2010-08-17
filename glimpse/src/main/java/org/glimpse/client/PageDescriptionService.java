@@ -22,7 +22,7 @@ import org.glimpse.client.layout.PageDescription;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-@RemoteServiceRelativePath("page-description")
+@RemoteServiceRelativePath("page-description.rpc")
 public interface PageDescriptionService extends RemoteService {
 	PageDescription getDefaultPageDescription(String localeName);
 	void setDefaultPageDescription(String localeName, PageDescription pageDescription);

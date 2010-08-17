@@ -20,7 +20,7 @@ package org.glimpse.client;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-@RemoteServiceRelativePath("login")
+@RemoteServiceRelativePath("login.rpc")
 public interface LoginService extends RemoteService {
 	boolean connect(String login, String password, boolean remember);
 	void disconnnect();

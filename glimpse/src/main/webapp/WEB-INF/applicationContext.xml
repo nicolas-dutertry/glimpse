@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<bean id="glimpseManager" class="org.glimpse.server.GlimpseManager"/>
+	
+	<bean id="configuration" factory-bean="glimpseManager" factory-method="getConfiguration"/>
+	
+	<bean id="cacheManager" class="net.sf.ehcache.CacheManager" factory-method="create"/>
+	
+	<bean id="connectionManager" class="org.glimpse.server.SimpleConnectionManager">
+		<constructor-arg ref="configuration"/>
+	</bean>
+	
+	<bean id="userManager" class="org.glimpse.server.XmlUserManager">
+		<constructor-arg ref="configuration"/>
+	</bean>
+	
+	<bean id="proxyProvider" class="org.glimpse.server.ConfiguredProxyProvider">
+		<constructor-arg ref="configuration"/>
+	</bean>
+	
+	<!--  GWT Services -->
+	<bean id="loginService" class="org.glimpse.server.LoginServiceImpl">
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>	
+	<bean id="pageDescriptionService" class="org.glimpse.server.PageDescriptionServiceImpl">
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="userManager" ref="userManager"/>
+	</bean>	
+	<bean id="userDescriptionService" class="org.glimpse.server.UserDescriptionServiceImpl">
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="userManager" ref="userManager"/>
+	</bean>	
+	<bean id="newsRetrieverService" class="org.glimpse.server.news.NewsRetrieverServiceImpl">
+		<property name="proxyProvider" ref="proxyProvider"/>
+		<property name="cacheManager" ref="cacheManager"/>
+	</bean>
+	<bean id="quotationService" class="org.glimpse.server.finance.QuotationServiceImpl">
+		<property name="proxyProvider" ref="proxyProvider"/>
+	</bean>
+
+</beans>

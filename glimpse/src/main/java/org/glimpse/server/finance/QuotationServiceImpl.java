@@ -28,23 +28,22 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.finance.Quotation;
 import org.glimpse.client.finance.QuotationService;
-import org.glimpse.server.GlimpseManager;
 import org.glimpse.server.Proxy;
+import org.glimpse.server.ProxyProvider;
+import org.springframework.beans.factory.annotation.Required;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
-public class QuotationServiceImpl extends RemoteServiceServlet implements QuotationService {
+public class QuotationServiceImpl implements QuotationService {
 	private static final long serialVersionUID = 1L;
 	private static Log logger = LogFactory.getLog(QuotationServiceImpl.class);
 
+	private ProxyProvider proxyProvider;
 	private Pattern pattern =
 		Pattern.compile(
 				"<div class=\"InfB\"><span class=\"gras\">([0-9\\s\\.]+)\\s*(\\(c\\))?\\s*(\\w*)</span>(&nbsp;)*<span\\s+class=\"gras\"><span class=\"VAR[a-z]*\">([-\\+]?[0-9\\s\\.]+)%</span>");
 	
 	public Quotation getQuotation(String code) {
 		try {
-			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-			Proxy proxy = glimpseManager.getProxy("http://www.boursorama.com/");
+			Proxy proxy = proxyProvider.getProxy("http://www.boursorama.com/");
 			
 			HttpClient client = new HttpClient();		
 			if(proxy != null) {
@@ -78,6 +77,15 @@ public class QuotationServiceImpl extends RemoteServiceServlet implements Quotat
 			logger.error("Error while getting quotation for <" + code + ">", e);
 			return null;
 		}
+	}
+
+	@Required
+	public void setProxyProvider(ProxyProvider proxyProvider) {
+		this.proxyProvider = proxyProvider;
+	}
+
+	public ProxyProvider getProxyProvider() {
+		return proxyProvider;
 	}
 
 }

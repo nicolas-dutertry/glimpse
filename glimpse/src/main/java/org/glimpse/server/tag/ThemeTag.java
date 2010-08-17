@@ -25,9 +25,9 @@ import javax.servlet.jsp.tagext.Tag;
 import javax.servlet.jsp.tagext.TagSupport;
 
 import org.glimpse.client.UserDescription;
-import org.glimpse.server.GlimpseManager;
 import org.glimpse.server.GlimpseUtils;
 import org.glimpse.server.UserManager;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class ThemeTag extends TagSupport {
 	private static final long serialVersionUID = 1L;
@@ -36,8 +36,9 @@ public class ThemeTag extends TagSupport {
 		HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 		String theme = "default";
     	if(GlimpseUtils.isConnected(request)) {
-    		GlimpseManager glimpseManager = GlimpseManager.getInstance(pageContext.getServletContext());
-			UserManager userManager = glimpseManager.getUserManager();
+    		UserManager userManager = 
+				WebApplicationContextUtils.getWebApplicationContext(pageContext.getServletContext()).getBean(
+						UserManager.class);
 			UserDescription userDescription = userManager.getUserDescription(
 					GlimpseUtils.getUserId(request));
 			theme = userDescription.getPreferences().getTheme();

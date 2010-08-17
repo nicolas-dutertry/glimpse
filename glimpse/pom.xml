@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>2.4</version>
+			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -65,6 +65,11 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.5.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>3.0.3.RELEASE</version>
 		</dependency>
 		
 		<!-- GWT -->
@@ -90,7 +95,7 @@
 			<groupId>com.google.code.gwt-dnd</groupId>
 			<artifactId>gwt-dnd</artifactId>
 			<version>${gwt-dnd.version}</version>
-		</dependency> 
+		</dependency>		
 		<!-- End GWT -->
 	</dependencies>
 	<build>
@@ -113,6 +118,7 @@
 						     générées par GWT sans polluer le répertoire des 
 						     sources -->
 						<warSourceDirectory>${project.build.directory}/webapp</warSourceDirectory>
+						<attachClasses>true</attachClasses>
 					</configuration>
 				</plugin>
 				<plugin>

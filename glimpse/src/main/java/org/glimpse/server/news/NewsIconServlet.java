@@ -31,8 +31,9 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.glimpse.server.GlimpseManager;
 import org.glimpse.server.Proxy;
+import org.glimpse.server.ProxyProvider;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class NewsIconServlet extends HttpServlet {
 
@@ -52,8 +53,9 @@ public class NewsIconServlet extends HttpServlet {
 		
 		HttpClient client = new HttpClient();
 		
-		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-		Proxy proxy = glimpseManager.getProxy(url);
+		ProxyProvider proxyProvider = WebApplicationContextUtils.getWebApplicationContext(getServletContext()).getBean(
+				ProxyProvider.class);
+		Proxy proxy = proxyProvider.getProxy(url);
 		if(proxy != null) {
 			client.getHostConfiguration().setProxy(proxy.getHost(), proxy.getPort());
 		}

@@ -21,22 +21,38 @@ import org.apache.commons.lang.StringUtils;
 import org.glimpse.client.PageDescriptionService;
 import org.glimpse.client.UserDescription;
 import org.glimpse.client.layout.PageDescription;
+import org.glimpse.spring.web.RemoteServiceUtil;
+import org.springframework.beans.factory.annotation.Required;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
-public class PageDescriptionServiceImpl extends RemoteServiceServlet implements
-		PageDescriptionService {
+public class PageDescriptionServiceImpl implements PageDescriptionService {
 	private static final long serialVersionUID = 1L;
 	
+	private UserManager userManager;
+	private ConnectionManager connectionManager;
+	
+	public UserManager getUserManager() {
+		return userManager;
+	}
+
+	@Required
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
+	}	
+	
+	public ConnectionManager getConnectionManager() {
+		return connectionManager;
+	}
+
+	@Required
+	public void setConnectionManager(ConnectionManager connectionManager) {
+		this.connectionManager = connectionManager;
+	}
+
 	public PageDescription getDefaultPageDescription(String localeName) {
-		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-		UserManager userManager = glimpseManager.getUserManager();
 		return userManager.getDefaultPageDescription(localeName);
 	}
 	
 	public PageDescription getPageDescription(String localeName) {
-		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-		UserManager userManager = glimpseManager.getUserManager();
 		String userId = getUserId();
 		if(userId == null) {
 			return userManager.getDefaultPageDescription(localeName);
@@ -48,8 +64,6 @@ public class PageDescriptionServiceImpl extends RemoteServiceServlet implements
 	public void setDefaultPageDescription(String localeName, PageDescription pageDescription) {
 		String userId = getUserId();
 		if(userId != null) {
-			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-			UserManager userManager = glimpseManager.getUserManager();
 			UserDescription description = userManager.getUserDescription(userId);
 			if(description != null && description.isAdministrator()) {
 				userManager.setDefaultPageDescription(localeName, pageDescription);
@@ -60,17 +74,13 @@ public class PageDescriptionServiceImpl extends RemoteServiceServlet implements
 	public void setPageDescription(PageDescription pageDescription) {
 		String userId = getUserId();
 		if(userId != null) {
-			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-			UserManager userManager = glimpseManager.getUserManager();			
 			userManager.setUserPageDescription(userId, pageDescription);
 		}
 	}
 		
 	private String getUserId() {
-		String connectionId = GlimpseUtils.getConnectionId(getThreadLocalRequest());
+		String connectionId = GlimpseUtils.getConnectionId(RemoteServiceUtil.getThreadLocalRequest());
 		if(StringUtils.isNotEmpty(connectionId)) {
-			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-			ConnectionManager connectionManager = glimpseManager.getConnectionManager();
 			return connectionManager.getUserId(connectionId);
 		} else {
 			return null;

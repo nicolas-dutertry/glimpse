@@ -14,28 +14,16 @@
 	</filter-mapping>
 	
 	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
 		<listener-class>org.glimpse.server.GlimpseManager</listener-class>
 	</listener>
 
 	<!-- Servlets -->
 	<servlet>
-		<servlet-name>LoginService</servlet-name>
-		<servlet-class>org.glimpse.server.LoginServiceImpl</servlet-class>
-	</servlet>
-
-	<servlet>
-		<servlet-name>UserDescriptionService</servlet-name>
-		<servlet-class>org.glimpse.server.UserDescriptionServiceImpl</servlet-class>
-	</servlet>
-
-	<servlet>
-		<servlet-name>PageDescriptionService</servlet-name>
-		<servlet-class>org.glimpse.server.PageDescriptionServiceImpl</servlet-class>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>NewsRetrieverService</servlet-name>
-		<servlet-class>org.glimpse.server.news.NewsRetrieverServiceImpl</servlet-class>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.glimpse.spring.web.RemoteServiceDispatcher</servlet-class>
 	</servlet>
 
 	<servlet>
@@ -43,29 +31,9 @@
 		<servlet-class>org.glimpse.server.news.NewsIconServlet</servlet-class>
 	</servlet>
 	
-	<servlet>
-		<servlet-name>QuotationService</servlet-name>
-		<servlet-class>org.glimpse.server.finance.QuotationServiceImpl</servlet-class>
-	</servlet>
-	
 	<servlet-mapping>
-		<servlet-name>LoginService</servlet-name>
-		<url-pattern>/glimpse_gwt/login</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>UserDescriptionService</servlet-name>
-		<url-pattern>/glimpse_gwt/user-description</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>PageDescriptionService</servlet-name>
-		<url-pattern>/glimpse_gwt/page-description</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>NewsRetrieverService</servlet-name>
-		<url-pattern>/glimpse_gwt/news-retriever</url-pattern>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.rpc</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
@@ -73,11 +41,6 @@
 		<url-pattern>/servlets/news-icon</url-pattern>
 	</servlet-mapping>
 	
-	<servlet-mapping>
-		<servlet-name>QuotationService</servlet-name>
-		<url-pattern>/glimpse_gwt/quotation</url-pattern>
-	</servlet-mapping>
-
 	<!-- Default page to serve -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

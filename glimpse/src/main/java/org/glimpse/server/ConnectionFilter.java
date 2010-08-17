@@ -29,6 +29,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class ConnectionFilter implements Filter {
 	private ServletContext servletContext;
@@ -41,8 +42,9 @@ public class ConnectionFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		String connectionId = GlimpseUtils.getConnectionId((HttpServletRequest)request);
 		if(StringUtils.isNotEmpty(connectionId)) {
-			GlimpseManager glimpseManager = GlimpseManager.getInstance(servletContext);
-			ConnectionManager connectionManager = glimpseManager.getConnectionManager();
+			ConnectionManager connectionManager = 
+				WebApplicationContextUtils.getWebApplicationContext(servletContext).getBean(
+						ConnectionManager.class);
 			request.setAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID,
 					connectionManager.getUserId(connectionId));
 		} else {

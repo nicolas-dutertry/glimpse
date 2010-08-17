@@ -21,16 +21,34 @@ import org.apache.commons.lang.StringUtils;
 import org.glimpse.client.UserDescription;
 import org.glimpse.client.UserDescriptionService;
 import org.glimpse.client.UserPreferences;
+import org.glimpse.spring.web.RemoteServiceUtil;
+import org.springframework.beans.factory.annotation.Required;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
-public class UserDescriptionServiceImpl extends RemoteServiceServlet implements
-		UserDescriptionService {
+public class UserDescriptionServiceImpl implements UserDescriptionService {
 	private static final long serialVersionUID = 1L;
+	
+	private UserManager userManager;
+	private ConnectionManager connectionManager;
+	
+	public UserManager getUserManager() {
+		return userManager;
+	}
+
+	@Required
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
+	}	
+	
+	public ConnectionManager getConnectionManager() {
+		return connectionManager;
+	}
+
+	@Required
+	public void setConnectionManager(ConnectionManager connectionManager) {
+		this.connectionManager = connectionManager;
+	}
 
 	public UserDescription getUserDescription() {
-		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-		UserManager userManager = glimpseManager.getUserManager();
 		String userId = getUserId();
 		if(userId == null) {
 			return userManager.getDefaultUserDescription();
@@ -42,17 +60,13 @@ public class UserDescriptionServiceImpl extends RemoteServiceServlet implements
 	public void setUserPreferences(UserPreferences userPreferences) {
 		String userId = getUserId();
 		if(userId != null) {
-			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-			UserManager userManager = glimpseManager.getUserManager();			
 			userManager.setUserPreferences(userId, userPreferences);
 		}
 	}
 	
 	private String getUserId() {
-		String connectionId = GlimpseUtils.getConnectionId(getThreadLocalRequest());
+		String connectionId = GlimpseUtils.getConnectionId(RemoteServiceUtil.getThreadLocalRequest());
 		if(StringUtils.isNotEmpty(connectionId)) {
-			GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-			ConnectionManager connectionManager = glimpseManager.getConnectionManager();
 			return connectionManager.getUserId(connectionId);
 		} else {
 			return null;

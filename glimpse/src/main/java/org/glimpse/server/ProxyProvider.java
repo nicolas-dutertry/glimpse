@@ -15,13 +15,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package org.glimpse.client;
+package org.glimpse.server;
 
-import com.google.gwt.user.client.rpc.RemoteService;
-import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-
-@RemoteServiceRelativePath("user-description.rpc")
-public interface UserDescriptionService  extends RemoteService {
-	UserDescription getUserDescription();
-	void setUserPreferences(UserPreferences userPreferences);
+public interface ProxyProvider {
+	Proxy getProxy(String url);
 }

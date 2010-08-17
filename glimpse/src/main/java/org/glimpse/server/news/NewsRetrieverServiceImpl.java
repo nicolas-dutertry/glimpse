@@ -31,20 +31,39 @@ import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.news.Entry;
 import org.glimpse.client.news.NewsChannel;
 import org.glimpse.client.news.NewsRetrieverService;
-import org.glimpse.server.GlimpseManager;
 import org.glimpse.server.Proxy;
+import org.glimpse.server.ProxyProvider;
 import org.glimpse.server.news.sax.SaxServerNewsChannelBuilder;
+import org.springframework.beans.factory.annotation.Required;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
-public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
-		NewsRetrieverService {
+public class NewsRetrieverServiceImpl implements NewsRetrieverService {
 	private static final long serialVersionUID = 1L;
 	
 	private static Log logger = LogFactory.getLog(NewsRetrieverServiceImpl.class);
 	private static final ServerNewsChannelBuilder channelBuilder =
 		new SaxServerNewsChannelBuilder();
 	
+	private ProxyProvider proxyProvider;
+	private CacheManager cacheManager;
+	
+	public ProxyProvider getProxyProvider() {
+		return proxyProvider;
+	}
+
+	@Required
+	public void setProxyProvider(ProxyProvider proxyProvider) {
+		this.proxyProvider = proxyProvider;
+	}
+
+	public CacheManager getCacheManager() {
+		return cacheManager;
+	}
+
+	@Required
+	public void setCacheManager(CacheManager cacheManager) {
+		this.cacheManager = cacheManager;
+	}
+
 	public NewsChannel getNewsChannel(String url, boolean refresh) {
 		try {
 			ServerNewsChannel serverChannel = getServerNewChannel(url, refresh);
@@ -82,8 +101,6 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 	private ServerNewsChannel getServerNewChannel(String url, boolean refresh) throws Exception {
 		ServerNewsChannel channel = null;
 		
-		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-		CacheManager cacheManager = glimpseManager.getCacheManager();
 		Cache cache = cacheManager.getCache("newsCache");
 		
 		if(!refresh) {
@@ -105,8 +122,7 @@ public class NewsRetrieverServiceImpl extends RemoteServiceServlet implements
 	}
 	
 	private InputStream getUrlInputStream(String url) throws Exception {
-		GlimpseManager glimpseManager = GlimpseManager.getInstance(getServletContext());
-		Proxy proxy = glimpseManager.getProxy(url);
+		Proxy proxy = proxyProvider.getProxy(url);
 		
 		HttpClient client = new HttpClient();		
 		if(proxy != null) {

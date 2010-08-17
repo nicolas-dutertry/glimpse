@@ -17,11 +17,22 @@
  */
 package org.glimpse.client;
 
-import com.google.gwt.user.client.rpc.RemoteService;
-import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.SplitLayoutPanel;
 
-@RemoteServiceRelativePath("user-description.rpc")
-public interface UserDescriptionService  extends RemoteService {
-	UserDescription getUserDescription();
-	void setUserPreferences(UserPreferences userPreferences);
+public class Admin implements EntryPoint {
+	interface MyUiBinder extends UiBinder<SplitLayoutPanel, Admin> {}
+	private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
+
+
+	public void onModuleLoad() {
+		Scheduler.get();
+		SplitLayoutPanel panel = uiBinder.createAndBindUi(this);
+		RootPanel.get("main").add(panel);
+	}
+
 }

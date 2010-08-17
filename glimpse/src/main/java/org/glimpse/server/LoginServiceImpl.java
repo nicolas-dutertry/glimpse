@@ -21,21 +21,30 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.LoginService;
+import org.glimpse.spring.web.RemoteServiceUtil;
+import org.springframework.beans.factory.annotation.Required;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
-public class LoginServiceImpl extends RemoteServiceServlet  implements LoginService {
+public class LoginServiceImpl implements LoginService {
 	private static final long serialVersionUID = 1L;
 	private static final Log logger = LogFactory.getLog(LoginServiceImpl.class);
 
+	private ConnectionManager connectionManager;	
+	
+	public ConnectionManager getConnectionManager() {
+		return connectionManager;
+	}
+
+	@Required
+	public void setConnectionManager(ConnectionManager connectionManager) {
+		this.connectionManager = connectionManager;
+	}
+
 	public boolean connect(String login, String password, boolean remember) {
 		
-		ConnectionManager connectionManager =
-			GlimpseManager.getInstance(getServletContext()).getConnectionManager();
 		try {
 			String connectionId = connectionManager.connect(login, password);
-			GlimpseUtils.setConnectionId(getThreadLocalRequest(),
-					getThreadLocalResponse(), connectionId, remember);
+			GlimpseUtils.setConnectionId(RemoteServiceUtil.getThreadLocalRequest(),
+					RemoteServiceUtil.getThreadLocalResponse(), connectionId, remember);
 			if(StringUtils.isNotEmpty(connectionId)) {
 				return true;
 			}
@@ -46,13 +55,11 @@ public class LoginServiceImpl extends RemoteServiceServlet  implements LoginServ
 	}
 
 	public void disconnnect() {
-		String connectionId = GlimpseUtils.getConnectionId(getThreadLocalRequest());
+		String connectionId = GlimpseUtils.getConnectionId(RemoteServiceUtil.getThreadLocalRequest());
 		if(StringUtils.isNotEmpty(connectionId)) {
-			ConnectionManager connectionManager =
-				GlimpseManager.getInstance(getServletContext()).getConnectionManager();
 			connectionManager.disconnect(connectionId);
-			GlimpseUtils.setConnectionId(getThreadLocalRequest(),
-					getThreadLocalResponse(), "", false);
+			GlimpseUtils.setConnectionId(RemoteServiceUtil.getThreadLocalRequest(),
+					RemoteServiceUtil.getThreadLocalResponse(), "", false);
 		}
 	}
 

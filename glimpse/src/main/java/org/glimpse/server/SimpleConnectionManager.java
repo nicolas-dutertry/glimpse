@@ -24,24 +24,36 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.servlet.ServletContext;
+
+import org.apache.commons.configuration.Configuration;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.web.context.ServletContextAware;
 
-public class SimpleConnectionManager implements ConnectionManager {
+public class SimpleConnectionManager implements ConnectionManager, ServletContextAware {
 	private static final Log logger = LogFactory.getLog(SimpleConnectionManager.class);
+	
+	private Configuration configuration;
 	
 	private File usersDirectory;
 	private File passwordsFile;
-	private transient Map<String, String>connectionsCache = new ConcurrentHashMap<String, String>(); 
+	private transient Map<String, String> connectionsCache = new ConcurrentHashMap<String, String>(); 
 	
-	public SimpleConnectionManager(File usersDirectory) {
-		this.usersDirectory = usersDirectory;
-		passwordsFile = new File(usersDirectory, "passwords");
+	public SimpleConnectionManager(Configuration configuration) {
+		this.configuration = configuration;
 	}
 	
+	public void setServletContext(ServletContext servletContext) {
+		this.usersDirectory = new File(configuration.getString(
+				"users.directory",
+				servletContext.getRealPath("/WEB-INF/users")));
+		passwordsFile = new File(usersDirectory, "passwords");
+	}
+
 	public String connect(String login, String password)
 			throws AuthenticationException {
 		checkPassword(login, password);
