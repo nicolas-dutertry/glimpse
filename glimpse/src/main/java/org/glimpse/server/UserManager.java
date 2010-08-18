@@ -24,8 +24,17 @@ import org.glimpse.client.UserPreferences;
 import org.glimpse.client.layout.PageDescription;
 
 public interface UserManager {
+	String connect(String login, String password) throws AuthenticationException;
+	
+	void checkPassword(String login, String password) throws AuthenticationException;	
+	
+	String getUserId(String connectionId);
+	
+	void disconnect(String connectionId);
+	
 	void createUser(String userId, String password);
 	void setUserPassword(String userId, String password);
+	
 	
 	Set<String> getUsers();
 	

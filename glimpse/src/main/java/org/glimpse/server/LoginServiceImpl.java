@@ -28,21 +28,21 @@ public class LoginServiceImpl implements LoginService {
 	private static final long serialVersionUID = 1L;
 	private static final Log logger = LogFactory.getLog(LoginServiceImpl.class);
 
-	private ConnectionManager connectionManager;	
+	private UserManager userManager;	
 	
-	public ConnectionManager getConnectionManager() {
-		return connectionManager;
+	public UserManager getUserManager() {
+		return userManager;
 	}
 
 	@Required
-	public void setConnectionManager(ConnectionManager connectionManager) {
-		this.connectionManager = connectionManager;
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
 	}
 
 	public boolean connect(String login, String password, boolean remember) {
 		
 		try {
-			String connectionId = connectionManager.connect(login, password);
+			String connectionId = userManager.connect(login, password);
 			GlimpseUtils.setConnectionId(RemoteServiceUtil.getThreadLocalRequest(),
 					RemoteServiceUtil.getThreadLocalResponse(), connectionId, remember);
 			if(StringUtils.isNotEmpty(connectionId)) {
@@ -57,7 +57,7 @@ public class LoginServiceImpl implements LoginService {
 	public void disconnnect() {
 		String connectionId = GlimpseUtils.getConnectionId(RemoteServiceUtil.getThreadLocalRequest());
 		if(StringUtils.isNotEmpty(connectionId)) {
-			connectionManager.disconnect(connectionId);
+			userManager.disconnect(connectionId);
 			GlimpseUtils.setConnectionId(RemoteServiceUtil.getThreadLocalRequest(),
 					RemoteServiceUtil.getThreadLocalResponse(), "", false);
 		}

@@ -42,11 +42,11 @@ public class ConnectionFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		String connectionId = GlimpseUtils.getConnectionId((HttpServletRequest)request);
 		if(StringUtils.isNotEmpty(connectionId)) {
-			ConnectionManager connectionManager = 
+			UserManager userManager = 
 				WebApplicationContextUtils.getWebApplicationContext(servletContext).getBean(
-						ConnectionManager.class);
+						UserManager.class);
 			request.setAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID,
-					connectionManager.getUserId(connectionId));
+					userManager.getUserId(connectionId));
 		} else {
 			request.removeAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID);
 		}

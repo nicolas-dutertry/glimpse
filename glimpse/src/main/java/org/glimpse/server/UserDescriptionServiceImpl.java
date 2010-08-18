@@ -28,7 +28,6 @@ public class UserDescriptionServiceImpl implements UserDescriptionService {
 	private static final long serialVersionUID = 1L;
 	
 	private UserManager userManager;
-	private ConnectionManager connectionManager;
 	
 	public UserManager getUserManager() {
 		return userManager;
@@ -37,15 +36,6 @@ public class UserDescriptionServiceImpl implements UserDescriptionService {
 	@Required
 	public void setUserManager(UserManager userManager) {
 		this.userManager = userManager;
-	}	
-	
-	public ConnectionManager getConnectionManager() {
-		return connectionManager;
-	}
-
-	@Required
-	public void setConnectionManager(ConnectionManager connectionManager) {
-		this.connectionManager = connectionManager;
 	}
 
 	public UserDescription getUserDescription() {
@@ -67,7 +57,7 @@ public class UserDescriptionServiceImpl implements UserDescriptionService {
 	private String getUserId() {
 		String connectionId = GlimpseUtils.getConnectionId(RemoteServiceUtil.getThreadLocalRequest());
 		if(StringUtils.isNotEmpty(connectionId)) {
-			return connectionManager.getUserId(connectionId);
+			return userManager.getUserId(connectionId);
 		} else {
 			return null;
 		}

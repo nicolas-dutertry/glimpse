@@ -11,10 +11,6 @@
 	
 	<bean id="cacheManager" class="net.sf.ehcache.CacheManager" factory-method="create"/>
 	
-	<bean id="connectionManager" class="org.glimpse.server.SimpleConnectionManager">
-		<constructor-arg ref="configuration"/>
-	</bean>
-	
 	<bean id="userManager" class="org.glimpse.server.XmlUserManager">
 		<constructor-arg ref="configuration"/>
 	</bean>
@@ -25,14 +21,12 @@
 	
 	<!--  GWT Services -->
 	<bean id="loginService" class="org.glimpse.server.LoginServiceImpl">
-		<property name="connectionManager" ref="connectionManager"/>
+		<property name="userManager" ref="userManager"/>
 	</bean>	
 	<bean id="pageDescriptionService" class="org.glimpse.server.PageDescriptionServiceImpl">
-		<property name="connectionManager" ref="connectionManager"/>
 		<property name="userManager" ref="userManager"/>
 	</bean>	
 	<bean id="userDescriptionService" class="org.glimpse.server.UserDescriptionServiceImpl">
-		<property name="connectionManager" ref="connectionManager"/>
 		<property name="userManager" ref="userManager"/>
 	</bean>	
 	<bean id="newsRetrieverService" class="org.glimpse.server.news.NewsRetrieverServiceImpl">
