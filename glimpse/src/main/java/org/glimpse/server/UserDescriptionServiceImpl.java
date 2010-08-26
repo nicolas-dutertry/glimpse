@@ -18,6 +18,7 @@
 package org.glimpse.server;
 
 import org.apache.commons.lang.StringUtils;
+import org.glimpse.client.UserAttributes;
 import org.glimpse.client.UserDescription;
 import org.glimpse.client.UserDescriptionService;
 import org.glimpse.client.UserPreferences;
@@ -41,16 +42,22 @@ public class UserDescriptionServiceImpl implements UserDescriptionService {
 	public UserDescription getUserDescription() {
 		String userId = getUserId();
 		if(userId == null) {
-			return userManager.getDefaultUserDescription();
+			UserDescription userDescription = new UserDescription();
+			userDescription.setAttributes(userManager.getDefaultUserAttributes());
+			return userDescription;
 		} else {
-			return userManager.getUserDescription(userId);
+			UserDescription userDescription = new UserDescription(userId);
+			userDescription.setAttributes(userManager.getUserAttributes(userId));
+			return userDescription;
 		}
 	}
 
 	public void setUserPreferences(UserPreferences userPreferences) {
 		String userId = getUserId();
 		if(userId != null) {
-			userManager.setUserPreferences(userId, userPreferences);
+			UserAttributes userAttributes = userManager.getUserAttributes(userId);
+			userAttributes.setPreferences(userPreferences);
+			userManager.setUserAttributes(userId, userAttributes);
 		}
 	}
 	

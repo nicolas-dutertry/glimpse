@@ -19,7 +19,7 @@ package org.glimpse.server;
 
 import org.apache.commons.lang.StringUtils;
 import org.glimpse.client.PageDescriptionService;
-import org.glimpse.client.UserDescription;
+import org.glimpse.client.UserAttributes;
 import org.glimpse.client.layout.PageDescription;
 import org.glimpse.spring.web.RemoteServiceUtil;
 import org.springframework.beans.factory.annotation.Required;
@@ -54,8 +54,8 @@ public class PageDescriptionServiceImpl implements PageDescriptionService {
 	public void setDefaultPageDescription(String localeName, PageDescription pageDescription) {
 		String userId = getUserId();
 		if(userId != null) {
-			UserDescription description = userManager.getUserDescription(userId);
-			if(description != null && description.isAdministrator()) {
+			UserAttributes userAttributes = userManager.getUserAttributes(userId);
+			if(userAttributes != null && userAttributes.isAdministrator()) {
 				userManager.setDefaultPageDescription(localeName, pageDescription);
 			}
 		}

@@ -23,9 +23,7 @@
 		<dependency>
 			<groupId>org.glimpse</groupId>
 			<artifactId>glimpse</artifactId>
-			<version>${pom.version}</version>
-			<classifier>classes</classifier>
-			<scope>runtime</scope>
+			<version>${project.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.servlet</groupId>

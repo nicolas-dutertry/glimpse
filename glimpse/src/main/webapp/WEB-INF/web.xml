@@ -31,6 +31,11 @@
 		<servlet-class>org.glimpse.server.news.NewsIconServlet</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>ImportUserServlet</servlet-name>
+		<servlet-class>org.glimpse.server.servlet.ImportUserServlet</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.rpc</url-pattern>
@@ -39,6 +44,11 @@
 	<servlet-mapping>
 		<servlet-name>NewsIconServlet</servlet-name>
 		<url-pattern>/servlets/news-icon</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ImportUserServlet</servlet-name>
+		<url-pattern>/servlets/import-user</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Default page to serve -->

@@ -24,7 +24,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.Tag;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import org.glimpse.client.UserDescription;
+import org.glimpse.client.UserAttributes;
 import org.glimpse.server.GlimpseUtils;
 import org.glimpse.server.UserManager;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -41,9 +41,9 @@ public class LocaleTag extends TagSupport {
 	    		UserManager userManager = 
 					WebApplicationContextUtils.getWebApplicationContext(pageContext.getServletContext()).getBean(
 							UserManager.class);
-				UserDescription userDescription = userManager.getUserDescription(
+				UserAttributes userAttributes = userManager.getUserAttributes(
 						GlimpseUtils.getUserId(request));
-				locale = userDescription.getPreferences().getLocale();
+				locale = userAttributes.getPreferences().getLocale();
 	    	}
 		}    	
     	try {

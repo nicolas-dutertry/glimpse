@@ -19,44 +19,31 @@ package org.glimpse.client;
 
 import java.io.Serializable;
 
-public class UserDescription implements Serializable {
+public class UserAttributes implements Serializable {
 	private static final long serialVersionUID = 1L;
-	public static final String GUEST_ID = "guest";
 	
-	private String id;
-	private UserAttributes attributes;
+	private boolean administrator;
+	private UserPreferences preferences;
 	
-	public UserDescription() {
-		this(GUEST_ID);		
-	}
-	
-	public UserDescription(String id) {
-		this.id = id;
-		setAttributes(new UserAttributes());
+	public UserAttributes() {
+		administrator = false;
+		preferences = new UserPreferences();
 	}	
 
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public UserAttributes getAttributes() {
-		return attributes;
-	}
-
-	public void setAttributes(UserAttributes attributes) {
-		this.attributes = attributes;
+	public void setAdministrator(boolean administrator) {
+		this.administrator = administrator;
 	}
 	
 	public boolean isAdministrator() {
-		return attributes.isAdministrator();
+		return administrator;
 	}
-	
+
+	public void setPreferences(UserPreferences preferences) {
+		this.preferences = preferences;
+	}
+
 	public UserPreferences getPreferences() {
-		return attributes.getPreferences();
+		return preferences;
 	}
-	
+
 }

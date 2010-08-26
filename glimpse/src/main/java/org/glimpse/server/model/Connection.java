@@ -15,48 +15,47 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package org.glimpse.client;
+package org.glimpse.server.model;
 
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-public class UserDescription implements Serializable {
-	private static final long serialVersionUID = 1L;
-	public static final String GUEST_ID = "guest";
-	
+@Entity
+@Table(name = "connection")
+public class Connection {
+	@Id
+	@Column(unique = true, nullable = false)
 	private String id;
-	private UserAttributes attributes;
 	
-	public UserDescription() {
-		this(GUEST_ID);		
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	public Connection() {	
 	}
 	
-	public UserDescription(String id) {
+	public Connection(String id, User user) {
 		this.id = id;
-		setAttributes(new UserAttributes());
-	}	
+		this.user = user;
+	}
 
 	public String getId() {
 		return id;
 	}
-	
+
 	public void setId(String id) {
 		this.id = id;
 	}
 
-	public UserAttributes getAttributes() {
-		return attributes;
-	}
-
-	public void setAttributes(UserAttributes attributes) {
-		this.attributes = attributes;
+	public User getUser() {
+		return user;
 	}
 	
-	public boolean isAdministrator() {
-		return attributes.isAdministrator();
+	public void setUser(User user) {
+		this.user = user;
 	}
-	
-	public UserPreferences getPreferences() {
-		return attributes.getPreferences();
-	}
-	
 }

@@ -19,8 +19,7 @@ package org.glimpse.server;
 
 import java.util.Set;
 
-import org.glimpse.client.UserDescription;
-import org.glimpse.client.UserPreferences;
+import org.glimpse.client.UserAttributes;
 import org.glimpse.client.layout.PageDescription;
 
 public interface UserManager {
@@ -35,13 +34,11 @@ public interface UserManager {
 	void createUser(String userId, String password);
 	void setUserPassword(String userId, String password);
 	
-	
 	Set<String> getUsers();
 	
-	UserDescription getUserDescription(String userId);
-	UserDescription getDefaultUserDescription();
-	
-	void setUserPreferences(String userId, UserPreferences userPreferences);	
+	UserAttributes getUserAttributes(String userId);
+	UserAttributes getDefaultUserAttributes();	
+	void setUserAttributes(String userId, UserAttributes userAttributes);	
 	
 	PageDescription getUserPageDescription(String localeName, String userId);
 	void setUserPageDescription(String userId, PageDescription pageDescription);

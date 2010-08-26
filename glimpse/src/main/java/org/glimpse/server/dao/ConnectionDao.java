@@ -15,8 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package org.glimpse.server;
+package org.glimpse.server.dao;
 
-public interface User {
+import org.glimpse.server.model.Connection;
+import org.glimpse.server.model.User;
 
+public interface ConnectionDao {
+	Connection getConnection(String id);
+	void createConnection(String id, User user);
+	void deleteConnection(String id);
 }

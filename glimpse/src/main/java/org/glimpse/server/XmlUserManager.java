@@ -23,7 +23,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -39,9 +38,6 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathFactory;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.io.IOUtils;
@@ -49,17 +45,15 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.glimpse.client.UserAttributes;
 import org.glimpse.client.UserDescription;
-import org.glimpse.client.UserPreferences;
 import org.glimpse.client.layout.ColumnDescription;
 import org.glimpse.client.layout.ComponentDescription;
 import org.glimpse.client.layout.PageDescription;
 import org.glimpse.client.layout.TabDescription;
-import org.glimpse.client.layout.ComponentDescription.Type;
 import org.springframework.web.context.ServletContextAware;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 
 public class XmlUserManager implements UserManager, ServletContextAware {
 	private static final Log logger = LogFactory.getLog(XmlUserManager.class);
@@ -218,6 +212,7 @@ public class XmlUserManager implements UserManager, ServletContextAware {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public Set<String> getUsers() {
 		FileInputStream fis = null;
 		try {
@@ -243,28 +238,26 @@ public class XmlUserManager implements UserManager, ServletContextAware {
 	}
 
 
-	public UserDescription getDefaultUserDescription() {
-		UserDescription userDescription = getUserDescription(UserDescription.GUEST_ID);
-		return userDescription;
+	public UserAttributes getDefaultUserAttributes() {
+		UserAttributes userAttributes = getUserAttributes(UserDescription.GUEST_ID);
+		return userAttributes;
 	}
 	
-	public UserDescription getUserDescription(String userId) {
-		UserDescription userDescription = getExistingUserDescription(userId);
-		if(userDescription == null) {
-			userDescription = getExistingUserDescription(
+	public UserAttributes getUserAttributes(String userId) {
+		UserAttributes userAttributes = getExistingUserAttributes(userId);
+		if(userAttributes == null) {
+			userAttributes = getExistingUserAttributes(
 					UserDescription.GUEST_ID);
-			if(userDescription != null) {
-				userDescription.setId(userId);
-			} else {
-				userDescription = new UserDescription(userId);
+			if(userAttributes == null) {
+				userAttributes = new UserAttributes();
 			}
 		}
-		return userDescription;
+		return userAttributes;
 	}
 
-	private UserDescription getExistingUserDescription(String userId) {
+	private UserAttributes getExistingUserAttributes(String userId) {
 		File userDir = new File(usersDirectory, userId);
-		File userFile = new File(userDir, "description.xml");
+		File userFile = new File(userDir, "attributes.xml");
 		
 		if(!userFile.exists()) {
 			return null;
@@ -275,42 +268,17 @@ public class XmlUserManager implements UserManager, ServletContextAware {
 				DocumentBuilderFactory.newInstance().newDocumentBuilder();			
 			Document doc = builder.parse(userFile);
 			
-			UserDescription userDescription = new UserDescription(userId);
-			XPath xpath = XPathFactory.newInstance().newXPath();
-			
-			userDescription.setAdministrator(
-					"true".equals(doc.getDocumentElement().getAttribute("administrator")));
-			
-			String label = (String)xpath.evaluate("/user/label",
-					doc, XPathConstants.STRING);
-			userDescription.getPreferences().setLabel(label);
-			
-			String locale = (String)xpath.evaluate("/user/locale",
-					doc, XPathConstants.STRING);
-			userDescription.getPreferences().setLocale(locale);
-			
-			String theme = (String)xpath.evaluate("/user/theme",
-					doc, XPathConstants.STRING);
-			userDescription.getPreferences().setTheme(theme);
-			
-			return userDescription;			
+			return XmlUserManagerUtils.buildUserAttributes(doc);
 		} catch(Exception e) {
 			logger.error("Error while reading user description xml", e);
 			return null;
 		}
 	}
 	
-	public void setUserPreferences(String userId,
-			UserPreferences userPreferences) {
-		UserDescription userDescription = getUserDescription(userId);
-		userDescription.setPreferences(userPreferences);
-		setUserDescription(userId, userDescription);
-	}
-
-	private void setUserDescription(String userId,
-			UserDescription userDescription) {
+	public void setUserAttributes(String userId,
+			UserAttributes userAttributes) {
 		File userDir = new File(usersDirectory, userId);
-		File userFile = new File(userDir, "description.xml");
+		File userFile = new File(userDir, "attributes.xml");
 		
 		try {			
 			DocumentBuilder builder =
@@ -319,24 +287,24 @@ public class XmlUserManager implements UserManager, ServletContextAware {
 			
 			Element userElement = doc.createElement("user");
 			userElement.setAttribute("administrator",
-					Boolean.toString(userDescription.isAdministrator()));
+					Boolean.toString(userAttributes.isAdministrator()));
 			doc.appendChild(userElement);
 			
-			String label = userDescription.getPreferences().getLabel();
+			String label = userAttributes.getPreferences().getLabel();
 			if(label != null) {
 				Element labelElement = doc.createElement("label");
 				userElement.appendChild(labelElement);
 				labelElement.appendChild(doc.createTextNode(label));
 			}
 			
-			String locale = userDescription.getPreferences().getLocale();
+			String locale = userAttributes.getPreferences().getLocale();
 			if(locale != null) {
 				Element localeElement = doc.createElement("locale");
 				userElement.appendChild(localeElement);
 				localeElement.appendChild(doc.createTextNode(locale));
 			}
 			
-			String theme = userDescription.getPreferences().getTheme();
+			String theme = userAttributes.getPreferences().getTheme();
 			if(theme != null) {
 				Element themeElement = doc.createElement("theme");
 				userElement.appendChild(themeElement);
@@ -375,7 +343,7 @@ public class XmlUserManager implements UserManager, ServletContextAware {
 				}
 				Document doc = builder.parse(is);
 				
-				return buildPage(doc);
+				return XmlUserManagerUtils.buildPage(doc);
 				
 			} catch(Exception e) {
 				logger.error("Error while reading page description xml", e);
@@ -398,7 +366,7 @@ public class XmlUserManager implements UserManager, ServletContextAware {
 				DocumentBuilderFactory.newInstance().newDocumentBuilder();			
 			Document doc = builder.parse(pageFile);
 			
-			return buildPage(doc);
+			return XmlUserManagerUtils.buildPage(doc);
 			
 		} catch(Exception e) {
 			logger.error("Error while reading page description xml", e);
@@ -470,62 +438,6 @@ public class XmlUserManager implements UserManager, ServletContextAware {
 	public void setDefaultPageDescription(String localeName, PageDescription pageDescription) {
 		setUserPageDescription(UserDescription.GUEST_ID + "_" + localeName, pageDescription);
 		
-	}
-	
-	private PageDescription buildPage(Document doc) throws Exception {
-		PageDescription page = new PageDescription();		
-		
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		NodeList tabNodes = (NodeList)xpath.evaluate("/page/tab", doc, XPathConstants.NODESET);
-		for(int i = 0; i < tabNodes.getLength(); i++) {
-			Element tabElement = (Element)tabNodes.item(i);
-			TabDescription tab = buildTab(doc, tabElement);
-			page.addTabDescription(tab);
-		}
-		
-		return page;
-	}
-	
-	private TabDescription buildTab(Document doc, Element tabElement) throws Exception {
-		TabDescription tab = new TabDescription();
-		tab.setTitle(tabElement.getAttribute("title"));
-		
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		NodeList columnNodes = (NodeList)xpath.evaluate("column", tabElement, XPathConstants.NODESET);
-		for(int i = 0; i < columnNodes.getLength(); i++) {
-			Element columnElement = (Element)columnNodes.item(i);
-			ColumnDescription column = buildColumn(doc, columnElement);
-			tab.addColumnDescription(column);
-		}
-		return tab;
-	}
-	
-	private ColumnDescription buildColumn(Document doc, Element columnElement) throws Exception {
-		ColumnDescription column = new ColumnDescription();
-		
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		NodeList componentNodes = (NodeList)xpath.evaluate("component", columnElement, XPathConstants.NODESET);
-		for(int i = 0; i < componentNodes.getLength(); i++) {
-			Element componentElement = (Element)componentNodes.item(i);
-			ComponentDescription component = buildComponent(doc, componentElement);
-			column.addComponentDescription(component);
-		}
-		return column;
-	}
-	
-	private ComponentDescription buildComponent(Document doc, Element componentElement) throws Exception {
-		ComponentDescription component = new ComponentDescription(
-				Type.valueOf(componentElement.getAttribute("type")));
-		Map<String, String> properties = new HashMap<String, String>();
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		NodeList propertyNodes = (NodeList)xpath.evaluate("property", componentElement, XPathConstants.NODESET);
-		for(int i = 0; i < propertyNodes.getLength(); i++) {
-			Element propertyElement = (Element)propertyNodes.item(i);
-			properties.put(propertyElement.getAttribute("name"),
-					propertyElement.getAttribute("value"));
-		}
-		component.setProperties(properties);
-		return component;
 	}
 
 	public boolean isAdministrator(String userId) {

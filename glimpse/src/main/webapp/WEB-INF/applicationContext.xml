@@ -4,16 +4,74 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	 http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+	<bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location"><value>/WEB-INF/hibernate.properties</value></property>
+	</bean>
+
+	<!-- sessionFactory  -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="hibernateProperties"><ref bean="hibernateProperties"/></property>
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+		<property  name="configurationClass">
+  			 <value>org.hibernate.cfg.AnnotationConfiguration</value>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="transactionProxy" abstract="true"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED, readOnly</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="passwordEncryptor" class="org.jasypt.util.password.BasicPasswordEncryptor"/>
+	
+	<bean id="userDao" class="org.glimpse.server.dao.hibernate.UserDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+		<property name="passwordEncryptor">
+			<ref bean="passwordEncryptor" />
+		</property>
+	</bean>
+	
+	<bean id="connectionDao" class="org.glimpse.server.dao.hibernate.ConnectionDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="userManager" parent="transactionProxy">
+		<property name="target">
+			<bean class="org.glimpse.server.OrmUserManager">
+				<constructor-arg ref="userDao"/>
+				<constructor-arg ref="connectionDao"/>
+			</bean>
+		</property>
+		<property name="transactionAttributeSource">
+			<bean class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource"/>
+		</property>
+	</bean>
 	
 	<bean id="glimpseManager" class="org.glimpse.server.GlimpseManager"/>
 	
 	<bean id="configuration" factory-bean="glimpseManager" factory-method="getConfiguration"/>
 	
 	<bean id="cacheManager" class="net.sf.ehcache.CacheManager" factory-method="create"/>
-	
-	<bean id="userManager" class="org.glimpse.server.XmlUserManager">
-		<constructor-arg ref="configuration"/>
-	</bean>
 	
 	<bean id="proxyProvider" class="org.glimpse.server.ConfiguredProxyProvider">
 		<constructor-arg ref="configuration"/>
