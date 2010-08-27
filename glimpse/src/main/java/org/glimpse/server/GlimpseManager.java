@@ -33,7 +33,8 @@ import org.springframework.web.context.ServletContextAware;
 
 public class GlimpseManager implements ServletContextAware {
 	private static final Log logger = LogFactory.getLog(GlimpseManager.class);
-
+	
+	private File configurationDirectory;
 	private Configuration configuration;
 	
 	public void setServletContext(ServletContext servletContext) {
@@ -41,13 +42,14 @@ public class GlimpseManager implements ServletContextAware {
 		if(StringUtils.isEmpty(confDirPath)) {
 			confDirPath = servletContext.getRealPath("/WEB-INF/conf");
 		}
+		configurationDirectory = new File(confDirPath);
 		
-		File logConfig = new File(confDirPath, "log4j.properties");
+		File logConfig = new File(configurationDirectory, "log4j.properties");
 		LogManager.resetConfiguration();
 		PropertyConfigurator.configure(logConfig.getAbsolutePath());
 		
 		try {
-			configuration = new PropertiesConfiguration(new File(confDirPath,
+			configuration = new PropertiesConfiguration(new File(configurationDirectory,
 				"glimpse.properties"));
 		} catch (ConfigurationException e) {
 			logger.fatal("Unable to Load configuration", e);
@@ -57,6 +59,10 @@ public class GlimpseManager implements ServletContextAware {
 	
 	public Configuration getConfiguration() {
 		return configuration;
+	}
+	
+	public File getConfigurationDirectory() {
+		return configurationDirectory;
 	}
 
 }

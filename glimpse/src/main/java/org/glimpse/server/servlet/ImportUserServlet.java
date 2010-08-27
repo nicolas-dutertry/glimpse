@@ -142,6 +142,8 @@ public class ImportUserServlet extends HttpServlet {
 			logger.error("Exception", e);
 			request.setAttribute("errorMessage", "Unexpected error");
 		}
+		
+		response.setContentType("text/html; charset=UTF-8");
 		getServletContext().getRequestDispatcher("/WEB-INF/views/import-user.jsp").include(
 				request, response);
 	}

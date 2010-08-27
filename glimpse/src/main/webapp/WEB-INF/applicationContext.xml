@@ -4,8 +4,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	 http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="location"><value>/WEB-INF/hibernate.properties</value></property>
+	<bean id="hibernateProperties" class="org.glimpse.server.hibernate.ConfigurationPropertiesFactoryBean">
+		<property name="glimpseManager"><ref bean="glimpseManager"/></property>
+		<property name="fileName"><value>hibernate.properties</value></property>
 	</bean>
 
 	<!-- sessionFactory  -->
