@@ -80,5 +80,12 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		user.setTheme("default");
 		session.save(user);
 	}
-
+	
+	public void deleteUser(String userId) {
+		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		User user = getUser(userId);
+		if(user != null) {
+			session.delete(user);
+		}
+	}
 }

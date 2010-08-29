@@ -144,7 +144,7 @@ public class ImportUserServlet extends HttpServlet {
 		}
 		
 		response.setContentType("text/html; charset=UTF-8");
-		getServletContext().getRequestDispatcher("/WEB-INF/views/import-user.jsp").include(
+		getServletContext().getRequestDispatcher("/WEB-INF/views/import-user.jsp").forward(
 				request, response);
 	}
 	

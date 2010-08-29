@@ -36,6 +36,11 @@
 		<servlet-class>org.glimpse.server.servlet.ImportUserServlet</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>UserAdminServlet</servlet-name>
+		<servlet-class>org.glimpse.server.servlet.UserAdminServlet</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.rpc</url-pattern>
@@ -49,6 +54,11 @@
 	<servlet-mapping>
 		<servlet-name>ImportUserServlet</servlet-name>
 		<url-pattern>/servlets/import-user</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>UserAdminServlet</servlet-name>
+		<url-pattern>/servlets/user-admin</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Default page to serve -->

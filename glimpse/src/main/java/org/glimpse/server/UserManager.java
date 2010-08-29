@@ -33,6 +33,7 @@ public interface UserManager {
 	
 	void createUser(String userId, String password);
 	void setUserPassword(String userId, String password);
+	void deleteUser(String userId);
 	
 	Set<String> getUsers();
 	

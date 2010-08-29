@@ -27,4 +27,5 @@ public interface UserDao {
 	User getUser(String userId);
 	Collection<User> getUsers();
 	void createUser(String userId, String password);
+	void deleteUser(String userId);
 }

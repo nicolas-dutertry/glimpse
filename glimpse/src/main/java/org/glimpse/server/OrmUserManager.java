@@ -96,6 +96,11 @@ public class OrmUserManager implements UserManager {
 	public void setUserPassword(String userId, String password) {
 		userDao.setPassword(userId, password);
 	}
+	
+	@Transactional (readOnly=false)
+	public void deleteUser(String userId) {
+		userDao.deleteUser(userId);
+	}
 
 	public Set<String> getUsers() {
 		Set<String> userIds = new HashSet<String>();

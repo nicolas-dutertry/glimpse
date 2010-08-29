@@ -40,6 +40,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.apache.commons.configuration.Configuration;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
@@ -204,6 +205,31 @@ public class XmlUserManager implements UserManager, ServletContextAware {
 			properties.setProperty(userId, password);
 			fos = new FileOutputStream(passwordsFile);
 			properties.store(fos, "");			
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} finally {
+			IOUtils.closeQuietly(fis);
+			IOUtils.closeQuietly(fos);
+		}
+	}
+	
+	public synchronized void deleteUser(String userId) {
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+		try {
+			Properties properties = new Properties();
+			if(passwordsFile.exists()) {
+				fis = new FileInputStream(passwordsFile);
+				properties.load(fis);
+				fis.close();
+			}
+			
+			properties.remove(userId);
+			fos = new FileOutputStream(passwordsFile);
+			properties.store(fos, "");
+			
+			File userDir = new File(usersDirectory, userId);
+			FileUtils.deleteDirectory(userDir);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		} finally {
