@@ -17,11 +17,12 @@
 		<div class="errorMessage">${errorMessage}</div>
 		<div class="infoMessage">${message}</div>
 		<form method="post" enctype="multipart/form-data">
-			<table>
+			<input type="hidden" name="userId" value="${userId}"/>
+			<table>	
 				<tr>
 					<td>User ID</td>
-					<td><input type="text" name="userId"/></td>
-				</tr>
+					<td>${userId}</td>
+				</tr>			
 				<tr>
 					<td>Password</td>
 					<td><input type="password" name="password1"/></td>
@@ -31,8 +32,25 @@
 					<td><input type="password" name="password2"/></td>
 				</tr>
 				<tr>
-					<td>User description file</td>
-					<td><input type="file" name="userDescription" accept="text/xml"/></td>
+					<td>Administrator</td>
+					<td>
+						<select name="administrator">
+							<option <c:if test="${userAttributes.administrator}">selected="selected"</c:if>>true</option>
+							<option <c:if test="${!userAttributes.administrator}">selected="selected"</c:if>>false</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Label</td>
+					<td><input type="text" name="label" value="${userAttributes.preferences.label}"/></td>
+				</tr>
+				<tr>
+					<td>Locale</td>
+					<td><input type="text" name="locale" value="${userAttributes.preferences.locale}"/></td>
+				</tr>
+				<tr>
+					<td>Theme</td>
+					<td><input type="text" name="Theme" value="${userAttributes.preferences.theme}"/></td>
 				</tr>
 				<tr>
 					<td>Page file</td>
@@ -41,5 +59,6 @@
 			</table>
 			<input type="submit" value="OK"/>
 		</form>
+		<a href="<c:url value="/servlets/user-admin"/>">Back</a>
 	</body>
 </html>

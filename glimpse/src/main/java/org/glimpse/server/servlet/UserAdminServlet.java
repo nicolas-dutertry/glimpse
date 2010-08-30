@@ -1,7 +1,8 @@
 package org.glimpse.server.servlet;
 
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.glimpse.client.UserAttributes;
-import org.glimpse.client.UserDescription;
 import org.glimpse.client.UserPreferences;
 import org.glimpse.server.GlimpseUtils;
 import org.glimpse.server.UserManager;
@@ -47,24 +47,37 @@ public class UserAdminServlet extends HttpServlet {
 		}
 		
 		String pageName = "user-list.jsp";
+		String errorMessage = null;
+		String message = null;
 		String actionType = request.getParameter("actionType");
 		if(StringUtils.isEmpty(actionType)) {
-			Set<String> userIds = userManager.getUsers();
-			Set<UserDescription> userDescriptions = new HashSet<UserDescription>();
-			for (String userId : userIds) {
-				UserAttributes userAttributes = userManager.getUserAttributes(userId);
-				UserDescription userDescription = new UserDescription(userId);
-				userDescription.setAttributes(userAttributes);
-				userDescriptions.add(userDescription);
-			}
-			request.setAttribute("userDescriptions", userDescriptions);
+			// nothing to do
 		} else if(actionType.equals("create")) {
 			String userId = request.getParameter("userId");
-			String password = request.getParameter("password");
-			userManager.createUser(userId, password);
+			String password1 = request.getParameter("password1");
+			String password2 = request.getParameter("password2");
+			
+			if(StringUtils.isBlank(userId)) {
+				errorMessage = "User ID is empty";
+			}
+			
+			if(StringUtils.isEmpty(errorMessage) && StringUtils.isBlank(password1)) {
+				errorMessage = "Password is empty";
+			}
+			
+			if(StringUtils.isEmpty(errorMessage) && !StringUtils.equals(password1, password2)) {
+				errorMessage = "Passwords do not match";
+			}
+			
+			if(StringUtils.isEmpty(errorMessage)) {
+				userManager.createUser(userId, password1);				
+				message = "User " + userId + " created";
+			}
 		} else if(actionType.equals("delete")) {
 			String userId = request.getParameter("userId");
 			userManager.deleteUser(userId);
+			
+			message = "User " + userId + " deleted";
 		} else if(actionType.equals("setAttributes")) {
 			String userId = request.getParameter("userId");
 			boolean administrator = "true".equals(request.getParameter("administrator"));
@@ -81,9 +94,23 @@ public class UserAdminServlet extends HttpServlet {
 			userManager.setUserAttributes(userId, userAttributes);
 		}
 		
+		if(errorMessage != null) {
+			request.setAttribute("errorMessage", errorMessage);
+		}
+		
+		if(message != null) {
+			request.setAttribute("message", message);
+		}
+		
+		if(pageName.equals("user-list.jsp")) {
+			Set<String> userIds = userManager.getUsers();
+			Map<String, UserAttributes> userAttributesMap = new HashMap<String, UserAttributes>();
+			for (String userId : userIds) {
+				UserAttributes userAttributes = userManager.getUserAttributes(userId);
+				userAttributesMap.put(userId, userAttributes);
+			}
+			request.setAttribute("userAttributesMap", userAttributesMap);
+		}
 		getServletContext().getRequestDispatcher("/WEB-INF/views/" + pageName).forward(request, response);
 	}
-	
-	
-
 }

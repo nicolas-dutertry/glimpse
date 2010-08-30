@@ -42,9 +42,9 @@ import org.glimpse.server.XmlUserManagerUtils;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.w3c.dom.Document;
 
-public class ImportUserServlet extends HttpServlet {
+public class ModifyUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Log logger = LogFactory.getLog(ImportUserServlet.class);
+	private static final Log logger = LogFactory.getLog(ModifyUserServlet.class);
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -72,6 +72,8 @@ public class ImportUserServlet extends HttpServlet {
 		}
 		
 		try {
+			String userId = null;
+			
 			if(ServletFileUpload.isMultipartContent(request)) {
 				// Create a factory for disk-based file items
 				FileItemFactory factory = new DiskFileItemFactory();
@@ -79,12 +81,14 @@ public class ImportUserServlet extends HttpServlet {
 				// Create a new file upload handler
 				ServletFileUpload upload = new ServletFileUpload(factory);
 				
-				// Parse the request
-				String userId = null;
+				// Parse the request				
 				String password1 = null;
 				String password2 = null;
+				String administrator = null;
+				String label = null;
+				String locale = null;
+				String theme = null;
 				Document pageDocument = null;
-				Document userDescriptionDocument = null;
 				DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 				List<FileItem> items = upload.parseRequest(request);
 				for (FileItem item : items) {
@@ -94,10 +98,18 @@ public class ImportUserServlet extends HttpServlet {
 						password1 = item.getString();
 					} else if(item.getFieldName().equals("password2")) {
 						password2 = item.getString();
+					} else if(item.getFieldName().equals("administrator")) {
+						administrator = item.getString();
+					} else if(item.getFieldName().equals("label")) {
+						label = item.getString();
+					} else if(item.getFieldName().equals("locale")) {
+						locale = item.getString();
+					} else if(item.getFieldName().equals("theme")) {
+						theme = item.getString();
 					} else if(item.getFieldName().equals("page")) {
-						pageDocument = builder.parse(item.getInputStream());
-					} else if(item.getFieldName().equals("userDescription")) {
-						userDescriptionDocument = builder.parse(item.getInputStream());
+						if(item.getSize() > 0) {
+							pageDocument = builder.parse(item.getInputStream());
+						}
 					}
 				}
 				
@@ -107,45 +119,57 @@ public class ImportUserServlet extends HttpServlet {
 					errorMessage = "User ID is empty";
 				}
 				
-				if(StringUtils.isEmpty(errorMessage) && StringUtils.isBlank(password1)) {
-					errorMessage = "Password is empty";
-				}
-				
-				if(StringUtils.isEmpty(errorMessage) && !StringUtils.equals(password1, password2)) {
+				if(StringUtils.isEmpty(errorMessage) && StringUtils.isNotBlank(password1) &&
+						!StringUtils.equals(password1, password2)) {
 					errorMessage = "Passwords do not match";
 				}
 				
-				if(StringUtils.isEmpty(errorMessage) && userDescriptionDocument == null) {
-					errorMessage = "User description file is empty";
-				}
-				
-				if(StringUtils.isEmpty(errorMessage) && pageDocument == null) {
-					errorMessage = "Page file is empty";
-				}
-				
 				if(StringUtils.isEmpty(errorMessage)) {
-					userManager.createUser(userId, password1);
+					if(StringUtils.isNotBlank(password1)) {
+						userManager.setUserPassword(userId, password1);
+					}
 					
-					UserAttributes userAttributes = XmlUserManagerUtils.buildUserAttributes(
-							userDescriptionDocument);
+					UserAttributes userAttributes = userManager.getUserAttributes(userId);
+					if(StringUtils.isNotBlank(administrator)) {
+						userAttributes.setAdministrator("true".equals(administrator));
+					}
+					if(StringUtils.isNotBlank(label)) {
+						userAttributes.getPreferences().setLabel(label);
+					}
+					if(StringUtils.isNotBlank(locale)) {
+						userAttributes.getPreferences().setLocale(locale);
+					}
+					if(StringUtils.isNotBlank(theme)) {
+						userAttributes.getPreferences().setTheme(theme);
+					}
+					
 					userManager.setUserAttributes(userId, userAttributes);
 					
-					PageDescription pageDescription = XmlUserManagerUtils.buildPage(pageDocument);
-					userManager.setUserPageDescription(userId, pageDescription);
+					if(pageDocument != null) {
+						PageDescription pageDescription = XmlUserManagerUtils.buildPage(pageDocument);
+						userManager.setUserPageDescription(userId, pageDescription);
+					}
 					
-					request.setAttribute("message", "User " + userId + " successfully imported");
+					request.setAttribute("message", "User " + userId + " successfully updated");
 				} else {
 					request.setAttribute("errorMessage", errorMessage);
 				}
+			} else {
+				userId = request.getParameter("userId");
 			}
+			
+			request.setAttribute("userId", userId);
+			UserAttributes userAttributes = userManager.getUserAttributes(userId);
+			request.setAttribute("userAttributes", userAttributes);
+			
+			getServletContext().getRequestDispatcher("/WEB-INF/views/modify-user.jsp").forward(
+					request, response);
 		} catch(Exception e) {
 			logger.error("Exception", e);
-			request.setAttribute("errorMessage", "Unexpected error");
+			throw new ServletException(e);
 		}
 		
-		response.setContentType("text/html; charset=UTF-8");
-		getServletContext().getRequestDispatcher("/WEB-INF/views/import-user.jsp").forward(
-				request, response);
+		
 	}
 	
 	

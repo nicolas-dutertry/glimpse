@@ -32,8 +32,8 @@
 	</servlet>
 	
 	<servlet>
-		<servlet-name>ImportUserServlet</servlet-name>
-		<servlet-class>org.glimpse.server.servlet.ImportUserServlet</servlet-class>
+		<servlet-name>ModifyUserServlet</servlet-name>
+		<servlet-class>org.glimpse.server.servlet.ModifyUserServlet</servlet-class>
 	</servlet>
 	
 	<servlet>
@@ -52,8 +52,8 @@
 	</servlet-mapping>
 	
 	<servlet-mapping>
-		<servlet-name>ImportUserServlet</servlet-name>
-		<url-pattern>/servlets/import-user</url-pattern>
+		<servlet-name>ModifyUserServlet</servlet-name>
+		<url-pattern>/servlets/modify-user</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>

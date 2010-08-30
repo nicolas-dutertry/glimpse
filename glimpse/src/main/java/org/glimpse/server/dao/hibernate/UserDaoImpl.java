@@ -19,6 +19,8 @@ package org.glimpse.server.dao.hibernate;
 
 import java.util.Collection;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.Validate;
 import org.glimpse.server.dao.UserDao;
 import org.glimpse.server.model.User;
 import org.hibernate.Criteria;
@@ -49,6 +51,8 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	}
 	
 	public void setPassword(String userId, String password) {
+		Validate.isTrue(StringUtils.isNotBlank(password), "password must not be empty");
+		
 		User user = getUser(userId);
 		if(user != null) {
 			user.setEncryptedPassword(passwordEncryptor.encryptPassword(password));
@@ -73,6 +77,9 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	}
 
 	public void createUser(String userId, String password) {
+		Validate.isTrue(StringUtils.isNotBlank(userId), "userId must not be empty");
+		Validate.isTrue(StringUtils.isNotBlank(password), "password must not be empty");
+		
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 		User user = new User(userId, passwordEncryptor.encryptPassword(password));
 		user.setLabel(userId);
