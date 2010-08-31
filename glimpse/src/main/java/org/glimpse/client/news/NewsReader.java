@@ -266,7 +266,11 @@ public class NewsReader extends Component {
 					public void onSuccess(NewsChannel channel) {
 						loadingPanel.setVisible(false);
 						if(channel != null) {
-							title.setText(channel.getTitle());
+							String channelTitle = channel.getTitle();
+							if(channelTitle.length() > 60) {
+								channelTitle = channelTitle.substring(0, 60) + "...";
+							}
+							title.setText(channelTitle);
 							title.setHref(channel.getUrl());
 							String encodedUrl = URL.encodeComponent(channel.getUrl());
 							titleImage.setUrl("servlets/news-icon?url=" + encodedUrl);
