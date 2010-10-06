@@ -32,6 +32,12 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class ConnectionFilter implements Filter {
+	private static final String[] ADMIN_PATHS = {
+		"/servlets/modify-user",
+		"/servlets/user-admin",
+		"/monitoring"
+	};
+	
 	private ServletContext servletContext;
 	
 	public void init(FilterConfig config) throws ServletException {
@@ -54,6 +60,16 @@ public class ConnectionFilter implements Filter {
 	}
 	
 	public void destroy() {
+	}
+	
+	private boolean isAdminRequest(HttpServletRequest httprequest) {
+		String uri = httprequest.getRequestURI();
+		for (String path : ADMIN_PATHS) {
+			if(uri.startsWith(httprequest.getContextPath() + path)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
