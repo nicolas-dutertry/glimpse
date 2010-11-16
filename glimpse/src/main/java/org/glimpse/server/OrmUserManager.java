@@ -188,7 +188,8 @@ public class OrmUserManager implements UserManager {
 			PageDescription pageDescription) {
 		User user = userDao.getUser(userId);		
 		if(user != null) {
-			user.setTabDescriptions(OrmUserManagerUtils.buildServerTabDescriptions(
+			user.getTabDescriptions().clear();
+			user.getTabDescriptions().addAll(OrmUserManagerUtils.buildServerTabDescriptions(
 					user, pageDescription));
 		}
 	}

@@ -28,6 +28,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.IndexColumn;
 
 @Entity
@@ -55,6 +56,7 @@ public class User implements Serializable {
 	private String theme;
 	
 	@OneToMany(cascade=CascadeType.ALL)
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@IndexColumn(name="tab_index")
 	@JoinColumn(name="user_id", nullable=false)
 	private List<ServerTabDescription> tabDescriptions;
@@ -117,10 +119,6 @@ public class User implements Serializable {
 
 	public List<ServerTabDescription> getTabDescriptions() {
 		return tabDescriptions;
-	}
-
-	public void setTabDescriptions(List<ServerTabDescription> tabDescriptions) {
-		this.tabDescriptions = tabDescriptions;
 	}
 	
 }
