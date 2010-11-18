@@ -16,11 +16,4 @@ public class AggregatorDragController extends PickupDragController {
 		
 		context.draggable.getElement().getStyle().setProperty("position", "");
 	}
-
-	
-
-	
-	
-	
-
 }
