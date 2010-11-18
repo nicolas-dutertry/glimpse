@@ -10,8 +10,8 @@
 	<name>Glimpse</name>
 	
 	<properties>
-		<gwt.version>2.0.1</gwt.version>
-		<gwt-dnd.version>3.0.0</gwt-dnd.version>
+		<gwt.version>2.1.0</gwt.version>
+		<gwt-dnd.version>3.0.1</gwt-dnd.version>
 		<spring.version>3.0.3.RELEASE</spring.version>
 	</properties>
 	
@@ -219,11 +219,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<!-- Tache Ant de compilation GWT. Ant permet de résoudre les
-          		     problèmes liés à la présence d'espaces dans les chemins et
-          		     à la longueur de classpath sous Windows, ce que ne savent
-          		     pas faire les 2 modules maven pour GWT de Google et 
-          		     Codehaus -->
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
@@ -240,28 +235,25 @@
 									GWT issue #3439
 								-->
 								<delete dir="${project.build.directory}/classes/javax"/>
-								
-								<path id="full.classpath">
-									<pathelement path="${maven.compile.classpath}"/>
-									<pathelement location="src/main/java"/>
-									<pathelement location="src/main/resources"/>
-									<pathelement location="${settings.localRepository}/com/google/gwt/gwt-dev/${gwt.version}/gwt-dev-${gwt.version}.jar"/>
-									<pathelement location="${settings.localRepository}/com/google/gwt/gwt-user/${gwt.version}/gwt-user-${gwt.version}.jar"/>
-									<pathelement location="${settings.localRepository}/com/google/gwt/gwt-servlet/${gwt.version}/gwt-servlet-${gwt.version}.jar"/>
-									<pathelement location="${settings.localRepository}/com/google/code/gwt-dnd/gwt-dnd/${gwt-dnd.version}/gwt-dnd-${gwt-dnd.version}.jar"/>
-								</path>
-								<java classpathref="full.classpath" classname="com.google.gwt.dev.Compiler" fork="true" maxmemory="512m" failonerror="true">
-									<arg value="-war"/>
-									<arg value="${project.build.directory}/webapp"/>
-									<arg value="-gen"/>
-									<arg value="${project.build.directory}/gwt/gen"/>
-									<!-- OBF, PRETTY, DETAILED -->
-									<arg value="-style"/>
-									<arg value="OBF"/>
-									<arg value="org.glimpse.Aggregator"/>
-								</java>
 							</tasks>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>2.1.0</version>
+				<configuration>
+					<module>org.glimpse.Aggregator</module>
+					<webappDirectory>${project.build.directory}/webapp</webappDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>

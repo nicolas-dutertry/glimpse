@@ -39,7 +39,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -52,8 +51,6 @@ import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.MenuBar;
-import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -115,7 +112,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 		}
 		
 		RootPanel.get("main").getElement().getStyle().setProperty("position" , "relative");
-		dragController = new PickupDragController(RootPanel.get("main"), false);
+		dragController = new AggregatorDragController(RootPanel.get("main"), false);
 		dragController.addDragHandler(this);
 		
 		loadPopup = new PopupPanel();
@@ -444,13 +441,14 @@ public class Aggregator implements EntryPoint, DragHandler {
 	}
 
 	public void onDragStart(DragStartEvent event) {
+		event.getContext().draggable.getElement().getStyle().setProperty("position", "");
 	}
 
 	public void onPreviewDragEnd(DragEndEvent event) throws VetoDragException {
 	}
 
 	public void onPreviewDragStart(DragStartEvent event)
-			throws VetoDragException {
+			throws VetoDragException {		
 	}
 	
 	public void reloadPage() {
