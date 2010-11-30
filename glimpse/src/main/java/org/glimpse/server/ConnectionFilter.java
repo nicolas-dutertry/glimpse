@@ -29,9 +29,13 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class ConnectionFilter implements Filter {
+	private static final Log logger = LogFactory.getLog(ConnectionFilter.class);
+	
 	private static final String[] ADMIN_PATHS = {
 		"/servlets/modify-user",
 		"/servlets/user-admin",
@@ -48,12 +52,22 @@ public class ConnectionFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		String connectionId = GlimpseUtils.getConnectionId((HttpServletRequest)request);
 		if(StringUtils.isNotEmpty(connectionId)) {
+			if(logger.isDebugEnabled()) {
+				logger.debug("Connection id found : <" + connectionId + ">");
+			}
+			
 			UserManager userManager = 
 				WebApplicationContextUtils.getWebApplicationContext(servletContext).getBean(
 						UserManager.class);
-			request.setAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID,
-					userManager.getUserId(connectionId));
+			String userId = userManager.getUserId(connectionId);
+			
+			if(logger.isDebugEnabled()) {
+				logger.debug("User id is : <" + userId + ">");
+			}
+			
+			request.setAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID, userId);
 		} else {
+			logger.debug("No connection id found");
 			request.removeAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID);
 		}
 		chain.doFilter(request, response);
