@@ -78,6 +78,8 @@
 		<constructor-arg ref="configuration"/>
 	</bean>
 	
+	<bean id="quotationFinder" class="org.glimpse.server.finance.RegexpQuotationFinder"/>
+	
 	<!--  GWT Services -->
 	<bean id="loginService" class="org.glimpse.server.LoginServiceImpl">
 		<property name="userManager" ref="userManager"/>
@@ -94,6 +96,7 @@
 	</bean>
 	<bean id="quotationService" class="org.glimpse.server.finance.QuotationServiceImpl">
 		<property name="proxyProvider" ref="proxyProvider"/>
+		<property name="quotationFinder" ref="quotationFinder"/>
 	</bean>
 
 </beans>

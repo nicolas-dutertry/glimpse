@@ -1,0 +1,1545 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>CAC 40 | PX1 | Cotations en temps réel | Boursorama</title>
+	<meta name="description" content="CAC 40 : Suivez le cours de l'action CAC 40. Consultez les informations boursi&egrave;res et financi&egrave;res de l'action CAC 40">
+	<meta name="sid" content="218,T">
+	<meta name="keywords" content="CAC 40, PX1, cours action CAC 40, cours valeur CAC 40, cotation action CAC 40" >
+	<meta name="verify-v1" content="I0FsPxHExiGPg59v8wudhIVrOq2U9GB7CqFx5cYjc28=">
+	<meta name="verify-v1" content="GFhFmAQSOCyjr4Ifjh0FTCU6y0PVtG40RO0UcSHnh5U=">
+	<meta name="verify-v1" content="492sDXLhtxkMkDoKQQdIDt09lRWQB3Dt6eZh42xUtjc=">
+
+	<meta name="google-site-verification" content="N_aUYi6cGZLjJPV6mJcnBbv8G9AFG4yOWSpkbAMrwWc">
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="content-language" content="fr">
+	<meta name="robots" content="index, follow, all">
+	<meta http-equiv="pragma" content="no-cache">
+
+		<META http-equiv="refresh" content="900">		<script type="text/javascript" src="http://img.boursorama.com/js/fonctions_base.js"></script>
+		
+			<script type="text/javascript" src="http://img.boursorama.com/js/menu/menu-brs.js"></script>
+
+		
+	<link rel="stylesheet" title="default" type="text/css" href="http://img.boursorama.com/css/cache/3bf404eb0477bd793f1f77afa051be5c.css?files%5B0%5D=%2Fcss%2Forderframe%2Forderframe-sprite.css&amp;files%5B1%5D=%2Fcss%2Fmaster-sprite.css&amp;files%5B2%5D=%2Fcss%2Fforms%2Ftooltip-sprite.css&amp;files%5B3%5D=%2Fcss%2Fgui%2Finfobox-sprite.css&amp;files%5B4%5D=%2Fcss%2Ficon-sprite.css&amp;files%5B5%5D=%2Fcss%2Ficons-generated%2Fdefault-sprite.css&amp;files%5B6%5D=%2Fcss%2Ficons-generated%2Fgeneral-sprite.css&amp;files%5B7%5D=%2Fcss%2Ficons-generated%2Fgui-sprite.css&amp;files%5B8%5D=%2Fcss%2Ficons-generated%2Fnot-sprited.css&amp;files%5B9%5D=%2Fcss%2Fcours%2Ffiche-valeur-header-sprite.css&amp;files%5B10%5D=%2Fcss%2Fmedia%2Fmedia-sprite.css" media="all" />
+</head>
+
+<body id="sprite" class="brs-ff css2">
+<div id="main">
+<div class="barre-haute">
+	<a onclick="window.location.href='http://boursoramabanque.solution.weborama.fr/fcgi-bin/performance.fcgi?ID=316585&A=1&L=46690&C=3150&P=6416&T=I&URL';" href="http://www.boursorama.com/banque-en-ligne/index.html?origine=456" >Boursorama Banque </a>:
+	<a onclick="window.location.href='http://boursoramabanque.solution.weborama.fr/fcgi-bin/performance.fcgi?ID=316585&A=1&L=46691&C=3150&P=6416&T=I&URL';" href="http://www.boursorama.com/banque-en-ligne/compte-bancaire/index.html" >Banque</a> -
+	<a onclick="window.location.href='http://boursoramabanque.solution.weborama.fr/fcgi-bin/performance.fcgi?ID=316585&A=1&L=46696&C=3150&P=6418&T=I&URL';" href="http://www.boursorama.com/banque-en-ligne/bourse/index.html" >Bourse</a> -
+	<a onclick="window.location.href='http://boursoramabanque.solution.weborama.fr/fcgi-bin/performance.fcgi?ID=316585&A=1&L=46705&C=3150&P=6419&T=I&URL';" href="http://www.boursorama.com/banque-en-ligne/sicav/index.html" >Sicav FCP</a> -
+	<a onclick="window.location.href='http://boursoramabanque.solution.weborama.fr/fcgi-bin/performance.fcgi?ID=316585&A=1&L=47458&C=3150&P=6420&T=I&URL';" href="http://www.boursorama.com/banque-en-ligne/epargne/livret-a.html" >Livret A</a> -
+	<a onclick="window.location.href='http://boursoramabanque.solution.weborama.fr/fcgi-bin/performance.fcgi?ID=316585&A=1&L=46708&C=3150&P=6420&T=I&URL';" href="http://www.boursorama.com/banque-en-ligne/epargne/index.html" >Epargne</a> -
+	<a onclick="window.location.href='http://boursoramabanque.solution.weborama.fr/fcgi-bin/performance.fcgi?ID=316585&A=1&L=46712&C=3150&P=6421&T=I&URL';" href="http://www.boursorama.com/banque-en-ligne/assurance-vie/index.html" >Assurance Vie</a> -
+	<a onclick="window.location.href='http://boursoramabanque.solution.weborama.fr/fcgi-bin/performance.fcgi?ID=316585&A=1&L=46717&C=3150&P=6422&T=I&URL';" href="http://www.boursorama.com/banque-en-ligne/credits/index.html" >Crédit Immobilier</a>
+
+</div>
+
+
+  
+<!-- Tetiere -->
+<div class="tetiere">
+		<!--	<div class="tet_hautdroit"></div><div id="tet_hautgauche"></div> -->
+
+	<a href="/"><div class="logo-brs"></div></a>
+
+	<div class="tet_centre">
+		<div class="main-search-block">
+	<div class="main-search-block-inner">
+
+		<form action="/recherche/index.phtml" id="search-form">
+			<div class="search-input left ">
+				<div class="searchico left"></div>
+				<div class="left">
+					<input size="60" class="search" type="text" name="search" style="color:#AAAAAA"
+						   id="search-query" value="Code, Libellé ou Mot clé"
+						   onclick="javascript:if(this.value=='Code, Libellé ou Mot clé'){ this.style.color='#222222';this.value='' };">
+				</div>
+			</div>
+			<div class="left">
+				<input class="search-butt" type="submit" value="Rechercher"/>
+
+			</div>
+					</form>
+	</div>
+</div>
+		<div class="bienvenue">
+			<a href="/connexion.phtml" rel="nofollow">(connexion)</a> | <a href="/membres/edition/coordonnees.phtml" rel="nofollow">Préférences</a> | <a href="/contact/support.phtml" rel="nofollow">Contact</a> | <a href="/plandusite.phtml">Plan du site</a>
+
+		</div>
+	</div>
+
+	<div class="AccesLogin">
+		<div>
+			<div class="btn_log"><a href="/connexion.phtml?noorg=1" rel="nofollow">Accès Client / Membre</a></div>
+			<h2>mercredi 08 décembre 12:11</h2>
+		</div>
+
+		<div class="bienvenue">
+			<a href="/enregistrement/index.phtml" rel="nofollow">Devenir membre</a>
+		</div>
+			
+	</div>
+
+</div>
+<!-- Menu -->
+<div id="menuN1">
+<ul class="itemsgauche"><li class="home"><a href="/"><div class="homeDiv"></div></a></li>
+<li id="li_menu1"><a id="menu1" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1,this)" href="/tableaux/cours_az.phtml">Actions</a></li>
+<li id="li_menu2"><a id="menu2" onmouseout="hidesubmenu2(2)" onmouseover="showsubmenu(2,this)" href="/derives/index.phtml">Warrants/Certifs</a></li>
+
+<li id="li_menu3"><a id="menu3" onmouseout="hidesubmenu2(3)" onmouseover="showsubmenu(3,this)" href="/trackers/index.phtml">Trackers</a></li>
+<li id="li_menu4"><a id="menu4" onmouseout="hidesubmenu2(4)" onmouseover="showsubmenu(4,this)" href="/opcvm/index.phtml">OPCVM</a></li>
+<li id="li_menu5"><a id="menu5" onmouseout="hidesubmenu2(5)" onmouseover="showsubmenu(5,this)" href="/indices/matieres_premieres.phtml">Devises / Mat. 1ères</a></li>
+<li id="li_menu6"><a id="menu6" onmouseout="hidesubmenu2(6)" onmouseover="showsubmenu(6,this)" href="/patrimoine/immobilier/immobilier.phtml">Immobilier</a></li>
+<li id="li_menu7"><a id="menu7" onmouseout="hidesubmenu2(7)" onmouseover="showsubmenu(7,this)" href="/moneycenter/index.phtml">Money Center</a></li>
+<li id="li_menu8"><a id="menu8" onmouseout="hidesubmenu2(8)" onmouseover="showsubmenu(8,this)" href="/patrimoine/financesperso/index.phtml">Finances Perso.</a></li>
+<li id="li_menu9"><a id="menu9" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9,this)" href="/lifestyle/index.phtml">LifeStyle</a></li>
+</ul>
+<ul class="itemsdroite"><li id="li_menu10"><a id="menu10" onmouseout="hidesubmenu2(10)" onmouseover="showsubmenu(10,this)" href="/forum/index.phtml">Forums</a></li>
+
+<li id="li_menu11"><a id="menu11" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11,this)" href="/autresoutils/index.phtml">Outils</a></li>
+<li style="padding: 0; line-height: 8px; margin-right:0;"><a href="http://boursoramabanque.solution.weborama.fr/fcgi-bin/performance.fcgi?ID=316585&A=1&L=46692&C=3150&P=6416&T=I&URL"><img src="http://img.boursorama.com/i/btn-bbq.gif" alt="Boursorama Banque" border="0" /></a></li></ul>
+</div><div class="menuN2" id="submenu1" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" style="display: none;">
+<ul>
+<li id="li_sousmenu1_1"><a id="sous_menu1_1" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" href="/tableaux/cours_az.phtml">Cours A à Z</a></li>
+<li id="li_sousmenu1_2"><a id="sous_menu1_2" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" href="/palmares/palmares.phtml">Palmarès</a></li>
+<li id="li_sousmenu1_3"><a id="sous_menu1_3" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" href="/infos/actualites/actu_index.phtml">Actualités</a></li>
+<li id="li_sousmenu1_4"><a id="sous_menu1_4" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" href="/indices/index.phtml">Indices</a></li>
+<li id="li_sousmenu1_5"><a id="sous_menu1_5" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" href="/indices/futures.phtml">Futures</a></li>
+<li id="li_sousmenu1_6"><a id="sous_menu1_6" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" href="/conseils/accueil.phtml">Conseils</a></li>
+
+<li id="li_sousmenu1_7"><a id="sous_menu1_7" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" href="/infos/calendrier.phtml">Calendriers</a></li>
+<li id="li_sousmenu1_8"><a id="sous_menu1_8" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" href="/relation_actionnaires/index.phtml">Relations actionnaires</a></li>
+<li id="li_sousmenu1_9"><a id="sous_menu1_9" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" href="/infos/introduction/index.phtml">Introductions en bourse</a></li>
+<li id="li_sousmenu1_10"><a id="sous_menu1_10" onmouseout="hidesubmenu2(1)" onmouseover="showsubmenu(1)" href="/partenaires/eurosg/mecanisme_detail.phtml">Euro Opportunité 2010</a></li>
+</ul>
+</div>
+<div class="menuN2" id="submenu2" onmouseout="hidesubmenu2(2)" onmouseover="showsubmenu(2)" style="display: none;">
+<ul>
+<li id="li_sousmenu2_1"><a id="sous_menu2_1" onmouseout="hidesubmenu2(2)" onmouseover="showsubmenu(2)" href="/derives/index.phtml">Accueil</a></li>
+<li id="li_sousmenu2_2"><a id="sous_menu2_2" onmouseout="hidesubmenu2(2)" onmouseover="showsubmenu(2)" href="/derives/warrants/index.phtml">Warrants</a></li>
+<li id="li_sousmenu2_3"><a id="sous_menu2_3" onmouseout="hidesubmenu2(2)" onmouseover="showsubmenu(2)" href="/derives/turbos/index.phtml">Turbos</a></li>
+
+<li id="li_sousmenu2_4"><a id="sous_menu2_4" onmouseout="hidesubmenu2(2)" onmouseover="showsubmenu(2)" href="/derives/leviers/index.phtml">Certificats Leviers</a></li>
+<li id="li_sousmenu2_5"><a id="sous_menu2_5" onmouseout="hidesubmenu2(2)" onmouseover="showsubmenu(2)" href="/derives/indexation/index.phtml">Certificats Investissements</a></li>
+<li id="li_sousmenu2_6"><a id="sous_menu2_6" onmouseout="hidesubmenu2(2)" onmouseover="showsubmenu(2)" href="/derives/formation/index.phtml">Formation</a></li>
+</ul>
+</div>
+<div class="menuN2" id="submenu3" onmouseout="hidesubmenu2(3)" onmouseover="showsubmenu(3)" style="display: none;">
+<ul>
+<li id="li_sousmenu3_1"><a id="sous_menu3_1" onmouseout="hidesubmenu2(3)" onmouseover="showsubmenu(3)" href="/trackers/index.phtml">Accueil</a></li>
+<li id="li_sousmenu3_2"><a id="sous_menu3_2" onmouseout="hidesubmenu2(3)" onmouseover="showsubmenu(3)" href="/trackers/palmares.phtml">Recherche / Palmarès</a></li>
+<li id="li_sousmenu3_3"><a id="sous_menu3_3" onmouseout="hidesubmenu2(3)" onmouseover="showsubmenu(3)" href="/trackers/actualite_conseils_trackers.phtml">Actualités/Conseils</a></li>
+<li id="li_sousmenu3_4"><a id="sous_menu3_4" onmouseout="hidesubmenu2(3)" onmouseover="showsubmenu(3)" href="/trackers/emissions_etf.phtml">Emissions</a></li>
+
+<li id="li_sousmenu3_5"><a id="sous_menu3_5" onmouseout="hidesubmenu2(3)" onmouseover="showsubmenu(3)" href="/trackers/partenaires_trackers.phtml">Partenaires</a></li>
+<li id="li_sousmenu3_6"><a id="sous_menu3_6" onmouseout="hidesubmenu2(3)" onmouseover="showsubmenu(3)" href="/forum/file_messages.phtml?symbole=trackers">Forum</a></li>
+</ul>
+</div>
+<div class="menuN2" id="submenu4" onmouseout="hidesubmenu2(4)" onmouseover="showsubmenu(4)" style="display: none;">
+<ul>
+<li id="li_sousmenu4_1"><a id="sous_menu4_1" onmouseout="hidesubmenu2(4)" onmouseover="showsubmenu(4)" href="/opcvm/index.phtml">Accueil</a></li>
+<li id="li_sousmenu4_2"><a id="sous_menu4_2" onmouseout="hidesubmenu2(4)" onmouseover="showsubmenu(4)" href="/opcvm/palmares.phtml">Recherche / Palmarès</a></li>
+<li id="li_sousmenu4_3"><a id="sous_menu4_3" onmouseout="hidesubmenu2(4)" onmouseover="showsubmenu(4)" href="/opcvm/actualites-opcvm.phtml">Actualités</a></li>
+<li id="li_sousmenu4_4"><a id="sous_menu4_4" onmouseout="hidesubmenu2(4)" onmouseover="showsubmenu(4)" href="/forum/file_messages.phtml?symbole=sicav-fcp">Forum</a></li>
+<li id="li_sousmenu4_5"><a id="sous_menu4_5" onmouseout="hidesubmenu2(4)" onmouseover="showsubmenu(4)" href="/opcvm/partenaires/index.phtml">Espaces Partenaires</a></li>
+
+<li id="li_sousmenu4_6"><a id="sous_menu4_6" onmouseout="hidesubmenu2(4)" onmouseover="showsubmenu(4)" href="/investissez/fcpi/essentiel-03.phtml">FCPI 2010</a></li>
+</ul>
+</div>
+<div class="menuN2" id="submenu5" onmouseout="hidesubmenu2(5)" onmouseover="showsubmenu(5)" style="display: none;">
+<ul>
+<li id="li_sousmenu5_1"><a id="sous_menu5_1" onmouseout="hidesubmenu2(5)" onmouseover="showsubmenu(5)" href="/indices/matieres_premieres.phtml">Pétrole / Mat. 1ères</a></li>
+<li id="li_sousmenu5_2"><a id="sous_menu5_2" onmouseout="hidesubmenu2(5)" onmouseover="showsubmenu(5)" href="/devises/devises.phtml">Devises</a></li>
+<li id="li_sousmenu5_3"><a id="sous_menu5_3" onmouseout="hidesubmenu2(5)" onmouseover="showsubmenu(5)" href="/devises/toutes_devises_usd.phtml">Cours dollar</a></li>
+<li id="li_sousmenu5_4"><a id="sous_menu5_4" onmouseout="hidesubmenu2(5)" onmouseover="showsubmenu(5)" href="/devises/taux_euribor.phtml">Taux Euribor</a></li>
+<li id="li_sousmenu5_5"><a id="sous_menu5_5" onmouseout="hidesubmenu2(5)" onmouseover="showsubmenu(5)" href="/devises/taux_libor.phtml">Taux Libor</a></li>
+</ul>
+
+</div>
+<div class="menuN2" id="submenu6" onmouseout="hidesubmenu2(6)" onmouseover="showsubmenu(6)" style="display: none;">
+<ul>
+<li id="li_sousmenu6_1"><a id="sous_menu6_1" onmouseout="hidesubmenu2(6)" onmouseover="showsubmenu(6)" href="/patrimoine/immobilier/immobilier.phtml">Accueil</a></li>
+<li id="li_sousmenu6_2"><a id="sous_menu6_2" onmouseout="hidesubmenu2(6)" onmouseover="showsubmenu(6)" href="/patrimoine/immobilier/investissements_immobiliers.phtml">Défiscalisation immobilière</a></li>
+<li id="li_sousmenu6_3"><a id="sous_menu6_3" onmouseout="hidesubmenu2(6)" onmouseover="showsubmenu(6)" href="http://boursorama.explorimmo.com/index.phtml">Annonces immobilières</a></li>
+<li id="li_sousmenu6_4"><a id="sous_menu6_4" onmouseout="hidesubmenu2(6)" onmouseover="showsubmenu(6)" href="/patrimoine/immobilier/immobilier-informations-depeches.phtml">Informations</a></li>
+<li id="li_sousmenu6_5"><a id="sous_menu6_5" onmouseout="hidesubmenu2(6)" onmouseover="showsubmenu(6)" href="/scpi/index.phtml">SCPI</a></li>
+<li id="li_sousmenu6_6"><a id="sous_menu6_6" onmouseout="hidesubmenu2(6)" onmouseover="showsubmenu(6)" href="/forum/file_messages.phtml?symbole=immobilier">Forum</a></li>
+</ul>
+</div>
+
+<div class="menuN2" id="submenu7" onmouseout="hidesubmenu2(7)" onmouseover="showsubmenu(7)" style="display: none;">
+<ul>
+</ul>
+</div>
+<div class="menuN2" id="submenu8" onmouseout="hidesubmenu2(8)" onmouseover="showsubmenu(8)" style="display: none;">
+<ul>
+<li id="li_sousmenu8_1"><a id="sous_menu8_1" onmouseout="hidesubmenu2(8)" onmouseover="showsubmenu(8)" href="/patrimoine/financesperso/index.phtml">Accueil</a></li>
+<li id="li_sousmenu8_2"><a id="sous_menu8_2" onmouseout="hidesubmenu2(8)" onmouseover="showsubmenu(8)" href="/patrimoine/impot/impot.phtml">Impôts</a></li>
+<li id="li_sousmenu8_3"><a id="sous_menu8_3" onmouseout="hidesubmenu2(8)" onmouseover="showsubmenu(8)" href="/patrimoine/retraite/retraite.phtml">Retraite</a></li>
+<li id="li_sousmenu8_4"><a id="sous_menu8_4" onmouseout="hidesubmenu2(8)" onmouseover="showsubmenu(8)" href="/patrimoine/credit/credit.phtml">Crédit</a></li>
+<li id="li_sousmenu8_5"><a id="sous_menu8_5" onmouseout="hidesubmenu2(8)" onmouseover="showsubmenu(8)" href="/patrimoine/assurance-vie/assurance-vie.phtml">Assurance Vie</a></li>
+<li id="li_sousmenu8_6"><a id="sous_menu8_6" onmouseout="hidesubmenu2(8)" onmouseover="showsubmenu(8)" href="/patrimoine/banque-au-quotidien/banque.phtml">Banque</a></li>
+
+<li id="li_sousmenu8_7"><a id="sous_menu8_7" onmouseout="hidesubmenu2(8)" onmouseover="showsubmenu(8)" href="/patrimoine/epargne/epargne.phtml">Epargne</a></li>
+</ul>
+</div>
+<div class="menuN2" id="submenu9" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" style="display: none;">
+<ul>
+<li id="li_sousmenu9_1"><a id="sous_menu9_1" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/index.phtml">Accueil LifeStyle</a></li>
+<li id="li_sousmenu9_2"><a id="sous_menu9_2" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/sport/index.phtml">Sport</a></li>
+<li id="li_sousmenu9_3"><a id="sous_menu9_3" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/High-Tech/index.phtml">High Tech</a></li>
+<li id="li_sousmenu9_4"><a id="sous_menu9_4" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/auto/index.phtml">Auto</a></li>
+<li id="li_sousmenu9_5"><a id="sous_menu9_5" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/culture/index.phtml">Culture</a></li>
+<li id="li_sousmenu9_6"><a id="sous_menu9_6" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/people/index.phtml">People</a></li>
+
+<li id="li_sousmenu9_7"><a id="sous_menu9_7" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/voyage/index.phtml">Voyage</a></li>
+<li id="li_sousmenu9_8"><a id="sous_menu9_8" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/emploi/index.phtml">Emploi</a></li>
+<li id="li_sousmenu9_9"><a id="sous_menu9_9" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/luxe/index.phtml">Luxe</a></li>
+<li id="li_sousmenu9_10"><a id="sous_menu9_10" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/environnement/index.phtml">Environnement</a></li>
+<li id="li_sousmenu9_11"><a id="sous_menu9_11" onmouseout="hidesubmenu2(9)" onmouseover="showsubmenu(9)" href="/lifestyle/Guide-Noel-High-Tech/index.phtml">Guide Noël High Tech</a></li>
+</ul>
+</div>
+<div class="menuN2" id="submenu10" onmouseout="hidesubmenu2(10)" onmouseover="showsubmenu(10)" style="display: none;">
+<ul>
+<li id="li_sousmenu10_1"><a id="sous_menu10_1" onmouseout="hidesubmenu2(10)" onmouseover="showsubmenu(10)" href="/forum/index.phtml">Accueil</a></li>
+<li id="li_sousmenu10_2"><a id="sous_menu10_2" onmouseout="hidesubmenu2(10)" onmouseover="showsubmenu(10)" href="/questions/index.phtml">Questions / Réponses</a></li>
+
+<li id="li_sousmenu10_3"><a id="sous_menu10_3" onmouseout="hidesubmenu2(10)" onmouseover="showsubmenu(10)" href="/forum/perso.phtml">Accueil perso</a></li>
+<li id="li_sousmenu10_4"><a id="sous_menu10_4" onmouseout="hidesubmenu2(10)" onmouseover="showsubmenu(10)" href="/forum/messages_recommandes.phtml?periode=today">Messages reco.</a></li>
+<li id="li_sousmenu10_5"><a id="sous_menu10_5" onmouseout="hidesubmenu2(10)" onmouseover="showsubmenu(10)" href="/forum/contributeurs.phtml">BoursoStars</a></li>
+<li id="li_sousmenu10_6"><a id="sous_menu10_6" onmouseout="hidesubmenu2(10)" onmouseover="showsubmenu(10)" href="/forum/parametrage.phtml">Paramétrage</a></li>
+<li id="li_sousmenu10_7"><a id="sous_menu10_7" onmouseout="hidesubmenu2(10)" onmouseover="showsubmenu(10)" href="/forum/aide.phtml">Aide</a></li>
+</ul>
+</div>
+<div class="menuN2" id="submenu11" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" style="display: none;">
+<ul>
+<li id="li_sousmenu11_1"><a id="sous_menu11_1" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" href="/autresoutils/index.phtml">Accueil</a></li>
+<li id="li_sousmenu11_2"><a id="sous_menu11_2" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" href="/enregistrement/index.phtml">Devenir membre</a></li>
+
+<li id="li_sousmenu11_3"><a id="sous_menu11_3" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" href="/services/newsletter/inscription.phtml">Newsletters</a></li>
+<li id="li_sousmenu11_4"><a id="sous_menu11_4" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" href="/liste/liste.phtml">Mes listes</a></li>
+<li id="li_sousmenu11_5"><a id="sous_menu11_5" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" href="/portefeuille/portefeuilles.phtml">Mon portefeuille</a></li>
+<li id="li_sousmenu11_6"><a id="sous_menu11_6" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" href="/outils/telechargement/telechargement.phtml">Téléchargement</a></li>
+<li id="li_sousmenu11_7"><a id="sous_menu11_7" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" href="/multi/wap/index.phtml">Mobile</a></li>
+<li id="li_sousmenu11_8"><a id="sous_menu11_8" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" href="/servicescorporate/index.phtml">Corporate</a></li>
+<li id="li_sousmenu11_9"><a id="sous_menu11_9" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" href="/prorealtime.phtml">Outils clients</a></li>
+<li id="li_sousmenu11_10"><a id="sous_menu11_10" onmouseout="hidesubmenu2(11)" onmouseover="showsubmenu(11)" href="/securite/connexion.phtml">Sécurité</a></li>
+</ul>
+
+</div>
+<script type="text/javascript">
+	var menuActif='1';
+	activeMenu(menuActif);
+			var sousMenuActif='1_4';
+		activeSousMenu(sousMenuActif);
+	
+</script>
+
+
+<div id="content">
+	
+<!-- ********* Affichage de la pub pour partenaires externe ********* -->
+
+
+<!-- ********* /Affichage de la pub pour partenaires externe ********* -->		<script>var isStreaming=false</script>
+		<div id="Smart1"><img src="http://img.boursorama.com/i/d.gif" height="100" width="1000" border=0></div>		<div id="content-gauche">
+		
+			
+									<div class="fil-ariane">Vous êtes ici : <a href="/tableaux/cours_az.phtml">Actions</a> > <a href="/indices/index.phtml">Indices</a> > <a href="/cours.phtml?symbole=1rPCAC"><b>CAC 40</b></a></div>
+
+							
+		<div id="content2cols">		<div>
+		<div class="html-block bloc-light" id="cours_Header_0"><div class="body">
+	<div class="FVHead">
+
+		<div class="FVInfA">
+
+						<div class="FVInfAInfos">
+				<span class="nomste">
+					<a href="/cours.phtml?symbole=1rPCAC">
+
+					CAC 40					</a>
+				</span><!--.nomste-->
+				<br />
+				<span class="isin">
+					FR0003500008						- PX1				</span><!--.isin-->
+				<br>
+				<span class="isin-eligible">
+									</span><!--.isin-->
+
+			</div>
+			<div class="FVInfOpCour">
+						</div>
+
+		</div><!--.FVInfa-->
+
+				<div class="FVInfB">
+
+
+			<a href="/cours.phtml?symbole=1rPCAC"  rel="nofollow" class="ofrefresh">
+				<img src="http://img.boursorama.com/i/block/update.gif" align="right">
+
+			</a>
+			<div class="InfB">
+				<span class="gras">
+					3 817.89 Pts				</span>&nbsp;&nbsp;
+				<span class="gras">
+					<span class="VARplus">+0.19%</span>				</span>
+				<div class="TG">
+
+					<img src="http://img.boursorama.com/i/no.gif"> Nyse Euronext					Temps réel				</div>
+			</div><!--.InfB-->
+
+			<div class="InfC">
+								<a href="/aide/mifid/faq_2.phtml" class="help"
+				   rel="300,100"
+				   title="Cours temps réel"
+				   rel="nofollow"><span class="IcoHelp"></span></a>
+							</div><!--.InfC-->
+
+		</div><!--.FVInfB-->
+
+			
+		
+		<div class="FVInfC">
+			<ul class="ICOs">
+				<li><a rel="700,600"
+					href="/outils/alertes/ajout_alerte_cotations.phtml?symbole=1rPCAC">
+					<small class="oficon ofalert left"></small>
+					Créer une alerte sur ce titre
+					<div class="cb"><!-- --></div>
+					</a></li>
+				<li><a class="popup" rel="500,250"
+					href="/liste/ajout_liste.phtml?symbole=1rPCAC">
+					<small class="oficon ofaddlist left"></small>
+
+					Ajouter à ma liste de valeurs
+					<div class="cb"><!-- --></div>
+					</a></li>
+				<li><a class="popup" rel="500,250"
+					href="/portefeuille/ajout_portefeuille.phtml?symbole=1rPCAC">
+					<small class="oficon ofaddportfolio left"></small>
+					Ajouter à mon portefeuille
+					<div class="cb"><!-- --></div>
+					</a></li>
+			</ul>
+		</div><!--.FVInfC-->
+
+
+	</div><!--.FVHead-->
+
+	<div id="FVHead-orderframe-container"></div>
+
+	</div></div><div class="menuN3"><ul class="onglets"><li class="selected"><a href="/cours.phtml?symbole=1rPCAC">Cours</a></li><li><a href="/graphiques/graphique_histo.phtml?symbole=1rPCAC">Graphique</a></li><li><a href="/infos/actualites/actu_societes_code.phtml?symbole=1rPCAC">Actu.</a></li><li><a href="/conseils/analyses_index_code.phtml?symbole=1rPCAC">Analyses</a></li><li><a href="/tableaux/cours_az.phtml?MARCHE=1rPCAC">Composition</a></li><li><a href="/derives/warrants/recherche_warrants.phtml?rechercher=OUI&support=1rPCAC&vue=cours&vue=cours">Warrants</a></li><li><a href="http://www.boursorama.com/forum-cac40-1rPCAC-1">Forum</a></li></ul></div><div class="menuN4"><ul><li class="selected"><a href="/cours.phtml?symbole=1rPCAC&amp;vue=full">Fiche valeur</a></li><li><a href="/cours.phtml?symbole=1rPCAC&amp;vue=sem">5 jours</a></li><li><a href="/cours.phtml?symbole=1rPCAC&amp;vue=histo">Historique</a></li></ul></div>		</div>
+
+		<!--meta http-equiv="refresh" content="60"-->
+<div id="contentCol" class="column">
+<div class="html-block" id="cours_InfosValeur_0"><div class="header"></div><div class="body">
+
+<form name="select_marche" method="get" action="/cours.phtml">
+
+<div class="info1" style="width:310px;">
+
+
+
+		
+	<table class="info-valeur">
+		
+				<tr>
+
+			<td class="temps-reel" rowspan="22">
+
+							 
+				<a title="Temps réel" class="help" href="/aide/cours/aide_tpsreel.phtml" rel="200*100">
+					<img src="http://img.boursorama.com/i/bourse_R.gif" />
+				</a>
+										</td>
+
+			<td class="label">
+				<b>Cours</b>
+				Nyse Euronext			</td>
+
+			<td>
+				<img hspace=0 vspace=0 src="http://img.boursorama.com/i/delay_R.gif" border=0 title="Nyse Euronext - Données temps réel">				<b>3 817.89 Pts</b>
+			</td>
+		</tr>
+		
+		
+				<tr>
+			<td class="label gras">Variation</td>
+			<td class="gras"><span class="VARplus">+0.19%</span></td>
+
+		</tr>
+
+				<tr>
+			<td class="label">Dernier échange</td>
+			<td>08/12/10&nbsp;12:11:00</td>
+		</tr>
+
+		
+
+				<tr>
+
+			<td class="label">Volume</td>
+			<td>954 M€</td>
+		</tr>
+		
+				<tr>
+			<td class="label">Ouverture</td>
+			<td>3 790.48</td>
+		</tr>
+
+				<tr>
+			<td class="label">+ Haut</td>
+			<td>3 824.19</td>
+		</tr>
+
+				<tr>
+			<td class="label">+ Bas</td>
+
+			<td>3 784.38</td>
+		</tr>
+
+				<tr>
+			<td class="label">Clôture veille</td>
+			<td>3 810.50</td>
+		</tr>
+		
+		
+
+		
+
+				
+				
+
+		
+							<tr>
+
+				<td colspan="4" style="border:none;"><h3><a href="/tableaux/cours_az.phtml?MARCHE=1rPCAC">Consultez la composition de <br>l'indice CAC 40</a></h3></td>
+			</tr>
+			
+
+	</table>
+	
+
+</div>
+</form>
+
+<div class="info2">
+	<div class="gfxFV" style="width:340px;">
+		<div class="select-gfx" style="width:340px;">
+
+			<ul>
+							<li style="width:169px;" id='ongIntra05542800' class="selected"><a href="javascript:changeTo05542800(2,'ongIntra05542800','selected','ongHisto05542800','')">Graphique Intraday</a></li>
+				<li style="width:169px;" id='ongHisto05542800' ><a href="javascript:changeTo05542800(1,'ongHisto05542800','selected','ongIntra05542800','')">Graphique Historique</a></li>
+			</ul>
+		</div>
+		<div class="gfx">
+		
+			<table border=0>
+			<tr>
+
+			<td>
+			<div id="graph_1291806693"><embed  id="Ggraph_1291806693" height="170" width="311" type="application/x-shockwave-flash" src="/graphiques/flash/amstock.swf" wMode="transparent" swliveconnect="true" allowscriptaccess="always" quality="high" flashVars="path=&chart_id=Ggraph_1291806693&settings_file=%2Fgraphiques%2Fdata%2Fdata.phtml%3Fsymbole%3D1rPCAC%26typeC%3D2%26simple%3D%26typeCourbe%3Dline%26startDate%3D%26ac1291806600"></embed></div>
+			<!-- FLASH VERSION -->
+<script language="javascript">
+var typeC = '2';
+var typeCourbe = 'line';
+
+function reloadGraph05542800(toTypeC){
+	flashMovie = $("Ggraph_1291806693");
+	if(toTypeC != typeC) {
+		flashMovie.reloadSettings('/graphiques/data/data.phtml?symbole=1rPCAC&typeC='+toTypeC+'&typeCourbe='+typeCourbe)
+	}
+	else {
+		flashMovie.rebuild();
+	}
+	typeC = toTypeC;
+}
+
+function changeTo05542800(toTypeC,id,class1,id2,class2) {
+	$(id).className = class1;
+	$(id2).className = class2;
+	reloadGraph05542800(toTypeC);
+}
+
+function setTypeLine05542800(toTypeCourbe)
+{
+	typeCourbe = toTypeCourbe;
+	flashMovie = $("Ggraph_1291806693");
+	flashMovie.setParam("charts.chart[0].graphs.graph[0].type",toTypeCourbe);
+}
+
+function amClickedOn05542800(chart_id, date, period){
+	if(period=='mm')
+		document.location.href='/graphiques/graphique_intraday.phtml?symbole=1rPCAC';
+	else
+		document.location.href='/graphiques/graphique_histo.phtml?symbole=1rPCAC';
+}
+</script>
+			</td>
+			<td>
+				<a href="javascript:setTypeLine05542800('candlestick');">
+					<img alt='chandelier' src='http://img.boursorama.com/i/chandelier.gif' border=0>
+				</a>
+
+				<br>
+				<a href="javascript:setTypeLine05542800('line');">
+					<img alt='courbe' src='http://img.boursorama.com/i/courbe.gif' border=0>
+				</a>
+			</td>
+			</tr>
+		</table>
+	</div>
+	</div>
+
+</div>
+
+</div></div></div>
+<div class="cb"><!-- --></div>
+	<br/>
+
+<div id="contentLeftCol" class="column">
+
+		
+<div class="html-block bloc-light" id="cours_AnalysesTech_0"><hr><div class="titre-light header"><ul style="float:left"><li>&nbsp;&nbsp;</li><li class=selected> <a href="/conseils/analyses_index_code.phtml?symbole=1rPCAC" rel="follow" >Conseils / Analyses techniques</a></li></ul><ul class="icone"><li></li><li> <a class="update-body" title="moins" href="?removeline=1" rel="nofollow" ><img src="http://img.boursorama.com/i/block/picto-moins.gif" alt="moins"></a></li><li> <a class="update-body" title="plus" href="?addline=1" rel="nofollow" ><img src="http://img.boursorama.com/i/block/picto-plus.gif" alt="plus"></a></li><li> <a class="update-body" title="update" href="" rel="nofollow" ><img src="http://img.boursorama.com/i/block/update.gif" alt="update"></a></li></ul></div><div class="body"><div><div class="FilNews"><ul><li><span class="date">08/12 - 11:00</span><a href="/conseils/detail_conseils.phtml?num=8f690d27a1d901791408720697240ff3&org=1rPCAC" title="CAC 40 : impulsion haussière">CAC 40 : impulsion haussière</a></li><div class="medium gras" style="margin-top: 3px;">Lundi 06 Décembre 2010</div><li><span class="date">06/12 - 18:14</span><a href="/conseils/detail_conseils.phtml?num=7ed700d42aa93abeb6b2848447159da1&org=1rPCAC" title="CAC40: coiffé vers 3.760Pts.">CAC40: coiffé vers 3.760Pts.</a></li><li><span class="date">06/12 - 11:00</span><a href="/conseils/detail_conseils.phtml?num=0263d6f808bb3ce5d1e81c3b1dda63f8&org=1rPCAC" title="CAC 40 : test de la résistance majeure à 3765 points">CAC 40 : test de la résistance majeure à 3765 poin&hellip;</a></li><div class="medium gras" style="margin-top: 3px;">Vendredi 03 Décembre 2010</div><li><span class="date">03/12 - 18:13</span><a href="/conseils/detail_conseils.phtml?num=c5a359bc1aa5570c6736751c89441ce9&org=1rPCAC" title="CAC40: se hisse jusque vers 3775Pts.">CAC40: se hisse jusque vers 3775Pts.</a></li><div class="medium gras" style="margin-top: 3px;">Jeudi 02 Décembre 2010</div><li><span class="date">02/12 - 18:26</span><a href="/conseils/detail_conseils.phtml?num=6507f1f66699999333185e65139a2f75&org=1rPCAC" title="CAC40: re-franchit la MM100 et teste 3750Pts.">CAC40: re-franchit la MM100 et teste 3750Pts.</a></li></ul></div></div></div></div><div class="html-block bloc-light" id="cours_Actualites_0"><hr><div class="titre-light header"><ul style="float:left"><li>&nbsp;&nbsp;</li><li class=selected> <a href="/infos/actualites/actu_societes_code.phtml?symbole=1rPCAC" rel="follow" >Actualit&eacute;s</a></li></ul><ul class="icone"><li></li><li> <a class="update-body" title="moins" href="?removeline=1" rel="nofollow" ><img src="http://img.boursorama.com/i/block/picto-moins.gif" alt="moins"></a></li><li> <a class="update-body" title="plus" href="?addline=1" rel="nofollow" ><img src="http://img.boursorama.com/i/block/picto-plus.gif" alt="plus"></a></li><li> <a class="update-body" title="update" href="" rel="nofollow" ><img src="http://img.boursorama.com/i/block/update.gif" alt="update"></a></li></ul></div><div class="body"><div><div class="FilNews"><ul><li><span class="date">08/12 - 11:59</span><a href="/infos/actualites/detail_actu_marches.phtml?num=606539ff8a5fe37234ba5230c87367be" title="La prévision de croissance au 4e trimestre revue légèrement à la hausse">La prévision de croissance au 4e trimestre revue l&hellip;</a></li><li><span class="date">08/12 - 11:46</span><a href="/infos/actualites/detail_actu_marches.phtml?num=2924f587d4b6312d3f2cf2adca50297d" title="Les grèves pèsent sur le déficit commercial en octobre">Les grèves pèsent sur le déficit commercial en oct&hellip;</a></li><li><span class="date">08/12 - 11:40</span><a href="/infos/actualites/detail_actu_marches.phtml?num=b729358211bbdade8c509933220ecb75" title="Plombé par un euro fort, EADS espère améliorer son résultat opérationnel dès 2012">Plombé par un euro fort, EADS espère améliorer son&hellip;</a></li><li><span class="date">08/12 - 11:36</span><a href="/infos/actualites/detail_actu_marches.phtml?num=ec41fbfe3e8e999ba6006b09b84159b7" title="L'euro accentue son repli face au dollar, la zone euro inquiète toujours">L'euro accentue son repli face au dollar, la zone &hellip;</a></li><li><span class="date">08/12 - 11:32</span><a href="/opcvm/detail-actualite-opcvm.phtml?num=06f5be6dd21fbe26181d799d44555a15" title="Amundi ETF lance 2 nouveaux ETF pour
+ s'exposer aux pays émergents">Amundi ETF lance 2 nouveaux ETF pour
+ s'exposer aux&hellip;</a></li></ul></div></div></div></div><div class="html-block bloc-light" id="cours_ForumReco_0"><hr><div class="titre-light header"><ul style="float:left"><li>&nbsp;&nbsp;</li><li class=selected> <a href="/forum/messages_recommandes.phtml?periode=today&symbole=1rPCAC" rel="follow" >Messages recommand&eacute;s aujourd'hui dans les forums</a></li></ul><ul class="icone"><li></li><li> <a class="update-body" title="update" href="" rel="nofollow" ><img src="http://img.boursorama.com/i/block/update.gif" alt="update"></a></li></ul></div><div class="body">	<div id="forum">
+
+	<table width="100%" class="btable txt01" cellspacing="0" border="0" cellpadding="8" style="clear:both;">
+	<thead>
+	<tr>
+					<th nowrap>&nbsp; <b>Sujet</b> &nbsp;</th>
+					<th nowrap>&nbsp; <b><img src="http://img.boursorama.com/i/forum/f_reco.gif" border=0></b> &nbsp;</th>
+					<th nowrap>&nbsp; <b>Date</b> &nbsp;</th>
+
+			</tr>
+	</thead>
+	<tbody>
+			<tr class="txt01 L10">
+				<td>
+					<div class="forum_at" style="float:left;margin:0 4px 0 4px;" title="Sujet comportant une analyse technique commentée."></div>					<a href="http://www.boursorama.com/forum-cac-40-cac-40-conso-ou-plus-404618907-1" class="">CAC 40 - Conso ou plus ?</a>
+				</td>
+				<td align="center">
+
+					<b>10</b>
+				</td>
+				<td class="forum_bleu">
+					Auj. à 07:47				</td>
+			</tr>
+						<tr class="txt01 L20">
+				<td>
+					<div class="forum_at" style="float:left;margin:0 4px 0 4px;" title="Sujet comportant une analyse technique commentée."></div>					<a href="http://www.boursorama.com/forum-cac-40-cac-40-oh-la-belle-voliere-404621435-1" class="">CAC 40 - oh la belle voliere</a>
+
+				</td>
+				<td align="center">
+					<b>8</b>
+				</td>
+				<td class="forum_bleu">
+					Auj. à 09:28				</td>
+			</tr>
+						<tr class="txt01 L10">
+
+				<td>
+					<div class="forum_g1" style="float:left;margin:0 4px 0 4px;" title="Sujet principal faisant l'objet d'au moins une réponse."></div>					<a href="http://www.boursorama.com/forum-cac-40-le-systeme-est-pourtant-simple-404625088-1" class="">Le systeme est pourtant simple</a>
+				</td>
+				<td align="center">
+					<b>8</b>
+				</td>
+				<td class="forum_bleu">
+
+					Auj. à 10:49				</td>
+			</tr>
+						<tr class="txt01 L20">
+				<td>
+					<div class="forum_g1" style="float:left;margin:0 4px 0 4px;" title="Sujet principal faisant l'objet d'au moins une réponse."></div>					<a href="http://www.boursorama.com/forum-cac-40-a-la-une-revue-de-presse-404618899-1" class="">A LA UNE / REVUE DE PRESSE</a>
+				</td>
+				<td align="center">
+
+					<b>7</b>
+				</td>
+				<td class="forum_bleu">
+					Auj. à 07:47				</td>
+			</tr>
+						<tr class="txt01 L10">
+				<td>
+					<div class="forum_g1" style="float:left;margin:0 4px 0 4px;" title="Sujet principal faisant l'objet d'au moins une réponse."></div>					<a href="http://www.boursorama.com/forum-cac-40-bonjour-forum-cac-404619157-1" class="">bonjour forum CAC</a>
+
+				</td>
+				<td align="center">
+					<b>7</b>
+				</td>
+				<td class="forum_bleu">
+					Auj. à 08:11				</td>
+			</tr>
+				</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+
+<div id="contentRightCol" class="column">
+<div class="html-block bloc-light" id="cours_Transactions_0"><hr><div class="titre-light header"><ul style="float:left"><li><img hspace=0 vspace=0 src="http://img.boursorama.com/i/delay_R.gif" border=0 title="Nyse Euronext - Données temps réel">&nbsp;&nbsp;</li><li class=selected> <a href="javascript:popup('/includes/cours/last_transactions.phtml?symbole=1rPCAC', 'last_trans', '350', '300')" rel="follow" >Les Transactions</a></li></ul><ul class="icone"><li><a rel="300,200" title="aide" class="help" href="/aide/cours/aide_transactions.phtml"><img src="http://img.boursorama.com/css/media/i/aide.gif" alt=""></a></li><li></li><li> <a class="update-body" title="moins" href="?removeline=1" rel="nofollow" ><img src="http://img.boursorama.com/i/block/picto-moins.gif" alt="moins"></a></li><li> <a class="update-body" title="plus" href="?addline=1" rel="nofollow" ><img src="http://img.boursorama.com/i/block/picto-plus.gif" alt="plus"></a></li><li> <a class="update-body" title="Rafra&icirc;chir" href="" rel="nofollow" ><img src="http://img.boursorama.com/i/block/update.gif" alt="Rafra&icirc;chir"></a></li></ul></div><div class="body">		<table class="btable txt01 T01" width="100%" cellspacing="1">
+		<thead>
+			<tr>
+
+				<th class="gras liseret" width="33%" align="center">Heures</td>
+				<th class="gras liseret" width="33%" align="center">Cours</td>
+				<th class="gras liseret" width="33%" align="center">Qté</td>
+			</tr>
+		</thead>
+		<tbody>			
+								<tr>
+						<td class="gras L20" width="33%" align="center">12:11:00</td>
+
+						<td class="gras L20" width="33%" align="center">3 817.89</td>
+						<td class="gras L20" width="33%" align="center">0</td>
+					</tr>
+										<tr>
+						<td  width="33%" align="center">12:10:45</td>
+						<td  width="33%" align="center">3 818.01</td>
+						<td  width="33%" align="center">0</td>
+
+					</tr>
+										<tr>
+						<td class="L20" width="33%" align="center">12:10:30</td>
+						<td class="L20" width="33%" align="center">3 819.39</td>
+						<td class="L20" width="33%" align="center">0</td>
+					</tr>
+										<tr>
+
+						<td  width="33%" align="center">12:10:15</td>
+						<td  width="33%" align="center">3 818.61</td>
+						<td  width="33%" align="center">0</td>
+					</tr>
+										<tr>
+						<td class="L20" width="33%" align="center">12:10:00</td>
+						<td class="L20" width="33%" align="center">3 818.21</td>
+
+						<td class="L20" width="33%" align="center">0</td>
+					</tr>
+										<tr>
+						<td  width="33%" align="center">12:09:45</td>
+						<td  width="33%" align="center">3 817.92</td>
+						<td  width="33%" align="center">0</td>
+					</tr>
+
+										<tr>
+						<td class="L20" width="33%" align="center">12:09:30</td>
+						<td class="L20" width="33%" align="center">3 818.10</td>
+						<td class="L20" width="33%" align="center">0</td>
+					</tr>
+										<tr>
+						<td  width="33%" align="center">12:09:15</td>
+
+						<td  width="33%" align="center">3 817.25</td>
+						<td  width="33%" align="center">0</td>
+					</tr>
+										<tr>
+						<td class="L20" width="33%" align="center">12:09:00</td>
+						<td class="L20" width="33%" align="center">3 816.50</td>
+						<td class="L20" width="33%" align="center">0</td>
+
+					</tr>
+										<tr>
+						<td  width="33%" align="center">12:08:45</td>
+						<td  width="33%" align="center">3 816.70</td>
+						<td  width="33%" align="center">0</td>
+					</tr>
+						
+		</tbody>
+
+	</table>
+	</div></div><div class="html-block bloc-light" id="cours_DonneesHisto_0"><hr><div class="titre-light header"><ul style="float:left"><li>&nbsp;&nbsp;</li><li class=selected>Donn&eacute;es historiques</li></ul><ul class="icone"><li></li><li> <a class="update-body" title="Rafra&icirc;chir" href="" rel="nofollow" ><img src="http://img.boursorama.com/i/block/update.gif" alt="Rafra&icirc;chir"></a></li></ul></div><div class="body">					<table class="btable txt01 T01" width="100%" cellspacing="1">
+						<tbody>
+							<tr>
+								<th class="gras liseret" width="20%" align="center">Période</td>
+								<th class="gras liseret" width="20%" align="center">Variation</td>
+
+								<th class="gras liseret" width="20%" align="center">+ Haut</td>
+								<th class="gras liseret" width="20%" align="center">+ Bas</td>
+							</tr>
+
+							<tr>
+								<td align="center">1 Janv.</td>
+								<td align="center"><span class="VARmoins">-3.01%</span></td>
+
+								<td align="center">4 088.18</td>
+								<td align="center">3 287.57</td>
+							</tr>
+
+							<tr class="L20">
+								<td align="center">1 semaine</td>
+								<td align="center"><span class="VARplus">+4.05%</span></td>
+
+								<td align="center">3 835.06</td>
+								<td align="center">3 620.64</td>
+							</tr>
+
+							<tr>
+								<td align="center">1 mois</td>
+								<td align="center"><span class="VARmoins">-2.45%</span></td>
+
+								<td align="center">3 961.70</td>
+								<td align="center">3 591.78</td>
+							</tr>
+
+							<tr class="L20">
+								<td align="center">3 mois</td>
+								<td align="center"><span class="VARplus">+3.83%</span></td>
+
+								<td align="center">3 961.70</td>
+								<td align="center">3 591.78</td>
+							</tr>
+
+							<tr>
+								<td align="center">6 mois</td>
+								<td align="center"><span class="VARplus">+12.94%</span></td>
+
+								<td align="center">3 961.70</td>
+								<td align="center">3 321.35</td>
+							</tr>
+
+							<tr class="L20">
+								<td align="center">1 an</td>
+								<td align="center"><span class="VARplus">+0.86%</span></td>
+
+								<td align="center">4 088.18</td>
+								<td align="center">3 287.57</td>
+							</tr>
+
+							<tr>
+								<td align="center">3 ans</td>
+								<td align="center"><span class="VARmoins">-33.61%</span></td>
+
+								<td align="center">5 795.22</td>
+								<td align="center">2 465.46</td>
+							</tr>
+							<tr class="L20">
+								<td align="center">5 ans</td>
+								<td align="center"><span class="VARmoins">-18.25%</span></td>
+								<td align="center">6 168.15</td>
+
+								<td align="center">2 465.46</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="btable txt01 T01" width="100%" cellspacing="1">
+						<tbody>
+							<tr>
+								<td align="center">MM20</td>
+
+								<td align="center">3 770.87</td>
+								<td align="center">MM50</td>
+								<td align="center">3 801.03</td>
+							</tr>
+							<tr>
+								<td align="center">MM100</td>
+								<td align="center">3 733.01</td>
+
+								<td align="center">RSI14</td>
+								<td align="center">44.60</td>
+							</tr>
+						</tbody>
+					</table></div></div></div>
+		<div style="padding:2px; background-color:#980165; margin-top: 15px; clear: both;">
+		<h2 class="txt02 gras" style="margin-bottom:5px;padding-left:5px; color: #fff;">Boursorama Banque :</h2>
+
+		<div style="background-color:#fff;padding-bottom:3px;padding-left:5px;">
+		<span style="margin-bottom:0px; font-size: 11px;"><a href="http://boursoramabanque.solution.weborama.fr/fcgi-bin/performance.fcgi?ID=316585&A=1&L=46694&C=3150&P=6418&T=I&URL" style="text-decoration:none;">BOURSORAMA TRADING
+Offre exceptionnelle ! Testez-nous gratuitement : 0&euro; de frais de courtage et de transfert (voir conditions). Boursorama Banque, élue « banque la moins chère » selon Capital 01/02/2010</a><br></span>
+		</div>
+		</div>		<!-- Fin Content -->
+
+
+					</div>
+			<div class="bottom-bas">
+
+							<div class="bottom-basdroit"></div>
+				<div class="bottom-basgauche"></div>
+						</div>
+		
+		</div>
+		
+<div id="rightCol">
+
+
+		<div id="AccesRapides">
+		<div class="Head">
+			<div>
+
+				<a style="display:none" id="add-bookmark" href="#">
+					<small class="icon favoris" title="" id=""></small> Ajouter un favoris
+				</a>
+			</div>
+			<span class="Item01">
+				  <a rel="favoris" class="selected update">Favoris</a>
+				| <a rel="news" class="update">Articles</a>
+
+				| <a rel="messages" class="update">Messages</a>
+				| <a rel="notes" class="update">Notes</a>
+			</span>
+			<ul id="items_favoris" class="Item02">
+				<li><a href="">Ajouter une note</a></li>
+				<li>|</li>
+
+				<li><a href="/membres/mes_webnotes.phtml" class="follow">Mes notes</a></li>
+			</ul>
+			<ul id="items_notes" class="Item02">
+				<li><a href="">Ajouter une note</a></li>
+				<li>|</li>
+				<li><a href="/membres/mes_webnotes.phtml" class="follow">Mes notes</a></li>
+			</ul>
+
+		</div>
+		<div class="body"><br>
+		</div>
+		<div class="footer">
+			<a class="add-bookmark tooltip"
+			   style="margin: 0px;"
+			   href="javascript://"
+			   title="Ajouter la page courante en&#13;favori dans votre dossier personnel">
+				<sub><img style="border: medium none ;"
+						  src="http://img.boursorama.com/css/media/i/etoile-fav.gif"></sub>
+				Ajouter cette page à mes favoris
+			</a>
+		</div>
+
+		<div class="cb"></div>
+	</div>
+
+
+
+
+
+
+	
+		<div class="hautCD"></div>
+
+
+		<div class="persofav">
+			<ul>
+
+									<li style="padding-right: 7px;padding-left:5px;">
+												<div class="btn-perso">
+							<h4>&nbsp;&nbsp;<a class="bourso-customization" rel="nofollow"><span class="btn-txt" style="font-size:11px">Personnaliser mon Bourso</span></a></h4>
+						</div>
+					</li>
+				
+								<li>
+					<h4 style="text-align:right;">
+						<a id="accesrapide" rel="nofollow">Accès rapides</a>
+
+						&nbsp;&nbsp;
+					</h4>
+				</li>
+
+				<li style="padding-top:3px">
+					<a id="bookmark_page" href="javascript://"
+					   class="tooltip" title="Ajouter la page courante en favori dans votre dossier personnel"
+					   style="margin:0px;">
+						<sub><img src="http://img.boursorama.com/css/media/i/etoile-fav.gif" style="border:none" /></sub>
+					</a>
+				</li>
+
+							</ul>
+		</div>
+
+
+	    <div class="hautCD"></div>
+    <div class="contentCD">
+    	<div class="header">
+    		<ul class="header TitreBloc">
+    			<li class="selected"></li>
+    		</ul>
+
+    	</div>
+    	<div class="body">
+    		<ul style="margin-bottom:5px; border-bottom: solid 1px #DDD;">
+    			<li class="selected">
+    				<span style="color: #06389B;">Partenaire</span>
+    			</li>
+    		</ul>
+    		
+    		<div style="height:100%; clear:both; padding:0px; margin:0;">
+
+    		<div id="Smart2"><img src="http://img.boursorama.com/i/d.gif" height="40" width="300" border=0></div>			
+    		</div>
+    	</div>
+    </div>
+	<div id="rightCol" class="column">
+	<div class="dragHere">Glissez/déposez vos blocs ci-dessous</div>
+<div class="html-block" id="droit_Indices_0"><div class="hautCD"></div><div class="contentCD"><div class="header drag "><ul class="header TitreBloc"><li class="selected"> <a href="/indices/index.phtml" rel="follow" >Indices</a> </li></ul><ul class="icone"><li> <a class="update-body" title="Rafra&icirc;chir" href="" rel="nofollow" ><img src="http://img.boursorama.com/i/block/update.gif" alt="Rafra&icirc;chir"></a></li><li> <a class="customization" title="Personnaliser" href="javascript://" rel="nofollow" ><img src="http://img.boursorama.com/i/block/edit.gif" alt="Personnaliser"></a></li><li> <a class="close" title="Supprimer" href="javascript://" rel="nofollow" ><img src="http://img.boursorama.com/i/block/close.gif" alt="Supprimer"></a></li></ul></div><div class="body"><hr><table width="100%" class="btable txt01 T01" cellspacing="1" id="btable1291806753">
+
+<thead>
+<tr>
+<th scope="col" ><a title="croissant" rel="nofollow" href="/cours.phtml?symbole=1rPCAC&amp;sortby=imagevar&amp;sortorder=asc" class="sort"></a></th>
+<th scope="col" ><a title="croissant" rel="nofollow" href="/cours.phtml?symbole=1rPCAC&amp;sortby=libelle&amp;sortorder=asc" class="sort">Libell&eacute;</a></th>
+<th scope="col" ><a title="croissant" rel="nofollow" href="/cours.phtml?symbole=1rPCAC&amp;sortby=last&amp;sortorder=asc" class="sort">Dernier</a></th>
+<th scope="col" ><a title="croissant" rel="nofollow" href="/cours.phtml?symbole=1rPCAC&amp;sortby=var&amp;sortorder=asc" class="sort">Var.</a></th>
+<th scope="col" ><a title="croissant" rel="nofollow" href="/cours.phtml?symbole=1rPCAC&amp;sortby=open&amp;sortorder=asc" class="sort">Ouv.</a></th>
+</tr>
+</thead>
+
+<tbody>
+<tr id="btable1291806753_row0"  class="L10" onclick="document.location.href='/cours.phtml?symbole=1rPCAC'" style="cursor:pointer;">
+
+<td align="center"><img src="http://img.boursorama.com/i/block/flecheup.gif" width="7px" height="9px" border="0" alt="" /></td>
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=1rPCAC">CAC 40</a></td>
+<td align="right">3817.89</td>
+<td class="gras" align="right"><span class="color3">0.19%</span></td>
+<td align="right">3790.48</td>
+</tr>
+<tr id="btable1291806753_row1"  class="L20" onclick="document.location.href='/cours.phtml?symbole=2cSX5E'" style="cursor:pointer;">
+<td align="center"><img src="http://img.boursorama.com/i/block/flecheup.gif" width="7px" height="9px" border="0" alt="" /></td>
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=2cSX5E">ESTX50 EUR P</a></td>
+<td align="right">2803.64</td>
+<td class="gras" align="right"><span class="color3">0.03%</span></td>
+
+<td align="right">2794.07</td>
+</tr>
+<tr id="btable1291806753_row2"  class="L10" onclick="document.location.href='/cours.phtml?symbole=%24INDU'" style="cursor:pointer;">
+<td align="center"><img src="http://img.boursorama.com/i/block/flechedown.gif" width="7px" height="9px" border="0" alt="" /></td>
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=%24INDU">DOW JONES</a></td>
+<td align="right">11359.16(c)</td>
+<td class="gras" align="right"><span class="color2">-0.03%</span></td>
+<td align="right">11363.85(c)</td>
+</tr>
+<tr id="btable1291806753_row3"  class="L20" onclick="document.location.href='/cours.phtml?symbole=%24COMPX'" style="cursor:pointer;">
+<td align="center"><img src="http://img.boursorama.com/i/block/flecheup.gif" width="7px" height="9px" border="0" alt="" /></td>
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=%24COMPX">Nasdaq Comp</a></td>
+
+<td align="right">2598.49(c)</td>
+<td class="gras" align="right"><span class="color3">0.14%</span></td>
+<td align="right">2623.15(c)</td>
+</tr>
+<tr id="btable1291806753_row4"  class="L10" onclick="document.location.href='/cours.phtml?symbole=1xN225'" style="cursor:pointer;">
+<td align="center"><img src="http://img.boursorama.com/i/block/flecheup.gif" width="7px" height="9px" border="0" alt="" /></td>
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=1xN225">Nikkei 225</a></td>
+<td align="right">10232.33(c)</td>
+<td class="gras" align="right"><span class="color3">0.90%</span></td>
+<td align="right">10200.16(c)</td>
+
+</tr>
+</tbody>
+</table>
+
+</div></div></div><div class="html-block" id="block1291806763"><div class="header"></div><div class="body"><div style="display: inline; height:0px; text-align:center"><span align="center"><div id="Smart3"><img src="http://img.boursorama.com/i/d.gif" height="180" width="300" border=0></div></span></div></div></div><div class="html-block" id="block1291806773"><div class="header"></div><div class="body"><div style="display: inline; height:0px; text-align:center"><span align="center"><div id="Smart4"><img src="http://img.boursorama.com/i/d.gif" height="260" width="300" border=0></div></span></div></div></div><div class="html-block" id="droit_Futures_1"><div class="hautCD"></div><div class="contentCD"><div class="header drag "><ul class="header TitreBloc"><li class="selected"> <a href="/indices/futures.phtml" rel="follow" >Futures</a> </li></ul><ul class="icone"><li> <a class="update-body" title="Rafra&icirc;chir" href="" rel="nofollow" ><img src="http://img.boursorama.com/i/block/update.gif" alt="Rafra&icirc;chir"></a></li><li> <a class="close" title="Supprimer" href="javascript://" rel="nofollow" ><img src="http://img.boursorama.com/i/block/close.gif" alt="Supprimer"></a></li></ul></div><div class="body"><hr><table width="100%" class="btable txt01 T01" cellspacing="1" id="btable1291806793">
+
+<tbody>
+<tr id="btable1291806793_row0"  class="L10" onclick="document.location.href='/cours.phtml?symbole=1bPFCEDEC10'" style="cursor:pointer;">
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=1bPFCEDEC10" title="DEC 10 CAC 40 Index (10x)">DEC 10 CAC 40 Index (10...</a></td>
+<td align="right">3813.00</td>
+
+<td class="gras" align="right"><span class="color3">0.07%</span></td>
+</tr>
+<tr id="btable1291806793_row1"  class="L20" onclick="document.location.href='/cours.phtml?symbole=%2FNQDC10'" style="cursor:pointer;">
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=%2FNQDC10" title="Dec 10 E-MINI NASDAQ 100">Dec 10 E-MINI NASDAQ 10...</a></td>
+<td align="right">2190.50</td>
+<td class="gras" align="right"><span class="color3">0.02%</span></td>
+</tr>
+<tr id="btable1291806793_row2"  class="L10" onclick="document.location.href='/cours.phtml?symbole=%2FSPDC10'" style="cursor:pointer;">
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=%2FSPDC10" title="Dec 10 S&amp;P 500">Dec 10 S&amp;P 500</a></td>
+<td align="right">1221.40</td>
+
+<td class="gras" align="right"><span class="color2">-0.15%</span></td>
+</tr>
+</tbody>
+</table>
+
+</div></div></div><div class="html-block" id="droit_LiensPartenaires_0"><div class="header"></div><div class="body">	<div style="padding:5px; background-color:#00519e;">
+	<h2 class="txt02 gras" style="margin-bottom:5px;padding-left:5px; color: #fff;">Liens partenaires :</h2>
+		<div style="background-color:#fff;padding:3px;padding-left:5px;"> 
+					<p class="medium" style="margin-bottom:8px;"><span class="gras">Bientôt Noël !</span>
+			<br /><a href="http://www.nexity-investissement-immobilier.com/contact/guide_invest.php?xtor=AD-688&ctcsrc=boursopat0709lp" target="_blank" style="text-decoration:none;" rel="nofollow">Offrez-vous une économie sur vos impôts !  Découvrez comment en téléchargeant le guide du patrimoine !</a></p>
+
+				<p class="medium" style="margin-bottom:8px;"><span class="gras">Santé : Faites vous mieux rembourser vos dépenses de santé !</span>
+			<br /><a href="http://ads.boursorama.com/call/cliccommand/3805492/[timestamp]?" target="_blank" style="text-decoration:none;" rel="nofollow">Comparez gratuitement les tarifs et garanties des mutuelles santé et trouvez la plus adaptée à vos besoins sur mutuelleland.
+
+</a></p>
+				<p class="medium" style="margin-bottom:8px;"><span class="gras">Découvrez quel internaute vous êtes !</span>
+			<br /><a href="http://ads.boursorama.com/call/cliccommand/3606159/[timestamp]?" target="_blank" style="text-decoration:none;" rel="nofollow">Participez à la grande enquête Ipsos, gagnez 4 000&euro;de cadeaux et soutenez une association humanitaire !</a></p>
+				<p class="medium" style="margin-bottom:8px;"><span class="gras">Le CAC 40 en plus tendance !</span>
+			<br /><a href="http://www.produitsdebourse.bnpparibas.fr/fr/Bonus.aspx?CategoryId=11" target="_blank" style="text-decoration:none;" rel="nofollow">Découvrez les Certificats Bonus et Bonus Cappés BNP Paribas pour investir différemment sur les actions !</a></p>
+
+			</div>
+	</div>
+</div></div><div class="html-block" id="droit_Premiere_2"><div class="hautCD"></div><div class="contentCD"><div class="header drag "><ul class="header TitreBloc"><li class="selected"> <a href="/indices/matieres_premieres.phtml" rel="follow" >Mat.1&egrave;res / Devises / Taux</a> </li></ul><ul class="icone"><li> <a class="update-body" title="Rafra&icirc;chir" href="" rel="nofollow" ><img src="http://img.boursorama.com/i/block/update.gif" alt="Rafra&icirc;chir"></a></li><li> <a class="close" title="Supprimer" href="javascript://" rel="nofollow" ><img src="http://img.boursorama.com/i/block/close.gif" alt="Supprimer"></a></li></ul></div><div class="body"><hr><table width="100%" class="btable txt01 T01" cellspacing="1" id="btable1291806813">
+
+<thead>
+<tr>
+<th scope="col" ><a title="croissant" rel="nofollow" href="/cours.phtml?symbole=1rPCAC&amp;sortby=imagevar&amp;sortorder=asc" class="sort"></a></th>
+<th scope="col" ><a title="croissant" rel="nofollow" href="/cours.phtml?symbole=1rPCAC&amp;sortby=libelle&amp;sortorder=asc" class="sort">Libell&eacute;</a></th>
+
+<th scope="col" ><a title="croissant" rel="nofollow" href="/cours.phtml?symbole=1rPCAC&amp;sortby=last&amp;sortorder=asc" class="sort">Dernier</a></th>
+<th scope="col" ><a title="croissant" rel="nofollow" href="/cours.phtml?symbole=1rPCAC&amp;sortby=var&amp;sortorder=asc" class="sort">Var.</a></th>
+</tr>
+</thead>
+
+<tbody>
+<tr id="btable1291806813_row0"  class="L10" onclick="document.location.href='/cours.phtml?symbole=1xEURUS'" style="cursor:pointer;">
+<td align="center"><img src="http://img.boursorama.com/i/block/flechedown.gif" width="7px" height="9px" border="0" alt="" /></td>
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=1xEURUS">EUR/USD</a></td>
+<td align="right">1.3245</td>
+<td class="gras" align="right"><span class="color2">-0.15%</span></td>
+</tr>
+
+<tr id="btable1291806813_row1"  class="L20" onclick="document.location.href='/cours.phtml?symbole=1xEUR8Y'" style="cursor:pointer;">
+<td align="center"><img src="http://img.boursorama.com/i/block/stable.gif" width="11px" height="9px" border="0" alt="" /></td>
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=1xEUR8Y">Euribor 1 an</a></td>
+<td align="right">1.525</td>
+<td align="right"><span>0%</span></td>
+</tr>
+<tr id="btable1291806813_row2"  class="L10" onclick="document.location.href='/cours.phtml?symbole=1xGLDAM'" style="cursor:pointer;">
+<td align="center"><img src="http://img.boursorama.com/i/block/flechedown.gif" width="7px" height="9px" border="0" alt="" /></td>
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=1xGLDAM">Gold Index</a></td>
+<td align="right">1394.10</td>
+<td class="gras" align="right"><span class="color2">-0.54%</span></td>
+
+</tr>
+<tr id="btable1291806813_row3"  class="L20" onclick="document.location.href='/cours.phtml?symbole=CL1F'" style="cursor:pointer;">
+<td align="center"><img src="http://img.boursorama.com/i/block/flechedown.gif" width="7px" height="9px" border="0" alt="" /></td>
+<td class="gras"><a class="stock"  rel='rowlink' href="/cours.phtml?symbole=CL1F">P&eacute;trole (New York)</a></td>
+<td align="right">88.31</td>
+<td class="gras" align="right"><span class="color2">-0.43%</span></td>
+</tr>
+</tbody>
+</table>
+
+
+<form name="convertisseur" action="/devises/devises.phtml" method="post">
+					<table class="form01" width="100%" border="0" cellspacing="1">
+
+						<tbody>
+
+							<tr>
+								<td><input name="montant" value="Votre montant" size="15" maxlength="15" type="text" onFocus="if(this.value=='Votre montant') this.value='';" onBlur="if(this.value=='') this.value='Votre montant';"></td>
+								<td>
+									<select onchange="modifySearchForm(this.options[this.selectedIndex].value)" name="devise1">
+										<option value="EUR">EUR</option>
+										<option value="USD">USD</option>
+
+										<option value="JPY">JPY</option>
+										<option value="GBP">GBP</option>
+										<option value="CHF">CHF</option>										
+									</select>
+								</td>
+								<td>
+									<select onchange="modifySearchForm(this.options[this.selectedIndex].value)" name="devise2">
+										<option value="USD">USD</option>
+
+										<option value="EUR">EUR</option>
+										<option value="JPY">JPY</option>
+										<option value="GBP">GBP</option>
+										<option value="CHF">CHF</option>										
+									</select>
+								</td>
+								<td><a onclick="document.forms.convertisseur.submit()" class="btn_ok">OK</a></td>
+
+							</tr>
+
+
+						</tbody>
+					</table>
+</form></div></div></div><div class="html-block" id="droit_Sondages_3"><div class="hautCD"></div><div class="contentCD"><div class="header drag "><ul class="header TitreBloc"><li class="selected"> <a href="/infos/actualites/sondages.phtml" rel="follow" >Sondages</a> </li></ul><ul class="icone"><li> <a class="close" title="Supprimer" href="javascript://" rel="nofollow" ><img src="http://img.boursorama.com/i/block/close.gif" alt="Supprimer"></a></li></ul></div><div class="body"><hr> 
+<script >
+// cette fonction verifie qu une case est au moins cochée et si oui, envoie l information à la page '/membres/enregistrement_sondage.phtml'
+function checkRadio(){
+	var i = 0;
+	var ok = false;
+	while($('reponse_sondage['+i+']') != undefined) {
+		if($('reponse_sondage['+i+']').checked == true){
+		//exit;
+		ok = true;
+		break;
+		}
+		i++;
+	}
+if (!ok) alert('Merci de selectionner une réponse');
+return ok;
+}
+</script>
+
+<div class="sondages">
+
+<form class="bform" id="form-sondage">
+				<br>
+				<div class="picto-sondage"></div>
+				<strong>Que vous inspirent les r&eacute;v&eacute;lations de WikiLeaks ?</strong>
+				<ul>
+										<li><input name="reponse" id="reponse_sondage[0]" value="1140" type="radio">&nbsp;<label for="reponse_sondage[0]">C'est une d&eacute;rive contestable. Les informations livr&eacute;es &agrave; l'opinion auraient d&ucirc; rester confidentielles.</label></li>
+
+										<li><input name="reponse" id="reponse_sondage[1]" value="1139" type="radio">&nbsp;<label for="reponse_sondage[1]">C'est une tr&egrave;s bonne chose. La transparence est souhaitable, les informations accessibles souvent passionnantes.</label></li>
+										<li><input name="reponse" id="reponse_sondage[2]" value="1141" type="radio">&nbsp;<label for="reponse_sondage[2]">Difficile de se prononcer globalement mais ces documents ne r&eacute;v&egrave;lent rien de fracassant.</label></li>
+									</ul>
+				<div align="center">
+									<input type="button" class="btn_ok" value="Répondre" onclick="window.workspace.alert('Vous devez être membre pour répondre.', 'Avertissement')">
+								</div>
+
+</form>				
+</div>
+</div></div></div></div>
+</div>
+		<div style="clear:both;"></div>
+
+		</div>
+<div class="bottom-bas">&nbsp;</div>
+
+<!-- LifeStyle -->
+<!-- <a name="ls"></a> -->
+<div class="BlocsLifeStyle">
+	<div class="LShead"><a href="/lifestyle/">Sport</a></div>
+
+	<div class="LesBlocs">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+		<tbody>
+		
+		<tr>
+			<td align="center" style="padding: 10px 0;">
+				<div style="background:#fff url(http://img.boursorama.com/css/media/i/HfondBhp.gif) no-repeat top left;width:314px">
+					<div style="padding:3px;">
+					<div style="text-align:left;"><span style="color:#3C96F4; font-weight:bold; font-size:13px;">L'actualité sportive</span></div>
+
+					
+					
+					<div style="text-align: left;">
+<div><div class="FilNews"><ul><li><span class="date">08/12 11:43</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=93af89aab383f4f263170e06884ae459" title="Les supporters manifestent">Les supporters manifestent</a></li><li><span class="date">08/12 11:18</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=f957e521f5a60a2c78de3d1c57e96c2d" title="La jeunesse a pris le pouvoir">La jeunesse a pris le pouvoir</a></li><li><span class="date">08/12 11:04</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=8cb2943243bbcec94b1bb7ea9b67d691" title="Contador est optimiste">Contador est optimiste</a></li><li><span class="date">08/12 10:35</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=1607606182ed2de926a81a259ab16c3d" title="Benitez : «Maintenant, tout change»">Benitez : «Maintenant, tout change»</a></li><li><span class="date">08/12 10:30</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=dcd6188cd730c0ff19d0e53e72307b5a" title="Gourcuff : la réponse du père">Gourcuff : la réponse du père</a></li><li><span class="date">08/12 10:00</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=01541ab4961e8a24938337bd3caf672b" title="Artur Jorge vend sa collec">Artur Jorge vend sa collec</a></li><li><span class="date">08/12 09:58</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=29484095e384a149624d0884f2bd62f3" title="Dusautoir soutient les coaches">Dusautoir soutient les coaches</a></li><li><span class="date">08/12 09:16</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=d79ca7224ed096ecd4bc36525f880e08" title="Les vérités de Platini">Les vérités de Platini</a></li><li><span class="date">08/12 08:56</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=6e2ad4d4bcd66e47cb5490120754f186" title="Rothen négocie avec l'AEK">Rothen négocie avec l'AEK</a></li><li><span class="date">08/12 08:49</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=f0ef8524e344e870489c6fc514d9aa3e" title="L'OM veut éviter le Barça">L'OM veut éviter le Barça</a></li><li><span class="date">08/12 08:29</span><a href="/lifestyle/details_actualites.phtml?currentRubrique=Sport&num=6ffa080de80779789db107e2646cf6df" title="Mbokani n'est plus banni">Mbokani n'est plus banni</a></li></ul></div></div>					
+					</div>
+
+					</div>
+				</div>		
+				<div style="text-align:left;line-heigth:21px;background:url(http://img.boursorama.com/css/media/i/BfondBhp.gif) no-repeat top left;clear:both;height:21px;width:314px">
+					&nbsp;<strong>
+					<a style="color:white" href="/lifestyle/actualites.phtml?currentRubrique=sport&cid=80">Plus d'actualités</a></strong>
+				</div>				
+			</td>
+			
+			
+			<td align="center" valign="top" style="padding: 10px 0;">
+				<table cellpadding="0" cellspacing="0" border="0" height="260px">
+
+				<tr>
+					<td valign="top">
+
+					<div style="background:#fff url(http://img.boursorama.com/css/media/i/HfondBhp.gif) no-repeat top left;width:314px">
+						<div style="padding:3px;">
+						<div style="text-align:left;"><span style="color:#3C96F4; font-weight:bold; font-size:13px;">Les matchs en direct<img src="http://img.boursorama.com/lifestyle/i/ico-live.gif" alt="live" style="margin-left: 10px; vertical-align: absmiddle;" /></span></div>
+						<table cellspacing="0" class="tabContenu" width="100%">
+							            					<tr class="L10">
+	            						<td colspan="3" width="80%"><span style="font-size: 10px;">08 décembre 2010 - 20h45</span></td>
+
+	            						<td width="20%"><a target="_blank" href="http://adserver.itsfogo.com/click.aspx?zoneid=85230"><img style="vertical-align: middle;" alt="Pariez" title="Pariez" src="/lifestyle/i/btn-pariez.gif" width="47"/></a></td>
+	            					</tr>
+	                    							<tr class="L10" width="100%">
+								<td style="border-bottom: solid 1px #99B7D9;" width="5%"><img alt="FOOTBALL" title="Football" src="/lifestyle/i/icones-sport/ico-football.gif" width="10px" style="vertical-align: middle; margin-right: 0px;"></td>
+		                    	<td style="border-bottom: solid 1px #99B7D9;">
+	                            	                                <span style="font-size:11px; font-weight: bold;"><a style="text-decoration:none;" href="/lifestyle/sport/match-live.phtml?link=aHR0cDovL3d3dy5sZXF1aXBlLmZyL0JvdXJzb3JhbWEvRm9vdGJhbGwvZGlyZWN0cy9MaXZlMjEyNzA4Lmh0bWw=">Arsenal - Partizan</a>
+	                            	                            	</span>
+		                     	</td>
+
+		                     	<td style="border-bottom: solid 1px #99B7D9; text-align: left; width:13%;">&nbsp;</td>
+		                     	<td style="border-bottom: solid 1px #99B7D9;"><span style='font-size: 10px; color: #009df5;'>A venir</span></td>
+		                    							<tr class="L10" width="100%">
+								<td style="border-bottom: solid 1px #99B7D9;" width="5%"><img alt="FOOTBALL" title="Football" src="/lifestyle/i/icones-sport/ico-football.gif" width="10px" style="vertical-align: middle; margin-right: 0px;"></td>
+		                    	<td style="border-bottom: solid 1px #99B7D9;">
+	                            	                                <span style="font-size:11px; font-weight: bold;"><a style="text-decoration:none;" href="/lifestyle/sport/match-live.phtml?link=aHR0cDovL3d3dy5sZXF1aXBlLmZyL0JvdXJzb3JhbWEvRm9vdGJhbGwvZGlyZWN0cy9MaXZlMjEyNjg0Lmh0bWw=">Bayern munich - Fc b&acirc;le</a>
+	                            	                            	</span>
+
+		                     	</td>
+		                     	<td style="border-bottom: solid 1px #99B7D9; text-align: left; width:13%;">&nbsp;</td>
+		                     	<td style="border-bottom: solid 1px #99B7D9;"><span style='font-size: 10px; color: #009df5;'>A venir</span></td>
+		                    							<tr class="L10" width="100%">
+								<td style="border-bottom: solid 1px #99B7D9;" width="5%"><img alt="FOOTBALL" title="Football" src="/lifestyle/i/icones-sport/ico-football.gif" width="10px" style="vertical-align: middle; margin-right: 0px;"></td>
+		                    	<td style="border-bottom: solid 1px #99B7D9;">
+	                            	                                <span style="font-size:11px; font-weight: bold;"><a style="text-decoration:none;" href="/lifestyle/sport/match-live.phtml?link=aHR0cDovL3d3dy5sZXF1aXBlLmZyL0JvdXJzb3JhbWEvRm9vdGJhbGwvZGlyZWN0cy9MaXZlMjEyNTY2Lmh0bWw=">Zilina - Spartak moscou</a>
+	                            	                            	</span>
+
+		                     	</td>
+		                     	<td style="border-bottom: solid 1px #99B7D9; text-align: left; width:13%;">&nbsp;</td>
+		                     	<td style="border-bottom: solid 1px #99B7D9;"><span style='font-size: 10px; color: #009df5;'>A venir</span></td>
+		                    							<tr class="L10" width="100%">
+								<td style="border-bottom: solid 1px #99B7D9;" width="5%"><img alt="FOOTBALL" title="Football" src="/lifestyle/i/icones-sport/ico-football.gif" width="10px" style="vertical-align: middle; margin-right: 0px;"></td>
+		                    	<td style="border-bottom: solid 1px #99B7D9;">
+	                            	                                <span style="font-size:11px; font-weight: bold;"><a style="text-decoration:none;" href="/lifestyle/sport/match-live.phtml?link=aHR0cDovL3d3dy5sZXF1aXBlLmZyL0JvdXJzb3JhbWEvRm9vdGJhbGwvZGlyZWN0cy9MaXZlMjEyNTg4Lmh0bWw=">Ac milan - Ajax amsterdam</a>
+	                            	                            	</span>
+
+		                     	</td>
+		                     	<td style="border-bottom: solid 1px #99B7D9; text-align: left; width:13%;">&nbsp;</td>
+		                     	<td style="border-bottom: solid 1px #99B7D9;"><span style='font-size: 10px; color: #009df5;'>A venir</span></td>
+		                    							<tr class="L10" width="100%">
+								<td style="border-bottom: solid 1px #99B7D9;" width="5%"><img alt="FOOTBALL" title="Football" src="/lifestyle/i/icones-sport/ico-football.gif" width="10px" style="vertical-align: middle; margin-right: 0px;"></td>
+		                    	<td style="border-bottom: solid 1px #99B7D9;">
+	                            	                                <span style="font-size:11px; font-weight: bold;"><a style="text-decoration:none;" href="/lifestyle/sport/match-live.phtml?link=aHR0cDovL3d3dy5sZXF1aXBlLmZyL0JvdXJzb3JhbWEvRm9vdGJhbGwvZGlyZWN0cy9MaXZlMjEyNjg2Lmh0bWw=">Cfr 1907 cluj - As roma</a>
+	                            	                            	</span>
+
+		                     	</td>
+		                     	<td style="border-bottom: solid 1px #99B7D9; text-align: left; width:13%;">&nbsp;</td>
+		                     	<td style="border-bottom: solid 1px #99B7D9;"><span style='font-size: 10px; color: #009df5;'>A venir</span></td>
+		                    	                    	</tr>
+	
+	     
+			            
+			            
+
+	                        				</table>
+			            </div>
+					</div>
+
+					
+					<div style="text-align:left;line-heigth:21px;background:url(http://img.boursorama.com/css/media/i/BfondBhp.gif) no-repeat top left;clear:both;height:21px;width:314px">
+
+						&nbsp;<strong>
+						<a style="color:white" href="/lifestyle/sport/match-live.phtml">Tous les matchs en direct</a></strong>
+					</div>				
+					
+					</td>
+				</tr>
+				
+					
+				
+					<tr>
+						<td valign="bottom">
+							<div style="background:#fff url(http://img.boursorama.com/css/media/i/HfondBhp.gif) no-repeat top left;width:314px">
+								<div style="padding:3px;">
+
+								<div style="text-align:left;"><span style="color:#3C96F4; font-weight:bold; font-size:13px;">Nos partenaires</span></div>
+								<div style="text-align: left;">
+									<div id="Smart5"><img src="http://img.boursorama.com/i/d.gif" height="40" width="300" border=0></div>								</div>	
+								</div>
+							</div>
+							
+							<div style="text-align:left;line-heigth:21px;background:url(http://img.boursorama.com/css/media/i/BfondBhp.gif) no-repeat top left;clear:both;height:21px;width:314px">
+	
+							</div>						
+						</td>
+					</tr>
+
+				
+				
+				</table>
+				
+				
+			</td>
+
+			
+			<td align="center" style="padding: 10px 0;">
+				<div style="background:#fff url(http://img.boursorama.com/css/media/i/HfondBhp.gif) no-repeat top left;width:314px;">
+					<div style="padding:3px; height:235px;">
+					<div style="text-align:left;"><span style="color:#3C96F4; font-weight:bold; font-size:13px;">En ce moment sur Lifestyle</span>
+					</div>
+					
+					<table cellpadding="2" cellspacing="2" border="0">
+
+														
+							<tr valign="top">
+								<td>
+									<div style="width:84px; border:solid 1px black; text-align:center;">
+										<a href="http://www.boursorama.com//lifestyle/culture/celebrites/article.phtml?id=159">
+											<img src="http://www.boursorama.com/lifestyle/culture/img.phtml?id=300961&image=1" width="80" border="0"/>
+										</a>
+									</div>
+								</td>
+								
+								<td>
+
+									<span style='color:#3C96F4;'>Célébrité</span>
+									<br><strong>Palme d'or</strong><br>
+									<a href="http://www.boursorama.com//lifestyle/culture/celebrites/article.phtml?id=159">A quarante ans, Apichatpong Weerasethakul connaît la consécr&hellip;</a>
+								</td>
+								
+							</tr>							
+
+								<tr valign="top">
+									<td>
+										<div style="width:84px; border:solid 1px black; text-align:center;">
+
+											<a href="http://www.boursorama.com//lifestyle/culture/cinema/film.phtml?id=2069">
+												<div style="background-repeat:no-repeat; background-image:url(http://img.boursorama.com/includes/images/bloc_ls_home_2.jpg?689fcedcee85193316ddd4d65fd75bdf); height: 40px;"></div>
+											</a>
+										</div>
+									</td>
+									
+									<td>
+									<span style='color:#3C96F4;'>Cinema</span>
+									<br><strong>Perdu ? Retrouvé</strong><br>
+
+									<a href="http://www.boursorama.com//lifestyle/culture/cinema/film.phtml?id=2069">Film d'animation de Philip Hunt précédé de 2 courts-métrages&hellip;</a>
+									</td>
+									
+								</tr>					
+														<tr valign="top">
+									<td align="center">
+										
+											<a href="http://www.boursorama.com//lifestyle/culture/livres/livre.phtml?id=1066">
+												<img src="http://img.boursorama.com/includes/images/bloc_ls_home_small_3.jpg?0f7402076f3cb7ea72a136ac32fac550" style="border:solid 1px black;" />
+											</a>
+										
+									</td>
+
+									
+									<td>
+									<span style='color:#3C96F4;'>Livres</span>
+									<br><strong>Tout l'honneur des hommes</strong><br>
+									<a href="http://www.boursorama.com//lifestyle/culture/livres/livre.phtml?id=1066">En 1839, au coeur des montagnes du Caucase, les cavaliers tc&hellip;</a>
+									</td>
+									
+								</tr>	
+												
+
+					</table>
+					
+				</div>
+
+				
+				<div style="text-align:left;line-heigth:21px;background:url(http://img.boursorama.com/css/media/i/BfondBhp.gif) no-repeat top left;clear:both;height:21px;width:314px"></div>			
+			</td>							
+		</tr>
+		</tbody>
+		</table>	
+	</div>
+</div><!-- FIN LifeStyle -->
+
+<!-- BOTTOM -->
+
+<div class="bottom">
+    <div class="logos">
+    	<table width="100%">
+
+           	<tr>
+                    <td width="50%" align="center">
+                        <a href="/banque-en-ligne/qui-sommes-nous/index.html#engagements" target="_blank" title="Webcert"><img src="http://img.boursorama.com/css/media/i/webcert.gif" alt="Webcert" width="64px" height="70px" /></a>
+                    </td>
+                    <td width="50%" align="center">
+                        <a href="javascript:popup('https://seal.verisign.com/splash?form_file=fdf/splash.fdf&dn=WWW.BOURSORAMA.COM&lang=fr','VeriSign',560,500)"><img src="http://img.boursorama.com/css/media/i/verisign.gif" alt="Verisign" width="108px" height="60px" /></a>
+                    </td>
+                </tr>
+        </table>
+
+    
+<!--		<a class="popup" href="/banque-en-ligne/popups/nos-engagements.html" title="Webcert" rel="415,450"><div class="webcert"></div></a>
+		<a href="javascript:popup('https://seal.verisign.com/splash?form_file=fdf/splash.fdf&dn=WWW.BOURSORAMA.COM&lang=fr','VeriSign',560,500)"><div class="verisign"></div></a> -->
+	
+    </div>
+    
+    <div class="txts">
+        
+        Site garanti VeriSign SSL pour la sécurité et la confidentialité des communications.<br />
+        Boursorama banque est certifiée <a href="http://www.afaq.org/certification=196861044288" class="external" rel="nofollow">AFAQ WEBCERT&reg; - REF - 172-01</a> pour ses activités " transactions boursières en ligne et placements en contrats Boursorama Vie ".<hr />
+
+        <a href="http://groupe.boursorama.fr" class="external">Site du Groupe</a> - 
+        Copyright &copy; 2010 BOURSORAMA - 
+        <a href="/contact/support.phtml" rel="nofollow">Contactez-nous</a> - 
+        <a class="help" rel="600,500" title="Les Risques en Bourse" href="/communication/absolu_risque.phtml">Les Risques en Bourse</a> - 
+        Bourses de Paris, indices Euronext en temps réel. <br/>
+        Indice Francfort en différé 15 minutes. Cours différés d'au moins 15 mn (Europe, Bruxelles, Amsterdam, Nasdaq, Francfort, Londres, Madrid, Toronto, NYSE, AMEX), <br />
+
+        20mn (Milan) ou 30mn (Zürich, NYMEX). Boursorama en Europe : <a href="http://www.selfbank.es" target="_blank">Selfbank.es</a>, <a href="http://www.onvista.de" target="_blank">Onvista.de</a>, <a href="http://www.selftrade.co.uk" target="_blank">Selftrade.co.uk</a>
+	<br/>
+	Les indices et les cours sont la propriété des partenaires suivants &copy; NIKKEI Inc, &copy; NYSE Euronext, &copy; TMX Group Inc.
+	<br/>
+
+        <a href="/pub/brochure_tarifaire/index.html" onClick="javascript:window.open(this.href, '_blank','width=950,height=750'); return false;" >Brochure Tarifaire</a>  - 
+	<a href="/clients/offre/popups/cg_brs_actuelles.pdf" target="_blank">Conditions Générales Boursorama Banque</a> - 	<a href="/clients/offre/popups/cg_brs_nouvelles.pdf" target="_blank"><span style="color: red;">N!</span> Conditions Générales Boursorama Banque applicables au 01/02/2011</a> -
+        <a href="http://www.vwd.com/" class="external" rel="nofollow">Source vwd group</a>, <a href="http://www.six-telekurs.fr/" class="external" rel="nofollow">SIX TELEKURS</a>,
+	<br/>
+
+	<a href="/divers/avertissement.phtml" rel="nofollow">Consultez notre avertissement légal Boursorama Banque</a> - <a href="/banque-en-ligne/affiliation/index.html">Affiliation</a><hr />
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="links">
+            <tr valign="top">
+        	<td>
+                    <ul>
+                	<li><a href="/banque-en-ligne/compte-bancaire/index.html" title="Boursorama Essentiel+">Banque</a></li>
+
+			<li><a href="/banque-en-ligne/compte-bancaire/index.html" title="Boursorama Essentiel+">Accueil Banque</a></li>
+			<li><a href="/banque-en-ligne/compte-bancaire/tarifs-compte-bancaire.html" title="Tarifs compte bancaire">Tarifs</a></li>
+			<li><a href="/banque-en-ligne/compte-bancaire/cartes-bancaires-et-moyens-de-paiement.html" title="Carte Visa ou Visa Premier Gratuite">Carte Bancaire</a></li>
+			<li><a href="/banque-en-ligne/compte-bancaire/assurance-moyens-de-paiment.html" title="Votre assurance moyens de paiement et achats sur Internet">Assurance</a></li>
+			<li><a href="/banque-en-ligne/compte-bancaire/changer-de-banque-gratuitement.html" title="Changer de banque facilement">Changer de banque</a></li>
+			<li><a href="/banque-en-ligne/compte-bancaire/services-innovants-banque-en-ligne.html" title="Banque en ligne innovante">Services Innovants</a></li>
+
+			<li><a href="/banque-en-ligne/compte-bancaire/souscrire-en-ligne/index.html" title="Ouvrir un compte bancaire en ligne">Devenir Client</a></li>
+                    </ul>
+                </td>
+            	<td>
+                    <ul>
+                	<li><a href="/banque-en-ligne/bourse/index.html" title="Bourse en ligne &agrave; des tarifs comp&eacute;titifs">Bourse</a></li>
+			<li><a href="/banque-en-ligne/bourse/index.html" title="Bourse en ligne &agrave; des tarifs comp&eacute;titifs">Accueil Bourse</a></li>
+
+			<li><a href="/banque-en-ligne/bourse/compte-titres/tarifs-compte-titres.html" title="Tarifs compte bourse">Tarifs</a></li>
+			<li><a href="/banque-en-ligne/bourse/compte-titres/outils-boursiers.html" title="Outils boursier">Outils</a></li>
+			<li><a href="/banque-en-ligne/bourse/compte-titres/suivi-et-conseils-boursiers.html" title="Suivi et conseils boursiers">Suivi/Conseils</a></li>
+			<li><a href="/banque-en-ligne/bourse/pea-actions.html" title="B&eacute;n&eacute;ficier des avantages fiscaux sur les OPCVM avec Boursorama Trading">PEA ACTIONS</a></li>
+			<li><a href="/banque-en-ligne/bourse/compte-derives.html" title="Investir sur les d&eacute;riv&eacute;s">Dérivés</a></li>
+			<li><a href="/banque-en-ligne/bourse/compte-titres/souscrire-en-ligne/index.html" title="Ouvrir un compte-titres ordinaire ou PEA">Devenir Client</a></li>
+
+                    </ul>
+                </td>
+            	<td>
+                    <ul>
+                	<li><a href="/banque-en-ligne/credits/index.html" title="Demandez gratuitement une &eacute;tude personnalis&eacute;e">Crédits</a></li>
+			<li><a href="/banque-en-ligne/credits/index.html" title="Demandez gratuitement une &eacute;tude personnalis&eacute;e">Accueil Crédits</a></li>
+			<li><a href="/banque-en-ligne/credits/credit-immobilier.html" title="Financez vos investissements immobiliers">Crédits Immobiliers</a></li>
+
+			<li><a href="/banque-en-ligne/credits/simulateur_financement.html" title="Simuler votre crédit">Simuler votre financement</a></li>
+			<li><a href="/banque-en-ligne/credits/souscription_credit.html" title="Demande de crédit en ligne">Demande de financement</a></li>
+                    </ul>
+                </td>
+            	<td>
+                    <ul>
+                	<li><a href="/banque-en-ligne/sicav/index.html" title="Une s&eacute;lection des meilleurs supports d&rsquo;investissement">Sicav</a></li>
+
+			<li><a href="/banque-en-ligne/sicav/index.html" title="Une s&eacute;lection des meilleurs supports d&rsquo;investissement">Accueil Sicav</a></li>
+			<li><a href="/banque-en-ligne/sicav/tarifs-sicav.html" title="Tarifs SICAV">Tarifs</a></li>
+			<li><a href="/banque-en-ligne/sicav/fonds.html" title="Combinez choix et performances avec les fonds Boursorama 0%">Fonds</a></li>
+			<li><a href="/banque-en-ligne/sicav/outils-et-services.html" title="Bénéficiez d'un environnement dédié à la gestion de vos SICAV & FCP">Outils et Services</a></li>
+			<li><a href="/banque-en-ligne/sicav/pea-opcvm.html" title="B&eacute;n&eacute;ficiez des avantages fiscaux sur les OPCVM avec Boursorama 0%">PEA OPCVM</a></li>
+			<li><a href="/banque-en-ligne/sicav/compte-titres/souscrire-en-ligne/index.html" title="Ouvrir un compte titres et PEA - OPCVM">Devenir Client</a></li>
+
+                    </ul>
+                </td>
+        	<td>
+                    <ul>
+                        <li><a href="/banque-en-ligne/epargne/index.html" title="Les comptes d&rsquo;&eacute;pargne de Boursorama Banque">Epargne</a></li>
+			<li><a href="/banque-en-ligne/epargne/index.html" title="Les comptes d&rsquo;&eacute;pargne de Boursorama Banque">Accueil Epargne</a></li>
+			<li><a href="/banque-en-ligne/epargne/livret-a.html" title="Livret A">Livret A</a></li>
+
+			<li><a href="/banque-en-ligne/epargne/livret-developpement-durable.html" title="Livret de d&eacute;veloppement durable (ex-codevi)">LDD</a></li>
+			<li><a href="/banque-en-ligne/epargne/compte-sur-livret.html" title="L'&eacute;pargne r&eacute;mun&eacute;r&eacute;e sans plafond de versement">CSL</a></li>
+			<li><a href="/banque-en-ligne/epargne/plan-epargne-logement.html" title="Acc&eacute;dez &agrave; un pr&ecirc;t &agrave; taux avantageux pour vos projets immobiliers">PEL / CEL</a></li>
+                    </ul>
+                </td>
+        	<td>
+                    <ul>
+
+                	<li><a href="/banque-en-ligne/assurance-vie/index.html" title="L&rsquo;un des meilleurs fonds en euros du march&eacute;">Assurance Vie</a></li>
+			<li><a href="/banque-en-ligne/assurance-vie/index.html" title="L&rsquo;un des meilleurs fonds en euros du march&eacute;">Accueil Assurance vie</a></li>
+			<li><a href="/banque-en-ligne/assurance-vie/assurance-multisupports/tarifs-assurance-vie.html" title="Tarifs Assurance vie">Tarifs</a></li>
+			<li><a href="/banque-en-ligne/assurance-vie/assurance-multisupports/supports.html" title="Investissez parmi les fonds les plus prestigieux pour votre assurance vie">Supports</a></li>
+			<li><a href="/banque-en-ligne/assurance-vie/assurance-multisupports/palmares.html" title="Palmares assurance vie">Palmarès</a></li>
+			<li><a href="/banque-en-ligne/assurance-vie/assurance-multisupports/services.html" title="Des outils innovants pour la gestion de votre Assurance Vie">Services</a></li>
+
+			<li><a href="/banque-en-ligne/assurance-vie/gestion-pilotee.html" title="Entrez dans le cercle privé de la gestion financière haut de gamme, sans frais supplémentaire">Gestion Pilotée</a></li>
+			<li><a href="/banque-en-ligne/assurance-vie/perp-madelin-capitalisation.html" title="Entrepreneurs, pr&eacute;parez votre retraite">CAPI - Madelin</a></li>
+			<li><a href="/banque-en-ligne/assurance-vie/assurance-multisupports/faq.html" title="Questions/Réponses sur l'assurance vie">FAQ</a></li>
+			<li><a href="/banque-en-ligne/assurance-vie/assurance-multisupports/souscrire-en-ligne/index.html" title="Adhérez à notre assurance vie en ligne">Devenir Client</a></li>
+                    </ul>
+                </td>
+        	<td>
+
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- FIN BOTTOM -->
+</div>
+<div id="Smart6"><img src="http://img.boursorama.com/i/d.gif" height="610" width="120" border=0></div><script type="text/javascript" src="http://img.boursorama.com/js/cache/4d73439b66c1409362fd6f8c35af4bcd.js?files%5B0%5D=%2Fjs%2Fframework%2Fmootools-1.2.5-core.js&amp;files%5B1%5D=%2Fjs%2Fframework%2Fmootools-1.2.4.4-more.js&amp;files%5B2%5D=%2Fjs%2Fframework%2Fbourso.js&amp;files%5B3%5D=%2Fjs%2Fframework%2Fbourso%2Fstring.class.js&amp;files%5B4%5D=%2Fjs%2Fframework%2Fbourso%2Frequest.bourso.class.js&amp;files%5B5%5D=%2Fjs%2Fframework%2Fbourso%2Frequest.boursojson.class.js&amp;files%5B6%5D=%2Fjs%2Fframework%2Fbourso%2Frequest.boursohtml.class.js&amp;files%5B7%5D=%2Fjs%2Fframework%2Fbourso%2Felement.class.js&amp;files%5B8%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspace.class.js&amp;files%5B9%5D=%2Fjs%2Fframework%2Fbourso%2Fdropelement.class.js&amp;files%5B10%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspacecolumn.class.js&amp;files%5B11%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspacetable.class.js&amp;files%5B12%5D=%2Fjs%2Fframework%2Fbourso%2Fdragelement.class.js&amp;files%5B13%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspacedraggableelement.class.js&amp;files%5B14%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspacedropbox.class.js&amp;files%5B15%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspaceblock.class.js&amp;files%5B16%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspacemybourso.class.js&amp;files%5B17%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspaceminicustomizationblock.class.js&amp;files%5B18%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspacelink.class.js&amp;files%5B19%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspacemodalbox.class.js&amp;files%5B20%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspacebookmark.class.js&amp;files%5B21%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspacesearch.class.js&amp;files%5B22%5D=%2Fjs%2Fframework%2Fbourso%2Froar.class.js&amp;files%5B23%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspacecarousel.class.js&amp;files%5B24%5D=%2Fjs%2Fframework%2Fbourso%2Fworkspaceflashgraph.class.js"></script>
+<script type="text/javascript">
+window.config = {};
+window.config.tables = {};
+window.config.tables.btable1291806753 = [];
+window.config.tables.btable1291806793 = [];
+window.config.tables.btable1291806813 = [];
+window.config.blocks = {};
+window.config.blocks.cours_Header_0 = {"drag":false,"fixed":false,"parametersFixed":false};
+window.config.blocks.cours_InfosValeur_0 = {"drag":false,"fixed":false,"parametersFixed":{"symbole":"1rPCAC"}};
+window.config.blocks.cours_AnalysesTech_0 = {"drag":false,"fixed":false,"parametersFixed":{"symbole":"1rPCAC"}};
+window.config.blocks.cours_Actualites_0 = {"drag":false,"fixed":false,"parametersFixed":{"symbole":"1rPCAC"}};
+window.config.blocks.cours_ForumReco_0 = {"drag":false,"fixed":false,"parametersFixed":{"symbole":"1rPCAC"}};
+window.config.blocks.cours_Transactions_0 = {"drag":false,"fixed":false,"parametersFixed":{"symbole":"1rPCAC"}};
+window.config.blocks.cours_DonneesHisto_0 = {"drag":false,"fixed":false,"parametersFixed":{"symbole":"1rPCAC"}};
+window.config.blocks.droit_Indices_0 = {"drag":"column","fixed":false,"parametersFixed":false};
+window.config.blocks.block1291806763 = {"drag":false,"fixed":1,"parametersFixed":false};
+window.config.blocks.block1291806773 = {"drag":false,"fixed":2,"parametersFixed":false};
+window.config.blocks.droit_Futures_1 = {"drag":"column","fixed":false,"parametersFixed":false};
+window.config.blocks.droit_LiensPartenaires_0 = {"drag":false,"fixed":4,"parametersFixed":false};
+window.config.blocks.droit_Premiere_2 = {"drag":"column","fixed":false,"parametersFixed":false};
+window.config.blocks.droit_Sondages_3 = {"drag":"column","fixed":false,"parametersFixed":false};
+window.config.columns = {};
+window.config.columns.rightCol = {"canMoveBlock":true,"moveBlockAction":"savedisposition","canDropBlock":false};
+window.config.others = {};
+window.config.graphics = {};
+window.config.accordions = {};
+
+window.addEvent('domready', function(){
+
+					var wbkm = new WorkspaceBookmark();
+					$("accesrapide").addEvent("click",wbkm.open.bind(wbkm));
+					$("bookmark_page").addEvent("click",wbkm.addBookmark.bind(wbkm));
+				
+});
+</script>
+
+<div id="SmartEndPage1" style="display:none;" class="pub728"><SCRIPT LANGUAGE="JavaScript1.1" type="text/javascript">
+		sas_pageid='177/(cours)';
+		sas_formatid=795; // pub 1000*90 - 
+		sas_master='M'; // Master : M=master or S=slave
+		sas_id='1'; // Master : M=master or S=slave
+		sas_target='symb=1rPCAC#'; // Targeting
+		SmartAdServer(sas_pageid,sas_formatid,sas_master,sas_target,sas_id);
+		</SCRIPT></div><div id="SmartEndPage2" style="display:none;" class=""><SCRIPT LANGUAGE="JavaScript1.1" type="text/javascript">
+		sas_pageid='177/(cours)';
+		sas_formatid=7328; // pub 300*30 - Sajoo
+		sas_master='S'; // Master : M=master or S=slave
+		sas_id='2'; // Master : M=master or S=slave
+		sas_target='symb=1rPCAC#'; // Targeting
+		SmartAdServer(sas_pageid,sas_formatid,sas_master,sas_target,sas_id);
+		</SCRIPT></div><div id="SmartEndPage3" style="display:none;" class=""><SCRIPT LANGUAGE="JavaScript1.1" type="text/javascript">
+		sas_pageid='177/(cours)';
+		sas_formatid=4498; // pub 300*170 - Bloc AutoPromo
+		sas_master='S'; // Master : M=master or S=slave
+		sas_id='3'; // Master : M=master or S=slave
+		sas_target='symb=1rPCAC#'; // Targeting
+		SmartAdServer(sas_pageid,sas_formatid,sas_master,sas_target,sas_id);
+		</SCRIPT></div><div id="SmartEndPage4" style="display:none;" class=""><SCRIPT LANGUAGE="JavaScript1.1" type="text/javascript">
+		sas_pageid='177/(cours)';
+		sas_formatid=601; // pub 300*250 - 
+		sas_master='S'; // Master : M=master or S=slave
+		sas_id='4'; // Master : M=master or S=slave
+		sas_target='symb=1rPCAC#'; // Targeting
+		SmartAdServer(sas_pageid,sas_formatid,sas_master,sas_target,sas_id);
+		</SCRIPT></div><div id="SmartEndPage5" style="display:none;" class=""><SCRIPT LANGUAGE="JavaScript1.1" type="text/javascript">
+		sas_pageid='177/(cours)';
+		sas_formatid=7328; // pub 300*30 - Sajoo
+		sas_master='S'; // Master : M=master or S=slave
+		sas_id='5'; // Master : M=master or S=slave
+		sas_target='symb=1rPCAC#'; // Targeting
+		SmartAdServer(sas_pageid,sas_formatid,sas_master,sas_target,sas_id);
+		</SCRIPT></div><div id="SmartEndPage6" style="display:none;" class=""><SCRIPT LANGUAGE="JavaScript1.1" type="text/javascript">
+		sas_pageid='177/(cours)';
+		sas_formatid=6226; // pub 120*600 - Skyscraper
+		sas_master='S'; // Master : M=master or S=slave
+		sas_id='6'; // Master : M=master or S=slave
+		sas_target=''; // Targeting
+		SmartAdServer(sas_pageid,sas_formatid,sas_master,sas_target,sas_id);
+		</SCRIPT></div><script language="javascript1.1">
+	window.addEvent('domready', function(){
+SmartMoveEndPageDiv(1);
+SmartMoveEndPageDiv(2);
+SmartMoveEndPageDiv(3);
+SmartMoveEndPageDiv(4);
+SmartMoveEndPageDiv(5);
+SmartMoveEndPageDiv(6);
+	});
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var setVarTracker = _gat._getTracker("mars");
+setVarTracker._initData(); setVarTracker._setDomainName("www.boursorama.com"); setVarTracker._setVar("WEB-VISITOR");
+var pageTracker = _gat._getTracker("UA-1623710-1");
+pageTracker._initData(); pageTracker._setDomainName("www.boursorama.com"); pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

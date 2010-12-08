@@ -18,12 +18,9 @@
 package org.glimpse.server.finance;
 
 import java.net.URLEncoder;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.finance.Quotation;
@@ -37,9 +34,7 @@ public class QuotationServiceImpl implements QuotationService {
 	private static Log logger = LogFactory.getLog(QuotationServiceImpl.class);
 
 	private ProxyProvider proxyProvider;
-	private Pattern pattern =
-		Pattern.compile(
-				"<div class=\"InfB\"><span class=\"gras\">([0-9\\s\\.]+)\\s*(\\(c\\))?\\s*(\\w*)</span>(&nbsp;)*<span\\s+class=\"gras\"><span class=\"VAR[a-z]*\">([-\\+]?[0-9\\s\\.]+)%</span>");
+	private QuotationFinder quotationFinder;
 	
 	public Quotation getQuotation(String code) {
 		try {
@@ -55,23 +50,13 @@ public class QuotationServiceImpl implements QuotationService {
 			client.executeMethod(method);
 			String response = method.getResponseBodyAsString();
 			
-			double value = 0;
-			String unit = "";
-			double variation = 0;
-			Matcher matcher = pattern.matcher(response);
-			if(matcher.find()) {
-				String s = matcher.group(1);
-				s = StringUtils.remove(s, " ");
-				value = Double.parseDouble(s);
-				unit = matcher.group(3);
-				s = matcher.group(5);
-				s = StringUtils.remove(s, " ");
-				variation = Double.parseDouble(s);
-			} else {
+			Quotation quotation = quotationFinder.getQuotation(response);
+			if(quotation == null) {
 				logger.debug("Unable to find quotation for <" + code + ">\n" + response);
+				quotation = new Quotation();
 			}
 			
-			return new Quotation(value, unit, variation);
+			return quotation;
 			
 		} catch (Exception e) {
 			logger.error("Error while getting quotation for <" + code + ">", e);
@@ -86,6 +71,15 @@ public class QuotationServiceImpl implements QuotationService {
 
 	public ProxyProvider getProxyProvider() {
 		return proxyProvider;
+	}
+
+	@Required
+	public void setQuotationFinder(QuotationFinder quotationFinder) {
+		this.quotationFinder = quotationFinder;
+	}
+
+	public QuotationFinder getQuotationFinder() {
+		return quotationFinder;
 	}
 
 }
