@@ -137,8 +137,6 @@ public class HtmlComponent extends Component {
 		panel.add(htmlWidget);
 		
 		setContent(panel);
-		
-		refresh();
 	}
 	
 	public String getTitle() {
@@ -169,7 +167,9 @@ public class HtmlComponent extends Component {
 		
 		titleWidget.setText(getTitle());
 		htmlWidget.setHTML(html);
+		
 		String script = getScript();
+		
 		if(script != null && !script.trim().equals("")) {
 			evalScript(script);
 		}
@@ -189,4 +189,10 @@ public class HtmlComponent extends Component {
     public static native void evalScript(String scriptText) /*-{
     	$wnd.eval(scriptText);
     }-*/;
+
+	@Override
+	protected void onLoad() {
+		super.onLoad();
+		refresh();
+	}
 }

@@ -172,6 +172,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 		
 		FlowPanel mainPanel = new FlowPanel();
 		mainPanel.setWidth("100%");
+		mainPanel.setVisible(false);
+		RootPanel.get("main").add(mainPanel);
 		
 		// Top bar
 		HorizontalPanel topBar = new HorizontalPanel();
@@ -354,9 +356,8 @@ public class Aggregator implements EntryPoint, DragHandler {
 		footer.add(poweredBy);		
 		mainPanel.add(footer);
 		
-		RootPanel.get("main").add(mainPanel);
-		
 		loadPopup.hide();
+		mainPanel.setVisible(true);
 	}
 	
 	public void update() {
