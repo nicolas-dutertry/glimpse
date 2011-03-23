@@ -50,6 +50,9 @@ public interface AggregatorConstants extends Constants {
 	@DefaultStringValue("HTML")
 	String html();
 	
+	@DefaultStringValue("Script")
+	String script();
+	
 	@DefaultStringValue("Title")
 	String title();
 	
