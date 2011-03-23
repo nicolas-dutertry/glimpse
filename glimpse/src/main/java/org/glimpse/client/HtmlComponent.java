@@ -44,6 +44,7 @@ public class HtmlComponent extends Component {
 	
 	private static final String PROPERTY_TITLE = "title";
 	private static final String PROPERTY_HTML = "html";
+	private static final String PROPERTY_SCRIPT = "script";
 	
 	private AggregatorConstants constants = GWT.create(AggregatorConstants.class);
 	
@@ -51,6 +52,7 @@ public class HtmlComponent extends Component {
 	private SimplePanel optionPanel;
 	private TextBox titleInput;
 	private TextArea htmlArea;
+	private TextArea scriptArea;
 	private HTML htmlWidget;
 	
 	private class OptionHandler implements ClickHandler {
@@ -103,6 +105,10 @@ public class HtmlComponent extends Component {
 		htmlArea = new TextArea();
 		table.setWidget(1, 1, htmlArea);
 		
+		table.setText(2, 0, "Script");
+		scriptArea = new TextArea();
+		table.setWidget(2, 1, scriptArea);
+		
 		vp.add(table);
 		
 		Button button = new Button(constants.ok());
@@ -110,6 +116,7 @@ public class HtmlComponent extends Component {
 			public void onClick(ClickEvent event) {
 				setProperty(PROPERTY_TITLE, titleInput.getValue());
 				setProperty(PROPERTY_HTML, htmlArea.getValue());
+				setProperty(PROPERTY_SCRIPT, scriptArea.getValue());
 				Aggregator.getInstance().update();
 				refresh();
 			}
@@ -130,6 +137,8 @@ public class HtmlComponent extends Component {
 		panel.add(htmlWidget);
 		
 		setContent(panel);
+		
+		refresh();
 	}
 	
 	public String getTitle() {
@@ -140,9 +149,14 @@ public class HtmlComponent extends Component {
 		return getProperty(PROPERTY_HTML);
 	}
 	
+	public String getScript() {
+		return getProperty(PROPERTY_SCRIPT);
+	}
+	
 	private void synchronizeOptions() {
 		titleInput.setValue(getTitle());
 		htmlArea.setValue(getHtml());
+		scriptArea.setValue(getScript());
 	}
 
 	public void refresh() {
@@ -155,10 +169,24 @@ public class HtmlComponent extends Component {
 		
 		titleWidget.setText(getTitle());
 		htmlWidget.setHTML(html);
+		String script = getScript();
+		if(script != null && !script.trim().equals("")) {
+			evalScript(script);
+		}
 	}
 	
 	@Override
 	public Type getType() {
 		return Type.HTML;
 	}
+	
+	/**
+     * Evaluate scripts in an HTML string. Will eval both <script src=""></script>
+     * and <script>javascript here</scripts>.
+     *
+     * @param element a new HTML(text).getElement()
+     */
+    public static native void evalScript(String scriptText) /*-{
+    	$wnd.eval(scriptText);
+    }-*/;
 }
