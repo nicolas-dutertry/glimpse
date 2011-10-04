@@ -9,7 +9,7 @@ import org.glimpse.client.finance.Quotation;
 public class RegexpQuotationFinder implements QuotationFinder {
 	private Pattern pattern =
 		Pattern.compile(
-				"<div class=\"InfB\">\\s*<span class=\"gras\">\\s*([0-9\\s\\.]+)\\s*(\\(c\\))?\\s*(\\w*)\\s*</span>(&nbsp;)*\\s*<span\\s+class=\"gras\">\\s*<span class=\"VAR[a-z]*\">([-\\+]?[0-9\\s\\.]+)%</span>");
+				"<big class=\"fv-last\">\\s*<span .*>([0-9\\s\\.]+)\\s*(\\(c\\))?\\s*(\\w*)\\s*</span></span>\\s*</big>\\s*(&nbsp;)*\\s*<big class=\"fv-var\">\\s*<span .*>([-\\+]?[0-9\\s\\.]+)%</span>");
 	@Override
 	public Quotation getQuotation(String text) {
 		Matcher matcher = pattern.matcher(text);
