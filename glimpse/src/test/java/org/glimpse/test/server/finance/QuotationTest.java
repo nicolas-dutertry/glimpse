@@ -12,10 +12,23 @@ import org.glimpse.server.finance.QuotationFinder;
 import org.glimpse.server.finance.RegexpQuotationFinder;
 
 public class QuotationTest extends TestCase {
-	public void testFile() throws Exception {
+	public void testCac() throws Exception {
 		QuotationFinder finder = new RegexpQuotationFinder();
 		
 		InputStream is = getClass().getResourceAsStream("/cac.txt");
+		InputStreamReader reader = new InputStreamReader(is);
+		StringWriter sw = new StringWriter(); 
+		IOUtils.copy(reader, sw);
+		reader.close();
+		
+		Quotation quotation = finder.getQuotation(sw.toString());
+		assertNotNull(quotation);
+	}
+	
+	public void testEuro() throws Exception {
+		QuotationFinder finder = new RegexpQuotationFinder();
+		
+		InputStream is = getClass().getResourceAsStream("/euro.txt");
 		InputStreamReader reader = new InputStreamReader(is);
 		StringWriter sw = new StringWriter(); 
 		IOUtils.copy(reader, sw);
