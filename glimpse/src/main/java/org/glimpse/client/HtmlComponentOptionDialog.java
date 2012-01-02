@@ -44,7 +44,7 @@ public class HtmlComponentOptionDialog extends DialogBox {
 	public HtmlComponentOptionDialog(HtmlComponent component) {
 		this.component = component;
 		
-		setAnimationEnabled(true); 
+		setAnimationEnabled(true);
 		setText(constants.options());
 		
 		FlowPanel panel = new FlowPanel();

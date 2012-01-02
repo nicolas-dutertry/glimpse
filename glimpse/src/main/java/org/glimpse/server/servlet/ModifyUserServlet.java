@@ -37,8 +37,8 @@ import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.UserAttributes;
 import org.glimpse.client.layout.PageDescription;
 import org.glimpse.server.GlimpseUtils;
-import org.glimpse.server.UserManager;
-import org.glimpse.server.XmlUserManagerUtils;
+import org.glimpse.server.manager.UserManager;
+import org.glimpse.server.manager.xml.XmlUserManagerUtils;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.w3c.dom.Document;
 
@@ -90,6 +90,7 @@ public class ModifyUserServlet extends HttpServlet {
 				String theme = null;
 				Document pageDocument = null;
 				DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+				@SuppressWarnings("unchecked")
 				List<FileItem> items = upload.parseRequest(request);
 				for (FileItem item : items) {
 					if(item.getFieldName().equals("userId")) {
@@ -122,6 +123,10 @@ public class ModifyUserServlet extends HttpServlet {
 				if(StringUtils.isEmpty(errorMessage) && StringUtils.isNotBlank(password1) &&
 						!StringUtils.equals(password1, password2)) {
 					errorMessage = "Passwords do not match";
+				}
+				
+				if(connectedUserId.equals(userId) && !"true".equals(administrator)) {
+					errorMessage = "Cannot remove administrator rights to the current user";
 				}
 				
 				if(StringUtils.isEmpty(errorMessage)) {

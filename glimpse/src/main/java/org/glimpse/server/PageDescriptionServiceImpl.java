@@ -21,12 +21,11 @@ import org.apache.commons.lang.StringUtils;
 import org.glimpse.client.PageDescriptionService;
 import org.glimpse.client.UserAttributes;
 import org.glimpse.client.layout.PageDescription;
+import org.glimpse.server.manager.UserManager;
 import org.glimpse.spring.web.RemoteServiceUtil;
 import org.springframework.beans.factory.annotation.Required;
 
-public class PageDescriptionServiceImpl implements PageDescriptionService {
-	private static final long serialVersionUID = 1L;
-	
+public class PageDescriptionServiceImpl implements PageDescriptionService {	
 	private UserManager userManager;
 	
 	public UserManager getUserManager() {

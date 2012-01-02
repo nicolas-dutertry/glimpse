@@ -28,7 +28,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.UserAttributes;
 import org.glimpse.server.GlimpseUtils;
-import org.glimpse.server.UserManager;
+import org.glimpse.server.manager.UserManager;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class ThemeTag extends TagSupport {

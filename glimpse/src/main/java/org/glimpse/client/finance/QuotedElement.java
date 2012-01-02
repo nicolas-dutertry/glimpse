@@ -17,15 +17,15 @@
  */
 package org.glimpse.client.finance;
 
-public class QuotationDescription {
+public class QuotedElement {
 	private String code;
 	private String label;
 	
-	QuotationDescription(String code) {
+	QuotedElement(String code) {
 		this(code, null);
 	}
 	
-	QuotationDescription(String code, String label) {
+	QuotedElement(String code, String label) {
 		this.code = code;
 		this.label = label;
 	}

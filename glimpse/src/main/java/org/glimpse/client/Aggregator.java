@@ -90,7 +90,6 @@ public class Aggregator implements EntryPoint, DragHandler {
 	private DialogBox addDialog;
 	private DialogBox loginDialog;
 	private DialogBox optionsDialog;
-	private DialogBox defaultPageDialog;
 	private PickupDragController dragController;
 	private boolean defaultPage = false;
 	
@@ -168,7 +167,6 @@ public class Aggregator implements EntryPoint, DragHandler {
 		addDialog = new AddContentDialog();
 		loginDialog = new LoginDialog();
 		optionsDialog = new UserOptionsDialog();
-		defaultPageDialog = new DefaultPageDialog();
 		
 		FlowPanel mainPanel = new FlowPanel();
 		mainPanel.setWidth("100%");

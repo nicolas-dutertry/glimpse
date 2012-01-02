@@ -22,12 +22,11 @@ import org.glimpse.client.UserAttributes;
 import org.glimpse.client.UserDescription;
 import org.glimpse.client.UserDescriptionService;
 import org.glimpse.client.UserPreferences;
+import org.glimpse.server.manager.UserManager;
 import org.glimpse.spring.web.RemoteServiceUtil;
 import org.springframework.beans.factory.annotation.Required;
 
 public class UserDescriptionServiceImpl implements UserDescriptionService {
-	private static final long serialVersionUID = 1L;
-	
 	private UserManager userManager;
 	
 	public UserManager getUserManager() {

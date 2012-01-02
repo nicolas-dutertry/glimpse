@@ -26,7 +26,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import org.glimpse.client.UserAttributes;
 import org.glimpse.server.GlimpseUtils;
-import org.glimpse.server.UserManager;
+import org.glimpse.server.manager.UserManager;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class LocaleTag extends TagSupport {

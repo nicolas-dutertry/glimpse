@@ -14,7 +14,10 @@ import org.apache.commons.lang.StringUtils;
 import org.glimpse.client.UserAttributes;
 import org.glimpse.client.UserPreferences;
 import org.glimpse.server.GlimpseUtils;
-import org.glimpse.server.UserManager;
+import org.glimpse.server.manager.DuplicateUserIdException;
+import org.glimpse.server.manager.InvalidPasswordException;
+import org.glimpse.server.manager.InvalidUserIdException;
+import org.glimpse.server.manager.UserManager;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class UserAdminServlet extends HttpServlet {
@@ -70,28 +73,45 @@ public class UserAdminServlet extends HttpServlet {
 			}
 			
 			if(StringUtils.isEmpty(errorMessage)) {
-				userManager.createUser(userId, password1);				
-				message = "User " + userId + " created";
+				try {
+					userManager.createUser(userId, password1);
+					message = "User " + userId + " created";
+				} catch (InvalidUserIdException e) {
+					errorMessage = "Invalid user ID";
+				} catch (InvalidPasswordException e) {
+					errorMessage = "Invalid password";
+				} catch (DuplicateUserIdException e) {
+					errorMessage = "User ID already exists";
+				}
 			}
 		} else if(actionType.equals("delete")) {
 			String userId = request.getParameter("userId");
-			userManager.deleteUser(userId);
 			
-			message = "User " + userId + " deleted";
+			if(connectedUserId.equals(userId)) {
+				errorMessage = "Cannot remove current user";
+			} else {
+				userManager.deleteUser(userId);
+				message = "User " + userId + " deleted";
+			}
 		} else if(actionType.equals("setAttributes")) {
 			String userId = request.getParameter("userId");
 			boolean administrator = "true".equals(request.getParameter("administrator"));
 			String label = request.getParameter("label");
 			String locale = request.getParameter("locale");
 			String theme = request.getParameter("theme");
-			UserAttributes userAttributes = new UserAttributes();
-			userAttributes.setAdministrator(administrator);
-			UserPreferences userPreferences = new UserPreferences();
-			userPreferences.setLabel(label);
-			userPreferences.setLocale(locale);
-			userPreferences.setTheme(theme);
-			userAttributes.setPreferences(userPreferences);
-			userManager.setUserAttributes(userId, userAttributes);
+			
+			if(connectedUserId.equals(userId) && !administrator) {
+				errorMessage = "Cannot remove administrator rights to the current user";
+			} else {
+				UserAttributes userAttributes = new UserAttributes();
+				userAttributes.setAdministrator(administrator);
+				UserPreferences userPreferences = new UserPreferences();
+				userPreferences.setLabel(label);
+				userPreferences.setLocale(locale);
+				userPreferences.setTheme(theme);
+				userAttributes.setPreferences(userPreferences);
+				userManager.setUserAttributes(userId, userAttributes);
+			}
 		}
 		
 		if(errorMessage != null) {

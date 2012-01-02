@@ -539,6 +539,13 @@ h1 {
 	height: 12px;
 }
 
+.component-action-add {
+	background-image: url('images/add.png');
+	background-repeat: no-repeat;
+	width: 12px;
+	height: 12px;
+}
+
 .component-action-delete {
 	background-image: url('images/close.png');
 	background-repeat: no-repeat;
@@ -723,4 +730,16 @@ h1 {
 
 .quotation-line-negative .quotation-variation {
 	color: #FF0000;
+}
+
+.quotation-delete {
+	width: 12px;
+}
+
+.quotation-delete-button {
+	cursor: pointer;
+	background-image: url('images/delete-quoted.png');
+	background-repeat: no-repeat;
+	width: 12px;
+	height: 12px;
 }

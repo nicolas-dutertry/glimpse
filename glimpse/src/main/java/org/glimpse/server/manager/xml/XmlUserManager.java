@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package org.glimpse.server;
+package org.glimpse.server.manager.xml;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -52,6 +52,8 @@ import org.glimpse.client.layout.ColumnDescription;
 import org.glimpse.client.layout.ComponentDescription;
 import org.glimpse.client.layout.PageDescription;
 import org.glimpse.client.layout.TabDescription;
+import org.glimpse.server.manager.AuthenticationException;
+import org.glimpse.server.manager.UserManager;
 import org.springframework.web.context.ServletContextAware;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

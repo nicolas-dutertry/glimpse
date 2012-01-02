@@ -21,11 +21,12 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glimpse.client.LoginService;
+import org.glimpse.server.manager.AuthenticationException;
+import org.glimpse.server.manager.UserManager;
 import org.glimpse.spring.web.RemoteServiceUtil;
 import org.springframework.beans.factory.annotation.Required;
 
 public class LoginServiceImpl implements LoginService {
-	private static final long serialVersionUID = 1L;
 	private static final Log logger = LogFactory.getLog(LoginServiceImpl.class);
 
 	private UserManager userManager;	

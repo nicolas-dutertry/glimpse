@@ -31,16 +31,19 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.glimpse.server.manager.UserManager;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class ConnectionFilter implements Filter {
 	private static final Log logger = LogFactory.getLog(ConnectionFilter.class);
 	
+	/*
 	private static final String[] ADMIN_PATHS = {
 		"/servlets/modify-user",
 		"/servlets/user-admin",
 		"/monitoring"
 	};
+	*/
 	
 	private ServletContext servletContext;
 	
@@ -76,6 +79,7 @@ public class ConnectionFilter implements Filter {
 	public void destroy() {
 	}
 	
+	/*
 	private boolean isAdminRequest(HttpServletRequest httprequest) {
 		String uri = httprequest.getRequestURI();
 		for (String path : ADMIN_PATHS) {
@@ -85,5 +89,6 @@ public class ConnectionFilter implements Filter {
 		}
 		return false;
 	}
+	*/
 
 }

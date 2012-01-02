@@ -37,8 +37,6 @@ import org.glimpse.server.news.sax.SaxServerNewsChannelBuilder;
 import org.springframework.beans.factory.annotation.Required;
 
 public class NewsRetrieverServiceImpl implements NewsRetrieverService {
-	private static final long serialVersionUID = 1L;
-	
 	private static Log logger = LogFactory.getLog(NewsRetrieverServiceImpl.class);
 	private static final ServerNewsChannelBuilder channelBuilder =
 		new SaxServerNewsChannelBuilder();

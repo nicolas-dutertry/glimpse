@@ -170,6 +170,9 @@ public interface AggregatorConstants extends Constants {
 	@DefaultStringValue("Stock Exchange")
 	String stockExchange();
 	
+	@DefaultStringValue("Code")
+	String code();
+	
 	@DefaultStringValue("Label")
 	String label();
 	
@@ -178,4 +181,13 @@ public interface AggregatorConstants extends Constants {
 	
 	@DefaultStringValue("Variation")
 	String variation();
+	
+	@DefaultStringValue("add")
+	String add();
+	
+	@DefaultStringValue("Add element")
+	String addQuoted();
+	
+	@DefaultStringValue("Are you sure you want to delete this element ?")
+	String deleteQuotedConfirm();
 }

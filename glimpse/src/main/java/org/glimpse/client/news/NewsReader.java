@@ -272,7 +272,7 @@ public class NewsReader extends Component {
 							}
 							title.setText(channelTitle);
 							title.setHref(channel.getUrl());
-							String encodedUrl = URL.encodeComponent(channel.getUrl());
+							String encodedUrl = URL.encodeQueryString(channel.getUrl());
 							titleImage.setUrl("servlets/news-icon?url=" + encodedUrl);
 							entriesTable.setProperties(channel.getEntries(),
 									getUrl(),

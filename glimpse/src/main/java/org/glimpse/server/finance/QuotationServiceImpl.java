@@ -30,7 +30,6 @@ import org.glimpse.server.ProxyProvider;
 import org.springframework.beans.factory.annotation.Required;
 
 public class QuotationServiceImpl implements QuotationService {
-	private static final long serialVersionUID = 1L;
 	private static Log logger = LogFactory.getLog(QuotationServiceImpl.class);
 
 	private ProxyProvider proxyProvider;

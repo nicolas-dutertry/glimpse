@@ -58,7 +58,7 @@
 	
 	<bean id="userManager" parent="transactionProxy">
 		<property name="target">
-			<bean class="org.glimpse.server.OrmUserManager">
+			<bean class="org.glimpse.server.manager.orm.OrmUserManager">
 				<constructor-arg ref="userDao"/>
 				<constructor-arg ref="connectionDao"/>
 			</bean>
