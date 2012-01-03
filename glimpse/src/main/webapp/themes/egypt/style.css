@@ -732,8 +732,28 @@ h1 {
 	color: #FF0000;
 }
 
-.quotation-delete {
+.quotation-actions {
+	width: 36px;
+}
+
+.quotation-actions td {
+	padding: 0px;
+}
+
+.quotation-up-button {
+	cursor: pointer;
+	background-image: url('images/up-quoted.png');
+	background-repeat: no-repeat;
 	width: 12px;
+	height: 12px;
+}
+
+.quotation-down-button {
+	cursor: pointer;
+	background-image: url('images/down-quoted.png');
+	background-repeat: no-repeat;
+	width: 12px;
+	height: 12px;
 }
 
 .quotation-delete-button {

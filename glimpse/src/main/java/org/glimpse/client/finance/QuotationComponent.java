@@ -67,6 +67,30 @@ public class QuotationComponent extends Component {
 		}
 	}
 	
+	private class UpQuotedHandler implements ClickHandler {
+		private QuotedElement quotedElement;
+		
+		private UpQuotedHandler(QuotedElement quotedElement) {
+			this.quotedElement = quotedElement;
+		}
+		
+		public void onClick(ClickEvent event) {
+			moveQuotedElementUp(quotedElement);
+		}
+	}
+	
+	private class DownQuotedHandler implements ClickHandler {
+		private QuotedElement quotedElement;
+		
+		private DownQuotedHandler(QuotedElement quotedElement) {
+			this.quotedElement = quotedElement;
+		}
+		
+		public void onClick(ClickEvent event) {
+			moveQuotedElementDown(quotedElement);
+		}
+	}
+	
 	private class DeleteQuotedHandler implements ClickHandler {
 		private QuotedElement quotedElement;
 		
@@ -197,6 +221,26 @@ public class QuotationComponent extends Component {
 		refresh();
 	}
 	
+	void moveQuotedElementUp(QuotedElement quotedElement) {
+		int index = quotedElements.indexOf(quotedElement);
+		if(index > 0) {
+			quotedElements.remove(index);
+			quotedElements.add(index-1, quotedElement);
+			saveQuotedElements();
+			refresh();
+		}
+	}
+	
+	void moveQuotedElementDown(QuotedElement quotedElement) {
+		int index = quotedElements.indexOf(quotedElement);
+		if(index >= 0 && index < quotedElements.size()-1) {
+			quotedElements.remove(index);
+			quotedElements.add(index+1, quotedElement);
+			saveQuotedElements();
+			refresh();
+		}
+	}
+	
 	void deleteQuotedElement(QuotedElement quotedElement) {
 		quotedElements.remove(quotedElement);
 		saveQuotedElements();
@@ -244,12 +288,32 @@ public class QuotationComponent extends Component {
 			valueTable.setText(row, 2, "");
 			cellFormatter.setStyleName(row, 2, "quotation-label");
 			
+			// Action buttons
+			HorizontalPanel actionPanel = new HorizontalPanel();
+			
+			// Up
+			FocusPanel upButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
+			upButton.setTitle("up");
+			upButton.setStylePrimaryName("quotation-up-button");
+			upButton.addClickHandler(new UpQuotedHandler(quotedElement));
+			actionPanel.add(upButton);
+			
+			// Down
+			FocusPanel downButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
+			downButton.setTitle("down");
+			downButton.setStylePrimaryName("quotation-down-button");
+			downButton.addClickHandler(new DownQuotedHandler(quotedElement));
+			actionPanel.add(downButton);
+			
+			// Delete
 			FocusPanel deleteButton = new FocusPanel(new Image(Aggregator.TRANSPARENT_IMAGE));
 			deleteButton.setTitle(constants.delete());
 			deleteButton.setStylePrimaryName("quotation-delete-button");
 			deleteButton.addClickHandler(new DeleteQuotedHandler(quotedElement));
-			valueTable.setWidget(row, 3, deleteButton);
-			cellFormatter.setStyleName(row, 3, "quotation-delete");
+			actionPanel.add(deleteButton);			
+			
+			valueTable.setWidget(row, 3, actionPanel);
+			cellFormatter.setStyleName(row, 3, "quotation-actions");
 			
 			rowFormatter.setStyleName(row, "quotation-line");
 			if(row % 2 == 0) {
