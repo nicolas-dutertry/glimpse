@@ -21,7 +21,6 @@ import javax.ws.rs.core.Response.Status;
 import org.glimpse.client.UserAttributes;
 import org.glimpse.client.UserDescription;
 import org.glimpse.client.UserPreferences;
-import org.glimpse.server.GlimpseUtils;
 import org.glimpse.server.manager.DuplicateUserIdException;
 import org.glimpse.server.manager.InvalidPasswordException;
 import org.glimpse.server.manager.InvalidUserIdException;
