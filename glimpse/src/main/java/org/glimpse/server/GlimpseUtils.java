@@ -22,10 +22,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
+import org.glimpse.client.UserAttributes;
 
 public class GlimpseUtils {
 	public static final String COOKIE_CONNECTION = "org.glimpse.connectionId";
 	public static final String REQUEST_ATTRIBUTE_USER_ID = "org.glimpse.userId";
+	public static final String REQUEST_ATTRIBUTE_USER_ATTRIBUTES = "org.glimpse.userAttributes";
 	
 	public static String getConnectionId(HttpServletRequest request) {
 		Cookie[] cookies = request.getCookies();
@@ -56,6 +58,10 @@ public class GlimpseUtils {
 	
 	public static String getUserId(HttpServletRequest request) {
 		return (String)request.getAttribute(REQUEST_ATTRIBUTE_USER_ID);
+	}
+	
+	public static UserAttributes getUserAttributes(HttpServletRequest request) {
+		return (UserAttributes)request.getAttribute(REQUEST_ATTRIBUTE_USER_ATTRIBUTES);
 	}
 	
 	public static boolean isConnected(HttpServletRequest request) {

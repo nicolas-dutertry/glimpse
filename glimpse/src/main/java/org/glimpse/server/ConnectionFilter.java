@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.glimpse.client.UserAttributes;
 import org.glimpse.server.manager.UserManager;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -69,9 +70,13 @@ public class ConnectionFilter implements Filter {
 			}
 			
 			request.setAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID, userId);
+			
+			UserAttributes userAttributes = userManager.getUserAttributes(userId);
+			request.setAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ATTRIBUTES, userAttributes);
 		} else {
 			logger.debug("No connection id found");
 			request.removeAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID);
+			request.removeAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ATTRIBUTES);
 		}
 		chain.doFilter(request, response);
 	}

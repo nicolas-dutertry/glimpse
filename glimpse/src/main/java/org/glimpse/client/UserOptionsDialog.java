@@ -80,11 +80,11 @@ public class UserOptionsDialog extends DialogBox {
 			public void onClick(ClickEvent event) {
 				UserDescription userDescription =
 					Aggregator.getInstance().getUserDescription();
-				userDescription.getPreferences().setLocale(localesList.getSelectedOption().getValue());
-				userDescription.getPreferences().setTheme(themesList.getSelectedOption().getValue());
+				userDescription.getAttributes().getPreferences().setLocale(localesList.getSelectedOption().getValue());
+				userDescription.getAttributes().getPreferences().setTheme(themesList.getSelectedOption().getValue());
 				
 				userDescriptionService.setUserPreferences(
-						userDescription.getPreferences(), 
+						userDescription.getAttributes().getPreferences(), 
 						new AsyncCallback<Void>() {					
 							public void onSuccess(Void result) {
 								Aggregator.getInstance().reloadPage();
@@ -124,7 +124,7 @@ public class UserOptionsDialog extends DialogBox {
 	private void synchronize() {
 		UserDescription userDescription =
 			Aggregator.getInstance().getUserDescription();
-		localesList.setSelectedValue(userDescription.getPreferences().getLocale());
-		themesList.setSelectedValue(userDescription.getPreferences().getTheme());
+		localesList.setSelectedValue(userDescription.getAttributes().getPreferences().getLocale());
+		themesList.setSelectedValue(userDescription.getAttributes().getPreferences().getTheme());
 	}
 }

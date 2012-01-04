@@ -19,6 +19,9 @@ package org.glimpse.client;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class UserPreferences implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

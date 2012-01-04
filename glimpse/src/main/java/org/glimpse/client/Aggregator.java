@@ -465,7 +465,7 @@ public class Aggregator implements EntryPoint, DragHandler {
 	}
 	
 	public boolean isModifiable() {
-		return userDescription.isAdministrator() ||
+		return userDescription.getAttributes().isAdministrator() ||
 			(!defaultPage && !userDescription.getId().equals(UserDescription.GUEST_ID));
 	}
 	

@@ -6,8 +6,8 @@ package org.glimpse.dev;
 
 import java.io.File;
 
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.webapp.WebAppContext;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.webapp.WebAppContext;
 
 
 public class JettyLauncher {
@@ -30,7 +30,8 @@ public class JettyLauncher {
 
 			context.setTempDirectory(appDir);
 
-			jetty.addHandler(context);
+			jetty.setHandler(context);
+			
 			jetty.start();
 		} catch (Exception e) {
 			e.printStackTrace();

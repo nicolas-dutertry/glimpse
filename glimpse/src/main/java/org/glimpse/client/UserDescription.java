@@ -19,6 +19,9 @@ package org.glimpse.client;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class UserDescription implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final String GUEST_ID = "guest";
@@ -49,14 +52,5 @@ public class UserDescription implements Serializable {
 
 	public void setAttributes(UserAttributes attributes) {
 		this.attributes = attributes;
-	}
-	
-	public boolean isAdministrator() {
-		return attributes.isAdministrator();
-	}
-	
-	public UserPreferences getPreferences() {
-		return attributes.getPreferences();
-	}
-	
+	}	
 }

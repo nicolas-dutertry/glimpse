@@ -7,37 +7,69 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<packaging>jar</packaging>
-	<name>Glimpse DEV utils</name>	
+	<name>Glimpse DEV utils</name>
+	
+	<properties>
+	    <jetty.version>8.0.4.v20111024</jetty.version>
+	    <glassfish.javax.version>2.2.3</glassfish.javax.version>
+	    <glassfish.javax-impl.version>2.2</glassfish.javax-impl.version>
+	    <glassfish.jstl.version>1.2</glassfish.jstl.version>
+	</properties>
 	
 	<dependencies>
 		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>jetty</artifactId>
-			<version>6.1.14</version>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>${jetty.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>jsp-2.1</artifactId>
-			<version>6.1.14</version>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlet</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<!-- JSP Support -->
+	    <dependency>
+	        <groupId>org.glassfish.web</groupId>
+	        <artifactId>javax.servlet.jsp</artifactId>
+	        <version>${glassfish.javax.version}</version>
+	    </dependency>	
+	    <dependency>
+	        <groupId>org.glassfish.web</groupId>
+	        <artifactId>jsp-impl</artifactId>
+	        <version>${glassfish.javax-impl.version}</version>
+	    </dependency>	
+	    <!-- EL Support -->
+	    <dependency>
+	        <groupId>org.glassfish.web</groupId>
+	        <artifactId>javax.el</artifactId>
+	        <version>${glassfish.javax.version}</version>
+	    </dependency>	
+	    <dependency>
+	        <groupId>org.glassfish.web</groupId>
+	        <artifactId>el-impl</artifactId>
+	        <version>${glassfish.javax-impl.version}</version>
+	    </dependency>	
+	    <!-- JSTL Support -->
+	    <dependency>
+	        <groupId>javax.servlet</groupId>
+	        <artifactId>jstl</artifactId>
+	        <version>${glassfish.jstl.version}</version>
+	    </dependency>	
+	    <dependency>
+	        <groupId>org.glassfish.web</groupId>
+	        <artifactId>jstl-impl</artifactId>
+	        <version>${glassfish.jstl.version}</version>
+	    </dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glimpse</groupId>
 			<artifactId>glimpse</artifactId>
 			<version>${project.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.servlet</groupId>
-					<artifactId>servlet-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.servlet</groupId>
-					<artifactId>jstl</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>taglibs</groupId>
-					<artifactId>standard</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 	

@@ -27,8 +27,6 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.PropertyConfigurator;
 import org.springframework.web.context.ServletContextAware;
 
 public class GlimpseManager implements ServletContextAware {
@@ -43,10 +41,6 @@ public class GlimpseManager implements ServletContextAware {
 			confDirPath = servletContext.getRealPath("/WEB-INF/conf");
 		}
 		configurationDirectory = new File(confDirPath);
-		
-		File logConfig = new File(configurationDirectory, "log4j.properties");
-		LogManager.resetConfiguration();
-		PropertyConfigurator.configure(logConfig.getAbsolutePath());
 		
 		try {
 			configuration = new PropertiesConfiguration(new File(configurationDirectory,

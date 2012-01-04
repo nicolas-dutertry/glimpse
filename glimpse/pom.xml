@@ -13,6 +13,7 @@
 		<gwt.version>2.1.0</gwt.version>
 		<gwt-dnd.version>3.0.1</gwt-dnd.version>
 		<spring.version>3.0.3.RELEASE</spring.version>
+		<cxf.version>2.4.2</cxf.version>
 	</properties>
 	
 	<dependencies>
@@ -53,15 +54,10 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>taglibs</groupId>
-			<artifactId>standard</artifactId>
-			<version>1.1.2</version>
-		</dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+             <version>1.2</version>
+        </dependency>
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache-core</artifactId>
@@ -70,7 +66,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.5.8</version>
+			<version>1.6.1</version>
 		</dependency>
 		
 		<!-- GWT -->
@@ -117,6 +113,7 @@
 		</dependency>
 		<!-- End Spring -->
 		
+		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate</artifactId>
@@ -143,6 +140,8 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1</version>
 		</dependency>
+		<!-- End Hibernate -->
+		
 		<dependency>
 			<groupId>org.jasypt</groupId>
 			<artifactId>jasypt</artifactId>
@@ -155,10 +154,23 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-                <groupId>net.bull.javamelody</groupId>
-                <artifactId>javamelody-core</artifactId>
-                <version>1.20.0</version>
-        </dependency>
+			<groupId>net.bull.javamelody</groupId>
+			<artifactId>javamelody-core</artifactId>
+			<version>1.20.0</version>
+		</dependency>
+		
+		<!-- CXF -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<!-- End CXF -->
 	</dependencies>
 	<build>
 		<pluginManagement>
