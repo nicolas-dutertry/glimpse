@@ -267,7 +267,23 @@ function animateHideMessage() {
 }
 
 $(function() {
-	$(".button").button();
+	$("#homeButton").button({
+		icons: {
+			primary: "home-icon"
+		}
+	});
+	
+	$("#refreshButton").button({
+		icons: {
+			primary: "refresh-icon"
+		}
+	});
+	
+	$("#addUserButton").button({
+			icons: {
+				primary: "add-user-icon"
+			}
+	});
 	
 	$("#addUserDialog").dialog({
 		autoOpen : false,

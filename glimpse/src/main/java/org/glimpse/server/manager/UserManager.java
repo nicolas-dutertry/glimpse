@@ -17,10 +17,12 @@
  */
 package org.glimpse.server.manager;
 
+import java.util.Collection;
 import java.util.Set;
 
 import org.glimpse.client.UserAttributes;
 import org.glimpse.client.layout.PageDescription;
+import org.glimpse.server.model.Connection;
 
 public interface UserManager {
 	/**
@@ -71,4 +73,6 @@ public interface UserManager {
 	void setUserPageDescription(String userId, PageDescription pageDescription);
 	PageDescription getDefaultPageDescription(String localeName);
 	void setDefaultPageDescription(String localeName, PageDescription pageDescription);
+	
+	Collection<Connection> getConnections();
 }

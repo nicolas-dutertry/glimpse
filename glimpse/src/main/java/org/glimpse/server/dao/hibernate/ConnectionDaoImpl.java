@@ -17,6 +17,8 @@
  */
 package org.glimpse.server.dao.hibernate;
 
+import java.util.Collection;
+
 import org.glimpse.server.dao.ConnectionDao;
 import org.glimpse.server.model.Connection;
 import org.glimpse.server.model.User;
@@ -27,6 +29,13 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 public class ConnectionDaoImpl extends HibernateDaoSupport implements
 		ConnectionDao {
+	
+	@SuppressWarnings("unchecked")
+	public Collection<Connection> getConnections() {
+		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Criteria crit = session.createCriteria(Connection.class);		
+		return crit.list();
+	}
 
 	public void createConnection(String id, User user) {
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();

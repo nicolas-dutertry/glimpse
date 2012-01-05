@@ -314,4 +314,9 @@ public class OrmUserManager implements UserManager {
 		return false;
 	}
 
+	@Override
+	public Collection<Connection> getConnections() {
+		return connectionDao.getConnections();
+	}
+
 }

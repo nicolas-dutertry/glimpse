@@ -21,14 +21,13 @@ body {
 table {
 	border-collapse: collapse;
 }
+
 tr.darkline {
  	background-color: #DDDDDD;
 }
+
 tr.clearline {
   	background-color: #EEEEEE;
-}
-tr.darkline:hover, tr.clearline:hover {
-	background-color: #CCCCCC;
 }
 
 td, th {
@@ -106,4 +105,22 @@ input.missing {
 .message p
 {
 	margin: 0;
+}
+
+#homeButton .ui-icon {
+	background-image: url("images/logo-small.png");
+	height: 16px;
+    width: 16px;
+}
+
+#refreshButton .ui-icon {
+	background-image: url("images/refresh.png");
+	height: 16px;
+    width: 16px;
+}
+
+#addUserButton .ui-icon {
+	background-image: url("images/add.png");
+	height: 16px;
+    width: 16px;
 }

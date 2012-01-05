@@ -5,7 +5,7 @@
 <%
 response.setHeader("Cache-Control","no-cache"); //HTTP 1.1
 response.setHeader("Pragma","no-cache"); //HTTP 1.0
-response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
+response.setDateHeader("Expires", 0); //prevent caching at the proxy server
 %>
 
 <html>
@@ -31,7 +31,9 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		<div class="header">Glimpse - User administration</div>
 		
 		<p>
-			<a class="button" href="javascript:openAddUserDialog()">Add user</a>
+			<a id="homeButton" href=".">Home</a>
+			<a id="refreshButton" href="javascript:refresh()">Refresh</a>
+			<a id="addUserButton" href="javascript:openAddUserDialog()">Add user</a>
 		</p>
 		
 		<div id="userList"></div>

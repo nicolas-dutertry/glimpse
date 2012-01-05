@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.NotImplementedException;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -54,10 +56,12 @@ import org.glimpse.client.layout.PageDescription;
 import org.glimpse.client.layout.TabDescription;
 import org.glimpse.server.manager.AuthenticationException;
 import org.glimpse.server.manager.UserManager;
+import org.glimpse.server.model.Connection;
 import org.springframework.web.context.ServletContextAware;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+@Deprecated
 public class XmlUserManager implements UserManager, ServletContextAware {
 	private static final Log logger = LogFactory.getLog(XmlUserManager.class);
 	
@@ -487,6 +491,11 @@ public class XmlUserManager implements UserManager, ServletContextAware {
 			logger.error("Error while reading user description xml", e);
 			return false;
 		}
+	}
+
+	@Override
+	public Collection<Connection> getConnections() {
+		throw new NotImplementedException();
 	}
 
 }

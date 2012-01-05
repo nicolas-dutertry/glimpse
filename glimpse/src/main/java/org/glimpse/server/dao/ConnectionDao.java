@@ -17,10 +17,13 @@
  */
 package org.glimpse.server.dao;
 
+import java.util.Collection;
+
 import org.glimpse.server.model.Connection;
 import org.glimpse.server.model.User;
 
 public interface ConnectionDao {
+	Collection<Connection> getConnections();
 	Connection getConnection(String id);
 	void createConnection(String id, User user);
 	void deleteConnection(String id);
