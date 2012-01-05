@@ -31,17 +31,20 @@ tr.darkline:hover, tr.clearline:hover {
 	background-color: #CCCCCC;
 }
 
-th {
+td, th {
+	white-space: nowrap;
+	font-family: tahoma,verdana,helvetica,arial,sans-serif,courier;
+  	font-size: 12px;
+}
+
+#userList th {
   	background-color: #CCCCCC;
   	border-bottom: 2px solid #FFFFFF;
   	font-weight: bold;
   	color: #000000;
 }
 
-td, th {
-	white-space: nowrap;
-	font-family: tahoma,verdana,helvetica,arial,sans-serif,courier;
-  	font-size: 12px;
+#userList td, #userList th {
   	border-left: 1px solid #FFFFFF;
   	padding: 2px 10px;
 }
