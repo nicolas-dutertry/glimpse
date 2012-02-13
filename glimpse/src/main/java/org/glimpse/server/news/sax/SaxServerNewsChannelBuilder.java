@@ -22,15 +22,25 @@ import java.io.InputStream;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.glimpse.server.news.ServerNewsChannel;
 import org.glimpse.server.news.ServerNewsChannelBuilder;
+import org.xml.sax.SAXParseException;
 
 public class SaxServerNewsChannelBuilder implements ServerNewsChannelBuilder {
-
+	private static final Log logger = LogFactory.getLog(SaxServerNewsChannelBuilder.class);
+	
 	public ServerNewsChannel buildChannel(InputStream is) throws Exception {
 		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
 		ChannelHandler handler = new ChannelHandler();
-		parser.parse(is, handler);
+		try {
+			parser.parse(is, handler);
+		} catch (SAXParseException e) {
+			// If an parse error occurs, we just log the exception
+			// because we may have some data available in the channel
+			logger.warn("Error while parsing channel", e);
+		}
 		
 		return handler.getChannel();
 	}
