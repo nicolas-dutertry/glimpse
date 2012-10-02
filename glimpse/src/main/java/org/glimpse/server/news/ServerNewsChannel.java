@@ -27,7 +27,8 @@ public class ServerNewsChannel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public enum Type {
-		RSS,
+		RSS_1_0,
+		RSS_2_0,
 		ATOM
 	}
 	

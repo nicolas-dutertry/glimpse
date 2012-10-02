@@ -50,7 +50,7 @@ public class DomServerNewsChannelBuilder implements ServerNewsChannelBuilder {
 	public ServerNewsChannel buildChannel(InputStream is) throws Exception {
 		Document doc = createDocument(is);
 		switch(getType(doc)) {
-			case RSS :
+			case RSS_2_0 :
 				return new ServerNewsChannel(getRSSLink(doc), getRSSTitle(doc), getRSSEntries(doc));
 			case ATOM :
 				return new ServerNewsChannel(getAtomLink(doc), getAtomTitle(doc), getAtomEntries(doc));
@@ -221,7 +221,7 @@ public class DomServerNewsChannelBuilder implements ServerNewsChannelBuilder {
 	}
 	
 	private ServerNewsChannel.Type getType(Document doc) {
-		return doc.getDocumentElement().getTagName().equals("feed") ? ServerNewsChannel.Type.ATOM : ServerNewsChannel.Type.RSS;
+		return doc.getDocumentElement().getTagName().equals("feed") ? ServerNewsChannel.Type.ATOM : ServerNewsChannel.Type.RSS_2_0;
 	}
 
 }

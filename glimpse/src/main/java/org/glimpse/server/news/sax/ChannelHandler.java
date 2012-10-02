@@ -71,7 +71,13 @@ class ChannelHandler extends DefaultHandler {
 		buffer = new StringBuffer();
 		
 		if(type == null) {
-			type = qName.equals("feed") ? Type.ATOM : Type.RSS;
+			if(qName.equals("feed")) {
+				type = Type.ATOM;
+			} else if(qName.equals("rdf:RDF")) {
+				type = Type.RSS_1_0;
+			} else {
+				type = Type.RSS_2_0;
+			}			
 		} else if(type.equals(Type.ATOM)){
 			String path = getCurrentPath();
 			if(path.equals("/feed/link")) {
@@ -91,7 +97,7 @@ class ChannelHandler extends DefaultHandler {
 					currentEntry.addEnclosure(enclosure);
 				}
 			} 
-		} else if(type.equals(Type.RSS)){
+		} else if(type.equals(Type.RSS_2_0)){
 			String path = getCurrentPath();
 			if(path.equals("/rss/channel/item")) {
 				currentEntry = new ServerEntry();
@@ -100,6 +106,11 @@ class ChannelHandler extends DefaultHandler {
 				currentEnclosure.setUrl(attributes.getValue("url"));
 				currentEnclosure.setType(attributes.getValue("type"));
 				currentEntry.addEnclosure(currentEnclosure);
+			}
+		} else if(type.equals(Type.RSS_1_0)) {
+			String path = getCurrentPath();
+			if(path.equals("/rdf:RDF/item")) {
+				currentEntry = new ServerEntry();
 			}
 		}
 	}
@@ -164,7 +175,7 @@ class ChannelHandler extends DefaultHandler {
 			}  else if(path.equals("/feed/entry/summary")) {
 				currentSummary = buffer.toString();
 			}
-		} else if(Type.RSS.equals(type)) {
+		} else if(Type.RSS_2_0.equals(type)) {
 			String path = getCurrentPath();
 			if(path.equals("/rss/channel/title")) {
 				title = buffer.toString();
@@ -217,6 +228,64 @@ class ChannelHandler extends DefaultHandler {
 				currentEnclosure.setUrl(buffer.toString());
 			}  else if(path.equals("/rss/channel/item/enclosure/type")) {
 				currentEnclosure.setType(buffer.toString());
+			}
+		} else if(Type.RSS_1_0.equals(type)) {
+			String path = getCurrentPath();
+			if(path.equals("/rdf:RDF/channel/title")) {
+				title = buffer.toString();
+			} else if(path.equals("/rdf:RDF/channel/link")) {
+				url = buffer.toString();
+			} else if(path.equals("/rdf:RDF/item")) {
+				String content = currentSummary == null ? "" : currentSummary;
+				content += "<p><a href=\"" + currentEntry.getUrl() + "\" target=\"_blank\">Lire la suite</a></p>";
+				currentEntry.setContent(content);
+				
+				if(StringUtils.isBlank(currentEntry.getUrl())) {
+					currentEntry.setUrl(url);
+				}
+				
+				if(StringUtils.isNotBlank(currentEntry.getId()) &&
+						StringUtils.isNotBlank(currentEntry.getTitle()) &&
+						StringUtils.isNotBlank(currentEntry.getUrl())) {
+					entries.add(currentEntry);
+				}
+				
+				currentEntry = null;
+				currentContent = null;
+				currentSummary = null;			
+			} else if(path.equals("/rdf:RDF/item/title")) {
+				currentEntry.setTitle(buffer.toString());
+			} else if(path.equals("/rdf:RDF/item/link")) {
+				currentEntry.setId(buffer.toString());
+				currentEntry.setUrl(buffer.toString());
+			} else if(path.equals("/rdf:RDF/item/description")) {
+				currentSummary = buffer.toString();
+			} else if(path.equals("/rdf:RDF/item/dc:date")) {
+				String updated = buffer.toString();
+				if(StringUtils.length(updated) > 19) {
+					try {
+						Date date = null;
+						if(updated.endsWith("Z")) {
+							// No timezone
+							SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+							formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
+							date = formatter.parse(updated.substring(0, 19));
+						} else {
+							String timezone = updated.substring(updated.length()-6);
+							timezone = timezone.substring(0, 3) + timezone.substring(4);
+							updated = updated.substring(0, 19) + timezone;
+							SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+							formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
+							date = formatter.parse(updated);
+						}
+						if(date != null) {
+							currentEntry.setDate(date);
+						}
+					} catch(Exception e) {
+						// unparsable date
+						logger.warn("Unable to parse date <" + updated + ">", e);
+					}
+				}
 			}
 		}
 		
