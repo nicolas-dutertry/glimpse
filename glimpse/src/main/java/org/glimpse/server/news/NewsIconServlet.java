@@ -26,11 +26,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.conn.params.ConnRoutePNames;
+import org.apache.http.impl.client.DecompressingHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.glimpse.server.Proxy;
 import org.glimpse.server.ProxyProvider;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -51,25 +56,26 @@ public class NewsIconServlet extends HttpServlet {
 		}
 		url = url.substring(0, i) + "/favicon.ico";
 		
-		HttpClient client = new HttpClient();
+		HttpClient client = new DecompressingHttpClient(new DefaultHttpClient());
 		
 		ProxyProvider proxyProvider = WebApplicationContextUtils.getWebApplicationContext(getServletContext()).getBean(
 				ProxyProvider.class);
 		Proxy proxy = proxyProvider.getProxy(url);
 		if(proxy != null) {
-			client.getHostConfiguration().setProxy(proxy.getHost(), proxy.getPort());
+			client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY,
+					new HttpHost(proxy.getHost(), proxy.getPort()));
 		}
 		
-		GetMethod method = new GetMethod(url);
-		int responseCode = -1;
+		HttpGet method = new HttpGet(url);
+		HttpResponse httpresponse = null;
 		try {			
-			responseCode = client.executeMethod(method);
+			httpresponse = client.execute(method);
 		} catch (Exception e) {
 			logger.error("Unable to get new icon for <" + url + ">", e);
 		}
 		
-		if(responseCode == 200) {
-			IOUtils.copy(method.getResponseBodyAsStream(), response.getOutputStream());
+		if(httpresponse.getStatusLine().getStatusCode() == 200) {
+			IOUtils.copy(httpresponse.getEntity().getContent(), response.getOutputStream());
 		} else {
 			File f = new File(getServletContext().getRealPath("images/feed.png"));
 			FileInputStream fis = new FileInputStream(f);

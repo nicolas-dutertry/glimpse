@@ -24,10 +24,15 @@ import java.util.List;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.conn.params.ConnRoutePNames;
+import org.apache.http.impl.client.DecompressingHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.glimpse.client.news.Entry;
 import org.glimpse.client.news.NewsChannel;
 import org.glimpse.client.news.NewsRetrieverService;
@@ -122,15 +127,16 @@ public class NewsRetrieverServiceImpl implements NewsRetrieverService {
 	private InputStream getUrlInputStream(String url) throws Exception {
 		Proxy proxy = proxyProvider.getProxy(url);
 		
-		HttpClient client = new HttpClient();		
+		HttpClient client = new DecompressingHttpClient(new DefaultHttpClient());
 		if(proxy != null) {
-			client.getHostConfiguration().setProxy(proxy.getHost(), proxy.getPort());
+			client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY,
+					new HttpHost(proxy.getHost(), proxy.getPort()));
 		}
 		
-		GetMethod method = new GetMethod(url);
-		client.executeMethod(method);
+		HttpGet method = new HttpGet(url);
+		HttpResponse httpresponse = client.execute(method);
 		
-		return method.getResponseBodyAsStream();
+		return httpresponse.getEntity().getContent();
 	}
 
 }

@@ -19,10 +19,16 @@ package org.glimpse.server.finance;
 
 import java.net.URLEncoder;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.conn.params.ConnRoutePNames;
+import org.apache.http.impl.client.DecompressingHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.glimpse.client.finance.Quotation;
 import org.glimpse.client.finance.QuotationService;
 import org.glimpse.server.Proxy;
@@ -39,15 +45,16 @@ public class QuotationServiceImpl implements QuotationService {
 		try {
 			Proxy proxy = proxyProvider.getProxy("http://www.boursorama.com/");
 			
-			HttpClient client = new HttpClient();		
+			HttpClient client = new DecompressingHttpClient(new DefaultHttpClient());
 			if(proxy != null) {
-				client.getHostConfiguration().setProxy(proxy.getHost(), proxy.getPort());
+				client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY,
+						new HttpHost(proxy.getHost(), proxy.getPort()));
 			}
 			
 			String url = "http://www.boursorama.com/cours.phtml?symbole=" + URLEncoder.encode(code, "UTF-8");
-			GetMethod method = new GetMethod(url);
-			client.executeMethod(method);
-			String response = method.getResponseBodyAsString();
+			HttpGet method = new HttpGet(url);
+			HttpResponse httpresponse = client.execute(method);
+			String response = EntityUtils.toString(httpresponse.getEntity());
 			
 			Quotation quotation = quotationFinder.getQuotation(response);
 			if(quotation == null) {

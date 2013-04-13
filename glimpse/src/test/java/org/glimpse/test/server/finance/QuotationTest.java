@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 
+import javax.xml.ws.Endpoint;
+
 import junit.framework.TestCase;
 
 import org.apache.commons.io.IOUtils;
@@ -13,6 +15,7 @@ import org.glimpse.server.finance.RegexpQuotationFinder;
 
 public class QuotationTest extends TestCase {
 	public void testCac() throws Exception {
+		
 		QuotationFinder finder = new RegexpQuotationFinder();
 		
 		InputStream is = getClass().getResourceAsStream("/cac.txt");

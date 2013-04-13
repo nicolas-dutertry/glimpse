@@ -219,7 +219,7 @@ class ChannelHandler extends DefaultHandler {
 						currentEntry.setDate(date);
 					} catch(Exception e) {
 						// unparsable date
-						logger.warn("Unable to parse date <" + pubDate + ">", e);
+						logger.debug("Unable to parse date <" + pubDate + ">", e);
 					}
 				}
 			} else if(path.equals("/rss/channel/item/description")) {

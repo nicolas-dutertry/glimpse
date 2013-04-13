@@ -28,7 +28,7 @@ import javax.persistence.Table;
 @Table(name = "connection")
 public class Connection {
 	@Id
-	@Column(unique = true, nullable = false)
+	@Column(nullable = false)
 	private String id;
 	
 	@ManyToOne
