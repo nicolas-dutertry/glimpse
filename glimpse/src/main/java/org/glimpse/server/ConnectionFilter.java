@@ -54,6 +54,7 @@ public class ConnectionFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
+        boolean userOk = false;
 		String connectionId = GlimpseUtils.getConnectionId((HttpServletRequest)request);
 		if(StringUtils.isNotEmpty(connectionId)) {
 			if(logger.isDebugEnabled()) {
@@ -64,17 +65,20 @@ public class ConnectionFilter implements Filter {
 				WebApplicationContextUtils.getWebApplicationContext(servletContext).getBean(
 						UserManager.class);
 			String userId = userManager.getUserId(connectionId);
-			
-			if(logger.isDebugEnabled()) {
-				logger.debug("User id is : <" + userId + ">");
-			}
-			
-			request.setAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID, userId);
-			
-			UserAttributes userAttributes = userManager.getUserAttributes(userId);
-			request.setAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ATTRIBUTES, userAttributes);
-		} else {
-			logger.debug("No connection id found");
+            if(StringUtils.isNotBlank(userId)) {
+                if(logger.isDebugEnabled()) {
+                    logger.debug("User id is : <" + userId + ">");
+                }
+
+                request.setAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID, userId);
+                UserAttributes userAttributes = userManager.getUserAttributes(userId);
+                request.setAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ATTRIBUTES, userAttributes);
+                userOk = true;
+            }
+		}
+        
+        if(!userOk) {
+			logger.debug("No valid connection id found");
 			request.removeAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ID);
 			request.removeAttribute(GlimpseUtils.REQUEST_ATTRIBUTE_USER_ATTRIBUTES);
 		}
