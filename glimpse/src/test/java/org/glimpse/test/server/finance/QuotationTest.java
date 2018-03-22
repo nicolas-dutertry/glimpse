@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 
-import javax.xml.ws.Endpoint;
 
 import junit.framework.TestCase;
 
@@ -26,9 +25,12 @@ public class QuotationTest extends TestCase {
 		
 		Quotation quotation = finder.getQuotation(sw.toString());
 		assertNotNull(quotation);
+        assertEquals(5184.43, quotation.getValue());
+        assertEquals("Pts", quotation.getUnit());
+        assertEquals(-1.06, quotation.getVariation());
 	}
 	
-	public void testEuro() throws Exception {
+    public void testEuro() throws Exception {
 		QuotationFinder finder = new RegexpQuotationFinder();
 		
 		InputStream is = getClass().getResourceAsStream("/euro.txt");
@@ -39,5 +41,8 @@ public class QuotationTest extends TestCase {
 		
 		Quotation quotation = finder.getQuotation(sw.toString());
 		assertNotNull(quotation);
+        assertEquals(3364.92, quotation.getValue());
+        assertEquals("Pts", quotation.getUnit());
+        assertEquals(-1.06, quotation.getVariation());
 	}
 }

@@ -7,12 +7,15 @@ import org.apache.commons.lang.StringUtils;
 import org.glimpse.client.finance.Quotation;
 
 public class RegexpQuotationFinder implements QuotationFinder {
-	private Pattern valuePattern =
+    private Pattern valuePattern =
 		Pattern.compile(
-				"<big class=\"fv-last\">\\s*<span .*>([0-9\\s\\.]+)\\s*(\\(c\\))?\\s*(\\w*)\\s*</span>");
+                "<div\\s*class=\"c-faceplate__price\">\\s*<span\\s*class=\"c-instrument c-instrument--last\".*>([0-9\\s\\.]+)</span>");
+    private Pattern unitPattern =
+		Pattern.compile(
+                "class=\"c-faceplate__price-currency\">(\\w*)</span>");
 	private Pattern variationPattern =
 		Pattern.compile(
-				"<big class=\"fv-var\">\\s*<span .*>([-\\+]?[0-9\\s\\.]+)%</span>");
+                "<div\\s*class=\"c-faceplate__fluctuation\">.*<span\\s*class=\"c-instrument c-instrument--variation\".*>([-\\+]?[0-9\\s\\.]+)%</span>");
 	@Override
 	public Quotation getQuotation(String text) {
 		Matcher valueMatcher = valuePattern.matcher(text);
@@ -20,15 +23,19 @@ public class RegexpQuotationFinder implements QuotationFinder {
 			String s = valueMatcher.group(1);
 			s = StringUtils.remove(s, " ");
 			double value = Double.parseDouble(s);
-			String unit = valueMatcher.group(3);
-			
-			Matcher variationMatcher = variationPattern.matcher(text);
-			if(variationMatcher.find()) {
-				s = variationMatcher.group(1);
-				s = StringUtils.remove(s, " ");
-				double variation = Double.parseDouble(s);
-				return new Quotation(value, unit, variation);
-			}
+            
+            Matcher unitMatcher = unitPattern.matcher(text);
+            if(unitMatcher.find()) {
+                String unit = unitMatcher.group(1);
+
+                Matcher variationMatcher = variationPattern.matcher(text);
+                if(variationMatcher.find()) {
+                    s = variationMatcher.group(1);
+                    s = StringUtils.remove(s, " ");
+                    double variation = Double.parseDouble(s);
+                    return new Quotation(value, unit, variation);
+                }
+            }
 		}
 		
 		return null;
