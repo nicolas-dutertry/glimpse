@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page>
+	<tab title="Accueil">
+		<column>
+			<component type="QUOTE">
+				<property name="quotedElements" value="1rPCAC,CAC 40,$INDU,Dow Jones,$COMPX,Nasdaq,2cSX5E,Eurostoxx 50,5pDAX,DAX,1xN225,Nikkei 225" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="directOpen" value="false" />
+				<property name="maxPerPage" value="7" />
+				<property name="url" value="https://twitrss.me/twitter_search_to_rss/?term=glimpse" />
+			</component>
+		</column>
+	</tab>
+	<tab title="Actualité">
+		<column>
+			<component type="NEWS">
+				<property name="directOpen" value="true" />
+				<property name="maxPerPage" value="10" />
+				<property name="url" value="http://www.lemonde.fr/rss/une.xml" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="directOpen" value="true" />
+				<property name="maxPerPage" value="10" />
+				<property name="url"
+					value="http://www.lefigaro.fr/rss/figaro_flash-actu.xml" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="directOpen" value="true" />
+				<property name="maxPerPage" value="10" />
+				<property name="url"
+					value="http://www.francetvinfo.fr/titres.rss" />
+			</component>
+		</column>
+	</tab>
+	<tab title="Sport">
+		<column>
+			<component type="NEWS">
+				<property name="url" value="http://www.lequipe.fr/Xml/actu_rss.xml" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="url" value="http://www.eurosport.fr/rss.xml" />
+			</component>
+		</column>
+	</tab>
+	<tab title="Geek">
+		<column>
+			<component type="NEWS">
+				<property name="directOpen" value="true" />
+				<property name="maxPerPage" value="10" />
+				<property name="url" value="http://www.laquadrature.net/fr/rss.xml" />
+			</component>
+		</column>
+		<column>
+			<component type="NEWS">
+				<property name="url"
+					value="http://www.planet-libre.org/feed.php?type=atom" />
+			</component>
+            <component type="NEWS">
+				<property name="url"
+					value="http://planet.auto-hebergement.fr/rss.xml" />
+			</component>            
+		</column>
+	</tab>
+</page>

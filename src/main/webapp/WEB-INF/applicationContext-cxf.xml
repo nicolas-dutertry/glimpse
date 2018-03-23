@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                              http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+                              http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	
+	<jaxrs:server id="myservice" address="/">
+        <jaxrs:serviceBeans>
+            <ref bean="userService" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <!-- Utilisation de Jackson -->
+            <bean id="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
+            <bean id="jsonParseExceptionMapper" class="com.fasterxml.jackson.jaxrs.base.JsonParseExceptionMapper"/>
+            <bean id="jsonMappingExceptionMapper" class="com.fasterxml.jackson.jaxrs.base.JsonMappingExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:extensionMappings>
+        	<entry key="xml" value="application/xml" />
+            <entry key="json" value="application/json" />
+        </jaxrs:extensionMappings>
+    </jaxrs:server>
+
+    <bean id="userService" class="org.glimpse.service.impl.UserServiceImpl">
+    	<property name="userManager" ref="userManager"/>
+    </bean>
+</beans>
