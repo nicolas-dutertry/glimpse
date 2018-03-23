@@ -19,30 +19,31 @@ package org.glimpse.test.server.news;
 
 import java.io.InputStream;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.glimpse.server.news.ServerNewsChannel;
 import org.glimpse.server.news.ServerNewsChannelBuilder;
 import org.glimpse.server.news.dom.DomServerNewsChannelBuilder;
 import org.glimpse.server.news.sax.SaxServerNewsChannelBuilder;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
+import org.junit.Test;
 
-public class NewsTest extends TestCase {
-	private static Log logger = LogFactory.getLog(NewsTest.class);
-	
+public class NewsTest {
+	@Test
 	public void testRssDom() throws Exception {
 		testReadFile("rss.xml", new DomServerNewsChannelBuilder());
 	}
 	
+    @Test
 	public void testRssSax() throws Exception {
 		testReadFile("rss.xml", new SaxServerNewsChannelBuilder());
 	}
 	
+    @Test
 	public void testAtomDom() throws Exception {
 		testReadFile("atom.xml", new DomServerNewsChannelBuilder());
 	}
 
+    @Test
 	public void testAtomSax() throws Exception {
 		testReadFile("atom.xml", new SaxServerNewsChannelBuilder());
 	}
@@ -51,11 +52,7 @@ public class NewsTest extends TestCase {
 			String resourcePath, ServerNewsChannelBuilder builder) throws Exception {
 		InputStream is = getClass().getClassLoader().getResourceAsStream(
 				resourcePath);
-		long begin = System.currentTimeMillis();
 		ServerNewsChannel channel = builder.buildChannel(is);
-		long end = System.currentTimeMillis();
-		assertNotNull("channel is null", channel);
-		long time = end-begin;
-		logger.debug("Time for " + resourcePath + ", " + builder.getClass().getSimpleName() + " : " + time + " ms");
+		Assert.assertNotNull("channel is null", channel);
 	}
 }
