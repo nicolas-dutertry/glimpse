@@ -39,33 +39,20 @@ import org.glimpse.client.news.NewsRetrieverService;
 import org.glimpse.server.Proxy;
 import org.glimpse.server.ProxyProvider;
 import org.glimpse.server.news.sax.SaxServerNewsChannelBuilder;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NewsRetrieverServiceImpl implements NewsRetrieverService {
 	private static Log logger = LogFactory.getLog(NewsRetrieverServiceImpl.class);
 	private static final ServerNewsChannelBuilder channelBuilder =
 		new SaxServerNewsChannelBuilder();
 	
+    @Autowired
 	private ProxyProvider proxyProvider;
+    
+    @Autowired
 	private CacheManager cacheManager;
-	
-	public ProxyProvider getProxyProvider() {
-		return proxyProvider;
-	}
-
-	@Required
-	public void setProxyProvider(ProxyProvider proxyProvider) {
-		this.proxyProvider = proxyProvider;
-	}
-
-	public CacheManager getCacheManager() {
-		return cacheManager;
-	}
-
-	@Required
-	public void setCacheManager(CacheManager cacheManager) {
-		this.cacheManager = cacheManager;
-	}
 
 	public NewsChannel getNewsChannel(String url, boolean refresh) {
 		try {

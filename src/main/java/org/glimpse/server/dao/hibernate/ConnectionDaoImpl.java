@@ -25,7 +25,9 @@ import javax.persistence.TypedQuery;
 import org.glimpse.server.dao.ConnectionDao;
 import org.glimpse.server.model.Connection;
 import org.glimpse.server.model.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ConnectionDaoImpl implements ConnectionDao {
     
     @PersistenceContext(unitName = "glimpse")

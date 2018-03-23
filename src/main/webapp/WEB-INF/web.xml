@@ -1,72 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			/WEB-INF/applicationContext.xml,
-			/WEB-INF/applicationContext-cxf.xml			
-		</param-value>
-	</context-param>
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+        </param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            org.glimpse.server
+        </param-value>
+    </context-param>
     
-	<filter>
-		<filter-name>ConnectionFilter</filter-name>
-		<filter-class>org.glimpse.server.ConnectionFilter</filter-class>
-	</filter>
-	<filter>
-		<filter-name>AdminFilter</filter-name>
-		<filter-class>org.glimpse.server.AdminFilter</filter-class>
-	</filter>
-	<filter>
-		<filter-name>monitoring</filter-name>
-		<filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
-	</filter>
+    <filter>
+        <filter-name>ConnectionFilter</filter-name>
+        <filter-class>org.glimpse.server.ConnectionFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>org.glimpse.server.AdminFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>monitoring</filter-name>
+        <filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
+    </filter>
 	
-	<filter-mapping>
-		<filter-name>ConnectionFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>AdminFilter</filter-name>
-		<url-pattern>/monitoring/*</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>AdminFilter</filter-name>
-		<url-pattern>/services/users/*</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>AdminFilter</filter-name>
-		<url-pattern>/admin.jsp</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>monitoring</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+    <filter-mapping>
+        <filter-name>ConnectionFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/monitoring/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/services/users/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/admin.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>monitoring</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 	
-	<listener>
-		<listener-class>org.glimpse.server.LogConfigurator</listener-class>
-	</listener>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<listener>
-		<listener-class>net.bull.javamelody.SessionListener</listener-class>
-	</listener>
+    <listener>
+        <listener-class>org.glimpse.server.LogConfigurator</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>net.bull.javamelody.SessionListener</listener-class>
+    </listener>
 
-	<!-- Servlets -->
-	<servlet>
-		<servlet-name>dispatcher</servlet-name>
-		<servlet-class>org.glimpse.spring.web.RemoteServiceDispatcher</servlet-class>
-	</servlet>
+    <!-- Servlets -->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.glimpse.spring.web.RemoteServiceDispatcher</servlet-class>
+    </servlet>
 
-	<servlet>
-		<servlet-name>NewsIconServlet</servlet-name>
-		<servlet-class>org.glimpse.server.news.NewsIconServlet</servlet-class>
-	</servlet>
+    <servlet>
+        <servlet-name>NewsIconServlet</servlet-name>
+        <servlet-class>org.glimpse.server.news.NewsIconServlet</servlet-class>
+    </servlet>
 	
-	<servlet>
+    <servlet>
         <servlet-name>CXFServlet</servlet-name>
         <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
@@ -77,17 +82,17 @@
         <servlet-class>org.glimpse.server.servlet.LoginServlet</servlet-class>
     </servlet>
 	
-	<servlet-mapping>
-		<servlet-name>dispatcher</servlet-name>
-		<url-pattern>*.rpc</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>*.rpc</url-pattern>
+    </servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>NewsIconServlet</servlet-name>
-		<url-pattern>/servlets/news-icon</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewsIconServlet</servlet-name>
+        <url-pattern>/servlets/news-icon</url-pattern>
+    </servlet-mapping>
 	
-	<servlet-mapping>
+    <servlet-mapping>
         <servlet-name>CXFServlet</servlet-name>
         <url-pattern>/services/*</url-pattern>
     </servlet-mapping>
@@ -97,16 +102,16 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 	
-	<!-- Default page to serve -->
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
+    <!-- Default page to serve -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 	
-	<jsp-config>
-		<taglib>
-			<taglib-uri>http://www.glimpse.org/glimpse</taglib-uri>
-			<taglib-location>/WEB-INF/tld/glimpse.tld</taglib-location>
-		</taglib>
-	</jsp-config>
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://www.glimpse.org/glimpse</taglib-uri>
+            <taglib-location>/WEB-INF/tld/glimpse.tld</taglib-location>
+        </taglib>
+    </jsp-config>
 
 </web-app>

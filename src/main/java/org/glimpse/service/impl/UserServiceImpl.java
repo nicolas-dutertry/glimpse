@@ -43,19 +43,13 @@ import org.glimpse.server.manager.InvalidPasswordException;
 import org.glimpse.server.manager.InvalidUserIdException;
 import org.glimpse.server.manager.UserManager;
 import org.glimpse.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Path("/users/")
 @Produces({MediaType.APPLICATION_JSON})
 public class UserServiceImpl implements UserService {
+    @Autowired
 	private UserManager userManager;
-	
-	public UserManager getUserManager() {
-		return userManager;
-	}
-
-	public void setUserManager(UserManager userManager) {
-		this.userManager = userManager;
-	}
 
 	@GET
 	@Path("/")

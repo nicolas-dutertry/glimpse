@@ -24,19 +24,13 @@ import org.glimpse.client.UserDescriptionService;
 import org.glimpse.client.UserPreferences;
 import org.glimpse.server.manager.UserManager;
 import org.glimpse.spring.web.RemoteServiceUtil;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserDescriptionServiceImpl implements UserDescriptionService {
+    @Autowired
 	private UserManager userManager;
-	
-	public UserManager getUserManager() {
-		return userManager;
-	}
-
-	@Required
-	public void setUserManager(UserManager userManager) {
-		this.userManager = userManager;
-	}
 
 	public UserDescription getUserDescription() {
 		String userId = getUserId();

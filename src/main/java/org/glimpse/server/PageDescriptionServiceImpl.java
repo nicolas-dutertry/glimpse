@@ -23,19 +23,13 @@ import org.glimpse.client.UserAttributes;
 import org.glimpse.client.layout.PageDescription;
 import org.glimpse.server.manager.UserManager;
 import org.glimpse.spring.web.RemoteServiceUtil;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PageDescriptionServiceImpl implements PageDescriptionService {	
-	private UserManager userManager;
-	
-	public UserManager getUserManager() {
-		return userManager;
-	}
-
-	@Required
-	public void setUserManager(UserManager userManager) {
-		this.userManager = userManager;
-	}
+	@Autowired
+    private UserManager userManager;
 
 	public PageDescription getDefaultPageDescription(String localeName) {
 		return userManager.getDefaultPageDescription(localeName);

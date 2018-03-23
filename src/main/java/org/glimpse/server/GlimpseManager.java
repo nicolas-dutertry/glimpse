@@ -27,8 +27,10 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;
 
+@Component
 public class GlimpseManager implements ServletContextAware {
 	private static final Log logger = LogFactory.getLog(GlimpseManager.class);
 	

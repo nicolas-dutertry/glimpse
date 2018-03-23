@@ -33,12 +33,17 @@ import org.glimpse.client.finance.Quotation;
 import org.glimpse.client.finance.QuotationService;
 import org.glimpse.server.Proxy;
 import org.glimpse.server.ProxyProvider;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class QuotationServiceImpl implements QuotationService {
 	private static Log logger = LogFactory.getLog(QuotationServiceImpl.class);
 
+    @Autowired
 	private ProxyProvider proxyProvider;
+    
+    @Autowired
 	private QuotationFinder quotationFinder;
 	
 	public Quotation getQuotation(String code) {
@@ -69,23 +74,4 @@ public class QuotationServiceImpl implements QuotationService {
 			return null;
 		}
 	}
-
-	@Required
-	public void setProxyProvider(ProxyProvider proxyProvider) {
-		this.proxyProvider = proxyProvider;
-	}
-
-	public ProxyProvider getProxyProvider() {
-		return proxyProvider;
-	}
-
-	@Required
-	public void setQuotationFinder(QuotationFinder quotationFinder) {
-		this.quotationFinder = quotationFinder;
-	}
-
-	public QuotationFinder getQuotationFinder() {
-		return quotationFinder;
-	}
-
 }

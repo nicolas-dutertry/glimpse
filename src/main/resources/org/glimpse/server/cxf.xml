@@ -20,13 +20,7 @@
             <bean id="jsonParseExceptionMapper" class="com.fasterxml.jackson.jaxrs.base.JsonParseExceptionMapper"/>
             <bean id="jsonMappingExceptionMapper" class="com.fasterxml.jackson.jaxrs.base.JsonMappingExceptionMapper"/>
         </jaxrs:providers>
-        <jaxrs:extensionMappings>
-        	<entry key="xml" value="application/xml" />
-            <entry key="json" value="application/json" />
-        </jaxrs:extensionMappings>
     </jaxrs:server>
 
-    <bean id="userService" class="org.glimpse.service.impl.UserServiceImpl">
-    	<property name="userManager" ref="userManager"/>
-    </bean>
+    <bean id="userService" class="org.glimpse.service.impl.UserServiceImpl"/>
 </beans>

@@ -46,10 +46,13 @@ import org.glimpse.server.manager.xml.XmlUserManagerUtils;
 import org.glimpse.server.model.Connection;
 import org.glimpse.server.model.ServerTabDescription;
 import org.glimpse.server.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.w3c.dom.Document;
 
+@Component
 @Transactional(readOnly=true, propagation=Propagation.REQUIRED)
 public class OrmUserManager implements UserManager {
 	private static final Log logger = LogFactory.getLog(OrmUserManager.class);
@@ -62,7 +65,9 @@ public class OrmUserManager implements UserManager {
 	private final UserDao userDao;
 	private final ConnectionDao connectionDao;
 	
-	public OrmUserManager(UserDao userDao, ConnectionDao connectionDao) {
+	public OrmUserManager(
+        @Autowired UserDao userDao,
+        @Autowired ConnectionDao connectionDao) {
 		this.userDao = userDao;
 		this.connectionDao = connectionDao;
 	}

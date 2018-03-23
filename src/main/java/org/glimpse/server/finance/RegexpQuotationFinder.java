@@ -22,7 +22,9 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.glimpse.client.finance.Quotation;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RegexpQuotationFinder implements QuotationFinder {
     private Pattern valuePattern =
 		Pattern.compile(

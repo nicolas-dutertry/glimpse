@@ -28,7 +28,9 @@ import org.glimpse.server.dao.UserDao;
 import org.glimpse.server.model.User;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserDaoImpl implements UserDao {
     
     @PersistenceContext(unitName = "glimpse")

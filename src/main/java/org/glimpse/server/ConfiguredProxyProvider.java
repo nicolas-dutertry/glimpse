@@ -19,11 +19,14 @@ package org.glimpse.server;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ConfiguredProxyProvider implements ProxyProvider {
 	private Proxy proxy;
 	
-	public ConfiguredProxyProvider(Configuration configuration) {
+	public ConfiguredProxyProvider(@Autowired Configuration configuration) {
 		String host = configuration.getString("proxy.host");
 		int port = configuration.getInt("proxy.port", 8000);
 		if(StringUtils.isBlank(host)) {

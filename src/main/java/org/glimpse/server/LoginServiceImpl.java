@@ -24,21 +24,15 @@ import org.glimpse.client.LoginService;
 import org.glimpse.server.manager.AuthenticationException;
 import org.glimpse.server.manager.UserManager;
 import org.glimpse.spring.web.RemoteServiceUtil;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LoginServiceImpl implements LoginService {
 	private static final Log logger = LogFactory.getLog(LoginServiceImpl.class);
 
+    @Autowired
 	private UserManager userManager;	
-	
-	public UserManager getUserManager() {
-		return userManager;
-	}
-
-	@Required
-	public void setUserManager(UserManager userManager) {
-		this.userManager = userManager;
-	}
 
 	public boolean connect(String login, String password, boolean remember) {
 		
