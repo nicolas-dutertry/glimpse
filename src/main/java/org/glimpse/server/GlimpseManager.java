@@ -32,33 +32,34 @@ import org.springframework.web.context.ServletContextAware;
 
 @Component
 public class GlimpseManager implements ServletContextAware {
-	private static final Log logger = LogFactory.getLog(GlimpseManager.class);
-	
-	private File configurationDirectory;
-	private Configuration configuration;
-	
-	public void setServletContext(ServletContext servletContext) {
-		String confDirPath = System.getProperty("org.glimpse.conf.dir");
-		if(StringUtils.isEmpty(confDirPath)) {
-			confDirPath = servletContext.getRealPath("/WEB-INF/conf");
-		}
-		configurationDirectory = new File(confDirPath);
-		
-		try {
-			configuration = new PropertiesConfiguration(new File(configurationDirectory,
-				"glimpse.properties"));
-		} catch (ConfigurationException e) {
-			logger.fatal("Unable to Load configuration", e);
-			throw new RuntimeException(e);
-		}
-	}
-	
-	public Configuration getConfiguration() {
-		return configuration;
-	}
-	
-	public File getConfigurationDirectory() {
-		return configurationDirectory;
-	}
+
+    private static final Log logger = LogFactory.getLog(GlimpseManager.class);
+
+    private File configurationDirectory;
+    private Configuration configuration;
+
+    public void setServletContext(ServletContext servletContext) {
+        String confDirPath = System.getProperty("org.glimpse.conf.dir");
+        if (StringUtils.isEmpty(confDirPath)) {
+            confDirPath = servletContext.getRealPath("/WEB-INF/conf");
+        }
+        configurationDirectory = new File(confDirPath);
+
+        try {
+            configuration = new PropertiesConfiguration(new File(configurationDirectory,
+                    "glimpse.properties"));
+        } catch (ConfigurationException e) {
+            logger.fatal("Unable to Load configuration", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public File getConfigurationDirectory() {
+        return configurationDirectory;
+    }
 
 }
