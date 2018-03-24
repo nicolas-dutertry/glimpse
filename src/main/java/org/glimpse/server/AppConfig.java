@@ -47,7 +47,7 @@ public class AppConfig {
 
         return em;
     }
-    
+
     @Bean(destroyMethod = "close")
     public DataSource dataSource(org.apache.commons.configuration.Configuration configuration) {
         BasicDataSource dataSource = new BasicDataSource();
@@ -78,27 +78,29 @@ public class AppConfig {
     @Bean(name = "hibernateProperties")
     public Properties hibernateProperties(GlimpseManager glimpseManager) throws IOException {
         FileReader reader = null;
-		try {
-			Properties properties = new Properties();
-			File file = new File(glimpseManager.getConfigurationDirectory(), "hibernate.properties");
-			reader = new FileReader(file);
-			properties.load(reader);
+        try {
+            Properties properties = new Properties();
+            File file = new File(glimpseManager.getConfigurationDirectory(), "hibernate.properties");
+            if(file.exists()) {
+                reader = new FileReader(file);
+                properties.load(reader);
+            }
             return properties;
-		} finally {
-			IOUtils.closeQuietly(reader);
-		}
+        } finally {
+            IOUtils.closeQuietly(reader);
+        }
     }
-    
+
     @Bean
     public BasicPasswordEncryptor passwordEncryptor() {
         return new BasicPasswordEncryptor();
     }
-    
+
     @Bean
     public org.apache.commons.configuration.Configuration configuration(GlimpseManager glimpseManager) {
         return glimpseManager.getConfiguration();
     }
-    
+
     @Bean
     public CacheManager cacheManager() {
         return CacheManager.create();
