@@ -8,7 +8,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 import net.sf.ehcache.CacheManager;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.io.IOUtils;
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.context.annotation.Bean;
@@ -34,15 +36,30 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class AppConfig {
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(Properties hibernateProperties) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Properties hibernateProperties) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setPersistenceUnitName("glimpse");
+        em.setDataSource(dataSource);
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(hibernateProperties);
 
         return em;
+    }
+    
+    @Bean(destroyMethod = "close")
+    public DataSource dataSource(org.apache.commons.configuration.Configuration configuration) {
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName("net.bull.javamelody.JdbcDriver");
+        dataSource.setUrl(configuration.getString("datasource.url"));
+        dataSource.setUsername(configuration.getString("datasource.username"));
+        dataSource.setPassword(configuration.getString("datasource.password"));
+        dataSource.setConnectionProperties("driver=" + configuration.getString("datasource.driver"));
+        dataSource.setTestOnBorrow(configuration.getBoolean("datasource.testOnBorrow", true));
+        dataSource.setTestOnCreate(configuration.getBoolean("datasource.testOnCreate", true));
+        dataSource.setTestOnReturn(configuration.getBoolean("datasource.testOnReturn", false));
+        return dataSource;
     }
 
     @Bean
