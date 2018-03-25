@@ -32,7 +32,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = "org.glimpse.server")
-@ImportResource("classpath:org/glimpse/server/cxf.xml")
 public class AppConfig {
 
     @Bean

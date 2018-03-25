@@ -72,10 +72,22 @@
     </servlet>
 	
     <servlet>
-        <servlet-name>CXFServlet</servlet-name>
-        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+      <servlet-name>rest</servlet-name>
+      <servlet-class>
+         org.springframework.web.servlet.DispatcherServlet
+      </servlet-class>
+      <init-param>
+         <param-name>contextClass</param-name>
+         <param-value>
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+         </param-value>
+      </init-param>
+      <init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>org.glimpse.service</param-value>
+      </init-param>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
     
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -93,7 +105,7 @@
     </servlet-mapping>
 	
     <servlet-mapping>
-        <servlet-name>CXFServlet</servlet-name>
+        <servlet-name>rest</servlet-name>
         <url-pattern>/services/*</url-pattern>
     </servlet-mapping>
     

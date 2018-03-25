@@ -14,8 +14,7 @@
         <gwt-dnd.version>3.1.2</gwt-dnd.version>
         <spring.version>4.3.12.RELEASE</spring.version>
         <hibernate.version>5.2.8.Final</hibernate.version>
-        <cxf.version>3.1.10</cxf.version>
-        <com.fasterxml.jackson.version>2.8.4</com.fasterxml.jackson.version>
+        <com.fasterxml.jackson.version>2.9.4</com.fasterxml.jackson.version>
     </properties>
 	
     <dependencies>
@@ -102,12 +101,7 @@
         </dependency>		
         <!-- End GWT -->
 		
-        <!-- Spring -->		
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+        <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
@@ -116,6 +110,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
         <!-- End Spring -->
@@ -167,18 +166,6 @@
             <version>1.20.0</version>
         </dependency>
 		
-        <!-- CXF -->
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <!-- End CXF -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
