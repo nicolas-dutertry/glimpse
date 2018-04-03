@@ -17,17 +17,21 @@
  */
 package org.glimpse.server.model;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
+import javax.persistence.Basic;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+import org.apache.commons.lang.StringUtils;
 
 
 @Entity
@@ -54,10 +58,9 @@ public class User implements Serializable {
 	@Column(nullable = false)
 	private String theme;
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name="user_id", nullable=false)
-    @OrderColumn(name="tab_index")
-	private List<ServerTabDescription> tabDescriptions;
+	@Lob
+    @Basic(fetch = FetchType.LAZY)
+    private String jsonTabs;
 	
 	public User() {
 	}
@@ -115,8 +118,36 @@ public class User implements Serializable {
 		this.theme = theme;
 	}
 
-	public List<ServerTabDescription> getTabDescriptions() {
-		return tabDescriptions;
-	}
+    public String getJsonTabs() {
+        return jsonTabs;
+    }
+
+    public void setJsonTabs(String jsonTabs) {
+        this.jsonTabs = jsonTabs;
+    }
+    
+    public List<ServerTabDescription> getTabDescriptions() {
+        String json = getJsonTabs();
+        if(StringUtils.isBlank(json)) {
+            return Collections.emptyList();
+        }
+        
+        ObjectMapper mapper = new ObjectMapper();
+        try {            
+            return mapper.readValue(json, new TypeReference<List<ServerTabDescription>>(){});
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+     public void setTabDescriptions(List<ServerTabDescription> serverTabDescriptions) {         
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String json = mapper.writeValueAsString(serverTabDescriptions);
+            setJsonTabs(json);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+     }
+    
 	
 }

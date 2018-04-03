@@ -21,49 +21,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "glimpsecol")
 public class ServerColumnDescription implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue
-	private int id;
-
-	@ManyToOne(optional=false)
-	@JoinColumn(name="tab_id", insertable=false, updatable=false, nullable=false)
-	private ServerTabDescription tabDescription;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	@OrderColumn(name="component_index")
-	@JoinColumn(name="column_id", nullable=false)
 	private List<ServerComponentDescription> componentDescriptions = new ArrayList<ServerComponentDescription>();
-
-	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public ServerTabDescription getTabDescription() {
-		return tabDescription;
-	}
-
-	public void setTabDescription(ServerTabDescription tabDescription) {
-		this.tabDescription = tabDescription;
-	}
 
 	public List<ServerComponentDescription> getComponentDescriptions() {
 		return componentDescriptions;

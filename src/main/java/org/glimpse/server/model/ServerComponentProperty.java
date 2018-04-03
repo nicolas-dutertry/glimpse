@@ -18,46 +18,11 @@
 package org.glimpse.server.model;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "glimpsecomponent_property")
 public class ServerComponentProperty implements Serializable {
-	@Id
-	@GeneratedValue
-	private int id;
-	
-	@ManyToOne(optional=false)
-	@JoinColumn(name="component_id")
-	private ServerComponentDescription componentDescription;
-	
-	@Column(nullable=false)
 	private String propertyName;
 	
-	@Column
 	private String propertyValue;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public ServerComponentDescription getComponentDescription() {
-		return componentDescription;
-	}
-
-	public void setComponentDescription(ServerComponentDescription componentDescription) {
-		this.componentDescription = componentDescription;
-	}
 
 	public String getPropertyName() {
 		return propertyName;

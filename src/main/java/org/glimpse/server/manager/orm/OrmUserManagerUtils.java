@@ -72,7 +72,6 @@ public class OrmUserManagerUtils {
 		for (TabDescription tabDescription : tabDescriptions) {
 			ServerTabDescription serverTabDescription = new ServerTabDescription();
 			serverTabDescriptions.add(serverTabDescription);
-			serverTabDescription.setUser(user);
 			serverTabDescription.setTitle(tabDescription.getTitle());
 			
 			List<ServerColumnDescription> serverColumnDescriptions =
@@ -82,7 +81,6 @@ public class OrmUserManagerUtils {
 				ServerColumnDescription serverColumnDescription =
 					new ServerColumnDescription();
 				serverColumnDescriptions.add(serverColumnDescription);
-				serverColumnDescription.setTabDescription(serverTabDescription);
 				
 				List<ServerComponentDescription> serverComponentDescriptions =
 					new LinkedList<ServerComponentDescription>();
@@ -93,7 +91,6 @@ public class OrmUserManagerUtils {
 						new ServerComponentDescription(
 							componentDescription.getType().toString());
 					serverComponentDescriptions.add(serverComponentDescription);
-					serverComponentDescription.setColumnDescription(serverColumnDescription);
 					
 					List<ServerComponentProperty> serverComponentProperties =
 						new LinkedList<ServerComponentProperty>();					
@@ -101,7 +98,6 @@ public class OrmUserManagerUtils {
 					Set<Entry<String, String>> entries = properties.entrySet();
 					for (Entry<String, String> entry : entries) {
 						ServerComponentProperty serverComponentProperty = new ServerComponentProperty();
-						serverComponentProperty.setComponentDescription(serverComponentDescription);
 						serverComponentProperty.setPropertyName(entry.getKey());
 						serverComponentProperty.setPropertyValue(entry.getValue());
 						serverComponentProperties.add(serverComponentProperty);						

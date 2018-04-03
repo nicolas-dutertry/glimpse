@@ -17,6 +17,9 @@
  */
 package org.glimpse.server.manager.orm;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashSet;
@@ -293,9 +296,14 @@ public class OrmUserManager implements UserManager {
 		
 		User user = userDao.getUser(userId);		
 		if(user != null) {
-			user.getTabDescriptions().clear();
-			user.getTabDescriptions().addAll(OrmUserManagerUtils.buildServerTabDescriptions(
-					user, pageDescription));
+			List<ServerTabDescription> serverTabDescriptions = OrmUserManagerUtils.buildServerTabDescriptions(
+					user, pageDescription);
+            
+            user.setTabDescriptions(serverTabDescriptions);
+            /*
+            user.getTabDescriptions().clear();            
+			user.getTabDescriptions().addAll(serverTabDescriptions);
+            */
 		}
 	}
 	

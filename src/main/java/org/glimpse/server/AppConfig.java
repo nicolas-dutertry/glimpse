@@ -56,7 +56,7 @@ public class AppConfig {
         dataSource.setPassword(configuration.getString("datasource.password"));
         dataSource.setConnectionProperties("driver=" + configuration.getString("datasource.driver"));
         dataSource.setTestOnBorrow(configuration.getBoolean("datasource.testOnBorrow", true));
-        dataSource.setTestOnCreate(configuration.getBoolean("datasource.testOnCreate", true));
+        dataSource.setTestOnCreate(configuration.getBoolean("datasource.testOnCreate", false));
         dataSource.setTestOnReturn(configuration.getBoolean("datasource.testOnReturn", false));
         return dataSource;
     }

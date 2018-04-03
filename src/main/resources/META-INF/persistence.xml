@@ -3,10 +3,6 @@
     <persistence-unit name="glimpse" transaction-type="RESOURCE_LOCAL">
         <class>org.glimpse.server.model.Connection</class>
         <class>org.glimpse.server.model.User</class>
-        <class>org.glimpse.server.model.ServerTabDescription</class>
-        <class>org.glimpse.server.model.ServerColumnDescription</class>
-        <class>org.glimpse.server.model.ServerComponentDescription</class>
-        <class>org.glimpse.server.model.ServerComponentProperty</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>        
     </persistence-unit>
