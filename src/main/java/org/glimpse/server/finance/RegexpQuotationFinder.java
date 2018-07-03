@@ -31,7 +31,7 @@ public class RegexpQuotationFinder implements QuotationFinder {
                 "<div\\s*class=\"c-faceplate__price\">\\s*<span\\s*class=\"c-instrument c-instrument--last\".*>([0-9\\s\\.]+)</span>");
     private Pattern unitPattern =
 		Pattern.compile(
-                "class=\"c-faceplate__price-currency\">(\\w*)</span>");
+                "class=\"c-faceplate__price-currency\">\\s*(\\w*)</span>");
 	private Pattern variationPattern =
 		Pattern.compile(
                 "<div\\s*class=\"c-faceplate__fluctuation\">.*<span\\s*class=\"c-instrument c-instrument--variation\".*>([-\\+]?[0-9\\s\\.]+)%</span>");

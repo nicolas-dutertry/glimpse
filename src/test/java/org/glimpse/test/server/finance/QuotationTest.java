@@ -42,9 +42,9 @@ public class QuotationTest {
 		
 		Quotation quotation = finder.getQuotation(sw.toString());
 		Assert.assertNotNull(quotation);
-        Assert.assertEquals(5184.43, quotation.getValue(), 0);
+        Assert.assertEquals(5288.7, quotation.getValue(), 0);
         Assert.assertEquals("Pts", quotation.getUnit());
-        Assert.assertEquals(-1.06, quotation.getVariation(), 0);
+        Assert.assertEquals(0.23, quotation.getVariation(), 0);
 	}
 	
     @Test
@@ -59,8 +59,8 @@ public class QuotationTest {
 		
 		Quotation quotation = finder.getQuotation(sw.toString());
 		Assert.assertNotNull(quotation);
-        Assert.assertEquals(3364.92, quotation.getValue(), 0);
+        Assert.assertEquals(3381.29, quotation.getValue(), 0);
         Assert.assertEquals("Pts", quotation.getUnit());
-        Assert.assertEquals(-1.06, quotation.getVariation(), 0);
+        Assert.assertEquals(0.27, quotation.getVariation(), 0);
 	}
 }
