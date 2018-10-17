@@ -21,41 +21,27 @@ import java.net.URLEncoder;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.conn.params.ConnRoutePNames;
-import org.apache.http.impl.client.DecompressingHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.glimpse.client.finance.Quotation;
 import org.glimpse.client.finance.QuotationService;
-import org.glimpse.server.Proxy;
-import org.glimpse.server.ProxyProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class QuotationServiceImpl implements QuotationService {
 	private static Log logger = LogFactory.getLog(QuotationServiceImpl.class);
-
-    @Autowired
-	private ProxyProvider proxyProvider;
     
     @Autowired
 	private QuotationFinder quotationFinder;
+    
+    @Autowired
+    private HttpClient client;
 	
 	public Quotation getQuotation(String code) {
-		try {
-			Proxy proxy = proxyProvider.getProxy("http://www.boursorama.com/");
-			
-			HttpClient client = new DecompressingHttpClient(new DefaultHttpClient());
-			if(proxy != null) {
-				client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY,
-						new HttpHost(proxy.getHost(), proxy.getPort()));
-			}
-			
+		try {			
 			String url = "http://www.boursorama.com/cours.phtml?symbole=" + URLEncoder.encode(code, "UTF-8");
 			HttpGet method = new HttpGet(url);
 			HttpResponse httpresponse = client.execute(method);

@@ -26,18 +26,12 @@ import net.sf.ehcache.CacheManager;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.conn.params.ConnRoutePNames;
-import org.apache.http.impl.client.DecompressingHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.glimpse.client.news.Entry;
 import org.glimpse.client.news.NewsChannel;
 import org.glimpse.client.news.NewsRetrieverService;
-import org.glimpse.server.Proxy;
-import org.glimpse.server.ProxyProvider;
 import org.glimpse.server.news.sax.SaxServerNewsChannelBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -49,7 +43,7 @@ public class NewsRetrieverServiceImpl implements NewsRetrieverService {
 		new SaxServerNewsChannelBuilder();
 	
     @Autowired
-	private ProxyProvider proxyProvider;
+	private HttpClient client;
     
     @Autowired
 	private CacheManager cacheManager;
@@ -112,14 +106,6 @@ public class NewsRetrieverServiceImpl implements NewsRetrieverService {
 	}
 	
 	private InputStream getUrlInputStream(String url) throws Exception {
-		Proxy proxy = proxyProvider.getProxy(url);
-		
-		HttpClient client = new DecompressingHttpClient(new DefaultHttpClient());
-		if(proxy != null) {
-			client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY,
-					new HttpHost(proxy.getHost(), proxy.getPort()));
-		}
-		
 		HttpGet method = new HttpGet(url);
 		HttpResponse httpresponse = client.execute(method);
 		

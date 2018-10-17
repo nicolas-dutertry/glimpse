@@ -12,11 +12,13 @@ import javax.sql.DataSource;
 import net.sf.ehcache.CacheManager;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.io.IOUtils;
+import org.apache.http.client.HttpClient;
+import org.apache.http.conn.routing.HttpRoutePlanner;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -103,5 +105,12 @@ public class AppConfig {
     @Bean
     public CacheManager cacheManager() {
         return CacheManager.create();
+    }
+    
+    @Bean(destroyMethod = "close")
+    public HttpClient httpClient(HttpRoutePlanner httpRoutePlanner) {
+        HttpClientBuilder builder = HttpClientBuilder.create();
+        builder.setRoutePlanner(httpRoutePlanner);
+        return builder.build();
     }
 }

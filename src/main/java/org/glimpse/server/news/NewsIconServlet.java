@@ -29,15 +29,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.conn.params.ConnRoutePNames;
-import org.apache.http.impl.client.DecompressingHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.glimpse.server.Proxy;
-import org.glimpse.server.ProxyProvider;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class NewsIconServlet extends HttpServlet {
@@ -56,15 +50,8 @@ public class NewsIconServlet extends HttpServlet {
 		}
 		url = url.substring(0, i) + "/favicon.ico";
 		
-		HttpClient client = new DecompressingHttpClient(new DefaultHttpClient());
-		
-		ProxyProvider proxyProvider = WebApplicationContextUtils.getWebApplicationContext(getServletContext()).getBean(
-				ProxyProvider.class);
-		Proxy proxy = proxyProvider.getProxy(url);
-		if(proxy != null) {
-			client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY,
-					new HttpHost(proxy.getHost(), proxy.getPort()));
-		}
+		HttpClient client =  WebApplicationContextUtils.getWebApplicationContext(getServletContext())
+            .getBean(HttpClient.class);
 		
 		HttpGet method = new HttpGet(url);
 		HttpResponse httpresponse = null;
