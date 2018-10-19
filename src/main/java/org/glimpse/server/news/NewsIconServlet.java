@@ -29,9 +29,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class NewsIconServlet extends HttpServlet {
@@ -50,25 +50,31 @@ public class NewsIconServlet extends HttpServlet {
 		}
 		url = url.substring(0, i) + "/favicon.ico";
 		
-		HttpClient client =  WebApplicationContextUtils.getWebApplicationContext(getServletContext())
-            .getBean(HttpClient.class);
+		CloseableHttpClient client =  WebApplicationContextUtils.getWebApplicationContext(getServletContext())
+            .getBean(CloseableHttpClient.class);
 		
 		HttpGet method = new HttpGet(url);
-		HttpResponse httpresponse = null;
+		CloseableHttpResponse httpresponse = null;
 		try {			
 			httpresponse = client.execute(method);
 		} catch (Exception e) {
 			logger.error("Unable to get new icon for <" + url + ">", e);
 		}
 		
-		if(httpresponse != null && httpresponse.getStatusLine().getStatusCode() == 200) {
-			IOUtils.copy(httpresponse.getEntity().getContent(), response.getOutputStream());
-		} else {
-			File f = new File(getServletContext().getRealPath("images/feed.png"));
-			FileInputStream fis = new FileInputStream(f);
-			IOUtils.copy(fis, response.getOutputStream());
-			fis.close();
-		}
+        try {
+            if(httpresponse != null && httpresponse.getStatusLine().getStatusCode() == 200) {
+                IOUtils.copy(httpresponse.getEntity().getContent(), response.getOutputStream());
+            } else {
+                File f = new File(getServletContext().getRealPath("images/feed.png"));
+                FileInputStream fis = new FileInputStream(f);
+                IOUtils.copy(fis, response.getOutputStream());
+                fis.close();
+            }
+        } finally {
+            if(httpresponse != null ) {
+                httpresponse.close();
+            }
+        }
 	}
 	
 	

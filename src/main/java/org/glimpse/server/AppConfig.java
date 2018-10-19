@@ -12,8 +12,8 @@ import javax.sql.DataSource;
 import net.sf.ehcache.CacheManager;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.client.HttpClient;
 import org.apache.http.conn.routing.HttpRoutePlanner;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.context.annotation.Bean;
@@ -108,7 +108,7 @@ public class AppConfig {
     }
     
     @Bean(destroyMethod = "close")
-    public HttpClient httpClient(HttpRoutePlanner httpRoutePlanner) {
+    public CloseableHttpClient httpClient(HttpRoutePlanner httpRoutePlanner) {
         HttpClientBuilder builder = HttpClientBuilder.create();
         builder.setRoutePlanner(httpRoutePlanner);
         return builder.build();

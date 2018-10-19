@@ -23,7 +23,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.glimpse.client.finance.Quotation;
 import org.glimpse.client.finance.QuotationService;
@@ -38,22 +40,23 @@ public class QuotationServiceImpl implements QuotationService {
 	private QuotationFinder quotationFinder;
     
     @Autowired
-    private HttpClient client;
+    private CloseableHttpClient client;
 	
 	public Quotation getQuotation(String code) {
 		try {			
 			String url = "http://www.boursorama.com/cours.phtml?symbole=" + URLEncoder.encode(code, "UTF-8");
 			HttpGet method = new HttpGet(url);
-			HttpResponse httpresponse = client.execute(method);
-			String response = EntityUtils.toString(httpresponse.getEntity());
-			
-			Quotation quotation = quotationFinder.getQuotation(response);
-			if(quotation == null) {
-				logger.debug("Unable to find quotation for <" + code + ">\n" + response);
-				quotation = new Quotation();
-			}
-			
-			return quotation;
+			try(CloseableHttpResponse httpresponse = client.execute(method)) {
+                String response = EntityUtils.toString(httpresponse.getEntity());
+
+                Quotation quotation = quotationFinder.getQuotation(response);
+                if(quotation == null) {
+                    logger.debug("Unable to find quotation for <" + code + ">\n" + response);
+                    quotation = new Quotation();
+                }
+
+                return quotation;
+            }
 			
 		} catch (Exception e) {
 			logger.error("Error while getting quotation for <" + code + ">", e);

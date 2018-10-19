@@ -26,9 +26,9 @@ import net.sf.ehcache.CacheManager;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.glimpse.client.news.Entry;
 import org.glimpse.client.news.NewsChannel;
 import org.glimpse.client.news.NewsRetrieverService;
@@ -43,7 +43,7 @@ public class NewsRetrieverServiceImpl implements NewsRetrieverService {
 		new SaxServerNewsChannelBuilder();
 	
     @Autowired
-	private HttpClient client;
+	private CloseableHttpClient client;
     
     @Autowired
 	private CacheManager cacheManager;
@@ -95,7 +95,10 @@ public class NewsRetrieverServiceImpl implements NewsRetrieverService {
 		}
 		
 		if(channel == null) {
-			channel = channelBuilder.buildChannel(getUrlInputStream(url));
+            HttpGet method = new HttpGet(url);
+            try(CloseableHttpResponse httpresponse = client.execute(method)) {
+                channel = channelBuilder.buildChannel(httpresponse.getEntity().getContent());
+            }
 			
 			if(channel != null) {
 				cache.put(new net.sf.ehcache.Element(url, channel));
@@ -103,13 +106,6 @@ public class NewsRetrieverServiceImpl implements NewsRetrieverService {
 		}
 		
 		return channel;
-	}
-	
-	private InputStream getUrlInputStream(String url) throws Exception {
-		HttpGet method = new HttpGet(url);
-		HttpResponse httpresponse = client.execute(method);
-		
-		return httpresponse.getEntity().getContent();
 	}
 
 }
