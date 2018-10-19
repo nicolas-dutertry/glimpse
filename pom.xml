@@ -163,7 +163,7 @@
         <dependency>
             <groupId>net.bull.javamelody</groupId>
             <artifactId>javamelody-core</artifactId>
-            <version>1.20.0</version>
+            <version>1.74.0</version>
         </dependency>
 		
         <dependency>
@@ -218,17 +218,4 @@
             </plugin>
         </plugins>
     </build>
-    <repositories>
-        <!-- for javamelody -->
-        <repository>
-            <id>m.g.o-public</id>
-            <url>http://maven.glassfish.org/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>
