@@ -29,38 +29,39 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class QuotationTest {
+
     @Test
-	public void testCac() throws Exception {
-		
-		QuotationFinder finder = new RegexpQuotationFinder();
-		
-		InputStream is = getClass().getResourceAsStream("/cac.txt");
-		InputStreamReader reader = new InputStreamReader(is);
-		StringWriter sw = new StringWriter(); 
-		IOUtils.copy(reader, sw);
-		reader.close();
-		
-		Quotation quotation = finder.getQuotation(sw.toString());
-		Assert.assertNotNull(quotation);
-        Assert.assertEquals(5288.7, quotation.getValue(), 0);
+    public void testCac() throws Exception {
+
+        QuotationFinder finder = new RegexpQuotationFinder();
+
+        InputStream is = getClass().getResourceAsStream("/cac.txt");
+        InputStreamReader reader = new InputStreamReader(is);
+        StringWriter sw = new StringWriter();
+        IOUtils.copy(reader, sw);
+        reader.close();
+
+        Quotation quotation = finder.getQuotation(sw.toString());
+        Assert.assertNotNull(quotation);
+        Assert.assertEquals(5269.92, quotation.getValue(), 0);
         Assert.assertEquals("Pts", quotation.getUnit());
-        Assert.assertEquals(0.23, quotation.getVariation(), 0);
-	}
-	
+        Assert.assertEquals(-2.03, quotation.getVariation(), 0);
+    }
+
     @Test
     public void testEuro() throws Exception {
-		QuotationFinder finder = new RegexpQuotationFinder();
-		
-		InputStream is = getClass().getResourceAsStream("/euro.txt");
-		InputStreamReader reader = new InputStreamReader(is);
-		StringWriter sw = new StringWriter(); 
-		IOUtils.copy(reader, sw);
-		reader.close();
-		
-		Quotation quotation = finder.getQuotation(sw.toString());
-		Assert.assertNotNull(quotation);
-        Assert.assertEquals(3381.29, quotation.getValue(), 0);
+        QuotationFinder finder = new RegexpQuotationFinder();
+
+        InputStream is = getClass().getResourceAsStream("/euro.txt");
+        InputStreamReader reader = new InputStreamReader(is);
+        StringWriter sw = new StringWriter();
+        IOUtils.copy(reader, sw);
+        reader.close();
+
+        Quotation quotation = finder.getQuotation(sw.toString());
+        Assert.assertNotNull(quotation);
+        Assert.assertEquals(3305.73, quotation.getValue(), 0);
         Assert.assertEquals("Pts", quotation.getUnit());
-        Assert.assertEquals(0.27, quotation.getVariation(), 0);
-	}
+        Assert.assertEquals(-1.83, quotation.getVariation(), 0);
+    }
 }
