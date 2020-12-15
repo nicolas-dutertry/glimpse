@@ -9,3 +9,6 @@ buildNumber.properties
 .mvn/timing.properties
 nb-configuration.xml
 nbactions.xml
+.settings
+.classpath
+.project
