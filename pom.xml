@@ -223,4 +223,26 @@
             </plugin>
         </plugins>
     </build>
+    
+    <scm>
+        <connection>scm:git:https://github.com/nicolas-dutertry/glimpse.git</connection>
+        <developerConnection>scm:git:https://github.com/nicolas-dutertry/glimpse.git</developerConnection>
+        <url>https://github.com/nicolas-dutertry/glimpse</url>
+        <tag>HEAD</tag>
+    </scm>
+    
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/nicolas-dutertry/glimpse</url>
+        </repository>
+    </distributionManagement>
+    
+    <developers>
+        <developer>
+            <name>Nicolas Dutertry</name>
+            <url>https://nicolas.dutertry.com</url>
+        </developer>
+    </developers>
 </project>
