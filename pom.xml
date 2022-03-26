@@ -14,7 +14,7 @@
         <gwt-dnd.version>3.3.4</gwt-dnd.version>
         <spring.version>4.3.30.RELEASE</spring.version>
         <hibernate.version>5.4.26.Final</hibernate.version>
-        <com.fasterxml.jackson.version>2.13.2</com.fasterxml.jackson.version>
+        <com.fasterxml.jackson.version>2.13.2.1</com.fasterxml.jackson.version>
     </properties>
 	
     <dependencies>
