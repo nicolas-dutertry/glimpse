@@ -14,7 +14,7 @@
         <gwt-dnd.version>3.3.4</gwt-dnd.version>
         <spring.version>5.3.18</spring.version>
         <hibernate.version>5.4.26.Final</hibernate.version>
-        <com.fasterxml.jackson.version>2.13.2</com.fasterxml.jackson.version>
+        <com.fasterxml.jackson.version>2.14.1</com.fasterxml.jackson.version>
     </properties>
 	
     <dependencies>
@@ -174,7 +174,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${com.fasterxml.jackson.version}.1</version>
+            <version>${com.fasterxml.jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
