@@ -28,9 +28,10 @@ import org.springframework.stereotype.Component;
 public class RegexpQuotationFinder implements QuotationFinder {
 
     // <div class="c-faceplate__price c-faceplate__price--inline"><span class="c-instrument c-instrument--last" data-ist-last>3 305.73</span>
+	// <div class="c-faceplate__price c-faceplate__price--inline"><span class="c-instrument c-instrument--last" data-ist-last>7 524,72
     private Pattern valuePattern
             = Pattern.compile(
-                    "<div\\s*class=\"c-faceplate__price.*\">\\s*<span\\s*class=\"c-instrument c-instrument--last\".*>([0-9\\s\\.]+)</span>");
+                    "<div\\s*class=\"c-faceplate__price.*\">\\s*<span\\s*class=\"c-instrument c-instrument--last\".*>([0-9\\s\\.,]+)</span>");
     //<span class="c-faceplate__price-currency"> Pts</span></div>
     private Pattern unitPattern
             = Pattern.compile(
@@ -39,7 +40,7 @@ public class RegexpQuotationFinder implements QuotationFinder {
     //<div class="c-faceplate__fluctuation c-faceplate__fluctuation--inline"><span class="c-tradingboard__fluctuation-space u-color-stream-down"><span class="c-instrument c-instrument--variation" data-ist-variation>-1.83%</span>
     private Pattern variationPattern
             = Pattern.compile(
-                    "<div\\s*class=\"c-faceplate__fluctuation.*\">.*<span\\s*class=\"c-instrument c-instrument--variation\".*>([-\\+]?[0-9\\s\\.]+)%</span>");
+                    "<div\\s*class=\"c-faceplate__fluctuation.*\">.*<span\\s*class=\"c-instrument c-instrument--variation\".*>([-\\+]?[0-9\\s\\.,]+)%</span>");
 
     @Override
     public Quotation getQuotation(String text) {
@@ -47,6 +48,7 @@ public class RegexpQuotationFinder implements QuotationFinder {
         if (valueMatcher.find()) {
             String s = valueMatcher.group(1);
             s = StringUtils.remove(s, " ");
+            s = StringUtils.replace(s, ",", ".");
             double value = Double.parseDouble(s);
 
             Matcher unitMatcher = unitPattern.matcher(text);
@@ -57,6 +59,7 @@ public class RegexpQuotationFinder implements QuotationFinder {
                 if (variationMatcher.find()) {
                     s = variationMatcher.group(1);
                     s = StringUtils.remove(s, " ");
+                    s = StringUtils.replace(s, ",", ".");
                     double variation = Double.parseDouble(s);
                     return new Quotation(value, unit, variation);
                 }
